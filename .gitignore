@@ -16,3 +16,4 @@ mono_crash.*.json
 
 # ignore legacy assets, those are only for reference
 legacy-assets/
+other/

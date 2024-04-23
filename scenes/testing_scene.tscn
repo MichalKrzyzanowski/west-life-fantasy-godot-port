@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck4acd2tuvryb"]
+
+[ext_resource type="Texture2D" uid="uid://bu5h8vht6vsh4" path="res://desert-tileset.png" id="1_oycni"]
+[ext_resource type="PackedScene" uid="uid://d02rs8t4d5gwn" path="res://entities/overworld-player/overworld_player.tscn" id="2_6oa5n"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(577.5, 325)
+scale = Vector2(9.02344, 5.07812)
+texture = ExtResource("1_oycni")
+region_enabled = true
+region_rect = Rect2(0, 0, 128, 128)
+
+[node name="OverworldPlayer" parent="." instance=ExtResource("2_6oa5n")]
+speed = 100.0

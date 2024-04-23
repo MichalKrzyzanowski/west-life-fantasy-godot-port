@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d02rs8t4d5gwn"]
+
+[ext_resource type="Script" path="res://entities/overworld-player/overworld_movement.gd" id="1_edl3d"]
+[ext_resource type="Texture2D" uid="uid://bkgm4b6mrvwlq" path="res://entities/overworld-player/mc-ride-wife.png" id="2_4ou8k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hov66"]
+size = Vector2(31, 20)
+
+[node name="OverworldPlayer" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_edl3d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_4ou8k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 8)
+shape = SubResource("RectangleShape2D_hov66")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
+
+[node name="Node2D" type="Node2D" parent="."]
