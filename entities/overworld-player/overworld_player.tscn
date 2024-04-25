@@ -1,13 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://d02rs8t4d5gwn"]
+[gd_scene load_steps=5 format=3 uid="uid://d02rs8t4d5gwn"]
 
 [ext_resource type="Script" path="res://entities/overworld-player/overworld_movement.gd" id="1_edl3d"]
 [ext_resource type="Texture2D" uid="uid://bkgm4b6mrvwlq" path="res://entities/overworld-player/mc-ride-wife.png" id="2_4ou8k"]
+[ext_resource type="Script" path="res://entities/bullet/bullet_emitter.gd" id="3_ya1km"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hov66"]
 size = Vector2(31, 20)
 
 [node name="OverworldPlayer" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_edl3d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -21,4 +24,5 @@ shape = SubResource("RectangleShape2D_hov66")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="BulletEmitter" type="Node2D" parent="."]
+script = ExtResource("3_ya1km")

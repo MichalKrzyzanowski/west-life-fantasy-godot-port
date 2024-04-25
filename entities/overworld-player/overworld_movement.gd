@@ -11,7 +11,11 @@ func _process(_delta: float) -> void:
 	velocity = input_dir * speed
 
 	_flip_sprite(input_dir)
-	move_and_slide()
+	var collision = move_and_collide(velocity)
+	if collision:
+		# get slide velocity and half it so that sliding along a wall is slower
+		velocity = velocity.slide(collision.get_normal()) / 2.0
+		move_and_collide(velocity)
 
 
 func _flip_sprite(input_dir : Vector2):

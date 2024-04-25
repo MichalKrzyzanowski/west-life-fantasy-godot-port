@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://ck4acd2tuvryb"]
+[gd_scene load_steps=5 format=3 uid="uid://ck4acd2tuvryb"]
 
 [ext_resource type="Texture2D" uid="uid://bu5h8vht6vsh4" path="res://desert-tileset.png" id="1_oycni"]
 [ext_resource type="PackedScene" uid="uid://d02rs8t4d5gwn" path="res://entities/overworld-player/overworld_player.tscn" id="2_6oa5n"]
+[ext_resource type="Texture2D" uid="uid://dgdkiifam4f85" path="res://entities/bullet/bullet.png" id="3_ui7sq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5aio7"]
+size = Vector2(494, 200)
 
 [node name="Node2D" type="Node2D"]
 
@@ -15,4 +19,15 @@ region_enabled = true
 region_rect = Rect2(0, 0, 128, 128)
 
 [node name="OverworldPlayer" parent="." instance=ExtResource("2_6oa5n")]
-speed = 100.0
+speed = 1.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(393, 231)
+shape = SubResource("RectangleShape2D_5aio7")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(394, 230.5)
+scale = Vector2(12.25, 4.875)
+texture = ExtResource("3_ui7sq")
