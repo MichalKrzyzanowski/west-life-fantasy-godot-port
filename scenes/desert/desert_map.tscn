@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckqmboktfdvg2"]
+
+[ext_resource type="PackedScene" uid="uid://d02rs8t4d5gwn" path="res://entities/overworld-player/overworld_player.tscn" id="1_3eak2"]
+[ext_resource type="TileSet" uid="uid://c65312ml6h3a6" path="res://scenes/common/desert_tileset.tres" id="3_c17u3"]
+[ext_resource type="Texture2D" uid="uid://bkgm4b6mrvwlq" path="res://entities/overworld-player/mc-ride-wife.png" id="3_j8ovl"]
+[ext_resource type="TileSet" uid="uid://bgalyfua57te2" path="res://scenes/common/boulder_tileset.tres" id="4_68xav"]
+
+[node name="DesertMap" type="Node2D"]
+
+[node name="DesertTileMap" type="TileMap" parent="."]
+tile_set = ExtResource("3_c17u3")
+format = 2
+layer_0/tile_data = PackedInt32Array(-196609, 0, 0, -131073, 0, 0, -65537, 0, 0, -1, 0, 0, 65535, 0, 0, -262144, 0, 0, -196608, 0, 0, -131072, 0, 0, -65536, 0, 0, 0, 0, 0, -327680, 0, 0, -262145, 0, 0)
+
+[node name="BoulderTileMap" type="TileMap" parent="."]
+tile_set = ExtResource("4_68xav")
+format = 2
+layer_0/tile_data = PackedInt32Array(-262145, 65536, 2, -327680, 131072, 2)
+
+[node name="OverworldPlayer" parent="." instance=ExtResource("1_3eak2")]
+position = Vector2(-75, -223)
+speed = 1.0
+
+[node name="Reference00" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_j8ovl")
