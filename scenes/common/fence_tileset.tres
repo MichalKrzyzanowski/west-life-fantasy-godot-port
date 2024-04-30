@@ -1,0 +1,48 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://rimkebejbyxw"]
+
+[ext_resource type="Texture2D" uid="uid://drklhynoynv02" path="res://scenes/common/fence-tileset.png" id="1_i63jp"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e5iel"]
+resource_name = "fence"
+texture = ExtResource("1_i63jp")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(6, -4, 8, -4, 8, 8, 6, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5, -8, 5, -8, 8, -4, 8, 8, -8, 8, -8, -4)
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6, 8, -8, 8, -8, -4, -6, -4)
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5, -8, 6, -8, 6, 8, -8, 8, -8, -4)
+4:0/0 = 0
+4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:0/0/physics_layer_0/angular_velocity = 0.0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(5, -8, -6, -8, -6, 8, 8, 8, 8, -4)
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(6, -8, 8, -8, 8, 8, 6, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6, 8, -8, 8, -8, -8, -6, -8)
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(6, -8, 8, -8, 8, 8, 6, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6, 8, -8, 8, -8, -8, -6, -8)
+
+[resource]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 14
+sources/0 = SubResource("TileSetAtlasSource_e5iel")
