@@ -1,0 +1,40 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://1jku0k0we0ls"]
+
+[ext_resource type="Texture2D" uid="uid://bvsat58lovk2l" path="res://scenes/common/path-tileset.png" id="1_pd137"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sm2y6"]
+resource_name = "path"
+texture = ExtResource("1_pd137")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+
+[resource]
+sources/0 = SubResource("TileSetAtlasSource_sm2y6")
