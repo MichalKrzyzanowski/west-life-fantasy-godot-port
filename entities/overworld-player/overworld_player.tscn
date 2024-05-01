@@ -10,7 +10,7 @@ size = Vector2(31, 20)
 [node name="OverworldPlayer" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
-collision_mask = 5
+collision_mask = 29
 script = ExtResource("1_edl3d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
