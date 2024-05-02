@@ -7,6 +7,7 @@
 size = Vector2(88, 24)
 
 [node name="InstructionsBoard" type="StaticBody2D"]
+z_index = 2
 
 [node name="CombatControlsBoard" type="Sprite2D" parent="."]
 position = Vector2(0, -77)
