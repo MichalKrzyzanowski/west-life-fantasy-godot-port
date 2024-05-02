@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://0viy8iyuvprv"]
+
+[ext_resource type="Texture2D" uid="uid://dboi53ihxd18f" path="res://scenes/desert/instructions-board/instructions-combat-board.png" id="1_6sqd0"]
+[ext_resource type="Texture2D" uid="uid://cicauhvxg83yo" path="res://scenes/desert/instructions-board/instructions-board.png" id="2_3ncln"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nfb54"]
+size = Vector2(88, 24)
+
+[node name="InstructionsBoard" type="StaticBody2D"]
+
+[node name="CombatControlsBoard" type="Sprite2D" parent="."]
+position = Vector2(0, -77)
+texture = ExtResource("1_6sqd0")
+
+[node name="ControlsBoard" type="Sprite2D" parent="."]
+texture = ExtResource("2_3ncln")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 39)
+shape = SubResource("RectangleShape2D_nfb54")

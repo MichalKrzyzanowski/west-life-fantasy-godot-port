@@ -22,7 +22,7 @@ position = Vector2(0.5, 8)
 shape = SubResource("RectangleShape2D_hov66")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(5, 5)
+zoom = Vector2(5.65, 5.65)
 
 [node name="BulletEmitter" type="Node2D" parent="."]
 script = ExtResource("3_ya1km")
