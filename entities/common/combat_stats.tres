@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CombatStats" load_steps=2 format=3 uid="uid://dbbj05sn6dkjm"]
+
+[ext_resource type="Script" path="res://entities/common/combat_stats.gd" id="1_33jmd"]
+
+[resource]
+resource_name = "CombatStats"
+script = ExtResource("1_33jmd")
+max_hp = 0.0
+attack = 0.0
+defence = 0.0
+hp_scaler = 0
+attack_scaler = 0
+defence_scaler = 0
+required_xp_scaler = 0
+level = 1

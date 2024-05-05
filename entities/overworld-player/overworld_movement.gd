@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 
-@export var speed := 5.0
-@export var gil : int = 500
+@export var speed: float = 5.0
+@export var gil: int = 500
 
 @onready var sprite := get_node("Sprite2D") as Sprite2D
 
@@ -23,7 +23,7 @@ func _physics_process(_delta: float) -> void:
 
 ## handles flipping horizontally the player sprite to face
 ## direction of movement
-func _flip_sprite(input_dir : Vector2):
+func _flip_sprite(input_dir: Vector2):
 	if input_dir.x > 0:
 		sprite.flip_h = false
 	if input_dir.x < 0:

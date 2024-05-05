@@ -1,9 +1,9 @@
 extends Area2D
 
 
-const SPEED := 200.0
+const SPEED: float = 200.0
 var direction := Vector2()
-var bullet_owner := ""
+var bullet_owner: String = ""
 
 
 ## handles bullet movement
@@ -18,7 +18,7 @@ func _physics_process(delta: float) -> void:
 ## param [bullet_direction]: direction the bullet should move towards
 ## param [shot_by]: entity that shot the bullet, will be used on detecting
 ## player bullet to enemy bullet collisions
-func init(spawn_pos: Vector2, bullet_direction : Vector2, shot_by : String) -> void:
+func init(spawn_pos: Vector2, bullet_direction: Vector2, shot_by: String) -> void:
 	direction = bullet_direction
 	position = spawn_pos
 	bullet_owner = shot_by
