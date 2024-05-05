@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://citu6jpfxbdtw"]
+
+[ext_resource type="Script" path="res://entities/common/combat_entity.gd" id="1_8ype6"]
+[ext_resource type="Script" path="res://entities/common/combat_stats.gd" id="2_l26io"]
+
+[sub_resource type="Resource" id="Resource_q8kqu"]
+script = ExtResource("2_l26io")
+max_hp = 0.0
+attack = 0.0
+defence = 0.0
+hp_scaler = 0
+attack_scaler = 0
+defence_scaler = 0
+required_xp_scaler = 0
+level = 1
+xp_drop = 0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57jfu"]
+size = Vector2(32, 32)
+
+[node name="Entity" type="Area2D"]
+script = ExtResource("1_8ype6")
+stats = SubResource("Resource_q8kqu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_57jfu")

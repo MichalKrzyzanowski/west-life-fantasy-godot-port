@@ -29,7 +29,8 @@ var hp: float:
 var _required_xp: int = 100
 
 
-func _init() -> void:
+func init() -> void:
+	print("init stats")
 	hp = max_hp
 
 
@@ -39,6 +40,11 @@ func set_xp(new_xp: int) -> void:
 	if (xp >= _required_xp):
 		leveled_up.emit()
 		level_up()
+
+
+func _to_string() -> String:
+	return "%d/%dhp\n%ddmg\nlvl:%d\n%d/%dxp" \
+	% [hp, max_hp, attack, level, xp, _required_xp]
 
 
 func set_hp(new_hp: float) -> void:
@@ -51,5 +57,6 @@ func level_up() -> void:
 	max_hp += hp_scaler
 	hp = max_hp
 
-	xp -= _required_xp 
+	xp -= _required_xp
 	_required_xp += floor(_required_xp * 100.0 / required_xp_scaler)
+	level += 1

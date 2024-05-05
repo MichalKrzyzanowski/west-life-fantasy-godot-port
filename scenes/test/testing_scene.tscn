@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://ck4acd2tuvryb"]
+[gd_scene load_steps=7 format=3 uid="uid://ck4acd2tuvryb"]
 
+[ext_resource type="Script" path="res://scenes/test/testing_scene.gd" id="1_7ewtk"]
 [ext_resource type="Texture2D" uid="uid://bu5h8vht6vsh4" path="res://scenes/common/desert-tileset.png" id="1_odyfp"]
 [ext_resource type="PackedScene" uid="uid://d02rs8t4d5gwn" path="res://entities/overworld-player/overworld_player.tscn" id="2_g8ltm"]
 [ext_resource type="Texture2D" uid="uid://dgdkiifam4f85" path="res://entities/bullet/bullet.png" id="3_s5dfn"]
+[ext_resource type="PackedScene" uid="uid://dliv2k02a8ayw" path="res://entities/party-members/black_mage/black_mage.tscn" id="4_c5njq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5aio7"]
 size = Vector2(494, 200)
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_7ewtk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -31,3 +34,6 @@ shape = SubResource("RectangleShape2D_5aio7")
 position = Vector2(394, 230.5)
 scale = Vector2(12.25, 4.875)
 texture = ExtResource("3_s5dfn")
+
+[node name="BlackMage" parent="." instance=ExtResource("4_c5njq")]
+position = Vector2(163, 42)

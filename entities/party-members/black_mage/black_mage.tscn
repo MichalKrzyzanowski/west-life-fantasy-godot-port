@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dliv2k02a8ayw"]
+
+[ext_resource type="PackedScene" uid="uid://citu6jpfxbdtw" path="res://entities/common/generic_entity.tscn" id="1_71la6"]
+[ext_resource type="Texture2D" uid="uid://c6dn11c567imk" path="res://entities/party-members/black_mage/player-shinobi.png" id="1_ylqag"]
+[ext_resource type="Script" path="res://entities/common/combat_stats.gd" id="2_pfefn"]
+
+[sub_resource type="Resource" id="Resource_wavx3"]
+script = ExtResource("2_pfefn")
+max_hp = 60.0
+attack = 17.0
+defence = 0.0
+hp_scaler = 1
+attack_scaler = 4
+defence_scaler = 0
+required_xp_scaler = 100
+level = 1
+xp_drop = 0
+
+[node name="BlackMage" instance=ExtResource("1_71la6")]
+stats = SubResource("Resource_wavx3")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("1_ylqag")
