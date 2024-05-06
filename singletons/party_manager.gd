@@ -46,7 +46,8 @@ func _input(event: InputEvent) -> void:
 
 
 # public methods
-func add_party_member(entity) -> void:
+## party append wrapper, adds [param entity] to [param party]
+func add_member(entity) -> void:
 	party.append(entity)
 
 

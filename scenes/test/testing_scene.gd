@@ -30,10 +30,10 @@ func _ready() -> void:
 	var a = get_node("Fighter")
 	var c = get_node("Thief")
 	var b = get_node("BlackBelt")
-	PartyManager.add_party_member(m)
-	PartyManager.add_party_member(a)
-	PartyManager.add_party_member(c)
-	PartyManager.add_party_member(b)
+	PartyManager.add_member(m)
+	PartyManager.add_member(a)
+	PartyManager.add_member(c)
+	PartyManager.add_member(b)
 
 
 # remaining builtins e.g. _process, _input
