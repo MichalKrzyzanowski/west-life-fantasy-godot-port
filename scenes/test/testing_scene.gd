@@ -27,7 +27,13 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	var m = get_node("BlackMage")
-	PartyManager.party.append(m)
+	var a = get_node("Fighter")
+	var c = get_node("Thief")
+	var b = get_node("BlackBelt")
+	PartyManager.add_party_member(m)
+	PartyManager.add_party_member(a)
+	PartyManager.add_party_member(c)
+	PartyManager.add_party_member(b)
 
 
 # remaining builtins e.g. _process, _input

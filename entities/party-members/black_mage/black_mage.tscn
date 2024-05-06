@@ -9,15 +9,17 @@ script = ExtResource("2_pfefn")
 max_hp = 60.0
 attack = 17.0
 defence = 0.0
-hp_scaler = 1
-attack_scaler = 4
-defence_scaler = 0
-required_xp_scaler = 100
+scaler_hp = 1
+scaler_attack = 4
+scaler_defence = 0
+scaler_required_xp = 100
 level = 1
 xp_drop = 0
+gold_drop = 0
 
 [node name="BlackMage" instance=ExtResource("1_71la6")]
 stats = SubResource("Resource_wavx3")
+entity_name = "black mage"
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("1_ylqag")

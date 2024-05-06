@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cughmvu4xu3si"]
+
+[ext_resource type="PackedScene" uid="uid://citu6jpfxbdtw" path="res://entities/common/generic_entity.tscn" id="1_ghrls"]
+[ext_resource type="Script" path="res://entities/common/combat_stats.gd" id="2_tuw5n"]
+[ext_resource type="Texture2D" uid="uid://b50ussga4ddv" path="res://entities/party-members/black_belt/combat_character_2.png" id="3_vpynm"]
+
+[sub_resource type="Resource" id="Resource_msayw"]
+script = ExtResource("2_tuw5n")
+max_hp = 55.0
+attack = 12.0
+defence = 0.0
+scaler_hp = 4
+scaler_attack = 4
+scaler_defence = 0
+scaler_required_xp = 120
+level = 0
+xp_drop = 0
+gold_drop = 0
+
+[node name="BlackBelt" instance=ExtResource("1_ghrls")]
+stats = SubResource("Resource_msayw")
+entity_name = "black belt"
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_vpynm")

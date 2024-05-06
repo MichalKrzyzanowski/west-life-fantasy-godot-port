@@ -14,6 +14,7 @@ extends Node
 var party: Array
 
 # private vars
+var _debug_xp_gain: int = 1_000_000_000_000_000_000
 
 # @onready vars
 
@@ -35,12 +36,18 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey && event.pressed:
 		match event.keycode:
 			KEY_1:
-				party.map(func (item): item.stats.xp += 14)
+				party.map(func (item): item.stats.xp += _debug_xp_gain)
 			KEY_0:
-				party.all(func (item): print(item.stats))
+				# party.all(func (item): print(item.stats))
+				for member in party:
+					print(member.name)
+					print(member.stats)
+					print("")
 
 
 # public methods
+func add_party_member(entity) -> void:
+	party.append(entity)
 
 
 # private methods

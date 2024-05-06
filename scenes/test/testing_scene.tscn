@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://ck4acd2tuvryb"]
+[gd_scene load_steps=10 format=3 uid="uid://ck4acd2tuvryb"]
 
 [ext_resource type="Script" path="res://scenes/test/testing_scene.gd" id="1_7ewtk"]
 [ext_resource type="Texture2D" uid="uid://bu5h8vht6vsh4" path="res://scenes/common/desert-tileset.png" id="1_odyfp"]
 [ext_resource type="PackedScene" uid="uid://d02rs8t4d5gwn" path="res://entities/overworld-player/overworld_player.tscn" id="2_g8ltm"]
 [ext_resource type="Texture2D" uid="uid://dgdkiifam4f85" path="res://entities/bullet/bullet.png" id="3_s5dfn"]
 [ext_resource type="PackedScene" uid="uid://dliv2k02a8ayw" path="res://entities/party-members/black_mage/black_mage.tscn" id="4_c5njq"]
+[ext_resource type="PackedScene" uid="uid://bwba7pyi53acu" path="res://entities/party-members/thief/thief.tscn" id="5_ifrur"]
+[ext_resource type="PackedScene" uid="uid://cp2ulhrn4t31i" path="res://entities/party-members/fighter/fighter.tscn" id="6_qixnn"]
+[ext_resource type="PackedScene" uid="uid://cughmvu4xu3si" path="res://entities/party-members/black_belt/black_belt.tscn" id="7_rje2v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5aio7"]
 size = Vector2(494, 200)
@@ -22,6 +25,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 128, 128)
 
 [node name="OverworldPlayer" parent="." instance=ExtResource("2_g8ltm")]
+position = Vector2(32, 32)
 speed = 1.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -35,5 +39,14 @@ position = Vector2(394, 230.5)
 scale = Vector2(12.25, 4.875)
 texture = ExtResource("3_s5dfn")
 
+[node name="Thief" parent="." instance=ExtResource("5_ifrur")]
+position = Vector2(256, 112)
+
+[node name="Fighter" parent="." instance=ExtResource("6_qixnn")]
+position = Vector2(256, 16)
+
+[node name="BlackBelt" parent="." instance=ExtResource("7_rje2v")]
+position = Vector2(256, 48)
+
 [node name="BlackMage" parent="." instance=ExtResource("4_c5njq")]
-position = Vector2(163, 42)
+position = Vector2(256, 80)

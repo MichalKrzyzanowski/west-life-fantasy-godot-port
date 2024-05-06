@@ -9,7 +9,9 @@ extends Area2D
 # constants
 
 # @export vars
+## stats of the character, used for combat
 @export var stats: CombatStats
+## character name
 @export var entity_name: String
 
 # public vars
