@@ -34,6 +34,9 @@ func _ready() -> void:
 	PartyManager.add_member(a)
 	PartyManager.add_member(c)
 	PartyManager.add_member(b)
+	var nodes = get_tree().get_nodes_in_group("persist")
+	for node in nodes:
+		print(node.name)
 
 
 # remaining builtins e.g. _process, _input
