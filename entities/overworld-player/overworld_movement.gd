@@ -21,6 +21,17 @@ func _physics_process(_delta: float) -> void:
 		move_and_collide(velocity)
 
 
+func save() -> Dictionary:
+	return {
+		"position_x": position.x,
+		"position_y": position.y,
+	}
+
+
+func load(data) -> void:
+	position = Vector2(data["position_x"], data["position_y"])
+
+
 ## handles flipping horizontally the player sprite to face
 ## direction of movement
 func _flip_sprite(input_dir: Vector2):

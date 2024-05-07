@@ -39,6 +39,19 @@ func _ready() -> void:
 
 
 # public methods
+func save() -> Dictionary:
+	return {
+		"filename": get_scene_file_path(),
+		"parent": PartyManager.get_path(),
+		"entity_name": entity_name,
+		"combat_stats": stats.save(),
+	}
+
+
+func load(data) -> void:
+	entity_name = data["entity_name"]
+	stats.load(data["combat_stats"])
+	add_to_group("persist")
 
 
 # private methods
