@@ -45,6 +45,9 @@ func _input(event: InputEvent) -> void:
 
 
 # public methods
+func add_member(entity) -> void:
+	add_child(entity)
+	entity.add_to_group("persist")
 
 
 # private methods

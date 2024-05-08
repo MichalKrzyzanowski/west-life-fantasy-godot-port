@@ -10,7 +10,7 @@
 [ext_resource type="TileSet" uid="uid://lmlrfvna3b4l" path="res://scenes/common/cactus_tileset.tres" id="7_ad4e1"]
 [ext_resource type="PackedScene" uid="uid://0viy8iyuvprv" path="res://scenes/desert/instructions-board/instructions_board.tscn" id="10_kfu8i"]
 
-[node name="DesertMap" type="Node2D"]
+[node name="DesertMap" type="Node2D" groups=["persist"]]
 
 [node name="Map" type="Node2D" parent="."]
 position = Vector2(-1056, -256)

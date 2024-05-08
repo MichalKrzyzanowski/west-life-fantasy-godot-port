@@ -23,13 +23,17 @@ func _physics_process(_delta: float) -> void:
 
 func save() -> Dictionary:
 	return {
+		"filename": get_scene_file_path(),
+		"parent": get_parent().get_path(),
 		"position_x": position.x,
 		"position_y": position.y,
+		"speed": speed,
 	}
 
 
 func load(data) -> void:
 	position = Vector2(data["position_x"], data["position_y"])
+	speed = data["speed"]
 
 
 ## handles flipping horizontally the player sprite to face
