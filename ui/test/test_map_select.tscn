@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://di6s2lbhjeu2k"]
+
+[ext_resource type="Script" path="res://ui/test/test_ui_map_select.gd" id="1_jbrqq"]
+
+[node name="Control" type="VBoxContainer"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -53.0
+offset_right = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+script = ExtResource("1_jbrqq")
+
+[node name="New" type="Button" parent="."]
+layout_mode = 2
+text = "desert scene"
+
+[node name="Continue" type="Button" parent="."]
+layout_mode = 2
+text = "test scene"
+
+[connection signal="pressed" from="New" to="." method="_on_new_pressed"]
+[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]

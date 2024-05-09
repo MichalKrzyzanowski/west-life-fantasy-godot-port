@@ -27,6 +27,11 @@ window/size/viewport_height=768
 window/stretch/mode="viewport"
 window/stretch/scale=0.68
 
+[gui]
+
+theme/custom="res://ui/common/main_theme.tres"
+theme/custom_font="res://ui/common/arial.ttf"
+
 [input]
 
 left={
@@ -66,4 +71,3 @@ shoot={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-environment/defaults/default_clear_color=Color(0.301961, 0.301961, 0.301961, 1)
