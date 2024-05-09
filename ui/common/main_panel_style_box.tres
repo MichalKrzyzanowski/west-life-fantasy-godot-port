@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/TextBox.png" id="1_f6wkq"]
 
 [resource]
+content_margin_top = 25.0
+content_margin_bottom = 25.0
 texture = ExtResource("1_f6wkq")
 texture_margin_left = 4.0
 texture_margin_top = 4.0
