@@ -75,7 +75,6 @@ position = Vector2(256, 48)
 position = Vector2(256, 80)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0)

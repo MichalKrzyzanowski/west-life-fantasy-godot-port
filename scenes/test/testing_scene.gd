@@ -38,7 +38,7 @@ func _ready() -> void:
 	PartyManager.add_member(a)
 	PartyManager.add_member(c)
 	PartyManager.add_member(b)
-	# get_node("CanvasLayer/Panel/AnimationPlayer").play("fade_test")
+	get_node("CanvasLayer/Panel/AnimationPlayer").play("fade_test")
 
 
 # remaining builtins e.g. _process, _input
@@ -49,7 +49,7 @@ func save() -> Dictionary:
 	return {
 		"filename": get_scene_file_path(),
 		"parent": get_parent().get_path(),
-		}
+	}
 
 
 # private methods

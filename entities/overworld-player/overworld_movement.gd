@@ -21,6 +21,8 @@ func _physics_process(_delta: float) -> void:
 		move_and_collide(velocity)
 
 
+## saves data as dictionary for JSON format
+## load data from JSON savefile
 func save() -> Dictionary:
 	return {
 		"filename": get_scene_file_path(),
@@ -31,6 +33,7 @@ func save() -> Dictionary:
 	}
 
 
+## load data from JSON savefile
 func load(data) -> void:
 	position = Vector2(data["position_x"], data["position_y"])
 	speed = data["speed"]

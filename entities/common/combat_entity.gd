@@ -39,6 +39,7 @@ func _ready() -> void:
 
 
 # public methods
+## saves data as dictionary for JSON format
 func save() -> Dictionary:
 	return {
 		"filename": get_scene_file_path(),
@@ -48,6 +49,7 @@ func save() -> Dictionary:
 	}
 
 
+## load data from JSON savefile
 func load(data) -> void:
 	entity_name = data["entity_name"]
 	stats.load(data["combat_stats"])

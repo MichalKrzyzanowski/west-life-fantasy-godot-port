@@ -101,6 +101,7 @@ func level_up() -> void:
 	xp = 0
 
 
+## saves data as dictionary for JSON format
 func save() -> Dictionary:
 	return {
 		"hp": hp,
@@ -114,6 +115,7 @@ func save() -> Dictionary:
 	}
 
 
+## load data from JSON savefile
 func load(data) -> void:
 	hp = data["hp"]
 	max_hp = data["max_hp"]

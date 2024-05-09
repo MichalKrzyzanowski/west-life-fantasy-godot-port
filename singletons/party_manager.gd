@@ -45,6 +45,7 @@ func _input(event: InputEvent) -> void:
 
 
 # public methods
+## add_child wrapper, also adds [param entity] to persist group
 func add_member(entity) -> void:
 	add_child(entity)
 	entity.add_to_group("persist")
