@@ -1,0 +1,163 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq5bvoaxuu83w"]
+
+[ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/TextBox.png" id="1_5ims4"]
+[ext_resource type="FontFile" uid="uid://duujn5vjqjbyi" path="res://ui/common/arialbd.ttf" id="2_sfi3x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2evbl"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2evbl")
+
+[node name="BackgroundPanel" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -378.0
+offset_top = -317.5
+offset_right = 378.0
+offset_bottom = 317.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_5ims4")
+region_rect = Rect2(0, 0, 16, 16)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 3
+
+[node name="Title" type="Label" parent="BackgroundPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.038
+anchor_right = 1.0
+anchor_bottom = 0.038
+offset_bottom = 55.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_sfi3x")
+theme_override_font_sizes/font_size = 48
+text = "Options"
+horizontal_alignment = 1
+
+[node name="OptionsContainer" type="VBoxContainer" parent="BackgroundPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06
+anchor_top = 0.22
+anchor_right = 0.94
+anchor_bottom = 0.6
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 85
+
+[node name="SFXVolSlider" type="Control" parent="BackgroundPanel/OptionsContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BackgroundPanel/OptionsContainer/SFXVolSlider"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 36
+text = "SFX Volume"
+
+[node name="HSlider" type="HSlider" parent="BackgroundPanel/OptionsContainer/SFXVolSlider/Label"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.38
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 80.0
+
+[node name="MusicVolSlider" type="Control" parent="BackgroundPanel/OptionsContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BackgroundPanel/OptionsContainer/MusicVolSlider"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "Music Volume"
+
+[node name="HSlider" type="HSlider" parent="BackgroundPanel/OptionsContainer/MusicVolSlider/Label"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.38
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 80.0
+
+[node name="MuteAllCheckBox" type="Control" parent="BackgroundPanel/OptionsContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BackgroundPanel/OptionsContainer/MuteAllCheckBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "Mute All"
+
+[node name="CheckBox" type="CheckBox" parent="BackgroundPanel/OptionsContainer/MuteAllCheckBox/Label"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.44
+anchor_top = 0.5
+anchor_right = 0.44
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackButton" type="Button" parent="BackgroundPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.94
+anchor_right = 0.5
+anchor_bottom = 0.94
+offset_left = -125.0
+offset_top = -80.0
+offset_right = 125.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"BackButton"
+text = "Back"
