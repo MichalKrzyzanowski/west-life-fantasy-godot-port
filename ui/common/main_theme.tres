@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=24 format=3 uid="uid://dsawkl1yfjgow"]
+[gd_resource type="Theme" load_steps=25 format=3 uid="uid://dsawkl1yfjgow"]
 
 [ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/TextBox.png" id="1_pfacf"]
 [ext_resource type="StyleBox" uid="uid://5ihap8ri3b3b" path="res://ui/common/main_panel_style_box.tres" id="1_vmfed"]
@@ -80,6 +80,13 @@ texture_margin_right = 4.0
 texture_margin_bottom = 3.0
 modulate_color = Color(0.784314, 0.784314, 0.784314, 1)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_avblr"]
+texture = ExtResource("1_pfacf")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 3.0
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7qnn4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lbhyv"]
@@ -132,6 +139,8 @@ Button/styles/focus = SubResource("StyleBoxTexture_kceo7")
 Button/styles/hover = SubResource("StyleBoxTexture_aqg7b")
 Button/styles/normal = ExtResource("1_vmfed")
 Button/styles/pressed = SubResource("StyleBoxTexture_mw5h2")
+CharacterSelectButton/base_type = &"Button"
+CharacterSelectButton/styles/normal = SubResource("StyleBoxTexture_avblr")
 CheckBox/icons/checked = ExtResource("3_gllck")
 CheckBox/icons/unchecked = ExtResource("4_7fmlg")
 CheckBox/styles/disabled = SubResource("StyleBoxEmpty_7qnn4")
