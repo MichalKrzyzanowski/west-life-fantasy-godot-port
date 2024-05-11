@@ -30,8 +30,8 @@ window/stretch/scale_mode="integer"
 
 [gui]
 
-theme/custom="res://ui/common/main_theme.tres"
-theme/custom_font="res://ui/common/arial.ttf"
+theme/custom="res://ui/common/theme/main_theme.tres"
+theme/custom_font="res://ui/common/font/arial.ttf"
 
 [input]
 

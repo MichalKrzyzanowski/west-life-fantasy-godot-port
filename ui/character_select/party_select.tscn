@@ -1,17 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://bkavfc7fsmbyc"]
+[gd_scene load_steps=6 format=3 uid="uid://bkavfc7fsmbyc"]
 
-[ext_resource type="PackedScene" uid="uid://hwvpspp4pbni" path="res://ui/character_select/character_select_box.tscn" id="1_wixwb"]
+[ext_resource type="Script" path="res://ui/character_select/party_select.gd" id="1_8k5ua"]
+[ext_resource type="PackedScene" uid="uid://hwvpspp4pbni" path="res://ui/character_select/character_select_box.tscn" id="2_xnrnh"]
+[ext_resource type="PackedScene" uid="uid://cp2ulhrn4t31i" path="res://entities/party-members/fighter/fighter.tscn" id="3_o0mqa"]
+[ext_resource type="PackedScene" uid="uid://ck4acd2tuvryb" path="res://scenes/test/testing_scene.tscn" id="4_6ku4x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1s8pe"]
 bg_color = Color(0, 0, 0, 1)
 
-[node name="CharacterSelect" type="Control"]
+[node name="PartySelect" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_8k5ua")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -37,22 +41,23 @@ theme_override_constants/h_separation = 80
 theme_override_constants/v_separation = 40
 columns = 2
 
-[node name="CharacterSelectBox" parent="GridContainer" instance=ExtResource("1_wixwb")]
+[node name="CharacterSelectBox" parent="GridContainer" instance=ExtResource("2_xnrnh")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+character_data = Array[PackedScene]([ExtResource("3_o0mqa"), ExtResource("4_6ku4x")])
+
+[node name="CharacterSelectBox2" parent="GridContainer" instance=ExtResource("2_xnrnh")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CharacterSelectBox2" parent="GridContainer" instance=ExtResource("1_wixwb")]
+[node name="CharacterSelectBox3" parent="GridContainer" instance=ExtResource("2_xnrnh")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CharacterSelectBox3" parent="GridContainer" instance=ExtResource("1_wixwb")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="CharacterSelectBox4" parent="GridContainer" instance=ExtResource("1_wixwb")]
+[node name="CharacterSelectBox4" parent="GridContainer" instance=ExtResource("2_xnrnh")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

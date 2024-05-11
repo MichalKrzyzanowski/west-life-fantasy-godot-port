@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://duujn5vjqjbyi"
-path="res://.godot/imported/arialbd.ttf-23c5217f2e6c0c021a05bb836cd3db3b.fontdata"
+uid="uid://u7w52ujbioor"
+path="res://.godot/imported/arial.ttf-b14b6a4722eb1a68d0872af38d7adbe9.fontdata"
 
 [deps]
 
-source_file="res://ui/common/arialbd.ttf"
-dest_files=["res://.godot/imported/arialbd.ttf-23c5217f2e6c0c021a05bb836cd3db3b.fontdata"]
+source_file="res://ui/common/font/arial.ttf"
+dest_files=["res://.godot/imported/arial.ttf-b14b6a4722eb1a68d0872af38d7adbe9.fontdata"]
 
 [params]
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://hwvpspp4pbni"]
+[gd_scene load_steps=4 format=3 uid="uid://hwvpspp4pbni"]
 
-[ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/TextBox.png" id="1_uhn37"]
+[ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/sprite/text_box.png" id="1_we256"]
 [ext_resource type="Texture2D" uid="uid://c6dn11c567imk" path="res://entities/party-members/black_mage/player-shinobi.png" id="2_o6km0"]
+[ext_resource type="Script" path="res://ui/character_select/character_list.gd" id="2_vb2iv"]
 
 [node name="CharacterSelectBox" type="NinePatchRect"]
 anchors_preset = 15
@@ -9,13 +10,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_uhn37")
+texture = ExtResource("1_we256")
 patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 3
+script = ExtResource("2_vb2iv")
 
-[node name="Label" type="Label" parent="."]
+[node name="Title" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.03
@@ -76,3 +78,6 @@ size_flags_horizontal = 3
 theme_type_variation = &"CharacterSelectButton"
 theme_override_font_sizes/font_size = 24
 text = ">"
+
+[connection signal="pressed" from="SelectButtons/PreviousCharButton" to="." method="_on_previous_char_button_pressed"]
+[connection signal="pressed" from="SelectButtons/NextCharButton" to="." method="_on_next_char_button_pressed"]

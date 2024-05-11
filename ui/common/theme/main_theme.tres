@@ -1,10 +1,10 @@
 [gd_resource type="Theme" load_steps=25 format=3 uid="uid://dsawkl1yfjgow"]
 
-[ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/TextBox.png" id="1_pfacf"]
-[ext_resource type="StyleBox" uid="uid://5ihap8ri3b3b" path="res://ui/common/main_panel_style_box.tres" id="1_vmfed"]
-[ext_resource type="Texture2D" uid="uid://cgh3wshenhcbb" path="res://ui/common/checked_box.png" id="3_gllck"]
-[ext_resource type="Texture2D" uid="uid://bk73mbyv8jqbc" path="res://ui/common/knob.png" id="3_wtlpr"]
-[ext_resource type="Texture2D" uid="uid://xths6ehix6de" path="res://ui/common/unchecked_box.png" id="4_7fmlg"]
+[ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/sprite/text_box.png" id="1_pfacf"]
+[ext_resource type="StyleBox" uid="uid://5ihap8ri3b3b" path="res://ui/common/theme/main_panel_style_box.tres" id="1_vmfed"]
+[ext_resource type="Texture2D" uid="uid://cgh3wshenhcbb" path="res://ui/common/sprite/checked_box.png" id="3_gllck"]
+[ext_resource type="Texture2D" uid="uid://bk73mbyv8jqbc" path="res://ui/common/sprite/knob.png" id="3_wtlpr"]
+[ext_resource type="Texture2D" uid="uid://xths6ehix6de" path="res://ui/common/sprite/unchecked_box.png" id="4_7fmlg"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3bshk"]
 texture = ExtResource("1_pfacf")

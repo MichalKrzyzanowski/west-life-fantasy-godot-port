@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dq5bvoaxuu83w"]
 
-[ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/TextBox.png" id="1_5ims4"]
-[ext_resource type="FontFile" uid="uid://duujn5vjqjbyi" path="res://ui/common/arialbd.ttf" id="2_sfi3x"]
+[ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/sprite/text_box.png" id="1_5ims4"]
+[ext_resource type="FontFile" uid="uid://duujn5vjqjbyi" path="res://ui/common/font/arialbd.ttf" id="2_sfi3x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2evbl"]
 bg_color = Color(0, 0, 0, 1)

@@ -15,6 +15,7 @@ extends Area2D
 @export var entity_name: String
 
 # public vars
+var sprite
 
 # private vars
 
@@ -54,6 +55,12 @@ func load(data) -> void:
 	entity_name = data["entity_name"]
 	stats.load(data["combat_stats"])
 	add_to_group("persist")
+
+
+func get_sprite_texture() -> Texture:
+	if !sprite:
+		sprite = get_node("Sprite2D")
+	return sprite.texture
 
 
 # private methods

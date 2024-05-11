@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0tr8vx5tk0wy"]
+
+[ext_resource type="PackedScene" uid="uid://citu6jpfxbdtw" path="res://entities/common/generic_entity.tscn" id="1_ec8o5"]
+[ext_resource type="Texture2D" uid="uid://dltxmw47ynbb0" path="res://entities/party-members/fallback/fallback.png" id="2_a3djk"]
+
+[node name="Fallback" instance=ExtResource("1_ec8o5")]
+entity_name = "fall"
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_a3djk")
