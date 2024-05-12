@@ -9,6 +9,8 @@ extends Node
 # enums
 
 # constants
+const SAVE_FILE = "save_1"
+const SAVE_PATH = "user://saves/%s.save"
 
 # @export vars
 # public vars
@@ -47,7 +49,7 @@ func _notification(what: int) -> void:
 	match what:
 		NOTIFICATION_WM_CLOSE_REQUEST:
 			print("quiting game")
-			SaveManager.save_game("save_1")
+			# SaveManager.save_game("save_1")
 			get_tree().quit()
 
 
@@ -58,8 +60,14 @@ func _notification(what: int) -> void:
 ## nodes are saved first
 func save_game(savefile_name: String) -> void:
 	print("saving to file: %s.save" % savefile_name)
-	var savefile := FileAccess.open("user://%s.save" % savefile_name, FileAccess.WRITE)
+
+	# create saves folder if it does not exist already
+	if !DirAccess.dir_exists_absolute("user://saves"):
+		DirAccess.make_dir_absolute("user://saves")
+
+	var savefile := FileAccess.open(SAVE_PATH % savefile_name, FileAccess.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("persist")
+
 	# this will be used for marking already saved nodes
 	# to prevent nodes from being saved twice
 	var marked : Dictionary = {}
@@ -101,11 +109,11 @@ func save_node(node, marked: Dictionary, savefile: FileAccess) -> void:
 ## first, free all nodes in persist group
 ## nodes are first renamed to prevent conflicts
 ## then, call 'load' method on new node
-func load_game(savefile_name: String) -> void:
+func load_game(savefile_name: String) -> bool:
 	print("loading from file: %s.save" % savefile_name)
-	if !FileAccess.file_exists("user://%s.save" % savefile_name):
+	if !FileAccess.file_exists(SAVE_PATH % savefile_name):
 		print("could not find %s.save file" % savefile_name)
-		return
+		return false
 
 	# free all persist nodes
 	var save_nodes = get_tree().get_nodes_in_group("persist")
@@ -114,7 +122,7 @@ func load_game(savefile_name: String) -> void:
 		node.name = "%s@%s" % [node.name, str(randi() % 255)]
 		node.queue_free()
 
-	var savefile := FileAccess.open("user://%s.save" % savefile_name, FileAccess.READ)
+	var savefile := FileAccess.open(SAVE_PATH % savefile_name, FileAccess.READ)
 	while savefile.get_position() < savefile.get_length():
 		var json_string = savefile.get_line()
 
@@ -135,6 +143,7 @@ func load_game(savefile_name: String) -> void:
 		load_node(json.get_data())
 
 	print("load complete")
+	return true
 
 
 # helper that creates new node based on [param data]
@@ -156,6 +165,10 @@ func load_node(data) -> void:
 
 	if new_object.has_method("load"):
 		new_object.call("load", data)
+
+
+func is_save_present() -> bool:
+	return FileAccess.file_exists(SAVE_PATH % SAVE_FILE)
 
 
 # private methods

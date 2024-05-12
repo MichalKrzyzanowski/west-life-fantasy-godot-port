@@ -15,14 +15,17 @@ func _physics_process(_delta: float) -> void:
 
 	_flip_sprite(input_dir)
 	var collision = move_and_collide(velocity)
-	if collision:
-		# get slide velocity and half it so that sliding along a wall is slower
+	if collision: # get slide velocity and half it so that sliding along a wall is slower
 		velocity = velocity.slide(collision.get_normal()) / 2.0
 		move_and_collide(velocity)
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		SaveManager.save_game(SaveManager.SAVE_FILE)
+
+
 ## saves data as dictionary for JSON format
-## load data from JSON savefile
 func save() -> Dictionary:
 	return {
 		"filename": get_scene_file_path(),

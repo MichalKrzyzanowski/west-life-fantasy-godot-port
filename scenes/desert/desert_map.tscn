@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://ckqmboktfdvg2"]
+[gd_scene load_steps=11 format=3 uid="uid://ckqmboktfdvg2"]
 
 [ext_resource type="PackedScene" uid="uid://d02rs8t4d5gwn" path="res://entities/overworld-player/overworld_player.tscn" id="1_3eak2"]
+[ext_resource type="Script" path="res://scenes/desert/desert_map.gd" id="1_vowdh"]
 [ext_resource type="TileSet" uid="uid://b0q4gowtnjlif" path="res://scenes/common/river_tileset.tres" id="2_25t3h"]
 [ext_resource type="TileSet" uid="uid://1jku0k0we0ls" path="res://scenes/common/path_tileset.tres" id="2_xvfha"]
 [ext_resource type="TileSet" uid="uid://c65312ml6h3a6" path="res://scenes/common/desert_tileset.tres" id="3_c17u3"]
@@ -11,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://0viy8iyuvprv" path="res://scenes/desert/instructions-board/instructions_board.tscn" id="10_kfu8i"]
 
 [node name="DesertMap" type="Node2D" groups=["persist"]]
+script = ExtResource("1_vowdh")
 
 [node name="Map" type="Node2D" parent="."]
 position = Vector2(-1056, -256)

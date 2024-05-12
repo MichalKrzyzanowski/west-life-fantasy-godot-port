@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hov66"]
 size = Vector2(31, 20)
 
-[node name="OverworldPlayer" type="CharacterBody2D" groups=["persist"]]
+[node name="OverworldPlayer" type="CharacterBody2D"]
 z_index = 1
 scale = Vector2(0.5, 0.5)
 collision_layer = 2

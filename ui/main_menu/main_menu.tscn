@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgy8ovf5qfuu8"]
+[gd_scene load_steps=4 format=3 uid="uid://dgy8ovf5qfuu8"]
 
-[ext_resource type="PackedScene" uid="uid://dq5bvoaxuu83w" path="res://ui/main_menu/options_menu.tscn" id="1_a0f17"]
+[ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="1_3tlhq"]
+[ext_resource type="PackedScene" uid="uid://dq5bvoaxuu83w" path="res://ui/main_menu/options/options_menu.tscn" id="1_a0f17"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_esli7"]
 bg_color = Color(0, 0, 0, 1)
@@ -12,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3tlhq")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -39,6 +41,7 @@ alignment = 1
 
 [node name="ContinueButton" type="Button" parent="MenuButtons"]
 layout_mode = 2
+disabled = true
 text = "Continue"
 
 [node name="NewGameButton" type="Button" parent="MenuButtons"]
@@ -56,3 +59,8 @@ text = "Exit"
 [node name="OptionsMenu" parent="." instance=ExtResource("1_a0f17")]
 visible = false
 layout_mode = 1
+
+[connection signal="pressed" from="MenuButtons/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="MenuButtons/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="MenuButtons/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MenuButtons/ExitButton" to="." method="_on_exit_button_pressed"]
