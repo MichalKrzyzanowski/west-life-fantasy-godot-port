@@ -10,6 +10,7 @@ extends Control
 
 # @export vars
 @export var character_data: Array[PackedScene]
+@export var character_name_overrides: Array[String]
 
 # public vars
 
@@ -52,6 +53,11 @@ func move_character_index(amount: int) -> void:
 	_update_character_box()
 
 
+func add_current_to_party():
+	if !_character_list.is_empty():
+		PartyManager.add_member(_character_list[_character_index])
+
+
 # private methods
 func _on_previous_char_button_pressed() -> void:
 	move_character_index(-1)
@@ -73,6 +79,15 @@ func _update_character_box() -> void:
 	if _character_list.is_empty():
 		print("no characters to display")
 		return
+
+	# apply name override if name override present
+	if _character_index < character_name_overrides.size():
+		_character_list[_character_index].entity_name = \
+		character_name_overrides[_character_index]
+
+		_character_list[_character_index].name = \
+		_character_list[_character_index].entity_name.to_pascal_case()
+
 	title.text = _character_list[_character_index].entity_name
 	image.texture = _character_list[_character_index].get_sprite_texture()
 

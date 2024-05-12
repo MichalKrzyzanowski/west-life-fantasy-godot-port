@@ -1,9 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0tr8vx5tk0wy"]
+[gd_scene load_steps=5 format=3 uid="uid://d0tr8vx5tk0wy"]
 
 [ext_resource type="PackedScene" uid="uid://citu6jpfxbdtw" path="res://entities/common/generic_entity.tscn" id="1_ec8o5"]
+[ext_resource type="Script" path="res://entities/common/combat_stats.gd" id="2_7hke6"]
 [ext_resource type="Texture2D" uid="uid://dltxmw47ynbb0" path="res://entities/party-members/fallback/fallback.png" id="2_a3djk"]
 
+[sub_resource type="Resource" id="Resource_vqryk"]
+script = ExtResource("2_7hke6")
+max_hp = 10.0
+attack = 1.0
+defence = 0.0
+scaler_hp = 200
+scaler_attack = 200
+scaler_defence = 0
+scaler_required_xp = 200
+level = 0
+xp_drop = 0
+gold_drop = 0
+
 [node name="Fallback" instance=ExtResource("1_ec8o5")]
+stats = SubResource("Resource_vqryk")
 entity_name = "fall"
 
 [node name="Sprite2D" parent="." index="0"]

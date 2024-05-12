@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkavfc7fsmbyc"]
+[gd_scene load_steps=8 format=3 uid="uid://bkavfc7fsmbyc"]
 
 [ext_resource type="Script" path="res://ui/character_select/party_select.gd" id="1_8k5ua"]
 [ext_resource type="PackedScene" uid="uid://hwvpspp4pbni" path="res://ui/character_select/character_select_box.tscn" id="2_xnrnh"]
+[ext_resource type="PackedScene" uid="uid://cughmvu4xu3si" path="res://entities/party-members/black_belt/black_belt.tscn" id="3_2j2a3"]
 [ext_resource type="PackedScene" uid="uid://cp2ulhrn4t31i" path="res://entities/party-members/fighter/fighter.tscn" id="3_o0mqa"]
-[ext_resource type="PackedScene" uid="uid://ck4acd2tuvryb" path="res://scenes/test/testing_scene.tscn" id="4_6ku4x"]
+[ext_resource type="PackedScene" uid="uid://dliv2k02a8ayw" path="res://entities/party-members/black_mage/black_mage.tscn" id="3_rj88f"]
+[ext_resource type="PackedScene" uid="uid://bwba7pyi53acu" path="res://entities/party-members/thief/thief.tscn" id="6_fwryj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1s8pe"]
 bg_color = Color(0, 0, 0, 1)
@@ -26,7 +28,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1s8pe")
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="CharacterGrid" type="GridContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,26 +43,33 @@ theme_override_constants/h_separation = 80
 theme_override_constants/v_separation = 40
 columns = 2
 
-[node name="CharacterSelectBox" parent="GridContainer" instance=ExtResource("2_xnrnh")]
+[node name="CharacterSelectBox" parent="CharacterGrid" instance=ExtResource("2_xnrnh")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-character_data = Array[PackedScene]([ExtResource("3_o0mqa"), ExtResource("4_6ku4x")])
+character_data = Array[PackedScene]([ExtResource("3_rj88f"), ExtResource("3_o0mqa"), ExtResource("3_2j2a3"), ExtResource("6_fwryj")])
+character_name_overrides = Array[String](["walk", "sour", "chest", "ben"])
 
-[node name="CharacterSelectBox2" parent="GridContainer" instance=ExtResource("2_xnrnh")]
+[node name="CharacterSelectBox2" parent="CharacterGrid" instance=ExtResource("2_xnrnh")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+character_data = Array[PackedScene]([ExtResource("3_o0mqa"), ExtResource("3_rj88f"), ExtResource("6_fwryj"), ExtResource("3_2j2a3")])
+character_name_overrides = Array[String](["wok", "baba", "mike", "benny"])
 
-[node name="CharacterSelectBox3" parent="GridContainer" instance=ExtResource("2_xnrnh")]
+[node name="CharacterSelectBox3" parent="CharacterGrid" instance=ExtResource("2_xnrnh")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+character_data = Array[PackedScene]([ExtResource("3_rj88f"), ExtResource("3_o0mqa"), ExtResource("3_2j2a3"), ExtResource("6_fwryj")])
+character_name_overrides = Array[String](["monke", "stoic", "creek", "weeb"])
 
-[node name="CharacterSelectBox4" parent="GridContainer" instance=ExtResource("2_xnrnh")]
+[node name="CharacterSelectBox4" parent="CharacterGrid" instance=ExtResource("2_xnrnh")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+character_data = Array[PackedScene]([ExtResource("3_o0mqa"), ExtResource("3_rj88f"), ExtResource("6_fwryj"), ExtResource("3_2j2a3")])
+character_name_overrides = Array[String](["meds", "shot", "big", "wife"])
 
 [node name="ContinueButton" type="Button" parent="."]
 layout_mode = 1
@@ -75,3 +84,5 @@ offset_right = 125.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Continue"
+
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
