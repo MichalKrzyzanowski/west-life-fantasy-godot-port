@@ -32,6 +32,9 @@ func _enter_tree() -> void:
 	pass
 
 
+## append instances of packed scenes stored in [param character_data]
+## to [param _character_list].
+## if data is invalid, append [param fallback_entity] instead
 func _ready() -> void:
 	for character in character_data:
 		if _is_valid(character.get_state()):
@@ -45,6 +48,8 @@ func _ready() -> void:
 
 
 # public methods
+## move [param _character_index] by [param amount].
+## supports cycling array index forward and backwards
 func move_character_index(amount: int) -> void:
 	# stop if character_data array is null
 	if !character_data:
@@ -53,6 +58,7 @@ func move_character_index(amount: int) -> void:
 	_update_character_box()
 
 
+## add currently character to party manager
 func add_current_to_party():
 	if !_character_list.is_empty():
 		PartyManager.add_member(_character_list[_character_index])
@@ -67,6 +73,8 @@ func _on_next_char_button_pressed() -> void:
 	move_character_index(1)
 
 
+## validate [param state] of entity node
+## by checking if stats export is available
 func _is_valid(state: SceneState) -> bool:
 	for i in range(0, state.get_node_count()):
 		for j in range(0, state.get_node_property_count(i)):
@@ -75,6 +83,11 @@ func _is_valid(state: SceneState) -> bool:
 	return false
 
 
+## update character box information such as
+## title label and image
+## validates [param _character_list] first
+## overrides name if name override present in
+## [param character_name_overrides]
 func _update_character_box() -> void:
 	if _character_list.is_empty():
 		print("no characters to display")
@@ -85,6 +98,8 @@ func _update_character_box() -> void:
 		_character_list[_character_index].entity_name = \
 		character_name_overrides[_character_index]
 
+		# update node name for easier debugging and clearer
+		# savefile
 		_character_list[_character_index].name = \
 		_character_list[_character_index].entity_name.to_pascal_case()
 

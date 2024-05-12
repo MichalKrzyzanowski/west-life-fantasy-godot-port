@@ -57,6 +57,8 @@ func load(data) -> void:
 	add_to_group("persist")
 
 
+## get texture stored in [param sprite].
+## onready did not work for some reason
 func get_sprite_texture() -> Texture:
 	if !sprite:
 		sprite = get_node("Sprite2D")

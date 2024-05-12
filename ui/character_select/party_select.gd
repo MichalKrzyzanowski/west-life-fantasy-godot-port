@@ -45,7 +45,8 @@ func _ready() -> void:
 # subclasses
 
 
-
+## add all currently selected characters to the party
+## move to desert map scene
 func _on_continue_button_pressed() -> void:
 	for item in character_grid.get_children():
 		if item.has_method("add_current_to_party"):
