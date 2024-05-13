@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var gil: int = 500
 
 @onready var sprite := get_node("Sprite2D") as Sprite2D
+@onready var camp_menu := get_node("UI/CampMenu") as Control
 
 
 ## physics process function that handles player movement,
@@ -22,7 +23,8 @@ func _physics_process(_delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
-		SaveManager.save_game(SaveManager.SAVE_FILE)
+		get_tree().paused = true
+		camp_menu.show()
 
 
 ## saves data as dictionary for JSON format

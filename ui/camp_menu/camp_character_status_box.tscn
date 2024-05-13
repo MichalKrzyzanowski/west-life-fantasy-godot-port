@@ -1,0 +1,130 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6kk3x7wdbl0u"]
+
+[ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/sprite/text_box.png" id="1_gfmah"]
+[ext_resource type="Texture2D" uid="uid://dltxmw47ynbb0" path="res://entities/party-members/fallback/fallback.png" id="2_r6iwc"]
+
+[node name="CampCharacterStatusBox" type="Control"]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -774.0
+offset_bottom = -418.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_gfmah")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 3
+
+[node name="Labels" type="Control" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name" type="Label" parent="Panel/Labels"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.088
+anchor_top = 0.0542857
+anchor_right = 0.088
+anchor_bottom = 0.0542857
+offset_right = 101.0
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 38
+text = "Name"
+metadata/_edit_use_anchors_ = true
+
+[node name="Level" type="Label" parent="Panel/Labels"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 63.0
+offset_right = 74.0
+offset_bottom = 107.0
+theme_override_font_sizes/font_size = 38
+text = "L 0"
+
+[node name="HP" type="Label" parent="Panel/Labels"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 107.0
+offset_right = 74.0
+offset_bottom = 151.0
+theme_override_constants/line_spacing = -6
+theme_override_font_sizes/font_size = 38
+text = "HP
+  0/ 0"
+
+[node name="Defence" type="Label" parent="Panel/Labels"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032
+anchor_top = 1.0
+anchor_right = 1.032
+anchor_bottom = 1.0
+offset_top = -135.0
+offset_bottom = -91.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 38
+text = "Defence 0"
+metadata/_edit_use_anchors_ = true
+
+[node name="Damage" type="Label" parent="Panel/Labels"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -91.0
+offset_right = 8.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 38
+text = "Damage 0"
+
+[node name="WeaponDamage" type="Label" parent="Panel/Labels"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032
+anchor_top = 0.991429
+anchor_right = 1.032
+anchor_bottom = 0.991429
+offset_top = -44.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 38
+text = "W. DMG 0"
+metadata/_edit_use_anchors_ = true
+
+[node name="Image" type="Control" parent="Panel"]
+layout_mode = 1
+anchor_left = 0.576
+anchor_top = 0.12
+anchor_right = 0.576
+anchor_bottom = 0.12
+offset_right = 100.0
+offset_bottom = 100.0
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Image"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_r6iwc")
+stretch_mode = 4
