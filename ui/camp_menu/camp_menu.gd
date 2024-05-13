@@ -38,6 +38,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("exit_menu"):
 		SaveManager.save_game(SaveManager.SAVE_FILE)
 		hide()
+		options_menu.hide()
+		items_menu.hide()
 		get_tree().paused = false
 
 
