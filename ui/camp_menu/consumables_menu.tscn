@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7ijfs16qlhfq"]
+[gd_scene load_steps=5 format=3 uid="uid://b7ijfs16qlhfq"]
 
 [ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/sprite/text_box.png" id="1_s3tg8"]
+[ext_resource type="Script" path="res://ui/camp_menu/consumables_menu.gd" id="1_wol85"]
 [ext_resource type="FontFile" uid="uid://duujn5vjqjbyi" path="res://ui/common/font/arialbd.ttf" id="2_sc00e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2b1d"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="ConsumablesMenu" type="Control"]
 layout_mode = 3
@@ -10,6 +14,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_wol85")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d2b1d")
 
 [node name="TitlePanel" type="NinePatchRect" parent="."]
 layout_mode = 1
@@ -223,3 +237,5 @@ theme_type_variation = &"CharacterSelectButton"
 theme_override_font_sizes/font_size = 28
 text = "Back"
 metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

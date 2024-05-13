@@ -18,7 +18,8 @@ extends Control
 
 # @onready vars
 @onready var gil_label := get_node("Gil/Label") as Label
-@onready var options_menu := get_node("OptionsMenu")
+@onready var options_menu := get_node("OptionsMenu") as Control
+@onready var items_menu := get_node("ConsumablesMenu") as Control
 
 func _init() -> void:
 	pass
@@ -47,7 +48,8 @@ func update_gil() -> void:
 
 # private methods
 func _on_items_pressed() -> void:
-	pass
+	items_menu.show()
+
 
 # subclasses
 
