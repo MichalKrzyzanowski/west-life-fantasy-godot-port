@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 
 @export var speed: float = 5.0
-@export var gil: int = 500
 
 @onready var sprite := get_node("Sprite2D") as Sprite2D
 @onready var camp_menu := get_node("UI/CampMenu") as Control

@@ -1,11 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dq5bvoaxuu83w"]
+[gd_scene load_steps=4 format=3 uid="uid://dq5bvoaxuu83w"]
 
 [ext_resource type="Script" path="res://ui/main_menu/options/options_menu.gd" id="1_2jfff"]
 [ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/sprite/text_box.png" id="1_5ims4"]
 [ext_resource type="FontFile" uid="uid://duujn5vjqjbyi" path="res://ui/common/font/arialbd.ttf" id="2_sfi3x"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2evbl"]
-bg_color = Color(0, 0, 0, 1)
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -15,15 +12,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2jfff")
-
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_2evbl")
 
 [node name="BackgroundPanel" type="NinePatchRect" parent="."]
 layout_mode = 1

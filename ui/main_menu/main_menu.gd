@@ -55,7 +55,7 @@ func _on_new_game_button_pressed() -> void:
 
 ## open options panel
 func _on_options_button_pressed() -> void:
-	options_panel.set_visible(true)
+	options_panel.show()
 
 
 ## quit the game

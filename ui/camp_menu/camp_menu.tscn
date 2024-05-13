@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://xi1op1ppabul"]
+[gd_scene load_steps=7 format=3 uid="uid://xi1op1ppabul"]
 
 [ext_resource type="Script" path="res://ui/camp_menu/camp_menu.gd" id="1_dwtyw"]
 [ext_resource type="PackedScene" uid="uid://c6kk3x7wdbl0u" path="res://ui/camp_menu/camp_character_status_box.tscn" id="1_nr3ij"]
 [ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/sprite/text_box.png" id="2_fmm2y"]
 [ext_resource type="Texture2D" uid="uid://dgdkiifam4f85" path="res://entities/bullet/bullet.png" id="3_ix0wu"]
+[ext_resource type="PackedScene" uid="uid://dq5bvoaxuu83w" path="res://ui/main_menu/options/options_menu.tscn" id="5_fdbx0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hpliy"]
 bg_color = Color(0, 0, 0, 1)
@@ -46,12 +47,15 @@ layout_mode = 2
 
 [node name="CampCharacterStatusBox2" parent="PartyStatus" instance=ExtResource("1_nr3ij")]
 layout_mode = 2
+party_index = 1
 
 [node name="CampCharacterStatusBox3" parent="PartyStatus" instance=ExtResource("1_nr3ij")]
 layout_mode = 2
+party_index = 2
 
 [node name="CampCharacterStatusBox4" parent="PartyStatus" instance=ExtResource("1_nr3ij")]
 layout_mode = 2
+party_index = 3
 
 [node name="Orbs" type="NinePatchRect" parent="."]
 layout_mode = 1
@@ -195,4 +199,11 @@ theme_override_font_sizes/font_size = 38
 text = "Options"
 flat = true
 
+[node name="OptionsMenu" parent="." instance=ExtResource("5_fdbx0")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="Buttons/VBoxContainer/Items" to="." method="_on_items_pressed"]
+[connection signal="pressed" from="Buttons/VBoxContainer/Weapons" to="." method="_on_weapons_pressed"]
+[connection signal="pressed" from="Buttons/VBoxContainer/Armour" to="." method="_on_armour_pressed"]
+[connection signal="pressed" from="Buttons/VBoxContainer/Options" to="." method="_on_options_pressed"]

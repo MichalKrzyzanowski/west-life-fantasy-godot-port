@@ -17,7 +17,8 @@ extends Control
 # private vars
 
 # @onready vars
-
+@onready var gil_label := get_node("Gil/Label") as Label
+@onready var options_menu := get_node("OptionsMenu")
 
 func _init() -> void:
 	pass
@@ -28,7 +29,7 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-	pass
+	update_gil()
 
 
 # remaining builtins e.g. _process, _input
@@ -40,6 +41,8 @@ func _input(event: InputEvent) -> void:
 
 
 # public methods
+func update_gil() -> void:
+	gil_label.text = "%d G" % PartyManager.gil
 
 
 # private methods
@@ -47,3 +50,15 @@ func _on_items_pressed() -> void:
 	pass
 
 # subclasses
+
+
+func _on_weapons_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_armour_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_options_pressed() -> void:
+	options_menu.show()

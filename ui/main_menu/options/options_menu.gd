@@ -39,7 +39,7 @@ func _ready() -> void:
 
 # private methods
 func _on_back_button_pressed() -> void:
-	set_visible(false)
+	hide()
 
 
 

@@ -13,7 +13,7 @@ scaler_hp = 200
 scaler_attack = 200
 scaler_defence = 0
 scaler_required_xp = 200
-level = 0
+level = 1
 xp_drop = 0
 gold_drop = 0
 

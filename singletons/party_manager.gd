@@ -11,6 +11,7 @@ extends Node
 # @export vars
 
 # public vars
+var gil: int = 500
 
 # private vars
 var _debug_xp_gain: int = 1_000_000_000_000_000_000
@@ -49,6 +50,13 @@ func _input(event: InputEvent) -> void:
 func add_member(entity) -> void:
 	add_child(entity)
 	entity.add_to_group("persist")
+
+
+## get party member by [param index]
+func get_member(index: int) -> Node:
+	if index >= get_child_count():
+		return null
+	return get_child(index)
 
 
 # private methods
