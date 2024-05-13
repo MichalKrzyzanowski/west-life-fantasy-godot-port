@@ -1,0 +1,225 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7ijfs16qlhfq"]
+
+[ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/sprite/text_box.png" id="1_s3tg8"]
+[ext_resource type="FontFile" uid="uid://duujn5vjqjbyi" path="res://ui/common/font/arialbd.ttf" id="2_sc00e"]
+
+[node name="ConsumablesMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitlePanel" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0556641
+anchor_top = 0.0833333
+anchor_right = 0.195312
+anchor_bottom = 0.0950521
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_s3tg8")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="TitlePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = -16.0
+offset_right = 63.5
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_sc00e")
+theme_override_font_sizes/font_size = 28
+text = "Inventory"
+
+[node name="PartyInfoPanel" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.207031
+anchor_top = 0.5
+anchor_right = 0.702148
+anchor_bottom = 0.615885
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_s3tg8")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PartyInfoPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0219378
+anchor_top = 0.5
+anchor_right = 0.987203
+anchor_bottom = 0.5
+offset_top = -10.5
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="PartyInfoPanel/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "BEN"
+
+[node name="Label2" type="Label" parent="PartyInfoPanel/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "WEEB"
+
+[node name="Label3" type="Label" parent="PartyInfoPanel/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "BIG"
+
+[node name="Label4" type="Label" parent="PartyInfoPanel/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "CHEST"
+
+[node name="InventoryTitle" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.765625
+anchor_top = 0.147135
+anchor_right = 0.898438
+anchor_bottom = 0.147135
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_s3tg8")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="InventoryTitle"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -12.5
+offset_right = 26.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+text = "Items"
+
+[node name="InventoryPanel" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.00683594
+anchor_top = -0.0572917
+anchor_right = 0.107422
+anchor_bottom = 0.369792
+offset_left = 800.0
+offset_top = 208.0
+offset_right = 840.0
+offset_bottom = 248.0
+texture = ExtResource("1_s3tg8")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.503472
+anchor_top = 0.0434783
+anchor_right = 0.503472
+anchor_bottom = 0.956522
+offset_left = -37.5
+offset_right = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="InventoryPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Pure x1"
+
+[node name="Label2" type="Label" parent="InventoryPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Tent x1"
+
+[node name="Label3" type="Label" parent="InventoryPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "pure x1"
+
+[node name="DescriptionPanel" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.078125
+anchor_top = 0.791667
+anchor_right = 0.523438
+anchor_bottom = 0.885417
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_s3tg8")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="DescriptionPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = -20.5
+offset_right = 124.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "Heals 10 points"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.800293
+anchor_top = 0.886719
+anchor_right = 0.887207
+anchor_bottom = 0.841146
+offset_left = -35.5
+offset_top = -41.0
+offset_right = 35.5
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"CharacterSelectButton"
+theme_override_font_sizes/font_size = 28
+text = "Back"
+metadata/_edit_use_anchors_ = true
