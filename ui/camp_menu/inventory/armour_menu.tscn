@@ -1,0 +1,116 @@
+[gd_scene load_steps=3 format=3 uid="uid://t8a24hya7sa5"]
+
+[ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/sprite/text_box.png" id="1_x8nox"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jugxo"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="ArmourMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jugxo")
+
+[node name="TitlePanel" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0205078
+anchor_top = 0.0247396
+anchor_right = 0.168945
+anchor_bottom = 0.0885417
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_x8nox")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="TitlePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.505208
+anchor_right = 1.0
+anchor_bottom = 0.505208
+offset_top = -14.5
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Armour"
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ActionsPanel" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0273438
+anchor_right = 0.621094
+anchor_bottom = 0.0872396
+offset_left = 316.0
+offset_top = 19.0
+offset_right = 356.0
+offset_bottom = 59.0
+texture = ExtResource("1_x8nox")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="EquipButton" type="Button" parent="ActionsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.509943
+anchor_right = 0.509943
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_right = -234.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "EQUIP"
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="DropButton" type="Button" parent="ActionsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.1392
+anchor_right = 1.1392
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_right = -234.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "DROP"
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.751953
+anchor_top = 0.19401
+anchor_right = 0.929688
+anchor_bottom = 0.196615
+offset_right = 8.0
+offset_bottom = 50.0
+theme_type_variation = &"CharacterSelectButton"
+theme_override_font_sizes/font_size = 28
+text = "Back"
+metadata/_edit_use_anchors_ = true

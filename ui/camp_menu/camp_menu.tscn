@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://xi1op1ppabul"]
+[gd_scene load_steps=9 format=3 uid="uid://xi1op1ppabul"]
 
 [ext_resource type="Script" path="res://ui/camp_menu/camp_menu.gd" id="1_dwtyw"]
 [ext_resource type="PackedScene" uid="uid://c6kk3x7wdbl0u" path="res://ui/camp_menu/camp_character_status_box.tscn" id="1_nr3ij"]
 [ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/sprite/text_box.png" id="2_fmm2y"]
 [ext_resource type="Texture2D" uid="uid://dgdkiifam4f85" path="res://entities/bullet/bullet.png" id="3_ix0wu"]
 [ext_resource type="PackedScene" uid="uid://dq5bvoaxuu83w" path="res://ui/main_menu/options/options_menu.tscn" id="5_fdbx0"]
-[ext_resource type="PackedScene" uid="uid://b7ijfs16qlhfq" path="res://ui/camp_menu/consumables_menu.tscn" id="6_d2yxt"]
+[ext_resource type="PackedScene" uid="uid://b7ijfs16qlhfq" path="res://ui/camp_menu/inventory/consumables_menu.tscn" id="6_mk1em"]
+[ext_resource type="PackedScene" uid="uid://t8a24hya7sa5" path="res://ui/camp_menu/inventory/armour_menu.tscn" id="7_sx3cj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hpliy"]
 bg_color = Color(0, 0, 0, 1)
@@ -204,7 +205,11 @@ flat = true
 visible = false
 layout_mode = 1
 
-[node name="ConsumablesMenu" parent="." instance=ExtResource("6_d2yxt")]
+[node name="ConsumablesMenu" parent="." instance=ExtResource("6_mk1em")]
+visible = false
+layout_mode = 1
+
+[node name="ArmourMenu" parent="." instance=ExtResource("7_sx3cj")]
 visible = false
 layout_mode = 1
 

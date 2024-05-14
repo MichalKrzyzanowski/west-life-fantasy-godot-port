@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b7ijfs16qlhfq"]
 
 [ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/sprite/text_box.png" id="1_s3tg8"]
-[ext_resource type="Script" path="res://ui/camp_menu/consumables_menu.gd" id="1_wol85"]
+[ext_resource type="Script" path="res://ui/camp_menu/inventory/consumables_menu.gd" id="1_wol85"]
 [ext_resource type="FontFile" uid="uid://duujn5vjqjbyi" path="res://ui/common/font/arialbd.ttf" id="2_sc00e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2b1d"]
@@ -224,7 +224,7 @@ text = "Heals 10 points"
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.800293
-anchor_top = 0.886719
+anchor_top = 0.841146
 anchor_right = 0.887207
 anchor_bottom = 0.841146
 offset_left = -35.5
