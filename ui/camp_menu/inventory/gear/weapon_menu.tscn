@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dby5xfsflbd4p"]
+[gd_scene load_steps=4 format=3 uid="uid://dby5xfsflbd4p"]
 
 [ext_resource type="PackedScene" uid="uid://t8a24hya7sa5" path="res://ui/camp_menu/inventory/gear/armour_menu.tscn" id="1_qoamd"]
+[ext_resource type="Script" path="res://ui/camp_menu/inventory/gear/weapon_menu.gd" id="2_c20wb"]
 [ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/sprite/text_box.png" id="2_qtqyh"]
 
 [node name="WeaponMenu" instance=ExtResource("1_qoamd")]
+script = ExtResource("2_c20wb")
 
 [node name="Label" parent="TitlePanel" index="0"]
 text = "Weapon"
