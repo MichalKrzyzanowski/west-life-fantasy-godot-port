@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://t8a24hya7sa5"]
 
-[ext_resource type="Script" path="res://ui/camp_menu/inventory/armour_menu.gd" id="1_kkw4u"]
-[ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/sprite/text_box.png" id="1_x8nox"]
-[ext_resource type="PackedScene" uid="uid://73ak5i73pvg2" path="res://ui/camp_menu/inventory/party_gear_display.tscn" id="2_2xx8b"]
+[ext_resource type="Script" path="res://ui/camp_menu/inventory/gear/gear_menu.gd" id="1_yuejw"]
+[ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/sprite/text_box.png" id="2_qs1pr"]
+[ext_resource type="PackedScene" uid="uid://73ak5i73pvg2" path="res://ui/camp_menu/inventory/gear/party_gear_display.tscn" id="3_snihe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jugxo"]
 bg_color = Color(0, 0, 0, 1)
@@ -14,7 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_kkw4u")
+script = ExtResource("1_yuejw")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -34,7 +34,7 @@ anchor_right = 0.168945
 anchor_bottom = 0.09375
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("1_x8nox")
+texture = ExtResource("2_qs1pr")
 patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
@@ -67,7 +67,7 @@ offset_left = 316.0
 offset_top = 19.0
 offset_right = 356.0
 offset_bottom = 59.0
-texture = ExtResource("1_x8nox")
+texture = ExtResource("2_qs1pr")
 patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
@@ -118,7 +118,7 @@ theme_override_font_sizes/font_size = 28
 text = "Back"
 metadata/_edit_use_anchors_ = true
 
-[node name="Armourinventories" type="VBoxContainer" parent="."]
+[node name="Inventories" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.283854
@@ -129,19 +129,19 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 metadata/_edit_use_anchors_ = true
 
-[node name="PartyGearDisplay" parent="Armourinventories" instance=ExtResource("2_2xx8b")]
+[node name="PartyGearDisplay" parent="Inventories" instance=ExtResource("3_snihe")]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PartyGearDisplay2" parent="Armourinventories" instance=ExtResource("2_2xx8b")]
+[node name="PartyGearDisplay2" parent="Inventories" instance=ExtResource("3_snihe")]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PartyGearDisplay3" parent="Armourinventories" instance=ExtResource("2_2xx8b")]
+[node name="PartyGearDisplay3" parent="Inventories" instance=ExtResource("3_snihe")]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PartyGearDisplay4" parent="Armourinventories" instance=ExtResource("2_2xx8b")]
+[node name="PartyGearDisplay4" parent="Inventories" instance=ExtResource("3_snihe")]
 layout_mode = 2
 size_flags_vertical = 3
 

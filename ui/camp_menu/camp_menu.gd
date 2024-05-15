@@ -17,10 +17,11 @@ extends Control
 # private vars
 
 # @onready vars
-@onready var gil_label := get_node("Gil/Label") as Label
-@onready var options_menu := get_node("OptionsMenu") as Control
-@onready var items_menu := get_node("ConsumablesMenu") as Control
-@onready var armour_menu := get_node("ArmourMenu") as Control
+@onready var gil_label := $Gil/Label as Label
+@onready var options_menu := $OptionsMenu as Control
+@onready var items_menu := $ConsumablesMenu as Control
+@onready var armour_menu := $ArmourMenu as Control
+@onready var weapon_menu := $WeaponMenu as Control
 
 func _init() -> void:
 	pass
@@ -42,6 +43,7 @@ func _input(event: InputEvent) -> void:
 		options_menu.hide()
 		items_menu.hide()
 		armour_menu.hide()
+		weapon_menu.hide()
 		get_tree().paused = false
 
 
@@ -59,7 +61,7 @@ func _on_items_pressed() -> void:
 
 
 func _on_weapons_pressed() -> void:
-	pass # Replace with function body.
+	weapon_menu.show()
 
 
 func _on_armour_pressed() -> void:

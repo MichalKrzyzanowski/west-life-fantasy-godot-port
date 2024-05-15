@@ -1,0 +1,77 @@
+[gd_scene load_steps=3 format=3 uid="uid://dby5xfsflbd4p"]
+
+[ext_resource type="PackedScene" uid="uid://t8a24hya7sa5" path="res://ui/camp_menu/inventory/gear/armour_menu.tscn" id="1_qoamd"]
+[ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/sprite/text_box.png" id="2_qtqyh"]
+
+[node name="WeaponMenu" instance=ExtResource("1_qoamd")]
+
+[node name="Label" parent="TitlePanel" index="0"]
+text = "Weapon"
+
+[node name="EquipButton" parent="ActionsPanel" index="0"]
+anchor_left = 0.795455
+anchor_right = 0.795455
+
+[node name="UpgradeButton" type="Button" parent="ActionsPanel" index="1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.565341
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_right = -234.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "UPGRADE"
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="DropButton" parent="ActionsPanel" index="2"]
+anchor_left = 1.20455
+anchor_right = 1.20455
+
+[node name="UpgradeInfoPanel" type="NinePatchRect" parent="." index="5"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.114258
+anchor_top = 0.186849
+anchor_right = 0.71875
+anchor_bottom = 0.257161
+offset_top = -3.5
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qtqyh")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="GilLabel" type="Label" parent="UpgradeInfoPanel" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0436187
+anchor_right = 0.137318
+anchor_bottom = 1.0
+offset_right = 1.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Gil: "
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CostsLabel" type="Label" parent="UpgradeInfoPanel" index="1"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -432.0
+offset_right = -84.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Cost: +1-5 = 25G, +6-10 = 50G"
+vertical_alignment = 1
