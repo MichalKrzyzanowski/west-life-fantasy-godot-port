@@ -4,11 +4,9 @@
 
 [node name="PartyGearDisplay" type="Control"]
 layout_mode = 3
-anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.139323
 grow_horizontal = 2
-grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="PartyNamePanel" type="NinePatchRect" parent="."]
@@ -16,7 +14,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.046875
 anchor_right = 0.195312
-anchor_bottom = 0.0104167
+anchor_bottom = 0.0747664
 offset_right = 40.0
 offset_bottom = 40.0
 grow_horizontal = 2
@@ -47,12 +45,10 @@ metadata/_edit_use_anchors_ = true
 [node name="InventoryPanel" type="NinePatchRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.236328
-anchor_top = 0.00651042
-anchor_right = 0.851562
-anchor_bottom = 0.0625
-offset_right = 40.0
-offset_bottom = 40.0
+anchor_left = 0.238281
+anchor_top = 0.078125
+anchor_right = 0.875
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_j4ik8")
@@ -65,32 +61,41 @@ metadata/_edit_use_anchors_ = true
 [node name="GridContainer" type="GridContainer" parent="InventoryPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0447761
-anchor_top = 0.13253
-anchor_right = 0.952239
-anchor_bottom = 0.903614
+anchor_left = 0.0674847
+anchor_top = 0.111516
+anchor_right = 0.952454
+anchor_bottom = 0.922541
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/h_separation = 350
-theme_override_constants/v_separation = 22
+theme_override_constants/h_separation = 300
+theme_override_constants/v_separation = 35
 columns = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="InventoryPanel/GridContainer"]
+[node name="Label" type="Button" parent="InventoryPanel/GridContainer"]
 layout_mode = 2
+theme_type_variation = &"CharacterSelectButton"
 theme_override_font_sizes/font_size = 17
 text = "New Text"
+flat = true
 
-[node name="Label2" type="Label" parent="InventoryPanel/GridContainer"]
+[node name="Label2" type="Button" parent="InventoryPanel/GridContainer"]
 layout_mode = 2
+theme_type_variation = &"CharacterSelectButton"
 theme_override_font_sizes/font_size = 17
 text = "New Text"
+flat = true
 
-[node name="Label3" type="Label" parent="InventoryPanel/GridContainer"]
+[node name="Label3" type="Button" parent="InventoryPanel/GridContainer"]
 layout_mode = 2
+theme_type_variation = &"CharacterSelectButton"
 theme_override_font_sizes/font_size = 17
 text = "New Text"
+flat = true
 
-[node name="Label4" type="Label" parent="InventoryPanel/GridContainer"]
+[node name="Label4" type="Button" parent="InventoryPanel/GridContainer"]
 layout_mode = 2
+theme_type_variation = &"CharacterSelectButton"
 theme_override_font_sizes/font_size = 17
 text = "New Text"
+flat = true
