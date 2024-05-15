@@ -42,7 +42,6 @@ enum SortBy {
 # public vars
 
 # private vars
-var _is_ready: bool = false
 
 # @onready vars
 
@@ -52,12 +51,11 @@ func _init() -> void:
 
 
 func _enter_tree() -> void:
-	pass
+	connect("child_order_changed", _on_child_order_changed)
 
 
 func _ready() -> void:
-	_position_children()
-	_is_ready = true
+	pass
 
 
 # remaining builtins e.g. _process, _input
@@ -128,8 +126,9 @@ func _by_rows(children: Array) -> void:
 
 
 func _on_child_order_changed() -> void:
-	if _is_ready:
-		_position_children()
+	print("child changed")
+	await get_tree().process_frame
+	_position_children()
 
 
 # subclasses
