@@ -100,7 +100,7 @@ func _ready() -> void:
 ## [param do_not_update] flag, could be useful if one
 ## wants to manually update grid node
 func position_children(ignore_update_flag: bool = false) -> void:
-	if do_not_update:
+	if do_not_update && !ignore_update_flag:
 		return
 
 	# return if no children
@@ -166,6 +166,8 @@ func _by_rows(children: Array) -> void:
 			row = 0
 
 
+## update children positions when children are
+## removed, shuffled, or added
 func _on_child_order_changed() -> void:
 	print("child changed")
 	await get_tree().process_frame
