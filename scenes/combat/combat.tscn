@@ -1,38 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://b607al0ll6nfe"]
-
-[ext_resource type="Script" path="res://addons/grid_2d/grid_2d.gd" id="1_j0wl0"]
-[ext_resource type="Texture2D" uid="uid://dltxmw47ynbb0" path="res://entities/party-members/fallback/fallback.png" id="2_bl1k6"]
-[ext_resource type="Texture2D" uid="uid://b50ussga4ddv" path="res://entities/party-members/black_belt/combat_character_2.png" id="3_lwvi6"]
-[ext_resource type="Texture2D" uid="uid://j4i7k7rqc1fo" path="res://entities/party-members/thief/player-thief.png" id="4_8bqhi"]
-[ext_resource type="Texture2D" uid="uid://2aeni7r1e2v5" path="res://entities/party-members/fighter/combat_character_1.png" id="5_8ktbs"]
+[gd_scene format=3 uid="uid://b607al0ll6nfe"]
 
 [node name="Combat" type="Node2D"]
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = -1
-
-[node name="Grid2D" type="Node2D" parent="."]
-script = ExtResource("1_j0wl0")
-rows = 3
-v_seperation = 32
-h_seperation = 32
-sort_by = 1
-
-[node name="Sprite2D3" type="Sprite2D" parent="Grid2D"]
-texture = ExtResource("3_lwvi6")
-
-[node name="Sprite2D" type="Sprite2D" parent="Grid2D"]
-position = Vector2(0, 32)
-texture = ExtResource("2_bl1k6")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Grid2D"]
-position = Vector2(0, 64)
-texture = ExtResource("3_lwvi6")
-
-[node name="Sprite2D4" type="Sprite2D" parent="Grid2D"]
-position = Vector2(32, 0)
-texture = ExtResource("4_8bqhi")
-
-[node name="Sprite2D5" type="Sprite2D" parent="Grid2D"]
-position = Vector2(32, 32)
-texture = ExtResource("5_8ktbs")
