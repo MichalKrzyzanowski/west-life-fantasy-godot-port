@@ -20,28 +20,28 @@ enum SortBy {
 @export var columns: int = 1:
 	set(new_columns):
 		columns = new_columns
-		position_children()
+		_auto_update_grid()
 
 ## max rows in the grid.
 ## applies only if [param sort_by] is set to ROWS
 @export var rows: int = 1:
 	set(new_rows):
 		rows = new_rows
-		position_children()
-
-## veritcal seperation.
-## governs the vertical gap in between grid items
-@export var v_seperation: int:
-	set(new_v_sep):
-		v_seperation = new_v_sep
-		position_children()
+		_auto_update_grid()
 
 ## horizontal seperation.
 ## governs the horizontal gap in between grid items
 @export var h_seperation: int:
 	set(new_h_sep):
 		h_seperation = new_h_sep
-		position_children()
+		_auto_update_grid()
+
+## veritcal seperation.
+## governs the vertical gap in between grid items
+@export var v_seperation: int:
+	set(new_v_sep):
+		v_seperation = new_v_sep
+		_auto_update_grid()
 
 ## governs how grid items are positioned.
 ## COLS: positions grid items left -> right
@@ -51,19 +51,19 @@ enum SortBy {
 @export var sort_by: SortBy:
 	set(new_sort_by):
 		sort_by = new_sort_by
-		position_children()
+		_auto_update_grid()
 
 ## prevent the grid from updating.
 ## can be set to true during gameplay if
 ## you need to remove grid objects
 ## without modifying their position.
 ## could also be used for manually calling
-## [method Grid2D.position_children]
+## [method Grid2D._auto_update_grid]
 @export var do_not_update: bool = false:
 	set(new_do_not_update):
 		do_not_update = new_do_not_update
 		if (!do_not_update):
-			position_children()
+			_auto_update_grid()
 
 # public vars
 
@@ -92,17 +92,20 @@ func _ready() -> void:
 
 
 # private methods
-## selects correct positioning function to use
-## based on [param sort_by].
-## returns void if [param do_not_update] is true
-## or there are no children attached to the grid.
-## [param ignore_update_flag] can be used to ignore
-## [param do_not_update] flag, could be useful if one
-## wants to manually update grid node
-func position_children(ignore_update_flag: bool = false) -> void:
-	if do_not_update && !ignore_update_flag:
+## updates grid children
+## only run when [param do_not_update] is true
+func _auto_update_grid() -> void:
+	if do_not_update:
 		return
 
+	update_grid()
+
+
+## selects correct positioning function to use
+## based on [param sort_by].
+## returns if [param do_not_update] is true
+## or there are no children attached to the grid.
+func update_grid() -> void:
 	# return if no children
 	var children: Array = get_children()
 	if children.is_empty():
@@ -171,7 +174,7 @@ func _by_rows(children: Array) -> void:
 func _on_child_order_changed() -> void:
 	print("child changed")
 	await get_tree().process_frame
-	position_children()
+	_auto_update_grid()
 
 
 # subclasses
