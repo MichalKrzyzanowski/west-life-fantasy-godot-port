@@ -172,7 +172,9 @@ func _by_rows(children: Array) -> void:
 ## update children positions when children are
 ## removed, shuffled, or added
 func _on_child_order_changed() -> void:
-	print("child changed")
+	if do_not_update || !get_tree():
+		return
+
 	await get_tree().process_frame
 	_auto_update_grid()
 

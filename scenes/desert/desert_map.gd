@@ -18,7 +18,8 @@ var player_position := Vector2()
 # private vars
 
 # @onready vars
-@onready var player = get_node("OverworldPlayer")
+@onready var player = $OverworldPlayer as CharacterBody2D
+@onready var CombatScene = preload("res://scenes/combat/combat.tscn")
 
 
 func _init() -> void:
@@ -34,6 +35,11 @@ func _ready() -> void:
 
 
 # remaining builtins e.g. _process, _input
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey && event.pressed:
+		match event.keycode:
+			KEY_C:
+				print("combat")
 
 
 # public methods

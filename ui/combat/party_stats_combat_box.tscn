@@ -1,0 +1,100 @@
+[gd_scene load_steps=6 format=3 uid="uid://biwssbow6r5by"]
+
+[ext_resource type="FontFile" uid="uid://duujn5vjqjbyi" path="res://ui/common/font/arialbd.ttf" id="1_gagwn"]
+[ext_resource type="Texture2D" uid="uid://dlhk1jakpfhv3" path="res://ui/combat/CombatTextBox.png" id="2_3bok3"]
+[ext_resource type="Texture2D" uid="uid://dk3uklp1vx78h" path="res://ui/combat/small-xpbar.png" id="3_34df3"]
+[ext_resource type="Texture2D" uid="uid://4tk2ifb75s61" path="res://ui/combat/xp1.png" id="4_mc23q"]
+
+[sub_resource type="Theme" id="Theme_5ux7l"]
+Label/font_sizes/font_size = 27
+Label/fonts/font = ExtResource("1_gagwn")
+
+[node name="PartyStatsCombatBox" type="Control"]
+layout_mode = 3
+anchor_right = 0.140625
+anchor_bottom = 0.1875
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_5ux7l")
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_3bok3")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 12
+axis_stretch_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="NameLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.104167
+anchor_right = 1.0
+anchor_bottom = 0.104167
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "name"
+horizontal_alignment = 1
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="HPLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.222222
+anchor_top = 0.552083
+anchor_right = 1.0
+anchor_bottom = 0.552083
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "hp"
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="HPValueLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.881944
+anchor_right = 0.888889
+anchor_bottom = 0.881944
+offset_top = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "900"
+horizontal_alignment = 2
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0277778
+anchor_right = 0.0347222
+anchor_bottom = 0.270833
+offset_left = 149.0
+offset_top = 15.0
+offset_right = 155.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+value = 100.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 3
+stretch_margin_right = 2
+stretch_margin_bottom = 3
+texture_over = ExtResource("3_34df3")
+texture_progress = ExtResource("4_mc23q")
+metadata/_edit_use_anchors_ = true

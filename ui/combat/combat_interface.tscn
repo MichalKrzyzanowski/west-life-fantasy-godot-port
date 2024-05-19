@@ -1,0 +1,239 @@
+[gd_scene load_steps=6 format=3 uid="uid://ce03pc67436wa"]
+
+[ext_resource type="Texture2D" uid="uid://dlhk1jakpfhv3" path="res://ui/combat/CombatTextBox.png" id="1_80ql1"]
+[ext_resource type="FontFile" uid="uid://duujn5vjqjbyi" path="res://ui/common/font/arialbd.ttf" id="1_xnt83"]
+[ext_resource type="PackedScene" uid="uid://biwssbow6r5by" path="res://ui/combat/party_stats_combat_box.tscn" id="2_3bv6p"]
+
+[sub_resource type="Theme" id="Theme_uysed"]
+Button/font_sizes/font_size = 27
+Button/fonts/font = ExtResource("1_xnt83")
+Label/font_sizes/font_size = 27
+Label/fonts/font = ExtResource("1_xnt83")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2s2h"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="CombatInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_uysed")
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q2s2h")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.078125
+anchor_top = 0.125
+anchor_right = 0.789062
+anchor_bottom = 0.947917
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="EnemyPanel" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.078125
+anchor_top = 0.125
+anchor_right = 0.625
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_80ql1")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 12
+metadata/_edit_use_anchors_ = true
+
+[node name="PartyPanel" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.625
+anchor_top = 0.125
+anchor_right = 0.828125
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_80ql1")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 12
+metadata/_edit_use_anchors_ = true
+
+[node name="CombatInfoPanel" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.078125
+anchor_top = 0.729167
+anchor_right = 0.453125
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_80ql1")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 12
+metadata/_edit_use_anchors_ = true
+
+[node name="BattleInfoLabel" type="Label" parent="CombatInfoPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0833333
+anchor_top = 0.0769231
+anchor_right = 0.958333
+anchor_bottom = 0.485577
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_spacing = -4
+text = "wok deals
+10 dmg
+you won the battle!"
+autowrap_mode = 2
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="RewardsLabel" type="Label" parent="CombatInfoPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0833333
+anchor_top = 0.528846
+anchor_right = 0.492188
+anchor_bottom = 0.807692
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_spacing = -4
+text = "rewards:"
+autowrap_mode = 2
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="GoldXpValueLabel" type="Label" parent="CombatInfoPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.492188
+anchor_top = 0.807692
+anchor_right = 0.958333
+anchor_bottom = 0.807692
+offset_top = -58.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/line_spacing = -4
+text = "85g
+113xp"
+autowrap_mode = 2
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="GearLabel" type="Label" parent="CombatInfoPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0833333
+anchor_top = 0.783654
+anchor_right = 0.958333
+anchor_bottom = 0.932692
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/line_spacing = -4
+text = "got new gear"
+autowrap_mode = 2
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ActionsPanel" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.453125
+anchor_top = 0.729167
+anchor_right = 0.828125
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_80ql1")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 12
+metadata/_edit_use_anchors_ = true
+
+[node name="AttackButton" type="Button" parent="ActionsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0833333
+anchor_right = 0.369792
+anchor_bottom = 0.149038
+offset_right = 8.0
+offset_bottom = 50.0
+text = "ATTACK"
+flat = true
+alignment = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="BlockButton" type="Button" parent="ActionsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0833333
+anchor_top = 0.216346
+anchor_right = 0.393229
+anchor_bottom = 0.365385
+offset_right = 8.0
+offset_bottom = 50.0
+text = "BLOCK"
+flat = true
+alignment = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="FleeButton" type="Button" parent="ActionsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.541667
+anchor_right = 0.851562
+anchor_bottom = 0.149038
+offset_right = 8.0
+offset_bottom = 50.0
+text = "FLEE"
+flat = true
+alignment = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="PartyStatsCombatBox" parent="." instance=ExtResource("2_3bv6p")]
+layout_mode = 1
+anchor_left = 0.830078
+anchor_top = 0.8125
+anchor_right = 0.970703
+anchor_bottom = 1.0
+
+[node name="PartyStatsCombatBox2" parent="." instance=ExtResource("2_3bv6p")]
+layout_mode = 1
+anchor_left = 0.830078
+anchor_top = 0.625
+anchor_right = 0.970703
+anchor_bottom = 0.8125
+
+[node name="PartyStatsCombatBox3" parent="." instance=ExtResource("2_3bv6p")]
+layout_mode = 1
+anchor_left = 0.830078
+anchor_top = 0.4375
+anchor_right = 0.970703
+anchor_bottom = 0.625
+
+[node name="PartyStatsCombatBox4" parent="." instance=ExtResource("2_3bv6p")]
+layout_mode = 1
+anchor_left = 0.830078
+anchor_top = 0.25
+anchor_right = 0.970703
+anchor_bottom = 0.4375
