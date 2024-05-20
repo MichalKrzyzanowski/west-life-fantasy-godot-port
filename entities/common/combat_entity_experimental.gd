@@ -34,7 +34,8 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	# TODO: remove this when godot devs update _init behaviour when initializing
 	# after resource export
-	stats.init()
+	#stats.init()
+	pass
 
 
 # remaining builtins e.g. _process, _input

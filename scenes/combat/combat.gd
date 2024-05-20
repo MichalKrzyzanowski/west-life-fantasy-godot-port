@@ -5,6 +5,7 @@ extends Node2D
 
 
 # signals
+signal on_turn_end(party_member: EntityProperties)
 
 # enums
 
@@ -33,6 +34,7 @@ var _battle_order: Array
 # TODO: figure out how to implement static typing for Grid2D plugin type
 @onready var party_grid = $PartyGrid
 @onready var enemy_grid = $EnemyGrid
+@onready var interface := $UI/CombatInterface as Control
 
 
 func _init() -> void:
@@ -46,6 +48,7 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	# randomize rng seed
 	rng.randomize()
+
 
 	# add party to the grid
 	if party_data:
@@ -62,6 +65,15 @@ func _ready() -> void:
 
 
 # remaining builtins e.g. _process, _input
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey && event.pressed:
+		match event.keycode:
+			KEY_D:
+				party_data[0].stats.hp -= 10
+			KEY_S:
+				party_data[0].stats.hp += 10
+			KEY_X:
+				party_data[0].stats.xp += 10
 
 
 # public methods
@@ -76,7 +88,10 @@ func _init_party(data: Array[EntityProperties]) -> void:
 			party_grid.add_child(party_member)
 
 	party_grid.update_grid()
-	_party = enemy_grid.get_children()
+	_party = party_grid.get_children()
+	interface.init_party_stat_boxes(data)
+	for i in party_data:
+		print(i.stats)
 
 
 func _spawn_enemies() -> void:
@@ -100,6 +115,8 @@ func _setup_battle_order() -> void:
 	else:
 		print("enemies get to strike first.")
 		_battle_order = _enemies + _party
+
+	print("battle order")
 	for i in _battle_order:
 		print(i.entity_properties.name)
 

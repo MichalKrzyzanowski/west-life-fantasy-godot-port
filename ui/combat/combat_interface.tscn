@@ -33,6 +33,43 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_q2s2h")
 
+[node name="Party" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="PartyMember1" parent="Party" instance=ExtResource("2_3bv6p")]
+layout_mode = 1
+anchor_left = 0.830078
+anchor_top = 0.25
+anchor_right = 0.970703
+anchor_bottom = 0.4375
+
+[node name="PartyMember2" parent="Party" instance=ExtResource("2_3bv6p")]
+layout_mode = 1
+anchor_left = 0.830078
+anchor_top = 0.4375
+anchor_right = 0.970703
+anchor_bottom = 0.625
+
+[node name="PartyMember3" parent="Party" instance=ExtResource("2_3bv6p")]
+layout_mode = 1
+anchor_left = 0.830078
+anchor_top = 0.625
+anchor_right = 0.970703
+anchor_bottom = 0.8125
+
+[node name="PartyMember4" parent="Party" instance=ExtResource("2_3bv6p")]
+layout_mode = 1
+anchor_left = 0.830078
+anchor_top = 0.8125
+anchor_right = 0.970703
+anchor_bottom = 1.0
+
 [node name="EnemyPanel" type="NinePatchRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -99,6 +136,7 @@ uppercase = true
 metadata/_edit_use_anchors_ = true
 
 [node name="RewardsLabel" type="Label" parent="CombatInfoPanel"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0833333
@@ -114,6 +152,7 @@ uppercase = true
 metadata/_edit_use_anchors_ = true
 
 [node name="GoldXpValueLabel" type="Label" parent="CombatInfoPanel"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.492188
@@ -131,6 +170,7 @@ uppercase = true
 metadata/_edit_use_anchors_ = true
 
 [node name="GearLabel" type="Label" parent="CombatInfoPanel"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0833333
@@ -165,10 +205,12 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0833333
+anchor_top = 0.0240373
 anchor_right = 0.369792
-anchor_bottom = 0.149038
+anchor_bottom = 0.0240373
 offset_right = 8.0
 offset_bottom = 50.0
+toggle_mode = true
 text = "ATTACK"
 flat = true
 alignment = 0
@@ -178,9 +220,9 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0833333
-anchor_top = 0.216346
+anchor_top = 0.235576
 anchor_right = 0.393229
-anchor_bottom = 0.365385
+anchor_bottom = 0.235576
 offset_right = 8.0
 offset_bottom = 50.0
 text = "BLOCK"
@@ -192,39 +234,15 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.541667
+anchor_top = 0.0240373
 anchor_right = 0.851562
-anchor_bottom = 0.149038
+anchor_bottom = 0.0240373
 offset_right = 8.0
 offset_bottom = 50.0
+theme_type_variation = &"FlatButton"
 text = "FLEE"
 flat = true
 alignment = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="PartyMember1" parent="." instance=ExtResource("2_3bv6p")]
-layout_mode = 1
-anchor_left = 0.830078
-anchor_top = 0.25
-anchor_right = 0.970703
-anchor_bottom = 0.4375
-
-[node name="PartyMember2" parent="." instance=ExtResource("2_3bv6p")]
-layout_mode = 1
-anchor_left = 0.830078
-anchor_top = 0.4375
-anchor_right = 0.970703
-anchor_bottom = 0.625
-
-[node name="PartyMember3" parent="." instance=ExtResource("2_3bv6p")]
-layout_mode = 1
-anchor_left = 0.830078
-anchor_top = 0.625
-anchor_right = 0.970703
-anchor_bottom = 0.8125
-
-[node name="PartyMember4" parent="." instance=ExtResource("2_3bv6p")]
-layout_mode = 1
-anchor_left = 0.830078
-anchor_top = 0.8125
-anchor_right = 0.970703
-anchor_bottom = 1.0
+[connection signal="toggled" from="ActionsPanel/AttackButton" to="." method="_on_attack_button_toggled"]

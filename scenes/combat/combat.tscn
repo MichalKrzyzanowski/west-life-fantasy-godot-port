@@ -1,31 +1,131 @@
-[gd_scene load_steps=11 format=3 uid="uid://b607al0ll6nfe"]
+[gd_scene load_steps=21 format=3 uid="uid://b607al0ll6nfe"]
 
 [ext_resource type="Script" path="res://addons/grid_2d/grid_2d.gd" id="1_7uh1k"]
 [ext_resource type="Script" path="res://scenes/combat/combat.gd" id="1_pefpc"]
 [ext_resource type="Texture2D" uid="uid://bd66bt1gm0jax" path="res://desert-warrior.png" id="2_grfuc"]
 [ext_resource type="Script" path="res://entities/common/combat_entity_experimental.gd" id="2_q628h"]
 [ext_resource type="PackedScene" uid="uid://ce03pc67436wa" path="res://ui/combat/combat_interface.tscn" id="3_67xwi"]
+[ext_resource type="Script" path="res://entities/common/combat_stats.gd" id="3_klkua"]
 [ext_resource type="Texture2D" uid="uid://c6dn11c567imk" path="res://entities/party-members/black_mage/player-shinobi.png" id="3_kojkh"]
 [ext_resource type="Texture2D" uid="uid://bms47f3c7kofx" path="res://bandit.png" id="3_rjkws"]
 
+[sub_resource type="Resource" id="Resource_offy0"]
+script = ExtResource("3_klkua")
+max_hp = 100.0
+attack = 10.0
+defence = 0.0
+scaler_hp = 10
+scaler_attack = 10
+scaler_defence = 10
+scaler_required_xp = 10
+level = 0
+xp_drop = 0
+gold_drop = 0
+
 [sub_resource type="Resource" id="Resource_11dro"]
 script = ExtResource("2_q628h")
+stats = SubResource("Resource_offy0")
 name = "fella"
 texture = ExtResource("3_kojkh")
 
+[sub_resource type="Resource" id="Resource_m4601"]
+script = ExtResource("3_klkua")
+max_hp = 100.0
+attack = 10.0
+defence = 0.0
+scaler_hp = 10
+scaler_attack = 10
+scaler_defence = 10
+scaler_required_xp = 10
+level = 0
+xp_drop = 0
+gold_drop = 0
+
+[sub_resource type="Resource" id="Resource_4kv47"]
+script = ExtResource("2_q628h")
+stats = SubResource("Resource_m4601")
+name = "mike"
+texture = ExtResource("3_kojkh")
+
+[sub_resource type="Resource" id="Resource_6rjm5"]
+script = ExtResource("3_klkua")
+max_hp = 100.0
+attack = 25.0
+defence = 0.0
+scaler_hp = 10
+scaler_attack = 10
+scaler_defence = 10
+scaler_required_xp = 10
+level = 0
+xp_drop = 0
+gold_drop = 0
+
+[sub_resource type="Resource" id="Resource_1bffe"]
+script = ExtResource("2_q628h")
+stats = SubResource("Resource_6rjm5")
+name = "bob"
+texture = ExtResource("3_kojkh")
+
+[sub_resource type="Resource" id="Resource_cj8c7"]
+script = ExtResource("3_klkua")
+max_hp = 100.0
+attack = 5.0
+defence = 0.0
+scaler_hp = 10
+scaler_attack = 10
+scaler_defence = 10
+scaler_required_xp = 10
+level = 0
+xp_drop = 0
+gold_drop = 0
+
+[sub_resource type="Resource" id="Resource_inb5i"]
+script = ExtResource("2_q628h")
+stats = SubResource("Resource_cj8c7")
+name = "fran"
+texture = ExtResource("3_kojkh")
+
+[sub_resource type="Resource" id="Resource_fkqvn"]
+script = ExtResource("3_klkua")
+max_hp = 30.0
+attack = 1.0
+defence = 1.0
+scaler_hp = 0
+scaler_attack = 0
+scaler_defence = 0
+scaler_required_xp = 0
+level = 0
+xp_drop = 0
+gold_drop = 0
+
 [sub_resource type="Resource" id="Resource_x0el5"]
 script = ExtResource("2_q628h")
+stats = SubResource("Resource_fkqvn")
 name = "monke"
 texture = ExtResource("2_grfuc")
 
+[sub_resource type="Resource" id="Resource_dxygm"]
+script = ExtResource("3_klkua")
+max_hp = 10.0
+attack = 5.0
+defence = 0.0
+scaler_hp = 0
+scaler_attack = 0
+scaler_defence = 0
+scaler_required_xp = 0
+level = 0
+xp_drop = 0
+gold_drop = 0
+
 [sub_resource type="Resource" id="Resource_ly3ln"]
 script = ExtResource("2_q628h")
+stats = SubResource("Resource_dxygm")
 name = "monker"
 texture = ExtResource("3_rjkws")
 
 [node name="Combat" type="Node2D"]
 script = ExtResource("1_pefpc")
-party_data = Array[ExtResource("2_q628h")]([SubResource("Resource_11dro"), SubResource("Resource_11dro"), SubResource("Resource_11dro"), SubResource("Resource_11dro")])
+party_data = Array[ExtResource("2_q628h")]([SubResource("Resource_11dro"), SubResource("Resource_4kv47"), SubResource("Resource_1bffe"), SubResource("Resource_inb5i")])
 enemy_data = Array[ExtResource("2_q628h")]([SubResource("Resource_x0el5"), SubResource("Resource_ly3ln")])
 is_party_advantage = true
 

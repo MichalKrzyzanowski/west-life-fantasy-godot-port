@@ -35,6 +35,8 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	# TODO: remove this when godot devs update _init behaviour when initializing
 	# after resource export
+	if entity_properties && entity_properties.stats:
+		entity_properties.stats.has_died.connect(_has_entity_died)
 	pass
 	#entity_properties.stats.init()
 
@@ -76,6 +78,9 @@ func set_sprite_texture(texture: Texture) -> void:
 
 
 # private methods
+func _has_entity_died() -> void:
+	hide()
+	process_mode = Node.PROCESS_MODE_DISABLED
 
 
 # subclasses
