@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://gv5upsmsx7sg"]
+
+[ext_resource type="Script" path="res://entities/common/generic_entity.gd" id="1_3gk2j"]
+[ext_resource type="Texture2D" uid="uid://cf6utmcx48kwr" path="res://ui/combat/small-hpbar.png" id="2_f0x8x"]
+[ext_resource type="Texture2D" uid="uid://mfryetcjrhcp" path="res://ui/combat/hp.png" id="3_seand"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57jfu"]
+size = Vector2(32, 32)
+
+[node name="Entity" type="Area2D"]
+script = ExtResource("1_3gk2j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_57jfu")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchor_right = -0.0078125
+anchor_bottom = -0.0104167
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 24.0
+offset_bottom = 24.0
+metadata/_edit_use_anchors_ = true
+
+[node name="HPBar" type="TextureProgressBar" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.21875
+anchor_right = 1.53125
+offset_left = -3.0
+offset_right = 3.0
+offset_bottom = 8.0
+grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 4
+stretch_margin_right = 3
+stretch_margin_bottom = 4
+texture_over = ExtResource("2_f0x8x")
+texture_progress = ExtResource("3_seand")
+metadata/_edit_use_anchors_ = true

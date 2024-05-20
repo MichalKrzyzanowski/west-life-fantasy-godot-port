@@ -10,12 +10,14 @@ extends Area2D
 
 # @export vars
 ## stats of the character, used for combat
-@export var stats: CombatStats
-## character name
-@export var entity_name: String
+@export var entity_properties: EntityProperties:
+	set(new_entity_props):
+		entity_properties = new_entity_props
+		get_sprite_texture()
+		sprite.texture = entity_properties.texture
 
 # public vars
-var sprite
+var sprite: Sprite2D
 
 # private vars
 
@@ -33,7 +35,8 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	# TODO: remove this when godot devs update _init behaviour when initializing
 	# after resource export
-	stats.init()
+	pass
+	#entity_properties.stats.init()
 
 
 # remaining builtins e.g. _process, _input
@@ -45,15 +48,13 @@ func save() -> Dictionary:
 	return {
 		"filename": get_scene_file_path(),
 		"parent": PartyManager.get_path(),
-		"entity_name": entity_name,
-		"combat_stats": stats.save(),
+		"entity_properties": entity_properties.save(),
 	}
 
 
 ## load data from JSON savefile
 func load(data) -> void:
-	entity_name = data["entity_name"]
-	stats.load(data["combat_stats"])
+	entity_properties.load(data["entity_properties"])
 	add_to_group("persist")
 
 
@@ -63,6 +64,15 @@ func get_sprite_texture() -> Texture:
 	if !sprite:
 		sprite = get_node("Sprite2D")
 	return sprite.texture
+
+
+func hide_hp_bar() -> void:
+	$UI/Control/HPBar.hide()
+
+
+func set_sprite_texture(texture: Texture) -> void:
+	if sprite:
+		sprite.texture = texture
 
 
 # private methods

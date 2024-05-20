@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ce03pc67436wa"]
+[gd_scene load_steps=7 format=3 uid="uid://ce03pc67436wa"]
 
 [ext_resource type="Texture2D" uid="uid://dlhk1jakpfhv3" path="res://ui/combat/CombatTextBox.png" id="1_80ql1"]
 [ext_resource type="FontFile" uid="uid://duujn5vjqjbyi" path="res://ui/common/font/arialbd.ttf" id="1_xnt83"]
+[ext_resource type="Script" path="res://ui/combat/combat_interface.gd" id="2_0wg40"]
 [ext_resource type="PackedScene" uid="uid://biwssbow6r5by" path="res://ui/combat/party_stats_combat_box.tscn" id="2_3bv6p"]
 
 [sub_resource type="Theme" id="Theme_uysed"]
@@ -21,8 +22,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_uysed")
+script = ExtResource("2_0wg40")
 
-[node name="Panel2" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,17 +32,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_q2s2h")
-
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.078125
-anchor_top = 0.125
-anchor_right = 0.789062
-anchor_bottom = 0.947917
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
 
 [node name="EnemyPanel" type="NinePatchRect" parent="."]
 layout_mode = 1
@@ -210,30 +201,30 @@ flat = true
 alignment = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="PartyStatsCombatBox" parent="." instance=ExtResource("2_3bv6p")]
+[node name="PartyMember1" parent="." instance=ExtResource("2_3bv6p")]
 layout_mode = 1
 anchor_left = 0.830078
-anchor_top = 0.8125
+anchor_top = 0.25
 anchor_right = 0.970703
-anchor_bottom = 1.0
+anchor_bottom = 0.4375
 
-[node name="PartyStatsCombatBox2" parent="." instance=ExtResource("2_3bv6p")]
-layout_mode = 1
-anchor_left = 0.830078
-anchor_top = 0.625
-anchor_right = 0.970703
-anchor_bottom = 0.8125
-
-[node name="PartyStatsCombatBox3" parent="." instance=ExtResource("2_3bv6p")]
+[node name="PartyMember2" parent="." instance=ExtResource("2_3bv6p")]
 layout_mode = 1
 anchor_left = 0.830078
 anchor_top = 0.4375
 anchor_right = 0.970703
 anchor_bottom = 0.625
 
-[node name="PartyStatsCombatBox4" parent="." instance=ExtResource("2_3bv6p")]
+[node name="PartyMember3" parent="." instance=ExtResource("2_3bv6p")]
 layout_mode = 1
 anchor_left = 0.830078
-anchor_top = 0.25
+anchor_top = 0.625
 anchor_right = 0.970703
-anchor_bottom = 0.4375
+anchor_bottom = 0.8125
+
+[node name="PartyMember4" parent="." instance=ExtResource("2_3bv6p")]
+layout_mode = 1
+anchor_left = 0.830078
+anchor_top = 0.8125
+anchor_right = 0.970703
+anchor_bottom = 1.0

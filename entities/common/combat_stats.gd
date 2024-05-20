@@ -35,7 +35,7 @@ var xp: int:
 	set = set_xp
 
 # current hp, character dies if hp reaches 0
-var hp: float:
+var hp: float = max_hp:
 	set = set_hp
 
 # xp required for the next level

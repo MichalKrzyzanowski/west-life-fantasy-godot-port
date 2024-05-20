@@ -1,0 +1,107 @@
+# @tool
+# class_name name
+extends Node2D
+# docstring
+
+
+# signals
+
+# enums
+
+# constants
+# @export vars
+## party list, use this instead of saved party if size > 0
+@export var party_data: Array[EntityProperties]
+
+## list of enemies to choose from when generating enemies
+@export var enemy_data: Array[EntityProperties]
+
+@export var is_party_advantage: bool
+
+# public vars
+var rng := RandomNumberGenerator.new()
+
+# private vars
+var _party: Array
+var _enemies: Array
+var _battle_order: Array
+
+# @onready vars
+@onready var GenericEntity := preload(
+		"res://entities/common/generic_entity_experimental.tscn") as PackedScene
+#@onready var ShadeNinja := preload("res://entities/common/generic_entity.tscn") as Area2D
+# TODO: figure out how to implement static typing for Grid2D plugin type
+@onready var party_grid = $PartyGrid
+@onready var enemy_grid = $EnemyGrid
+
+
+func _init() -> void:
+	pass
+
+
+func _enter_tree() -> void:
+	pass
+
+
+func _ready() -> void:
+	# randomize rng seed
+	rng.randomize()
+
+	# add party to the grid
+	if party_data:
+		_init_party(party_data)
+	else:
+		# TODO: implement using PartyManager party
+		print("saved party")
+
+	# spawn enemies and add them to the grid
+	_spawn_enemies()
+
+	# organise battle order
+	_setup_battle_order()
+
+
+# remaining builtins e.g. _process, _input
+
+
+# public methods
+
+
+# private methods
+func _init_party(data: Array[EntityProperties]) -> void:
+	if !data.is_empty():
+		for member_data in data:
+			var party_member = GenericEntity.instantiate()
+			party_member.entity_properties = member_data
+			party_grid.add_child(party_member)
+
+	party_grid.update_grid()
+	_party = enemy_grid.get_children()
+
+
+func _spawn_enemies() -> void:
+	var enemy_count: int = rng.randi_range(1, 9)
+
+	if !enemy_data.is_empty():
+		for index in range(0, enemy_count):
+			var enemy_index: int = rng.randi_range(0, enemy_data.size() - 1)
+			var enemy = GenericEntity.instantiate()
+			enemy.entity_properties = enemy_data[enemy_index]
+			enemy_grid.add_child(enemy)
+
+	enemy_grid.update_grid()
+	_enemies = enemy_grid.get_children()
+
+
+func _setup_battle_order() -> void:
+	if is_party_advantage:
+		print("you get to strike first.")
+		_battle_order = _party + _enemies
+	else:
+		print("enemies get to strike first.")
+		_battle_order = _enemies + _party
+	for i in _battle_order:
+		print(i.entity_properties.name)
+
+# subclasses
+
