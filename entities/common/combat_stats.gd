@@ -5,17 +5,17 @@ extends Resource
 signal on_level_up()
 signal on_hp_changed()
 signal on_xp_changed()
-signal has_died()
+signal on_hp_depleted()
 
 ## max character hp, increased upon level up
-@export var max_hp: float:
+@export var max_hp: int:
 	set(new_max_hp):
 		max_hp = new_max_hp
 		hp = max_hp
 ## base character damage dealt during combat, increased upon level up
-@export var attack: float
+@export var attack: int
 ## base character defence, reduces damage taken during combat
-@export var defence: float
+@export var defence: int
 
 @export_group("Stat Scaling", "scaler_")
 ## hp scaling factor, additive
@@ -45,7 +45,7 @@ var hp: float:
 # xp required for the next level
 var required_xp: int = 100
 
-var is_alive: bool = true
+var has_hp_depleted: bool = false
 
 # max level
 var _max_level: int = 9999
@@ -69,8 +69,9 @@ func _to_string() -> String:
 ## only update xp if level cap has not been reached
 ## emits [CombatStats.on_xp_changed]
 func set_xp(new_xp: int) -> void:
-	if !is_alive:
+	if has_hp_depleted:
 		return
+
 	if level == _max_level:
 		return
 
@@ -83,11 +84,14 @@ func set_xp(new_xp: int) -> void:
 
 ## hp setter, emits [CombatStats.on_hp_changed]
 func set_hp(new_hp: float) -> void:
+	if has_hp_depleted:
+		return
+
 	hp = clamp(new_hp, 0, max_hp)
 	on_hp_changed.emit()
 	if hp == 0:
-		is_alive = false
-		has_died.emit()
+		has_hp_depleted = true
+		on_hp_depleted.emit()
 
 
 ## level up character by increasing:

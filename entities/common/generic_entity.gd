@@ -3,6 +3,7 @@ extends Area2D
 
 
 # signals
+signal on_entity_clicked(node: Node2D)
 
 # enums
 
@@ -22,6 +23,8 @@ var sprite: Sprite2D
 # private vars
 
 # @onready vars
+@onready var ui := $UI as CanvasLayer
+@onready var hp_bar := $UI/Control/HPBar as TextureProgressBar
 
 
 func _init() -> void:
@@ -36,12 +39,23 @@ func _ready() -> void:
 	# TODO: remove this when godot devs update _init behaviour when initializing
 	# after resource export
 	if entity_properties && entity_properties.stats:
-		entity_properties.stats.has_died.connect(_has_entity_died)
-	pass
+		entity_properties.stats.on_hp_depleted.connect(_on_entity_hp_depleted)
+		entity_properties.stats.on_hp_changed.connect(_on_entity_hp_changed)
+		entity_properties.on_revival.connect(_on_entity_revival)
+		entity_properties.stats.on_level_up.connect(_on_entity_level_up)
+
+		# init hp bar
+		assert(hp_bar, "hp bar not found in generic entity")
+		hp_bar.max_value = entity_properties.stats.max_hp
+		hp_bar.value = entity_properties.stats.hp
 	#entity_properties.stats.init()
 
 
 # remaining builtins e.g. _process, _input
+func _notification(what: int) -> void:
+	match what:
+		NOTIFICATION_TRANSFORM_CHANGED:
+			ui.offset = global_position
 
 
 # public methods
@@ -69,7 +83,8 @@ func get_sprite_texture() -> Texture:
 
 
 func hide_hp_bar() -> void:
-	$UI/Control/HPBar.hide()
+	ui.hide()
+	ui.process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func set_sprite_texture(texture: Texture) -> void:
@@ -78,10 +93,31 @@ func set_sprite_texture(texture: Texture) -> void:
 
 
 # private methods
-func _has_entity_died() -> void:
+func _on_entity_hp_changed() -> void:
+	hp_bar.value = entity_properties.stats.hp
+
+
+func _on_entity_hp_depleted() -> void:
 	hide()
+	if ui.visible:
+		ui.hide()
 	process_mode = Node.PROCESS_MODE_DISABLED
 
 
-# subclasses
+func _on_entity_revival() -> void:
+	show()
+	process_mode = Node.PROCESS_MODE_INHERIT
 
+
+func _on_entity_level_up() -> void:
+	hp_bar.max_value = entity_properties.stats.max_hp
+	hp_bar.value = entity_properties.stats.hp
+
+
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if event.is_action_pressed("select_enemy"):
+		print("entity clicked")
+		on_entity_clicked.emit(self)
+
+
+# subclasses

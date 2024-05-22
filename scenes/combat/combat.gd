@@ -73,7 +73,7 @@ func _input(event: InputEvent) -> void:
 			KEY_S:
 				party_data[0].stats.hp += 10
 			KEY_X:
-				party_data[0].stats.xp += 10
+				party_data[0].stats.xp += 1000
 
 
 # public methods
@@ -95,7 +95,8 @@ func _init_party(data: Array[EntityProperties]) -> void:
 
 
 func _spawn_enemies() -> void:
-	var enemy_count: int = rng.randi_range(1, 9)
+	#var enemy_count: int = rng.randi_range(1, 9)
+	var enemy_count = 1
 
 	if !enemy_data.is_empty():
 		for index in range(0, enemy_count):
@@ -103,6 +104,7 @@ func _spawn_enemies() -> void:
 			var enemy = GenericEntity.instantiate()
 			enemy.entity_properties = enemy_data[enemy_index]
 			enemy_grid.add_child(enemy)
+			enemy.on_entity_clicked.connect(_on_enemy_selected)
 
 	enemy_grid.update_grid()
 	_enemies = enemy_grid.get_children()
@@ -119,6 +121,13 @@ func _setup_battle_order() -> void:
 	print("battle order")
 	for i in _battle_order:
 		print(i.entity_properties.name)
+
+
+func _on_enemy_selected(node: Node2D) -> void:
+	print("clicked")
+	if node.entity_properties:
+		print(node.entity_properties.name)
+
 
 # subclasses
 

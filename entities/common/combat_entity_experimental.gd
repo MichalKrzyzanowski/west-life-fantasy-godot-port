@@ -4,6 +4,7 @@ extends Resource
 
 
 # signals
+signal on_revival()
 
 # enums
 
@@ -17,6 +18,7 @@ extends Resource
 @export var texture: Texture
 
 # public vars
+var is_alive: bool = true
 
 # private vars
 
@@ -54,6 +56,12 @@ func save() -> Dictionary:
 func load(data) -> void:
 	name = data["name"]
 	stats.load(data["combat_stats"])
+
+
+func revive() -> void:
+	stats.has_hp_depleted = false
+	stats.hp = stats.max_hp
+	on_revival.emit()
 
 
 # private methods

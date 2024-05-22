@@ -11,9 +11,9 @@
 
 [sub_resource type="Resource" id="Resource_offy0"]
 script = ExtResource("3_klkua")
-max_hp = 100.0
-attack = 10.0
-defence = 0.0
+max_hp = 100
+attack = 10
+defence = 0
 scaler_hp = 10
 scaler_attack = 10
 scaler_defence = 10
@@ -30,9 +30,9 @@ texture = ExtResource("3_kojkh")
 
 [sub_resource type="Resource" id="Resource_m4601"]
 script = ExtResource("3_klkua")
-max_hp = 100.0
-attack = 10.0
-defence = 0.0
+max_hp = 210
+attack = 10
+defence = 0
 scaler_hp = 10
 scaler_attack = 10
 scaler_defence = 10
@@ -49,9 +49,9 @@ texture = ExtResource("3_kojkh")
 
 [sub_resource type="Resource" id="Resource_6rjm5"]
 script = ExtResource("3_klkua")
-max_hp = 100.0
-attack = 25.0
-defence = 0.0
+max_hp = 10
+attack = 1
+defence = 0
 scaler_hp = 10
 scaler_attack = 10
 scaler_defence = 10
@@ -68,9 +68,9 @@ texture = ExtResource("3_kojkh")
 
 [sub_resource type="Resource" id="Resource_cj8c7"]
 script = ExtResource("3_klkua")
-max_hp = 100.0
-attack = 5.0
-defence = 0.0
+max_hp = 210
+attack = 210
+defence = 0
 scaler_hp = 10
 scaler_attack = 10
 scaler_defence = 10
@@ -87,9 +87,9 @@ texture = ExtResource("3_kojkh")
 
 [sub_resource type="Resource" id="Resource_fkqvn"]
 script = ExtResource("3_klkua")
-max_hp = 30.0
-attack = 1.0
-defence = 1.0
+max_hp = 20
+attack = 1
+defence = 0
 scaler_hp = 0
 scaler_attack = 0
 scaler_defence = 0
@@ -106,9 +106,9 @@ texture = ExtResource("2_grfuc")
 
 [sub_resource type="Resource" id="Resource_dxygm"]
 script = ExtResource("3_klkua")
-max_hp = 10.0
-attack = 5.0
-defence = 0.0
+max_hp = 10
+attack = 1
+defence = 0
 scaler_hp = 0
 scaler_attack = 0
 scaler_defence = 0
@@ -131,20 +131,18 @@ is_party_advantage = true
 
 [node name="EnemyGrid" type="Node2D" parent="."]
 position = Vector2(192, 208)
-scale = Vector2(4, 4)
 script = ExtResource("1_7uh1k")
 rows = 3
-h_seperation = 34
-v_seperation = 34
+h_seperation = 136
+v_seperation = 136
 sort_by = 1
 do_not_update = true
 
 [node name="PartyGrid" type="Node2D" parent="."]
 position = Vector2(790, 160)
-scale = Vector2(4, 4)
 script = ExtResource("1_7uh1k")
-h_seperation = 32
-v_seperation = 28
+h_seperation = 128
+v_seperation = 112
 do_not_update = true
 
 [node name="UI" type="CanvasLayer" parent="."]
