@@ -5,6 +5,7 @@ extends Control
 
 
 # signals
+signal on_enemy_select_enabled(state: bool)
 
 # enums
 
@@ -37,6 +38,8 @@ var block_action_select: bool = false
 @onready var party := $Party as Control
 @onready var info_label := $CombatInfoPanel/BattleInfoLabel as Label
 @onready var attack_button := $ActionsPanel/AttackButton as Button
+@onready var block_button := $ActionsPanel/BlockButton as Button
+@onready var flee_button := $ActionsPanel/FleeButton as Button
 
 
 func _init() -> void:
@@ -53,9 +56,8 @@ func _ready() -> void:
 
 # remaining builtins e.g. _process, _input
 func _input(event: InputEvent) -> void:
-	if event.is_action_released("toggle_attack_mode"):
-		attack_button.button_pressed = !attack_button.button_pressed
-		block_action_select = attack_button.button_pressed
+	if event.is_action_pressed("toggle_attack_mode"):
+		press_attack_button()
 
 
 # public methods
@@ -70,10 +72,16 @@ func init_party_stat_boxes(party_data: Array[EntityProperties]) -> void:
 		party_boxes[i].party_member = party_data[i]
 
 
+func press_attack_button() -> void:
+	attack_button.button_pressed = !attack_button.button_pressed
+	block_action_select = attack_button.button_pressed
+
+
 # private methods
 func _on_attack_button_toggled(toggled_on: bool) -> void:
 	block_action_select = toggled_on
 	print("pressed")
+	on_enemy_select_enabled.emit(block_action_select)
 	if toggled_on:
 		info_label.text = "choose enemy"
 	else:

@@ -26,6 +26,7 @@ var rng := RandomNumberGenerator.new()
 var _party: Array
 var _enemies: Array
 var _battle_order: Array
+var _is_enemy_select_enabled: bool = false
 
 # @onready vars
 @onready var GenericEntity := preload(
@@ -49,6 +50,10 @@ func _ready() -> void:
 	# randomize rng seed
 	rng.randomize()
 
+	# connect to interface signals
+	interface.on_enemy_select_enabled.connect(_on_enemy_select_enabled)
+	interface.block_button.pressed.connect(_on_block_button_pressed)
+	interface.flee_button.pressed.connect(_on_flee_button_pressed)
 
 	# add party to the grid
 	if party_data:
@@ -94,8 +99,7 @@ func _init_party(data: Array[EntityProperties]) -> void:
 
 
 func _spawn_enemies() -> void:
-	#var enemy_count: int = rng.randi_range(1, 9)
-	var enemy_count = 1
+	var enemy_count: int = rng.randi_range(1, 9)
 
 	if !enemy_data.is_empty():
 		for index in range(0, enemy_count):
@@ -122,10 +126,32 @@ func _setup_battle_order() -> void:
 		print(i.entity_properties.name)
 
 
+func _on_enemy_select_enabled(state: bool) -> void:
+	_is_enemy_select_enabled = state
+
+
+func _on_block_button_pressed() -> void:
+	if _is_enemy_select_enabled:
+		return
+
+	print("block action")
+
+
+func _on_flee_button_pressed() -> void:
+	if _is_enemy_select_enabled:
+		return
+
+	print("flee action")
+
+
 func _on_enemy_selected(node: Node2D) -> void:
-	print("clicked")
+	if !_is_enemy_select_enabled:
+		return
+
+	print("enemy selected")
 	if node.entity_properties:
 		print(node.entity_properties.name)
+	interface.press_attack_button()
 
 
 # subclasses
