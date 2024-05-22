@@ -85,13 +85,12 @@ func _init_party(data: Array[EntityProperties]) -> void:
 		for member_data in data:
 			var party_member = GenericEntity.instantiate()
 			party_member.entity_properties = member_data
+			party_member.hide_ui = true
 			party_grid.add_child(party_member)
 
 	party_grid.update_grid()
 	_party = party_grid.get_children()
 	interface.init_party_stat_boxes(data)
-	for i in party_data:
-		print(i.stats)
 
 
 func _spawn_enemies() -> void:

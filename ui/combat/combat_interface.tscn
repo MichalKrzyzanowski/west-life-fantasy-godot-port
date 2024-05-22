@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ce03pc67436wa"]
+[gd_scene load_steps=13 format=3 uid="uid://ce03pc67436wa"]
 
 [ext_resource type="Texture2D" uid="uid://dlhk1jakpfhv3" path="res://ui/combat/CombatTextBox.png" id="1_80ql1"]
 [ext_resource type="FontFile" uid="uid://duujn5vjqjbyi" path="res://ui/common/font/arialbd.ttf" id="1_xnt83"]
@@ -13,6 +13,23 @@ Label/fonts/font = ExtResource("1_xnt83")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2s2h"]
 bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6n5le"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vhfo4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gmcho"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n24nc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4yohl"]
+
+[sub_resource type="Theme" id="Theme_tq5d2"]
+Button/styles/disabled = SubResource("StyleBoxEmpty_6n5le")
+Button/styles/focus = SubResource("StyleBoxEmpty_vhfo4")
+Button/styles/hover = SubResource("StyleBoxEmpty_gmcho")
+Button/styles/normal = SubResource("StyleBoxEmpty_n24nc")
+Button/styles/pressed = SubResource("StyleBoxEmpty_4yohl")
 
 [node name="CombatInterface" type="Control"]
 layout_mode = 3
@@ -197,6 +214,7 @@ anchor_right = 0.828125
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_tq5d2")
 texture = ExtResource("1_80ql1")
 patch_margin_left = 16
 patch_margin_top = 16
@@ -215,7 +233,6 @@ offset_right = 8.0
 offset_bottom = 50.0
 toggle_mode = true
 text = "ATTACK"
-flat = true
 alignment = 0
 metadata/_edit_use_anchors_ = true
 
@@ -223,13 +240,12 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0833333
-anchor_top = 0.326922
-anchor_right = 0.393229
-anchor_bottom = 0.326922
+anchor_top = 0.326923
+anchor_right = 0.333333
+anchor_bottom = 0.326923
 offset_right = 8.0
 offset_bottom = 50.0
 text = "BLOCK"
-flat = true
 alignment = 0
 metadata/_edit_use_anchors_ = true
 
@@ -237,13 +253,12 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.541667
-anchor_top = 0.0624989
-anchor_right = 0.851562
-anchor_bottom = 0.0624989
+anchor_top = 0.0625001
+anchor_right = 0.708333
+anchor_bottom = 0.0625001
 offset_right = 8.0
 offset_bottom = 50.0
 text = "FLEE"
-flat = true
 alignment = 0
 metadata/_edit_use_anchors_ = true
 

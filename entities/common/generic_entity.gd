@@ -19,6 +19,7 @@ signal on_entity_clicked(node: Node2D)
 
 # public vars
 var sprite: Sprite2D
+var hide_ui: bool = false
 
 # private vars
 
@@ -45,9 +46,12 @@ func _ready() -> void:
 		entity_properties.stats.on_level_up.connect(_on_entity_level_up)
 
 		# init hp bar
-		assert(hp_bar, "hp bar not found in generic entity")
-		hp_bar.max_value = entity_properties.stats.max_hp
-		hp_bar.value = entity_properties.stats.hp
+		if hide_ui:
+			hide_hp_bar()
+		else:
+			assert(hp_bar, "hp bar not found in generic entity")
+			hp_bar.max_value = entity_properties.stats.max_hp
+			hp_bar.value = entity_properties.stats.hp
 	#entity_properties.stats.init()
 
 
@@ -87,6 +91,11 @@ func hide_hp_bar() -> void:
 	ui.process_mode = Node.PROCESS_MODE_DISABLED
 
 
+func show_hp_bar() -> void:
+	ui.show()
+	ui.process_mode = Node.PROCESS_MODE_INHERIT
+
+
 func set_sprite_texture(texture: Texture) -> void:
 	if sprite:
 		sprite.texture = texture
@@ -94,24 +103,28 @@ func set_sprite_texture(texture: Texture) -> void:
 
 # private methods
 func _on_entity_hp_changed() -> void:
-	hp_bar.value = entity_properties.stats.hp
+	if !hide_ui:
+		hp_bar.value = entity_properties.stats.hp
 
 
 func _on_entity_hp_depleted() -> void:
 	hide()
-	if ui.visible:
-		ui.hide()
+	if !hide_ui:
+		hide_hp_bar()
 	process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func _on_entity_revival() -> void:
 	show()
+	if !hide_ui:
+		show_hp_bar()
 	process_mode = Node.PROCESS_MODE_INHERIT
 
 
 func _on_entity_level_up() -> void:
-	hp_bar.max_value = entity_properties.stats.max_hp
-	hp_bar.value = entity_properties.stats.hp
+	if !hide_ui:
+		hp_bar.max_value = entity_properties.stats.max_hp
+		hp_bar.value = entity_properties.stats.hp
 
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
