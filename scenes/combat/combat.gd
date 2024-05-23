@@ -27,6 +27,7 @@ var _party: Array
 var _enemies: Array
 var _battle_order: Array
 var _is_enemy_select_enabled: bool = false
+var _current_party_index: int = 0
 
 # @onready vars
 @onready var GenericEntity := preload(
@@ -151,7 +152,12 @@ func _on_enemy_selected(node: Node2D) -> void:
 	print("enemy selected")
 	if node.entity_properties:
 		print(node.entity_properties.name)
+	var current_member = party_grid.get_child(_current_party_index)
+	current_member.set_action(current_member.attack, node)
+	print(current_member.action)
 	interface.press_attack_button()
+	current_member.call_action()
+	print(current_member.action)
 
 
 # subclasses

@@ -20,6 +20,7 @@ signal on_entity_clicked(node: Node2D)
 # public vars
 var sprite: Sprite2D
 var hide_ui: bool = false
+var action: Callable
 
 # private vars
 
@@ -63,6 +64,24 @@ func _notification(what: int) -> void:
 
 
 # public methods
+func set_action(callable: Callable, target: Node2D) -> void:
+	if callable:
+		action = callable.bind(target)
+		if has_method("_passive_%s" % action.get_method()):
+			call("_passive_%s" % action.get_method())
+
+
+func call_action() -> void:
+	action.call()
+	action = Callable()
+
+
+# actions
+func attack(target: Node2D) -> void:
+	print("%s attacks %s" % [entity_properties.name, target.entity_properties.name])
+	target.entity_properties.stats.hp -= entity_properties.stats.attack
+
+
 ## saves data as dictionary for JSON format
 func save() -> Dictionary:
 	return {
@@ -102,6 +121,11 @@ func set_sprite_texture(texture: Texture) -> void:
 
 
 # private methods
+# action passives
+func _passive_attack() -> void:
+	print("%s enables attack passive" % entity_properties.name)
+
+## update hp bar when hp stat is changed
 func _on_entity_hp_changed() -> void:
 	if !hide_ui:
 		hp_bar.value = entity_properties.stats.hp
