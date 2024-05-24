@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b607al0ll6nfe"]
+[gd_scene load_steps=22 format=3 uid="uid://b607al0ll6nfe"]
 
 [ext_resource type="Script" path="res://addons/grid_2d/grid_2d.gd" id="1_7uh1k"]
 [ext_resource type="Script" path="res://scenes/combat/combat.gd" id="1_pefpc"]
@@ -7,7 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://ce03pc67436wa" path="res://ui/combat/combat_interface.tscn" id="3_67xwi"]
 [ext_resource type="Script" path="res://entities/common/combat_stats.gd" id="3_klkua"]
 [ext_resource type="Texture2D" uid="uid://c6dn11c567imk" path="res://entities/party-members/black_mage/player-shinobi.png" id="3_kojkh"]
-[ext_resource type="Texture2D" uid="uid://bms47f3c7kofx" path="res://bandit.png" id="3_rjkws"]
+[ext_resource type="Texture2D" uid="uid://j4i7k7rqc1fo" path="res://entities/party-members/thief/player-thief.png" id="4_kma1e"]
+[ext_resource type="Texture2D" uid="uid://b50ussga4ddv" path="res://entities/party-members/black_belt/combat_character_2.png" id="7_yn2oq"]
 
 [sub_resource type="Resource" id="Resource_offy0"]
 script = ExtResource("3_klkua")
@@ -22,11 +23,11 @@ level = 0
 xp_drop = 0
 gold_drop = 0
 
-[sub_resource type="Resource" id="Resource_11dro"]
+[sub_resource type="Resource" id="Resource_br1iv"]
 script = ExtResource("2_q628h")
 stats = SubResource("Resource_offy0")
 name = "fella"
-texture = ExtResource("3_kojkh")
+texture = ExtResource("4_kma1e")
 
 [sub_resource type="Resource" id="Resource_m4601"]
 script = ExtResource("3_klkua")
@@ -41,7 +42,7 @@ level = 0
 xp_drop = 0
 gold_drop = 0
 
-[sub_resource type="Resource" id="Resource_4kv47"]
+[sub_resource type="Resource" id="Resource_seu7c"]
 script = ExtResource("2_q628h")
 stats = SubResource("Resource_m4601")
 name = "mike"
@@ -60,7 +61,7 @@ level = 0
 xp_drop = 0
 gold_drop = 0
 
-[sub_resource type="Resource" id="Resource_1bffe"]
+[sub_resource type="Resource" id="Resource_qvxlj"]
 script = ExtResource("2_q628h")
 stats = SubResource("Resource_6rjm5")
 name = "bob"
@@ -79,13 +80,13 @@ level = 0
 xp_drop = 0
 gold_drop = 0
 
-[sub_resource type="Resource" id="Resource_inb5i"]
+[sub_resource type="Resource" id="Resource_6n1l0"]
 script = ExtResource("2_q628h")
 stats = SubResource("Resource_cj8c7")
 name = "fran"
 texture = ExtResource("3_kojkh")
 
-[sub_resource type="Resource" id="Resource_fkqvn"]
+[sub_resource type="Resource" id="Resource_sjmjn"]
 script = ExtResource("3_klkua")
 max_hp = 20
 attack = 1
@@ -98,16 +99,16 @@ level = 0
 xp_drop = 0
 gold_drop = 0
 
-[sub_resource type="Resource" id="Resource_x0el5"]
+[sub_resource type="Resource" id="Resource_dj72a"]
 script = ExtResource("2_q628h")
-stats = SubResource("Resource_fkqvn")
+stats = SubResource("Resource_sjmjn")
 name = "monke"
 texture = ExtResource("2_grfuc")
 
-[sub_resource type="Resource" id="Resource_dxygm"]
+[sub_resource type="Resource" id="Resource_0185v"]
 script = ExtResource("3_klkua")
-max_hp = 10
-attack = 1
+max_hp = 1000
+attack = 0
 defence = 0
 scaler_hp = 0
 scaler_attack = 0
@@ -117,16 +118,16 @@ level = 0
 xp_drop = 0
 gold_drop = 0
 
-[sub_resource type="Resource" id="Resource_ly3ln"]
+[sub_resource type="Resource" id="Resource_7u6n1"]
 script = ExtResource("2_q628h")
-stats = SubResource("Resource_dxygm")
-name = "monker"
-texture = ExtResource("3_rjkws")
+stats = SubResource("Resource_0185v")
+name = "temp"
+texture = ExtResource("7_yn2oq")
 
 [node name="Combat" type="Node2D"]
 script = ExtResource("1_pefpc")
-party_data = Array[ExtResource("2_q628h")]([SubResource("Resource_11dro"), SubResource("Resource_4kv47"), SubResource("Resource_1bffe"), SubResource("Resource_inb5i")])
-enemy_data = Array[ExtResource("2_q628h")]([SubResource("Resource_x0el5"), SubResource("Resource_ly3ln")])
+party_data = Array[ExtResource("2_q628h")]([SubResource("Resource_br1iv"), SubResource("Resource_seu7c"), SubResource("Resource_qvxlj"), SubResource("Resource_6n1l0")])
+enemy_data = Array[ExtResource("2_q628h")]([SubResource("Resource_dj72a"), SubResource("Resource_7u6n1")])
 is_party_advantage = true
 
 [node name="EnemyGrid" type="Node2D" parent="."]

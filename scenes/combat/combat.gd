@@ -18,9 +18,11 @@ signal on_turn_end(party_member: EntityProperties)
 @export var enemy_data: Array[EntityProperties]
 
 @export var is_party_advantage: bool
+@export var member_ready_offset: float = 86.0
 
 # public vars
 var rng := RandomNumberGenerator.new()
+var current_member: Node2D
 
 # private vars
 var _party: Array
@@ -69,6 +71,9 @@ func _ready() -> void:
 	# organise battle order
 	_setup_battle_order()
 
+	current_member = party_grid.get_child(_current_party_index)
+	_member_ready_position()
+
 
 # remaining builtins e.g. _process, _input
 func _input(event: InputEvent) -> void:
@@ -90,7 +95,9 @@ func _init_party(data: Array[EntityProperties]) -> void:
 	if !data.is_empty():
 		for member_data in data:
 			var party_member = GenericEntity.instantiate()
-			party_member.entity_properties = member_data
+			# TODO: look into _get_property_list for EntityProperties resource
+			# to prevent full deep duplication
+			party_member.entity_properties = member_data.duplicate(true)
 			party_member.hide_ui = true
 			party_grid.add_child(party_member)
 
@@ -106,7 +113,9 @@ func _spawn_enemies() -> void:
 		for index in range(0, enemy_count):
 			var enemy_index: int = rng.randi_range(0, enemy_data.size() - 1)
 			var enemy = GenericEntity.instantiate()
-			enemy.entity_properties = enemy_data[enemy_index]
+			# TODO: look into _get_property_list for EntityProperties resource
+			# to prevent full deep duplication
+			enemy.entity_properties = enemy_data[enemy_index].duplicate(true)
 			enemy_grid.add_child(enemy)
 			enemy.on_entity_clicked.connect(_on_enemy_selected)
 
@@ -152,12 +161,33 @@ func _on_enemy_selected(node: Node2D) -> void:
 	print("enemy selected")
 	if node.entity_properties:
 		print(node.entity_properties.name)
-	var current_member = party_grid.get_child(_current_party_index)
+
 	current_member.set_action(current_member.attack, node)
+
 	print(current_member.action)
-	interface.press_attack_button()
-	current_member.call_action()
-	print(current_member.action)
+	#interface.press_attack_button()
+	_next_member()
+
+
+func _member_ready_position() -> void:
+	current_member.position.x -= member_ready_offset
+
+
+func _member_default_position() -> void:
+	current_member.position.x += member_ready_offset
+
+
+func _next_member() -> void:
+	_member_default_position()
+	_current_party_index += 1
+
+	if _current_party_index >= party_grid.get_children().size():
+		interface.process_mode = Node.PROCESS_MODE_DISABLED
+		interface.update_combat_info("commence battle!")
+		return
+
+	current_member = party_grid.get_child(_current_party_index)
+	_member_ready_position()
 
 
 # subclasses

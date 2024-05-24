@@ -77,6 +77,13 @@ func press_attack_button() -> void:
 	block_action_select = attack_button.button_pressed
 
 
+func update_combat_info(info: String = "") -> void:
+	if info == "":
+		info_label.text = "choose action"
+		return
+	info_label.text = info
+
+
 # private methods
 func _on_attack_button_toggled(toggled_on: bool) -> void:
 	block_action_select = toggled_on
