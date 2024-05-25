@@ -19,6 +19,7 @@ signal on_turn_end(party_member: EntityProperties)
 
 @export var is_party_advantage: bool
 @export var member_ready_offset: float = 86.0
+@export var turn_wait_time: float = 1.5
 
 # public vars
 var rng := RandomNumberGenerator.new()
@@ -131,9 +132,9 @@ func _setup_battle_order() -> void:
 		print("enemies get to strike first.")
 		_battle_order = _enemies + _party
 
-	print("battle order")
-	for i in _battle_order:
-		print(i.entity_properties.name)
+	#print("battle order")
+	#for i in _battle_order:
+	#	print(i.entity_properties.name)
 
 
 func _on_enemy_select_enabled(state: bool) -> void:
@@ -144,28 +145,23 @@ func _on_block_button_pressed() -> void:
 	if _is_enemy_select_enabled:
 		return
 
-	print("block action")
-
 
 func _on_flee_button_pressed() -> void:
 	if _is_enemy_select_enabled:
 		return
-
-	print("flee action")
 
 
 func _on_enemy_selected(node: Node2D) -> void:
 	if !_is_enemy_select_enabled:
 		return
 
-	print("enemy selected")
 	if node.entity_properties:
 		print(node.entity_properties.name)
 
-	current_member.set_action(current_member.attack, node)
+	current_member.set_action("attack", node)
 
 	print(current_member.action)
-	#interface.press_attack_button()
+	interface.press_attack_button()
 	_next_member()
 
 
@@ -174,7 +170,7 @@ func _member_ready_position() -> void:
 
 
 func _member_default_position() -> void:
-	current_member.position.x += member_ready_offset
+	current_member.position.x = 0.0
 
 
 func _next_member() -> void:
@@ -184,11 +180,50 @@ func _next_member() -> void:
 	if _current_party_index >= party_grid.get_children().size():
 		interface.process_mode = Node.PROCESS_MODE_DISABLED
 		interface.update_combat_info("commence battle!")
+		_generate_enemy_actions()
+		await _commence_battle()
+		_reset_battle_status()
 		return
 
 	current_member = party_grid.get_child(_current_party_index)
 	_member_ready_position()
 
+
+func _reset_battle_status() -> void:
+	interface.process_mode = Node.PROCESS_MODE_INHERIT
+	interface.update_combat_info()
+	_current_party_index = 0
+	current_member = party_grid.get_child(_current_party_index)
+	_member_ready_position()
+
+
+func _generate_enemy_actions() -> void:
+	for enemy in enemy_grid.get_children():
+		# null action passed in forces the action to be selected at random
+		enemy.set_action("", _get_random_entity(party_grid.get_children()))
+
+
+func _get_random_entity(entities: Array) -> Node2D:
+	return entities[rng.randi_range(0, entities.size() - 1)]
+
+
+func _commence_battle() -> void:
+	for entity in _battle_order:
+		var success_code = entity.call_action()
+		# attack action will return -1 if target is null, or becomes null
+		# look for a new target
+		while success_code != 0:
+			if entity in party_grid:
+				entity.set_action(entity.action.get_method(),
+						_get_random_entity(enemy_grid.get_children()))
+				success_code = entity.call_action()
+			else:
+				entity.set_action(entity.action.get_method(),
+						_get_random_entity(party_grid.get_children()))
+				success_code = entity.call_action()
+
+		interface.update_combat_info(entity.action_msg)
+		await get_tree().create_timer(turn_wait_time).timeout
 
 # subclasses
 

@@ -47,6 +47,9 @@ var required_xp: int = 100
 
 var has_hp_depleted: bool = false
 
+# defence multiplier, used for blocking
+var defence_multiplier: int = 1
+
 # max level
 var _max_level: int = 9999
 

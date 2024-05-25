@@ -21,6 +21,7 @@ signal on_entity_clicked(node: Node2D)
 var sprite: Sprite2D
 var hide_ui: bool = false
 var action: Callable
+var action_msg: String
 
 # private vars
 
@@ -64,22 +65,73 @@ func _notification(what: int) -> void:
 
 
 # public methods
-func set_action(callable: Callable, target: Node2D) -> void:
-	if callable:
-		action = callable.bind(target)
-		if has_method("_passive_%s" % action.get_method()):
-			call("_passive_%s" % action.get_method())
+func set_action(action_name: String = "", target: Node2D = null) -> void:
+	# reset defence multiplier i.e. stop blocking
+	entity_properties.stats.defence_multiplier = 1
+	if action_name == "":
+		action_name = select_random_action()
+
+	if has_method("action_%s" % action_name):
+		action = Callable(self, "action_%s" % action_name).bind(target)
+		if has_method("_%s_passive" % action.get_method()):
+			call("_%s_passive" % action.get_method())
 
 
-func call_action() -> void:
-	action.call()
+func select_random_action() -> String:
+	var actions: Array = \
+			get_method_list().filter(func(i): \
+			return i["name"].begins_with("action_"))
+
+	var action_type: int = randi_range(0, actions.size() - 1)
+	return actions[action_type]["name"].trim_prefix("action_")
+
+
+func call_action() -> int:
+	return action.call()
+
+
+func clear_action() -> void:
 	action = Callable()
 
 
 # actions
-func attack(target: Node2D) -> void:
-	print("%s attacks %s" % [entity_properties.name, target.entity_properties.name])
-	target.entity_properties.stats.hp -= entity_properties.stats.attack
+func action_attack(target: Node2D) -> int:
+	if !target:
+		return -1
+	print(entity_properties.stats.attack)
+	var attack_formula: int = (
+			# attack
+			entity_properties.stats.attack -
+			(
+				# damage reduction of the target
+				entity_properties.stats.attack / 100.0 *
+				(
+					# defence_multiplier is altered if entity is blocking
+					target.entity_properties.stats.defence *
+					target.entity_properties.stats.defence_multiplier
+				)
+			)
+	)
+
+	target.entity_properties.stats.hp -= attack_formula
+	action_msg = "%s deals\n%d dmg\nto %s" % \
+			[entity_properties.name, attack_formula, target.entity_properties.name]
+	return 0
+
+
+func action_block(_target: Node2D) -> int:
+	action_msg = "%s\nis blocking" % entity_properties.name
+	return 0
+
+
+func action_flee(_target: Node2D) -> int:
+	print(_target.owner)
+	var success: int = randi() % 100 + 1
+	if success > 50:
+		action_msg = "%s escape\nattempt successfull" % entity_properties.name
+	else:
+		action_msg = "%s escape\nattempt failed" % entity_properties.name
+	return 0
 
 
 ## saves data as dictionary for JSON format
@@ -122,8 +174,13 @@ func set_sprite_texture(texture: Texture) -> void:
 
 # private methods
 # action passives
-func _passive_attack() -> void:
+func _action_attack_passive() -> void:
 	print("%s enables attack passive" % entity_properties.name)
+
+
+func _action_block_passive() -> void:
+	entity_properties.stats.defence_multiplier = 2
+
 
 ## update hp bar when hp stat is changed
 func _on_entity_hp_changed() -> void:

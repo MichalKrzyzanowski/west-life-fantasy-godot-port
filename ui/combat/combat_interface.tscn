@@ -146,7 +146,6 @@ anchor_top = 0.0769231
 anchor_right = 0.958333
 anchor_bottom = 0.485577
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_constants/line_spacing = -4
 text = "wok deals
 10 dmg
