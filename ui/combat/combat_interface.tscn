@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ce03pc67436wa"]
+[gd_scene load_steps=17 format=3 uid="uid://ce03pc67436wa"]
 
 [ext_resource type="Texture2D" uid="uid://dlhk1jakpfhv3" path="res://ui/combat/CombatTextBox.png" id="1_80ql1"]
 [ext_resource type="FontFile" uid="uid://duujn5vjqjbyi" path="res://ui/common/font/arialbd.ttf" id="1_xnt83"]
@@ -30,6 +30,22 @@ Button/styles/focus = SubResource("StyleBoxEmpty_vhfo4")
 Button/styles/hover = SubResource("StyleBoxEmpty_gmcho")
 Button/styles/normal = SubResource("StyleBoxEmpty_n24nc")
 Button/styles/pressed = SubResource("StyleBoxEmpty_4yohl")
+
+[sub_resource type="InputEventKey" id="InputEventKey_snpf1"]
+device = -1
+keycode = 66
+unicode = 98
+
+[sub_resource type="Shortcut" id="Shortcut_u7t2f"]
+events = [SubResource("InputEventKey_snpf1")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_lv7j2"]
+device = -1
+keycode = 70
+unicode = 102
+
+[sub_resource type="Shortcut" id="Shortcut_ym1i5"]
+events = [SubResource("InputEventKey_lv7j2")]
 
 [node name="CombatInterface" type="Control"]
 layout_mode = 3
@@ -244,6 +260,7 @@ anchor_right = 0.333333
 anchor_bottom = 0.326923
 offset_right = 8.0
 offset_bottom = 50.0
+shortcut = SubResource("Shortcut_u7t2f")
 text = "BLOCK"
 alignment = 0
 metadata/_edit_use_anchors_ = true
@@ -257,6 +274,7 @@ anchor_right = 0.708333
 anchor_bottom = 0.0625001
 offset_right = 8.0
 offset_bottom = 50.0
+shortcut = SubResource("Shortcut_ym1i5")
 text = "FLEE"
 alignment = 0
 metadata/_edit_use_anchors_ = true

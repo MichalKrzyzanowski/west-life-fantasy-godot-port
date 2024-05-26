@@ -18,7 +18,6 @@ signal on_revival()
 @export var texture: Texture
 
 # public vars
-var is_alive: bool = true
 
 # private vars
 

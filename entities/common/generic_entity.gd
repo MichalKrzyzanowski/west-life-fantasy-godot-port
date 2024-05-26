@@ -69,12 +69,23 @@ func set_action(action_name: String = "", target: Node2D = null) -> void:
 	# reset defence multiplier i.e. stop blocking
 	entity_properties.stats.defence_multiplier = 1
 	if action_name == "":
-		action_name = select_random_action()
+		action_name = select_smart_action()
 
-	if has_method("action_%s" % action_name):
-		action = Callable(self, "action_%s" % action_name).bind(target)
+	if has_method(action_name):
+		action = Callable(self, action_name).bind(target)
 		if has_method("_%s_passive" % action.get_method()):
 			call("_%s_passive" % action.get_method())
+
+
+func select_smart_action() -> String:
+	if (
+			entity_properties.stats.hp
+			<= entity_properties.stats.hp / 2
+	):
+		var chance = randi_range(1, 100)
+		if chance >= 60:
+			return "action_block"
+	return "action_attack"
 
 
 func select_random_action() -> String:
@@ -82,8 +93,8 @@ func select_random_action() -> String:
 			get_method_list().filter(func(i): \
 			return i["name"].begins_with("action_"))
 
-	var action_type: int = randi_range(0, actions.size() - 1)
-	return actions[action_type]["name"].trim_prefix("action_")
+	var action_type: int = randi() % actions.size()
+	return actions[action_type]["name"]
 
 
 func call_action() -> int:
@@ -96,7 +107,8 @@ func clear_action() -> void:
 
 # actions
 func action_attack(target: Node2D) -> int:
-	if !target:
+	if !target || !target.visible:
+		print("target is dead, looking for new target")
 		return -1
 	print(entity_properties.stats.attack)
 	var attack_formula: int = (
@@ -126,7 +138,7 @@ func action_block(_target: Node2D) -> int:
 
 func action_flee(_target: Node2D) -> int:
 	print(_target.owner)
-	var success: int = randi() % 100 + 1
+	var success: int = randi_range(1, 100)
 	if success > 50:
 		action_msg = "%s escape\nattempt successfull" % entity_properties.name
 	else:

@@ -32,7 +32,7 @@ signal on_hp_depleted()
 ## xp the character drops upon death, mainly used for enemy entities
 @export var xp_drop: int
 ## gold the character drops upon death, mainly used for enemy entities
-@export var gold_drop: int
+@export var gil_drop: int
 
 # current xp, used for leveling character up
 var xp: int:

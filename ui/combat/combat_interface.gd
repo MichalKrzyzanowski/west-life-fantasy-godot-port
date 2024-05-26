@@ -12,22 +12,6 @@ signal on_enemy_select_enabled(state: bool)
 # constants
 
 # @export vars
-#@export var party_data: Array:
-#	set(new_party_data):
-#		party_data = new_party_data
-#		print("combat interface")
-#		if !party:
-#			party = $Party
-#
-#		for i in range(0, party_data.size()):
-#			if (
-#					i >= party.get_children().size()
-#					|| i >= party_data.size()
-#			):
-#				return
-#
-#			print("in")
-#			party.get_child(i).party_member = party_data[i].entity_properties
 
 # public vars
 var block_action_select: bool = false
@@ -61,15 +45,15 @@ func _input(event: InputEvent) -> void:
 
 
 # public methods
-func init_party_stat_boxes(party_data: Array[EntityProperties]) -> void:
+func init_party_stat_boxes(party_list: Array) -> void:
 	if !party:
 		party = $Party
 
 	var party_boxes = party.get_children()
 	for i in range(0, party_boxes.size()):
-		if i >= party_data.size() || i >= party_boxes.size():
+		if i >= party_list.size() || i >= party_boxes.size():
 			return
-		party_boxes[i].party_member = party_data[i]
+		party_boxes[i].party_member = party_list[i]
 
 
 func press_attack_button() -> void:

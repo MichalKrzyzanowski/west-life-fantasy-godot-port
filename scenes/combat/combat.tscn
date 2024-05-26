@@ -21,7 +21,7 @@ scaler_defence = 10
 scaler_required_xp = 10
 level = 0
 xp_drop = 0
-gold_drop = 0
+gil_drop = 0
 
 [sub_resource type="Resource" id="Resource_br1iv"]
 script = ExtResource("2_q628h")
@@ -31,7 +31,7 @@ texture = ExtResource("4_kma1e")
 
 [sub_resource type="Resource" id="Resource_m4601"]
 script = ExtResource("3_klkua")
-max_hp = 210
+max_hp = 100
 attack = 10
 defence = 0
 scaler_hp = 10
@@ -40,7 +40,7 @@ scaler_defence = 10
 scaler_required_xp = 10
 level = 0
 xp_drop = 0
-gold_drop = 0
+gil_drop = 0
 
 [sub_resource type="Resource" id="Resource_seu7c"]
 script = ExtResource("2_q628h")
@@ -50,8 +50,8 @@ texture = ExtResource("3_kojkh")
 
 [sub_resource type="Resource" id="Resource_6rjm5"]
 script = ExtResource("3_klkua")
-max_hp = 10
-attack = 1
+max_hp = 100
+attack = 100
 defence = 0
 scaler_hp = 10
 scaler_attack = 10
@@ -59,7 +59,7 @@ scaler_defence = 10
 scaler_required_xp = 10
 level = 0
 xp_drop = 0
-gold_drop = 0
+gil_drop = 0
 
 [sub_resource type="Resource" id="Resource_qvxlj"]
 script = ExtResource("2_q628h")
@@ -69,7 +69,7 @@ texture = ExtResource("3_kojkh")
 
 [sub_resource type="Resource" id="Resource_cj8c7"]
 script = ExtResource("3_klkua")
-max_hp = 210
+max_hp = 100
 attack = 210
 defence = 0
 scaler_hp = 10
@@ -78,7 +78,7 @@ scaler_defence = 10
 scaler_required_xp = 10
 level = 0
 xp_drop = 0
-gold_drop = 0
+gil_drop = 0
 
 [sub_resource type="Resource" id="Resource_6n1l0"]
 script = ExtResource("2_q628h")
@@ -89,7 +89,7 @@ texture = ExtResource("3_kojkh")
 [sub_resource type="Resource" id="Resource_sjmjn"]
 script = ExtResource("3_klkua")
 max_hp = 20
-attack = 1
+attack = 200
 defence = 0
 scaler_hp = 0
 scaler_attack = 0
@@ -97,7 +97,7 @@ scaler_defence = 0
 scaler_required_xp = 0
 level = 0
 xp_drop = 0
-gold_drop = 0
+gil_drop = 0
 
 [sub_resource type="Resource" id="Resource_dj72a"]
 script = ExtResource("2_q628h")
@@ -107,8 +107,8 @@ texture = ExtResource("2_grfuc")
 
 [sub_resource type="Resource" id="Resource_0185v"]
 script = ExtResource("3_klkua")
-max_hp = 1000
-attack = 0
+max_hp = 100
+attack = 200
 defence = 0
 scaler_hp = 0
 scaler_attack = 0
@@ -116,7 +116,7 @@ scaler_defence = 0
 scaler_required_xp = 0
 level = 0
 xp_drop = 0
-gold_drop = 0
+gil_drop = 0
 
 [sub_resource type="Resource" id="Resource_7u6n1"]
 script = ExtResource("2_q628h")

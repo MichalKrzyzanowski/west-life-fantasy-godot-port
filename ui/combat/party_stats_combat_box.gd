@@ -11,7 +11,7 @@ extends Control
 # constants
 
 # @export vars
-@export var party_member: EntityProperties:
+@export var party_member: Node2D:
 	set(new_member):
 		party_member = new_member
 		_init_ui()
@@ -48,27 +48,27 @@ func _ready() -> void:
 # private methods
 func _init_ui() -> void:
 	# connect stats related signals
-	party_member.stats.on_hp_changed.connect(_on_party_member_hp_changed)
-	party_member.stats.on_xp_changed.connect(_on_party_member_xp_changed)
-	party_member.stats.on_level_up.connect(_on_party_member_level_up)
+	party_member.entity_properties.stats.on_hp_changed.connect(_on_party_member_hp_changed)
+	party_member.entity_properties.stats.on_xp_changed.connect(_on_party_member_xp_changed)
+	party_member.entity_properties.stats.on_level_up.connect(_on_party_member_level_up)
 
 	# init hp, name, and xp ui elements
-	name_label.text = party_member.name
-	hp_value_label.text = str(party_member.stats.hp)
-	xp_bar.max_value = party_member.stats.required_xp
-	xp_bar.value = party_member.stats.xp
+	name_label.text = party_member.entity_properties.name
+	hp_value_label.text = str(party_member.entity_properties.stats.hp)
+	xp_bar.max_value = party_member.entity_properties.stats.required_xp
+	xp_bar.value = party_member.entity_properties.stats.xp
 
 
 func _on_party_member_hp_changed() -> void:
-	hp_value_label.text = str(party_member.stats.hp)
+	hp_value_label.text = str(party_member.entity_properties.stats.hp)
 
 
 func _on_party_member_xp_changed() -> void:
-	xp_bar.value = party_member.stats.xp
+	xp_bar.value = party_member.entity_properties.stats.xp
 
 
 func _on_party_member_level_up() -> void:
-	xp_bar.max_value = party_member.stats.required_xp
+	xp_bar.max_value = party_member.entity_properties.stats.required_xp
 
 
 # subclasses
