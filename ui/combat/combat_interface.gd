@@ -20,7 +20,13 @@ var block_action_select: bool = false
 
 # @onready vars
 @onready var party := $Party as Control
+
+# combat info labels
 @onready var info_label := $CombatInfoPanel/BattleInfoLabel as Label
+@onready var rewards_label := $CombatInfoPanel/RewardsLabel as Label
+@onready var gil_xp_label := $CombatInfoPanel/GilXpValueLabel as Label
+@onready var gear_label := $CombatInfoPanel/GearLabel as Label
+
 @onready var attack_button := $ActionsPanel/AttackButton as Button
 @onready var block_button := $ActionsPanel/BlockButton as Button
 @onready var flee_button := $ActionsPanel/FleeButton as Button
@@ -66,6 +72,14 @@ func update_combat_info(info: String = "") -> void:
 		info_label.text = "choose action"
 		return
 	info_label.text = info
+
+
+func update_rewards_info(xp: int, gil: int, got_new_gear: bool = false) -> void:
+	rewards_label.show()
+	gil_xp_label.text = "%dg\n%dxp" % [gil, xp]
+	gil_xp_label.show()
+
+	gear_label.visible = got_new_gear
 
 
 # private methods

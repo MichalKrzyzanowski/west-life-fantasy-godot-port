@@ -186,7 +186,7 @@ autowrap_mode = 2
 uppercase = true
 metadata/_edit_use_anchors_ = true
 
-[node name="GoldXpValueLabel" type="Label" parent="CombatInfoPanel"]
+[node name="GilXpValueLabel" type="Label" parent="CombatInfoPanel"]
 visible = false
 layout_mode = 1
 anchors_preset = -1

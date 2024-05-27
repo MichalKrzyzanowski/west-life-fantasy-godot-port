@@ -96,8 +96,8 @@ scaler_attack = 0
 scaler_defence = 0
 scaler_required_xp = 0
 level = 0
-xp_drop = 0
-gil_drop = 0
+xp_drop = 20
+gil_drop = 50
 
 [sub_resource type="Resource" id="Resource_dj72a"]
 script = ExtResource("2_q628h")
@@ -115,8 +115,8 @@ scaler_attack = 0
 scaler_defence = 0
 scaler_required_xp = 0
 level = 0
-xp_drop = 0
-gil_drop = 0
+xp_drop = 40
+gil_drop = 10
 
 [sub_resource type="Resource" id="Resource_7u6n1"]
 script = ExtResource("2_q628h")
@@ -129,6 +129,7 @@ script = ExtResource("1_pefpc")
 party_data = Array[ExtResource("2_q628h")]([SubResource("Resource_br1iv"), SubResource("Resource_seu7c"), SubResource("Resource_qvxlj"), SubResource("Resource_6n1l0")])
 enemy_data = Array[ExtResource("2_q628h")]([SubResource("Resource_dj72a"), SubResource("Resource_7u6n1")])
 is_party_advantage = true
+max_enemy_count = 1
 
 [node name="EnemyGrid" type="Node2D" parent="."]
 position = Vector2(192, 208)

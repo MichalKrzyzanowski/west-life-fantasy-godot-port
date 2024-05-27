@@ -18,8 +18,11 @@ signal on_turn_end(party_member: EntityProperties)
 @export var is_party_advantage: bool
 @export var member_ready_offset: float = 86.0
 @export var turn_wait_time: float = 1.5
+@export var max_enemy_count: int = 9
 
 # public vars
+var has_party_won: bool = false
+var has_party_fled: bool = false
 var rng := RandomNumberGenerator.new()
 var current_member: Node2D
 
@@ -31,7 +34,7 @@ var _is_enemy_select_enabled: bool = false
 var _current_party_index: int = 0
 var _is_combat_over_early: bool = false
 # awards
-var _xp_reward: int = 0
+var _xp_reward: int = 1000
 var _gil_reward: int = 0
 
 # @onready vars
@@ -55,6 +58,8 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	# randomize rng seed
 	rng.randomize()
+
+	set_process_input(false)
 
 	# connect to interface signals
 	interface.on_enemy_select_enabled.connect(_on_enemy_select_enabled)
@@ -82,7 +87,8 @@ func _ready() -> void:
 
 # remaining builtins e.g. _process, _input
 func _input(event: InputEvent) -> void:
-	pass
+	if event.is_action_released("exit_combat"):
+		get_tree().quit()
 
 
 # public methods
@@ -97,6 +103,7 @@ func _init_party(data: Array[EntityProperties]) -> void:
 			# to prevent full deep duplication
 			party_member.entity_properties = member_data.duplicate(true)
 			party_member.hide_ui = true
+			party_member.on_flee_successfull.connect(_on_entity_flee)
 			party_grid.add_child(party_member)
 
 	party_grid.update_grid()
@@ -105,7 +112,7 @@ func _init_party(data: Array[EntityProperties]) -> void:
 
 
 func _spawn_enemies() -> void:
-	var enemy_count: int = rng.randi_range(1, 1)
+	var enemy_count: int = rng.randi_range(1, max_enemy_count)
 
 	if !enemy_data.is_empty():
 		for index in range(0, enemy_count):
@@ -127,15 +134,42 @@ func _init_rewards() -> void:
 		_xp_reward += enemy.entity_properties.stats.xp_drop
 
 
-func _has_party_won() -> bool:
-	return false
-
-
 func _end_combat() -> void:
+	# bring all party members back to default position
 	for member in _party:
 		_member_default_position(member)
+	# disable process for interface
 	interface.process_mode = Node.PROCESS_MODE_DISABLED
-	interface.update_combat_info("combat fin!")
+
+	# check win conditions
+
+	# if player has won
+	if has_party_won && !has_party_fled:
+		interface.update_combat_info("you won the battle!")
+		interface.update_rewards_info(_xp_reward, _gil_reward, true)
+		for member in _party:
+			member.entity_properties.stats.xp += _xp_reward
+	# if player has lost
+	elif !has_party_won && !has_party_fled:
+		interface.update_combat_info("you lost the battle...")
+
+	# turn on input processing
+	set_process_input(true)
+
+
+func _is_combat_over() -> bool:
+	var check_one_dead = func(entity): return !entity.is_alive
+
+	# if all party members wiped
+	if _party.all(check_one_dead):
+		return true
+
+	# if all enemies defeated
+	if _enemies.all(check_one_dead):
+		has_party_won = true
+		return true
+
+	return false
 
 
 func _setup_battle_order() -> void:
@@ -165,6 +199,18 @@ func _on_flee_button_pressed() -> void:
 
 	current_member.set_action("action_flee")
 	_next_member()
+
+
+func _on_entity_flee(entity: Node2D) -> void:
+	if entity in _party:
+		_is_combat_over_early = true
+		has_party_fled = true
+	# if it's an enemy, kill it, simulating escape
+	# TODO: implement escape() method for entity
+	elif entity in _enemies:
+		entity.entity_properties.stats.hp = 0
+		_xp_reward = min(0, _xp_reward - entity.entity_properties.stats.xp_drop)
+		_gil_reward = min(0, _gil_reward - entity.entity_properties.stats.gil_drop)
 
 
 func _on_enemy_selected(node: Node2D) -> void:
@@ -204,13 +250,12 @@ func _next_member() -> void:
 		interface.update_combat_info("commence battle!")
 		_generate_enemy_actions()
 		if await _commence_battle():
-			print("battle await")
 			_end_combat()
 			return
 		_reset_battle_status()
 		return
 
-	if !_party[_current_party_index].visible:
+	if !_party[_current_party_index].is_alive:
 		_next_member()
 		return
 
@@ -227,7 +272,7 @@ func _reset_battle_status() -> void:
 
 func _generate_enemy_actions() -> void:
 	for enemy in enemy_grid.get_children():
-		if !enemy.visible:
+		if !enemy.is_alive:
 			continue
 
 		# null action passed in forces the action to be selected at random
@@ -239,9 +284,11 @@ func _generate_enemy_actions() -> void:
 ## target is valid if it is not null and visible
 func _get_next_entity(entities: Array) -> Node2D:
 	for entity in entities:
-		if entity.visible:
+		if entity.is_alive:
 			return entity
-	# TODO: if no entity is valid, end the game
+	if entities == _enemies:
+		print("enemies")
+		has_party_won = true
 	_is_combat_over_early = true
 	return null
 
@@ -258,7 +305,7 @@ func _commence_battle() -> bool:
 		if _is_combat_over_early:
 			return true
 
-		if !entity.visible:
+		if !entity.is_alive:
 			continue
 
 		var success_code = entity.call_action()
@@ -277,7 +324,12 @@ func _commence_battle() -> bool:
 						_get_next_entity(party_grid.get_children()))
 				success_code = entity.call_action()
 
-		if entity in party_grid.get_children():
+		# only move entity to ready position if entity is
+		# a party member and it is attacking
+		if (
+				entity in party_grid.get_children()
+				&& entity.action.get_method().contains("attack")
+		):
 			_member_ready_position(entity)
 
 		interface.update_combat_info(entity.action_msg)
@@ -285,8 +337,8 @@ func _commence_battle() -> bool:
 
 		if entity in party_grid.get_children():
 			_member_default_position(entity)
-	return false
+
+	return _is_combat_over()
 
 
 # subclasses
-

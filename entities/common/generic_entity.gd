@@ -4,6 +4,7 @@ extends Area2D
 
 # signals
 signal on_entity_clicked(node: Node2D)
+signal on_flee_successfull(entity: Node2D)
 
 # enums
 
@@ -18,6 +19,7 @@ signal on_entity_clicked(node: Node2D)
 		sprite.texture = entity_properties.texture
 
 # public vars
+var is_alive: bool = true
 var sprite: Sprite2D
 var hide_ui: bool = false
 var action: Callable
@@ -28,6 +30,7 @@ var action_msg: String
 # @onready vars
 @onready var ui := $UI as CanvasLayer
 @onready var hp_bar := $UI/Control/HPBar as TextureProgressBar
+@onready var level_up_sprite := $LevelUpSprite as Sprite2D
 
 
 func _init() -> void:
@@ -107,7 +110,7 @@ func clear_action() -> void:
 
 # actions
 func action_attack(target: Node2D) -> int:
-	if !target || !target.visible:
+	if !target || !target.is_alive:
 		print("target is dead, looking for new target")
 		return -1
 	print(entity_properties.stats.attack)
@@ -137,10 +140,10 @@ func action_block(_target: Node2D) -> int:
 
 
 func action_flee(_target: Node2D) -> int:
-	print(_target.owner)
 	var success: int = randi_range(1, 100)
 	if success > 50:
 		action_msg = "%s escape\nattempt successfull" % entity_properties.name
+		on_flee_successfull.emit(self)
 	else:
 		action_msg = "%s escape\nattempt failed" % entity_properties.name
 	return 0
@@ -201,6 +204,7 @@ func _on_entity_hp_changed() -> void:
 
 
 func _on_entity_hp_depleted() -> void:
+	is_alive = false
 	hide()
 	if !hide_ui:
 		hide_hp_bar()
@@ -218,6 +222,7 @@ func _on_entity_level_up() -> void:
 	if !hide_ui:
 		hp_bar.max_value = entity_properties.stats.max_hp
 		hp_bar.value = entity_properties.stats.hp
+	level_up_sprite.show()
 
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
