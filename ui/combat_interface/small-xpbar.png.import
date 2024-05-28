@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mfryetcjrhcp"
-path="res://.godot/imported/hp.png-cd2c874ec8698f924761119f7e313385.ctex"
+uid="uid://dk3uklp1vx78h"
+path="res://.godot/imported/small-xpbar.png-9bf28af088c99f16fb03e51b605d02f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/combat/hp.png"
-dest_files=["res://.godot/imported/hp.png-cd2c874ec8698f924761119f7e313385.ctex"]
+source_file="res://ui/combat_interface/small-xpbar.png"
+dest_files=["res://.godot/imported/small-xpbar.png-9bf28af088c99f16fb03e51b605d02f8.ctex"]
 
 [params]
 

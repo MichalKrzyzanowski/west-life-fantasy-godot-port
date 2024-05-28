@@ -33,9 +33,6 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-	# TODO: remove this when godot devs update _init behaviour when initializing
-	# after resource export
-	#stats.init()
 	pass
 
 
@@ -57,6 +54,8 @@ func load(data) -> void:
 	stats.load(data["combat_stats"])
 
 
+## restored hp to full and sets has_hp_depleted = true
+## emits on_revival signal
 func revive() -> void:
 	stats.has_hp_depleted = false
 	stats.hp = stats.max_hp

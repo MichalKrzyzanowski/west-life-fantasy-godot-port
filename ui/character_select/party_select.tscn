@@ -1,14 +1,92 @@
-[gd_scene load_steps=8 format=3 uid="uid://bkavfc7fsmbyc"]
+[gd_scene load_steps=18 format=3 uid="uid://bkavfc7fsmbyc"]
 
 [ext_resource type="Script" path="res://ui/character_select/party_select.gd" id="1_8k5ua"]
 [ext_resource type="PackedScene" uid="uid://hwvpspp4pbni" path="res://ui/character_select/character_select_box.tscn" id="2_xnrnh"]
-[ext_resource type="PackedScene" uid="uid://cughmvu4xu3si" path="res://entities/party-members/black_belt/black_belt.tscn" id="3_2j2a3"]
-[ext_resource type="PackedScene" uid="uid://cp2ulhrn4t31i" path="res://entities/party-members/fighter/fighter.tscn" id="3_o0mqa"]
-[ext_resource type="PackedScene" uid="uid://dliv2k02a8ayw" path="res://entities/party-members/black_mage/black_mage.tscn" id="3_rj88f"]
-[ext_resource type="PackedScene" uid="uid://bwba7pyi53acu" path="res://entities/party-members/thief/thief.tscn" id="6_fwryj"]
+[ext_resource type="Script" path="res://entities/common/combat_entity_experimental.gd" id="3_g4o2y"]
+[ext_resource type="Script" path="res://entities/common/combat_stats.gd" id="4_nlfj8"]
+[ext_resource type="Texture2D" uid="uid://b50ussga4ddv" path="res://entities/party-members/black_belt/combat_character_2.png" id="5_cu0fk"]
+[ext_resource type="Texture2D" uid="uid://dltxmw47ynbb0" path="res://entities/party-members/fallback/fallback.png" id="6_3lum1"]
+[ext_resource type="Texture2D" uid="uid://2aeni7r1e2v5" path="res://entities/party-members/fighter/combat_character_1.png" id="7_dwyog"]
+[ext_resource type="Texture2D" uid="uid://j4i7k7rqc1fo" path="res://entities/party-members/thief/player-thief.png" id="8_tr7pt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1s8pe"]
 bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Resource" id="Resource_642v7"]
+script = ExtResource("4_nlfj8")
+max_hp = 10
+attack = 1
+defence = 1
+scaler_hp = 0
+scaler_attack = 0
+scaler_defence = 0
+scaler_required_xp = 0
+level = 0
+xp_drop = 0
+gil_drop = 0
+
+[sub_resource type="Resource" id="Resource_n3xu0"]
+script = ExtResource("3_g4o2y")
+stats = SubResource("Resource_642v7")
+name = "mono"
+texture = ExtResource("5_cu0fk")
+
+[sub_resource type="Resource" id="Resource_hffqi"]
+script = ExtResource("4_nlfj8")
+max_hp = 1
+attack = 1
+defence = 1
+scaler_hp = 0
+scaler_attack = 0
+scaler_defence = 0
+scaler_required_xp = 0
+level = 0
+xp_drop = 0
+gil_drop = 0
+
+[sub_resource type="Resource" id="Resource_vfgi0"]
+script = ExtResource("3_g4o2y")
+stats = SubResource("Resource_hffqi")
+name = "snel"
+texture = ExtResource("6_3lum1")
+
+[sub_resource type="Resource" id="Resource_rvnah"]
+script = ExtResource("4_nlfj8")
+max_hp = 1
+attack = 1
+defence = 1
+scaler_hp = 0
+scaler_attack = 0
+scaler_defence = 0
+scaler_required_xp = 0
+level = 0
+xp_drop = 0
+gil_drop = 0
+
+[sub_resource type="Resource" id="Resource_erijy"]
+script = ExtResource("3_g4o2y")
+stats = SubResource("Resource_rvnah")
+name = "uwu"
+texture = ExtResource("7_dwyog")
+
+[sub_resource type="Resource" id="Resource_t8w51"]
+script = ExtResource("4_nlfj8")
+max_hp = 1
+attack = 1
+defence = 1
+scaler_hp = 0
+scaler_attack = 0
+scaler_defence = 0
+scaler_required_xp = 0
+level = 0
+xp_drop = 0
+gil_drop = 0
+
+[sub_resource type="Resource" id="Resource_tt6w1"]
+script = ExtResource("3_g4o2y")
+stats = SubResource("Resource_t8w51")
+name = "thef"
+texture = ExtResource("8_tr7pt")
 
 [node name="PartySelect" type="Control"]
 layout_mode = 3
@@ -47,28 +125,28 @@ columns = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-character_data = Array[PackedScene]([ExtResource("3_rj88f"), ExtResource("3_o0mqa"), ExtResource("3_2j2a3"), ExtResource("6_fwryj")])
+character_data = Array[ExtResource("3_g4o2y")]([SubResource("Resource_n3xu0")])
 character_name_overrides = Array[String](["walk", "sour", "chest", "ben"])
 
 [node name="CharacterSelectBox2" parent="CharacterGrid" instance=ExtResource("2_xnrnh")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-character_data = Array[PackedScene]([ExtResource("3_o0mqa"), ExtResource("3_rj88f"), ExtResource("6_fwryj"), ExtResource("3_2j2a3")])
+character_data = Array[ExtResource("3_g4o2y")]([SubResource("Resource_vfgi0")])
 character_name_overrides = Array[String](["wok", "baba", "mike", "benny"])
 
 [node name="CharacterSelectBox3" parent="CharacterGrid" instance=ExtResource("2_xnrnh")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-character_data = Array[PackedScene]([ExtResource("3_rj88f"), ExtResource("3_o0mqa"), ExtResource("3_2j2a3"), ExtResource("6_fwryj")])
+character_data = Array[ExtResource("3_g4o2y")]([SubResource("Resource_erijy")])
 character_name_overrides = Array[String](["monke", "stoic", "creek", "weeb"])
 
 [node name="CharacterSelectBox4" parent="CharacterGrid" instance=ExtResource("2_xnrnh")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-character_data = Array[PackedScene]([ExtResource("3_o0mqa"), ExtResource("3_rj88f"), ExtResource("6_fwryj"), ExtResource("3_2j2a3")])
+character_data = Array[ExtResource("3_g4o2y")]([SubResource("Resource_tt6w1")])
 character_name_overrides = Array[String](["meds", "shot", "big", "wife"])
 
 [node name="ContinueButton" type="Button" parent="."]

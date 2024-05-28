@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dlhk1jakpfhv3"
-path="res://.godot/imported/CombatTextBox.png-e5dd54baea4bf6e5a564279d9ff921c6.ctex"
+path="res://.godot/imported/CombatTextBox.png-6311a647d998b0117046584dda3d588e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/combat/CombatTextBox.png"
-dest_files=["res://.godot/imported/CombatTextBox.png-e5dd54baea4bf6e5a564279d9ff921c6.ctex"]
+source_file="res://ui/combat_interface/CombatTextBox.png"
+dest_files=["res://.godot/imported/CombatTextBox.png-6311a647d998b0117046584dda3d588e.ctex"]
 
 [params]
 

@@ -87,10 +87,6 @@ func save_node(node, marked: Dictionary, savefile: FileAccess) -> void:
 		print("node '%s' is already saved, skipping" % node.name)
 		return
 
-	if node.scene_file_path.is_empty():
-		print("node '%s' is not an instanced scene, skipping" % node.name)
-		return
-
 	if !node.has_method("save"):
 		print("missing method 'save' in node '%s', skipping" % node.name)
 		return
@@ -118,9 +114,11 @@ func load_game(savefile_name: String) -> bool:
 	# free all persist nodes
 	var save_nodes = get_tree().get_nodes_in_group("persist")
 	for node in save_nodes:
-		# rename node to prevent future conflicts
-		node.name = "%s@%s" % [node.name, str(randi() % 255)]
-		node.queue_free()
+		# only rename and free objects that were instantiated
+		if !node.scene_file_path.is_empty():
+			# rename node to prevent future conflicts
+			node.name = "%s@%s" % [node.name, str(randi() % 255)]
+			node.queue_free()
 
 	var savefile := FileAccess.open(SAVE_PATH % savefile_name, FileAccess.READ)
 	while savefile.get_position() < savefile.get_length():
@@ -150,6 +148,14 @@ func load_game(savefile_name: String) -> bool:
 # new node is attached to correct parent and it's 'load'
 # method called
 func load_node(data) -> void:
+	# call load method on nodes that are not instantiated
+	if !data.has("filename"):
+		print("loading %s" % data["name"])
+		var node = get_node("%s/%s" % [data["parent"], data["name"]])
+		if node.has_method("load"):
+			node.call("load", data)
+		return
+
 	print("loading %s" % data["filename"])
 	var new_object = load(data["filename"]).instantiate()
 	var object_parent = get_node(data["parent"])
@@ -167,6 +173,7 @@ func load_node(data) -> void:
 		new_object.call("load", data)
 
 
+## helper that returns true if savefile exists
 func is_save_present() -> bool:
 	return FileAccess.file_exists(SAVE_PATH % SAVE_FILE)
 

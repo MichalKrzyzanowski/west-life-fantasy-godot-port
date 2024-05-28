@@ -1,9 +1,9 @@
 [gd_scene load_steps=17 format=3 uid="uid://ce03pc67436wa"]
 
-[ext_resource type="Texture2D" uid="uid://dlhk1jakpfhv3" path="res://ui/combat/CombatTextBox.png" id="1_80ql1"]
+[ext_resource type="Texture2D" uid="uid://dlhk1jakpfhv3" path="res://ui/combat_interface/CombatTextBox.png" id="1_80ql1"]
 [ext_resource type="FontFile" uid="uid://duujn5vjqjbyi" path="res://ui/common/font/arialbd.ttf" id="1_xnt83"]
-[ext_resource type="Script" path="res://ui/combat/combat_interface.gd" id="2_0wg40"]
-[ext_resource type="PackedScene" uid="uid://biwssbow6r5by" path="res://ui/combat/party_stats_combat_box.tscn" id="2_3bv6p"]
+[ext_resource type="Script" path="res://ui/combat_interface/combat_interface.gd" id="2_0wg40"]
+[ext_resource type="PackedScene" uid="uid://biwssbow6r5by" path="res://ui/combat_interface/party_stats_combat_box.tscn" id="2_3bv6p"]
 
 [sub_resource type="Theme" id="Theme_uysed"]
 Button/font_sizes/font_size = 27

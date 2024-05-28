@@ -17,7 +17,7 @@ extends Control
 # private vars
 
 # @onready vars
-@onready var character_grid = get_node("CharacterGrid")
+@onready var character_grid = $CharacterGrid as GridContainer
 @onready var desert_scene = preload("res://scenes/desert/desert_map.tscn")
 
 

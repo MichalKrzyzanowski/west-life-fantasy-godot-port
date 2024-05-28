@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://scenes/combat/combat.gd" id="1_pefpc"]
 [ext_resource type="Texture2D" uid="uid://bd66bt1gm0jax" path="res://desert-warrior.png" id="2_grfuc"]
 [ext_resource type="Script" path="res://entities/common/combat_entity_experimental.gd" id="2_q628h"]
-[ext_resource type="PackedScene" uid="uid://ce03pc67436wa" path="res://ui/combat/combat_interface.tscn" id="3_67xwi"]
 [ext_resource type="Script" path="res://entities/common/combat_stats.gd" id="3_klkua"]
 [ext_resource type="Texture2D" uid="uid://c6dn11c567imk" path="res://entities/party-members/black_mage/player-shinobi.png" id="3_kojkh"]
 [ext_resource type="Texture2D" uid="uid://j4i7k7rqc1fo" path="res://entities/party-members/thief/player-thief.png" id="4_kma1e"]
 [ext_resource type="Texture2D" uid="uid://b50ussga4ddv" path="res://entities/party-members/black_belt/combat_character_2.png" id="7_yn2oq"]
+[ext_resource type="PackedScene" uid="uid://ce03pc67436wa" path="res://ui/combat_interface/combat_interface.tscn" id="9_jx1kh"]
 
 [sub_resource type="Resource" id="Resource_offy0"]
 script = ExtResource("3_klkua")
@@ -150,4 +150,4 @@ do_not_update = true
 [node name="UI" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="CombatInterface" parent="UI" instance=ExtResource("3_67xwi")]
+[node name="CombatInterface" parent="UI" instance=ExtResource("9_jx1kh")]

@@ -1,14 +1,14 @@
 [gd_scene load_steps=7 format=3 uid="uid://biwssbow6r5by"]
 
-[ext_resource type="FontFile" uid="uid://duujn5vjqjbyi" path="res://ui/common/font/arialbd.ttf" id="1_gagwn"]
-[ext_resource type="Texture2D" uid="uid://dlhk1jakpfhv3" path="res://ui/combat/CombatTextBox.png" id="2_3bok3"]
-[ext_resource type="Script" path="res://ui/combat/party_stats_combat_box.gd" id="2_foj5o"]
-[ext_resource type="Texture2D" uid="uid://dk3uklp1vx78h" path="res://ui/combat/small-xpbar.png" id="3_34df3"]
-[ext_resource type="Texture2D" uid="uid://4tk2ifb75s61" path="res://ui/combat/xp1.png" id="4_mc23q"]
+[ext_resource type="FontFile" uid="uid://duujn5vjqjbyi" path="res://ui/common/font/arialbd.ttf" id="1_jsbla"]
+[ext_resource type="Script" path="res://ui/combat_interface/party_stats_combat_box.gd" id="2_4303b"]
+[ext_resource type="Texture2D" uid="uid://dlhk1jakpfhv3" path="res://ui/combat_interface/CombatTextBox.png" id="3_10ayg"]
+[ext_resource type="Texture2D" uid="uid://dk3uklp1vx78h" path="res://ui/combat_interface/small-xpbar.png" id="4_s8llf"]
+[ext_resource type="Texture2D" uid="uid://4tk2ifb75s61" path="res://ui/combat_interface/xp1.png" id="5_xvrwb"]
 
 [sub_resource type="Theme" id="Theme_5ux7l"]
 Label/font_sizes/font_size = 27
-Label/fonts/font = ExtResource("1_gagwn")
+Label/fonts/font = ExtResource("1_jsbla")
 
 [node name="PartyStatsCombatBox" type="Control"]
 layout_mode = 3
@@ -19,7 +19,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource("Theme_5ux7l")
-script = ExtResource("2_foj5o")
+script = ExtResource("2_4303b")
 metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="NinePatchRect" parent="."]
@@ -29,7 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_3bok3")
+texture = ExtResource("3_10ayg")
 patch_margin_left = 16
 patch_margin_top = 16
 patch_margin_right = 16
@@ -96,7 +96,7 @@ stretch_margin_left = 2
 stretch_margin_top = 3
 stretch_margin_right = 2
 stretch_margin_bottom = 3
-texture_over = ExtResource("3_34df3")
-texture_progress = ExtResource("4_mc23q")
+texture_over = ExtResource("4_s8llf")
+texture_progress = ExtResource("5_xvrwb")
 texture_progress_offset = Vector2(1, 1)
 metadata/_edit_use_anchors_ = true

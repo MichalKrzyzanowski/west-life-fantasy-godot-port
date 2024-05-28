@@ -152,8 +152,6 @@ func action_flee(_target: Node2D) -> int:
 ## saves data as dictionary for JSON format
 func save() -> Dictionary:
 	return {
-		"filename": get_scene_file_path(),
-		"parent": PartyManager.get_path(),
 		"entity_properties": entity_properties.save(),
 	}
 
@@ -161,7 +159,6 @@ func save() -> Dictionary:
 ## load data from JSON savefile
 func load(data) -> void:
 	entity_properties.load(data["entity_properties"])
-	add_to_group("persist")
 
 
 ## get texture stored in [param sprite].

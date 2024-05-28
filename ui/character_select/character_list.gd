@@ -9,7 +9,7 @@ extends Control
 # constants
 
 # @export vars
-@export var character_data: Array[PackedScene]
+@export var character_data: Array[EntityProperties]
 @export var character_name_overrides: Array[String]
 
 # public vars
@@ -20,8 +20,8 @@ var _character_list: Array
 
 # @onready vars
 @onready var fallback_entity = preload("res://entities/party-members/fallback/fallback.tscn")
-@onready var title:Label = get_node("Title")
-@onready var image:TextureRect = get_node("Image/TextureRect")
+@onready var title = $Title as Label
+@onready var image = $Image/TextureRect as TextureRect
 
 
 func _init() -> void:
@@ -37,10 +37,11 @@ func _enter_tree() -> void:
 ## if data is invalid, append [param fallback_entity] instead
 func _ready() -> void:
 	for character in character_data:
-		if _is_valid(character.get_state()):
-			_character_list.append(character.instantiate())
+		if _is_valid(character):
+			_character_list.append(character)
 		else:
-			_character_list.append(fallback_entity.instantiate())
+			#_character_list.append(fallback_entity.instantiate())
+			pass
 	_update_character_box()
 
 
@@ -75,12 +76,12 @@ func _on_next_char_button_pressed() -> void:
 
 ## validate [param state] of entity node
 ## by checking if stats export is available
-func _is_valid(state: SceneState) -> bool:
-	for i in range(0, state.get_node_count()):
-		for j in range(0, state.get_node_property_count(i)):
-			if state.get_node_property_name(i, j) == "stats":
-				return true
-	return false
+func _is_valid(entity_data: EntityProperties) -> bool:
+	return entity_data.stats != null
+	#for i in range(0, state.get_node_count()):
+		#for j in range(0, state.get_node_property_count(i)):
+			#if state.get_node_property_name(i, j) == "stats":
+				#return true
 
 
 ## update character box information such as
@@ -94,17 +95,17 @@ func _update_character_box() -> void:
 		return
 
 	# apply name override if name override present
-	if _character_index < character_name_overrides.size():
-		_character_list[_character_index].entity_name = \
-		character_name_overrides[_character_index]
+	#if _character_index < character_name_overrides.size():
+		#_character_list[_character_index].entity_name = \
+		#character_name_overrides[_character_index]
 
 		# update node name for easier debugging and clearer
 		# savefile
-		_character_list[_character_index].name = \
-		_character_list[_character_index].entity_name.to_pascal_case()
+		#_character_list[_character_index].name = \
+		#_character_list[_character_index].entity_name.to_pascal_case()
 
-	title.text = _character_list[_character_index].entity_name
-	image.texture = _character_list[_character_index].get_sprite_texture()
+	title.text = _character_list[_character_index].name
+	image.texture = _character_list[_character_index].texture
 
 
 # subclasses
