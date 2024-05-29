@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ckqmboktfdvg2"]
+[gd_scene load_steps=20 format=3 uid="uid://ckqmboktfdvg2"]
 
 [ext_resource type="PackedScene" uid="uid://d02rs8t4d5gwn" path="res://entities/overworld-player/overworld_player.tscn" id="1_3eak2"]
 [ext_resource type="Script" path="res://scenes/desert/desert_map.gd" id="1_vowdh"]
@@ -10,6 +10,49 @@
 [ext_resource type="TileSet" uid="uid://cx2yak8k0gq4c" path="res://scenes/common/house_tileset.tres" id="6_yybwe"]
 [ext_resource type="TileSet" uid="uid://lmlrfvna3b4l" path="res://scenes/common/cactus_tileset.tres" id="7_ad4e1"]
 [ext_resource type="PackedScene" uid="uid://0viy8iyuvprv" path="res://scenes/desert/instructions-board/instructions_board.tscn" id="10_kfu8i"]
+[ext_resource type="PackedScene" uid="uid://b48jo5oludty5" path="res://scenes/combat/combat_manager.tscn" id="11_t00au"]
+[ext_resource type="Script" path="res://entities/common/combat_entity_experimental.gd" id="12_2fudo"]
+[ext_resource type="Script" path="res://entities/common/combat_stats.gd" id="13_j4eom"]
+[ext_resource type="Texture2D" uid="uid://bcntixpe5nb3c" path="res://snail.png" id="14_rc64v"]
+[ext_resource type="Texture2D" uid="uid://bd66bt1gm0jax" path="res://desert-warrior.png" id="15_ap8io"]
+
+[sub_resource type="Resource" id="Resource_kmauy"]
+script = ExtResource("13_j4eom")
+max_hp = 20
+attack = 2
+defence = 10
+scaler_hp = 0
+scaler_attack = 0
+scaler_defence = 0
+scaler_required_xp = 0
+level = 0
+xp_drop = 1
+gil_drop = 20
+
+[sub_resource type="Resource" id="Resource_jkhr2"]
+script = ExtResource("12_2fudo")
+stats = SubResource("Resource_kmauy")
+name = "snul"
+texture = ExtResource("14_rc64v")
+
+[sub_resource type="Resource" id="Resource_ld056"]
+script = ExtResource("13_j4eom")
+max_hp = 100
+attack = 1
+defence = 50
+scaler_hp = 0
+scaler_attack = 0
+scaler_defence = 0
+scaler_required_xp = 0
+level = 0
+xp_drop = 500
+gil_drop = 105
+
+[sub_resource type="Resource" id="Resource_u1pbq"]
+script = ExtResource("12_2fudo")
+stats = SubResource("Resource_ld056")
+name = "warr"
+texture = ExtResource("15_ap8io")
 
 [node name="DesertMap" type="Node2D" groups=["persist"]]
 script = ExtResource("1_vowdh")
@@ -59,3 +102,8 @@ speed = 1.7
 [node name="InstructionsBoard" parent="." instance=ExtResource("10_kfu8i")]
 position = Vector2(-156, -234)
 scale = Vector2(0.67, 0.67)
+
+[node name="CombatManager" parent="." node_paths=PackedStringArray("overworld_player") instance=ExtResource("11_t00au")]
+enable_random_encounters = true
+enemy_spawn_table = Array[ExtResource("12_2fudo")]([SubResource("Resource_jkhr2"), SubResource("Resource_u1pbq")])
+overworld_player = NodePath("../OverworldPlayer")

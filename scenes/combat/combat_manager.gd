@@ -13,6 +13,7 @@ extends Node
 # @export vars
 @export var enable_random_encounters: bool = false
 @export var enemy_spawn_table: Array[EntityProperties]
+@export var overworld_player: CharacterBody2D
 
 # public vars
 
@@ -35,6 +36,9 @@ func _ready() -> void:
 
 
 # remaining builtins e.g. _process, _input
+func _process(delta: float) -> void:
+	if overworld_player && !overworld_player.velocity.is_zero_approx():
+		print("moving")
 
 
 # public methods
