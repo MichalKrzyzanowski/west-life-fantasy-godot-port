@@ -32,4 +32,5 @@ script = ExtResource("3_ya1km")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="CampMenu" parent="UI" instance=ExtResource("4_6mh1l")]
+process_mode = 2
 visible = false

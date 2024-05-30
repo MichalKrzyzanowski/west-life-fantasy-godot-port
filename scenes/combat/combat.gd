@@ -6,8 +6,12 @@ extends Node2D
 
 # signals
 signal on_turn_end(party_member: EntityProperties)
+signal on_combat_end()
+
 # enums
+
 # constants
+
 # @export vars
 ## party list, use this instead of saved party if size > 0
 @export var party_data: Array[EntityProperties]
@@ -45,6 +49,7 @@ var _gil_reward: int = 0
 @onready var party_grid = $PartyGrid
 @onready var enemy_grid = $EnemyGrid
 @onready var interface := $UI/CombatInterface as Control
+@onready var snel = preload("res://snail.png")
 
 
 func _init() -> void:
@@ -66,12 +71,12 @@ func _ready() -> void:
 	interface.block_button.pressed.connect(_on_block_button_pressed)
 	interface.flee_button.pressed.connect(_on_flee_button_pressed)
 
+	# make sure there is at least one party member and enemy available
+	assert(!party_data.is_empty(), "no party members present")
+	assert(!enemy_data.is_empty(), "no enemies available to spawn")
+
 	# add party to the grid
-	if party_data:
-		_init_party(party_data)
-	else:
-		# TODO: implement using PartyManager party
-		print("saved party")
+	_init_party(party_data)
 
 	# spawn enemies and add them to the grid
 	_spawn_enemies()
@@ -88,7 +93,8 @@ func _ready() -> void:
 # remaining builtins e.g. _process, _input
 func _input(event: InputEvent) -> void:
 	if event.is_action_released("exit_combat"):
-		get_tree().quit()
+		on_combat_end.emit()
+		queue_free()
 
 
 # public methods
@@ -101,7 +107,7 @@ func _init_party(data: Array[EntityProperties]) -> void:
 			var party_member = GenericEntity.instantiate()
 			# TODO: look into _get_property_list for EntityProperties resource
 			# to prevent full deep duplication
-			party_member.entity_properties = member_data.duplicate(true)
+			party_member.entity_properties = member_data
 			party_member.hide_ui = true
 			party_member.on_flee_successfull.connect(_on_entity_flee)
 			party_grid.add_child(party_member)
@@ -180,6 +186,8 @@ func _setup_battle_order() -> void:
 		print("enemies get to strike first.")
 		_battle_order = _enemies + _party
 
+	for i in _battle_order:
+		print(i.entity_properties.stats)
 
 func _on_enemy_select_enabled(state: bool) -> void:
 	_is_enemy_select_enabled = state

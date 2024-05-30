@@ -15,7 +15,7 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="Resource" id="Resource_642v7"]
 script = ExtResource("4_nlfj8")
 max_hp = 10
-attack = 1
+attack = 100
 defence = 1
 scaler_hp = 0
 scaler_attack = 0

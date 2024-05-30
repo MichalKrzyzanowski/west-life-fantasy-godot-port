@@ -125,6 +125,7 @@ name = "temp"
 texture = ExtResource("7_yn2oq")
 
 [node name="Combat" type="Node2D"]
+process_mode = 2
 script = ExtResource("1_pefpc")
 party_data = Array[ExtResource("2_q628h")]([SubResource("Resource_br1iv"), SubResource("Resource_seu7c"), SubResource("Resource_qvxlj"), SubResource("Resource_6n1l0")])
 enemy_data = Array[ExtResource("2_q628h")]([SubResource("Resource_dj72a"), SubResource("Resource_7u6n1")])

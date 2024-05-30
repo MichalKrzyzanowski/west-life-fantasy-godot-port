@@ -5,6 +5,7 @@ extends CharacterBody2D
 
 @onready var sprite := get_node("Sprite2D") as Sprite2D
 @onready var camp_menu := get_node("UI/CampMenu") as Control
+@onready var camera := $Camera2D as Camera2D
 
 
 ## physics process function that handles player movement,

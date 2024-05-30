@@ -15,8 +15,7 @@ signal on_flee_successfull(entity: Node2D)
 @export var entity_properties: EntityProperties:
 	set(new_entity_props):
 		entity_properties = new_entity_props
-		get_sprite_texture()
-		sprite.texture = entity_properties.texture
+		get_sprite().texture = entity_properties.texture
 
 # public vars
 var is_alive: bool = true
@@ -57,7 +56,6 @@ func _ready() -> void:
 			assert(hp_bar, "hp bar not found in generic entity")
 			hp_bar.max_value = entity_properties.stats.max_hp
 			hp_bar.value = entity_properties.stats.hp
-	#entity_properties.stats.init()
 
 
 # remaining builtins e.g. _process, _input
@@ -163,10 +161,17 @@ func load(data) -> void:
 
 ## get texture stored in [param sprite].
 ## onready did not work for some reason
-func get_sprite_texture() -> Texture:
+func get_sprite() -> Sprite2D:
 	if !sprite:
 		sprite = get_node("Sprite2D")
-	return sprite.texture
+	return sprite
+
+
+func update_sprite() -> void:
+	if !sprite:
+		sprite = $Sprite2D
+	sprite.texture = entity_properties.texture
+	print("updating sprite")
 
 
 func hide_hp_bar() -> void:
