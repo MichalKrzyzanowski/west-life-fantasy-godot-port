@@ -38,18 +38,17 @@ var _is_enemy_select_enabled: bool = false
 var _current_party_index: int = 0
 var _is_combat_over_early: bool = false
 # awards
-var _xp_reward: int = 1000
+var _xp_reward: int = 0
 var _gil_reward: int = 0
 
 # @onready vars
 @onready var GenericEntity := preload(
-		"res://entities/common/generic_entity_experimental.tscn") as PackedScene
+		"res://entities/common/generic_entity.tscn") as PackedScene
 #@onready var ShadeNinja := preload("res://entities/common/generic_entity.tscn") as Area2D
 # TODO: figure out how to implement static typing for Grid2D plugin type
 @onready var party_grid = $PartyGrid
 @onready var enemy_grid = $EnemyGrid
 @onready var interface := $UI/CombatInterface as Control
-@onready var snel = preload("res://snail.png")
 
 
 func _init() -> void:
@@ -128,6 +127,7 @@ func _spawn_enemies() -> void:
 			# to prevent full deep duplication
 			enemy.entity_properties = enemy_data[enemy_index].duplicate(true)
 			enemy.on_entity_clicked.connect(_on_enemy_selected)
+			enemy.face_party()
 			enemy_grid.add_child(enemy)
 
 	enemy_grid.update_grid()
@@ -152,7 +152,7 @@ func _end_combat() -> void:
 	# if player has won
 	if has_party_won && !has_party_fled:
 		interface.update_combat_info("you won the battle!")
-		interface.update_rewards_info(_xp_reward, _gil_reward, true)
+		interface.update_rewards_info(_xp_reward, _gil_reward)
 		for member in _party:
 			member.entity_properties.stats.xp += _xp_reward
 	# if player has lost
@@ -313,10 +313,15 @@ func _commence_battle() -> bool:
 		if _is_combat_over_early:
 			return true
 
+		# check party and enemy status before calling next action
+		if _is_combat_over():
+			return true
+
 		if !entity.is_alive:
 			continue
 
 		var success_code = entity.call_action()
+
 		# attack action will return -1 if target is null, or becomes null
 		# look for a new target
 		while success_code != 0:

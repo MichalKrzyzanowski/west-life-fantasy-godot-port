@@ -19,7 +19,7 @@ var _character_index: int = 0
 var _character_list: Array
 
 # @onready vars
-@onready var fallback_entity = preload("res://entities/party-members/fallback/fallback.tscn")
+# @onready var fallback_entity = preload("res://entities/party-members/fallback/fallback.tscn")
 @onready var title = $Title as Label
 @onready var image = $Image/TextureRect as TextureRect
 

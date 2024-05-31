@@ -1,29 +1,58 @@
-[gd_scene load_steps=5 format=3 uid="uid://citu6jpfxbdtw"]
+[gd_scene load_steps=7 format=3 uid="uid://gv5upsmsx7sg"]
 
 [ext_resource type="Script" path="res://entities/common/generic_entity.gd" id="1_8ype6"]
-[ext_resource type="Script" path="res://entities/common/combat_stats.gd" id="2_l26io"]
-
-[sub_resource type="Resource" id="Resource_q8kqu"]
-script = ExtResource("2_l26io")
-max_hp = 0.0
-attack = 0.0
-defence = 0.0
-scaler_hp = 0
-scaler_attack = 0
-scaler_defence = 0
-scaler_required_xp = 0
-level = 0
-xp_drop = 0
-gold_drop = 0
+[ext_resource type="Texture2D" uid="uid://c6dn11c567imk" path="res://entities/party-members/black_mage/player-shinobi.png" id="2_73vdd"]
+[ext_resource type="Texture2D" uid="uid://cf6utmcx48kwr" path="res://ui/combat_interface/small-hpbar.png" id="2_nplbt"]
+[ext_resource type="Texture2D" uid="uid://mfryetcjrhcp" path="res://ui/combat_interface/hp.png" id="3_a7bu0"]
+[ext_resource type="Texture2D" uid="uid://cuin0n0ygy3kq" path="res://entities/common/level-up.png" id="4_xft4o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57jfu"]
-size = Vector2(32, 32)
+size = Vector2(128, 128)
 
 [node name="Entity" type="Area2D"]
 script = ExtResource("1_8ype6")
-stats = SubResource("Resource_q8kqu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_73vdd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_57jfu")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+mouse_filter = 2
+
+[node name="HPBar" type="TextureProgressBar" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_right = -62.0
+offset_bottom = 9.0
+grow_horizontal = 2
+scale = Vector2(2, 2)
+mouse_filter = 2
+value = 100.0
+stretch_margin_left = 3
+stretch_margin_top = 4
+stretch_margin_right = 3
+stretch_margin_bottom = 4
+texture_over = ExtResource("2_nplbt")
+texture_progress = ExtResource("3_a7bu0")
+texture_progress_offset = Vector2(2, 2)
+
+[node name="LevelUpSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -32)
+scale = Vector2(2, 2)
+texture = ExtResource("4_xft4o")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

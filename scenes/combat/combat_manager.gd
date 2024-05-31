@@ -50,6 +50,20 @@ func _process(_delta: float) -> void:
 
 
 # public methods
+func trigger_combat(enemies: Array[EntityProperties] = []) -> void:
+	get_tree().paused = true
+	var combat_scene := CombatScene.instantiate()
+	overworld_player.camera.enabled = false
+
+	if !enemies.is_empty():
+		combat_scene.enemy_data = enemies
+	else:
+		combat_scene.enemy_data = enemy_spawn_table
+
+	combat_scene.party_data = PartyManager.party
+	combat_scene.on_combat_end.connect(_on_combat_end)
+	add_child(combat_scene)
+	get_parent().hide()
 
 
 # private methods
@@ -58,15 +72,8 @@ func _trigger_random_encounter() -> void:
 
 	print("chance for combat")
 
-	if chance > 0:
-		get_tree().paused = true
-		var combat_scene := CombatScene.instantiate()
-		overworld_player.camera.enabled = false
-		combat_scene.enemy_data = enemy_spawn_table
-		combat_scene.party_data = PartyManager.party
-		combat_scene.on_combat_end.connect(_on_combat_end)
-		add_child(combat_scene)
-		get_parent().hide()
+	if chance > 75:
+		trigger_combat()
 
 
 func _on_combat_end() -> void:

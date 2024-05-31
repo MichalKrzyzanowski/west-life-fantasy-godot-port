@@ -24,6 +24,12 @@ var hide_ui: bool = false
 var action: Callable
 var action_msg: String
 
+# shake vars
+var trauma: float = 0.0
+var trauma_power: float = 3.0
+var max_offset := Vector2(10.0, 10.0)
+var decay: float = 0.8
+
 # private vars
 
 # @onready vars
@@ -59,6 +65,12 @@ func _ready() -> void:
 
 
 # remaining builtins e.g. _process, _input
+func _process(delta: float) -> void:
+	if sprite && !is_zero_approx(trauma):
+		trauma = max(trauma - decay * delta, 0.0)
+		shake()
+
+
 func _notification(what: int) -> void:
 	match what:
 		NOTIFICATION_TRANSFORM_CHANGED:
@@ -66,6 +78,16 @@ func _notification(what: int) -> void:
 
 
 # public methods
+func add_trauma(amount: float) -> void:
+	trauma = min(trauma + amount, 1.0)
+
+
+func shake() -> void:
+	var total_trauma: float = pow(trauma, trauma_power)
+	sprite.offset.x = max_offset.x * total_trauma * randf_range(-1.0, 1.0)
+	sprite.offset.y = max_offset.y * total_trauma * randf_range(-1.0, 1.0)
+
+
 func set_action(action_name: String = "", target: Node2D = null) -> void:
 	# reset defence multiplier i.e. stop blocking
 	entity_properties.stats.defence_multiplier = 1
@@ -127,6 +149,7 @@ func action_attack(target: Node2D) -> int:
 	)
 
 	target.entity_properties.stats.hp -= attack_formula
+	target.add_trauma(1.0)
 	action_msg = "%s deals\n%d dmg\nto %s" % \
 			[entity_properties.name, attack_formula, target.entity_properties.name]
 	return 0
@@ -182,6 +205,12 @@ func hide_hp_bar() -> void:
 func show_hp_bar() -> void:
 	ui.show()
 	ui.process_mode = Node.PROCESS_MODE_INHERIT
+
+
+## flips sprite to face the party, used only for enemies
+func face_party() -> void:
+	if sprite:
+		sprite.flip_h = true
 
 
 func set_sprite_texture(texture: Texture) -> void:
