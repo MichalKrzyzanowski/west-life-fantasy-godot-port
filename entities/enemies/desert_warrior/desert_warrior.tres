@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="EntityProperties" load_steps=5 format=3 uid="uid://ddeaf1mo6218r"]
+
+[ext_resource type="Script" path="res://entities/common/entity_properties.gd" id="1_ftvje"]
+[ext_resource type="Script" path="res://entities/common/combat_stats.gd" id="2_6dkw1"]
+[ext_resource type="Texture2D" uid="uid://bd66bt1gm0jax" path="res://entities/enemies/desert_warrior/desert-warrior.png" id="3_x8w1m"]
+
+[sub_resource type="Resource" id="Resource_2pira"]
+script = ExtResource("2_6dkw1")
+max_hp = 75
+attack = 2
+defence = 50
+scaler_hp = 0
+scaler_attack = 0
+scaler_defence = 0
+scaler_required_xp = 0
+level = 1
+xp_drop = 45
+gil_drop = 52
+
+[resource]
+script = ExtResource("1_ftvje")
+stats = SubResource("Resource_2pira")
+name = "warrior"
+texture = ExtResource("3_x8w1m")

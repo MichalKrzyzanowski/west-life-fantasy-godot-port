@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="EntityProperties" load_steps=5 format=3 uid="uid://b53qj551qg882"]
+
+[ext_resource type="Script" path="res://entities/common/entity_properties.gd" id="1_k775v"]
+[ext_resource type="Script" path="res://entities/common/combat_stats.gd" id="2_eqbex"]
+[ext_resource type="Texture2D" uid="uid://7f11xm1cie4w" path="res://entities/enemies/shade_ninja/shade-ninja.png" id="3_o7ub6"]
+
+[sub_resource type="Resource" id="Resource_ek7mf"]
+script = ExtResource("2_eqbex")
+max_hp = 50
+attack = 35
+defence = 10
+scaler_hp = 0
+scaler_attack = 0
+scaler_defence = 0
+scaler_required_xp = 0
+level = 1
+xp_drop = 312
+gil_drop = 142
+
+[resource]
+script = ExtResource("1_k775v")
+stats = SubResource("Resource_ek7mf")
+name = "shade ninja"
+texture = ExtResource("3_o7ub6")

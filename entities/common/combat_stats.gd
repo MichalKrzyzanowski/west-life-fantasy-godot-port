@@ -28,7 +28,7 @@ signal on_hp_depleted()
 @export var scaler_required_xp: int
 
 ## character level
-@export_range(1, 99) var level: int
+@export var level: int = 1
 ## xp the character drops upon death, mainly used for enemy entities
 @export var xp_drop: int
 ## gold the character drops upon death, mainly used for enemy entities

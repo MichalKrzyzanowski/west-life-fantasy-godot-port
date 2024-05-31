@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="EntityProperties" load_steps=5 format=3 uid="uid://bpsxlfo8fw8e7"]
+
+[ext_resource type="Script" path="res://entities/common/entity_properties.gd" id="1_ajmw2"]
+[ext_resource type="Script" path="res://entities/common/combat_stats.gd" id="2_c8qyg"]
+[ext_resource type="Texture2D" uid="uid://cginfw6h6hs30" path="res://entities/enemies/cactus/cactus-revenge.png" id="3_k3cn8"]
+
+[sub_resource type="Resource" id="Resource_liabm"]
+script = ExtResource("2_c8qyg")
+max_hp = 5
+attack = 3
+defence = 1
+scaler_hp = 0
+scaler_attack = 0
+scaler_defence = 0
+scaler_required_xp = 0
+level = 1
+xp_drop = 4
+gil_drop = 3
+
+[resource]
+script = ExtResource("1_ajmw2")
+stats = SubResource("Resource_liabm")
+name = "cactus"
+texture = ExtResource("3_k3cn8")

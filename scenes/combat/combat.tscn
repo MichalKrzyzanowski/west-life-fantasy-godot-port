@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://addons/grid_2d/grid_2d.gd" id="1_7uh1k"]
 [ext_resource type="Script" path="res://scenes/combat/combat.gd" id="1_pefpc"]
-[ext_resource type="Texture2D" uid="uid://bd66bt1gm0jax" path="res://desert-warrior.png" id="2_grfuc"]
 [ext_resource type="Script" path="res://entities/common/entity_properties.gd" id="2_xw0ea"]
 [ext_resource type="Script" path="res://entities/common/combat_stats.gd" id="3_klkua"]
 [ext_resource type="Texture2D" uid="uid://c6dn11c567imk" path="res://entities/party-members/black_mage/player-shinobi.png" id="3_kojkh"]
 [ext_resource type="Texture2D" uid="uid://j4i7k7rqc1fo" path="res://entities/party-members/thief/player-thief.png" id="4_kma1e"]
+[ext_resource type="Texture2D" uid="uid://bd66bt1gm0jax" path="res://entities/enemies/desert_warrior/desert-warrior.png" id="6_8cuq0"]
 [ext_resource type="Texture2D" uid="uid://b50ussga4ddv" path="res://entities/party-members/black_belt/combat_character_2.png" id="7_yn2oq"]
 [ext_resource type="PackedScene" uid="uid://ce03pc67436wa" path="res://ui/combat_interface/combat_interface.tscn" id="9_jx1kh"]
 
@@ -19,7 +19,7 @@ scaler_hp = 10
 scaler_attack = 10
 scaler_defence = 10
 scaler_required_xp = 10
-level = 0
+level = 1
 xp_drop = 0
 gil_drop = 0
 
@@ -38,7 +38,7 @@ scaler_hp = 10
 scaler_attack = 10
 scaler_defence = 10
 scaler_required_xp = 10
-level = 0
+level = 1
 xp_drop = 0
 gil_drop = 0
 
@@ -57,7 +57,7 @@ scaler_hp = 10
 scaler_attack = 10
 scaler_defence = 10
 scaler_required_xp = 10
-level = 0
+level = 1
 xp_drop = 0
 gil_drop = 0
 
@@ -76,7 +76,7 @@ scaler_hp = 10
 scaler_attack = 10
 scaler_defence = 10
 scaler_required_xp = 10
-level = 0
+level = 1
 xp_drop = 0
 gil_drop = 0
 
@@ -95,7 +95,7 @@ scaler_hp = 0
 scaler_attack = 0
 scaler_defence = 0
 scaler_required_xp = 0
-level = 0
+level = 1
 xp_drop = 20
 gil_drop = 50
 
@@ -103,7 +103,7 @@ gil_drop = 50
 script = ExtResource("2_xw0ea")
 stats = SubResource("Resource_sjmjn")
 name = "monke"
-texture = ExtResource("2_grfuc")
+texture = ExtResource("6_8cuq0")
 
 [sub_resource type="Resource" id="Resource_0185v"]
 script = ExtResource("3_klkua")
@@ -114,7 +114,7 @@ scaler_hp = 0
 scaler_attack = 0
 scaler_defence = 0
 scaler_required_xp = 0
-level = 0
+level = 1
 xp_drop = 40
 gil_drop = 10
 
@@ -130,7 +130,6 @@ script = ExtResource("1_pefpc")
 party_data = Array[ExtResource("2_xw0ea")]([SubResource("Resource_br1iv"), SubResource("Resource_seu7c"), SubResource("Resource_qvxlj"), SubResource("Resource_6n1l0")])
 enemy_data = Array[ExtResource("2_xw0ea")]([SubResource("Resource_dj72a"), SubResource("Resource_7u6n1")])
 is_party_advantage = true
-max_enemy_count = 1
 
 [node name="EnemyGrid" type="Node2D" parent="."]
 position = Vector2(192, 208)

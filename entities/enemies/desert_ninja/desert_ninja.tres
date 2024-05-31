@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="EntityProperties" load_steps=5 format=3 uid="uid://bdw0t65416n83"]
+
+[ext_resource type="Script" path="res://entities/common/entity_properties.gd" id="1_xyb2c"]
+[ext_resource type="Script" path="res://entities/common/combat_stats.gd" id="2_k2vay"]
+[ext_resource type="Texture2D" uid="uid://bisihv52a2ynm" path="res://entities/enemies/desert_ninja/desert-shinobi.png" id="3_5r41m"]
+
+[sub_resource type="Resource" id="Resource_fqms0"]
+script = ExtResource("2_k2vay")
+max_hp = 15
+attack = 6
+defence = 2
+scaler_hp = 0
+scaler_attack = 0
+scaler_defence = 0
+scaler_required_xp = 0
+level = 1
+xp_drop = 35
+gil_drop = 15
+
+[resource]
+script = ExtResource("1_xyb2c")
+stats = SubResource("Resource_fqms0")
+name = "desert ninja"
+texture = ExtResource("3_5r41m")

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="EntityProperties" load_steps=5 format=3 uid="uid://t4krtc6a7vbh"]
+
+[ext_resource type="Script" path="res://entities/common/entity_properties.gd" id="1_tgwda"]
+[ext_resource type="Script" path="res://entities/common/combat_stats.gd" id="2_xij5a"]
+[ext_resource type="Texture2D" uid="uid://bcntixpe5nb3c" path="res://entities/enemies/snail/snail.png" id="3_agvp4"]
+
+[sub_resource type="Resource" id="Resource_gutpv"]
+script = ExtResource("2_xij5a")
+max_hp = 2
+attack = 1
+defence = 1
+scaler_hp = 0
+scaler_attack = 0
+scaler_defence = 0
+scaler_required_xp = 0
+level = 1
+xp_drop = 1
+gil_drop = 2
+
+[resource]
+script = ExtResource("1_tgwda")
+stats = SubResource("Resource_gutpv")
+name = "snail"
+texture = ExtResource("3_agvp4")

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="EntityProperties" load_steps=5 format=3 uid="uid://bhugyhiqyrca3"]
+
+[ext_resource type="Script" path="res://entities/common/entity_properties.gd" id="1_4bmpm"]
+[ext_resource type="Script" path="res://entities/common/combat_stats.gd" id="2_pvb06"]
+[ext_resource type="Texture2D" uid="uid://bms47f3c7kofx" path="res://entities/enemies/bandit/bandit.png" id="3_cnrk2"]
+
+[sub_resource type="Resource" id="Resource_ebeci"]
+script = ExtResource("2_pvb06")
+max_hp = 15
+attack = 4
+defence = 2
+scaler_hp = 0
+scaler_attack = 0
+scaler_defence = 0
+scaler_required_xp = 0
+level = 1
+xp_drop = 8
+gil_drop = 6
+
+[resource]
+script = ExtResource("1_4bmpm")
+stats = SubResource("Resource_ebeci")
+name = "bandit"
+texture = ExtResource("3_cnrk2")
