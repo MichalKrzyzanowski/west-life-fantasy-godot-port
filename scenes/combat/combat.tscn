@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://addons/grid_2d/grid_2d.gd" id="1_7uh1k"]
 [ext_resource type="Script" path="res://scenes/combat/combat.gd" id="1_pefpc"]
 [ext_resource type="Texture2D" uid="uid://bd66bt1gm0jax" path="res://desert-warrior.png" id="2_grfuc"]
-[ext_resource type="Script" path="res://entities/common/combat_entity_experimental.gd" id="2_q628h"]
+[ext_resource type="Script" path="res://entities/common/entity_properties.gd" id="2_xw0ea"]
 [ext_resource type="Script" path="res://entities/common/combat_stats.gd" id="3_klkua"]
 [ext_resource type="Texture2D" uid="uid://c6dn11c567imk" path="res://entities/party-members/black_mage/player-shinobi.png" id="3_kojkh"]
 [ext_resource type="Texture2D" uid="uid://j4i7k7rqc1fo" path="res://entities/party-members/thief/player-thief.png" id="4_kma1e"]
@@ -24,7 +24,7 @@ xp_drop = 0
 gil_drop = 0
 
 [sub_resource type="Resource" id="Resource_br1iv"]
-script = ExtResource("2_q628h")
+script = ExtResource("2_xw0ea")
 stats = SubResource("Resource_offy0")
 name = "fella"
 texture = ExtResource("4_kma1e")
@@ -43,7 +43,7 @@ xp_drop = 0
 gil_drop = 0
 
 [sub_resource type="Resource" id="Resource_seu7c"]
-script = ExtResource("2_q628h")
+script = ExtResource("2_xw0ea")
 stats = SubResource("Resource_m4601")
 name = "mike"
 texture = ExtResource("3_kojkh")
@@ -62,7 +62,7 @@ xp_drop = 0
 gil_drop = 0
 
 [sub_resource type="Resource" id="Resource_qvxlj"]
-script = ExtResource("2_q628h")
+script = ExtResource("2_xw0ea")
 stats = SubResource("Resource_6rjm5")
 name = "bob"
 texture = ExtResource("3_kojkh")
@@ -81,7 +81,7 @@ xp_drop = 0
 gil_drop = 0
 
 [sub_resource type="Resource" id="Resource_6n1l0"]
-script = ExtResource("2_q628h")
+script = ExtResource("2_xw0ea")
 stats = SubResource("Resource_cj8c7")
 name = "fran"
 texture = ExtResource("3_kojkh")
@@ -100,7 +100,7 @@ xp_drop = 20
 gil_drop = 50
 
 [sub_resource type="Resource" id="Resource_dj72a"]
-script = ExtResource("2_q628h")
+script = ExtResource("2_xw0ea")
 stats = SubResource("Resource_sjmjn")
 name = "monke"
 texture = ExtResource("2_grfuc")
@@ -119,7 +119,7 @@ xp_drop = 40
 gil_drop = 10
 
 [sub_resource type="Resource" id="Resource_7u6n1"]
-script = ExtResource("2_q628h")
+script = ExtResource("2_xw0ea")
 stats = SubResource("Resource_0185v")
 name = "temp"
 texture = ExtResource("7_yn2oq")
@@ -127,8 +127,8 @@ texture = ExtResource("7_yn2oq")
 [node name="Combat" type="Node2D"]
 process_mode = 2
 script = ExtResource("1_pefpc")
-party_data = Array[ExtResource("2_q628h")]([SubResource("Resource_br1iv"), SubResource("Resource_seu7c"), SubResource("Resource_qvxlj"), SubResource("Resource_6n1l0")])
-enemy_data = Array[ExtResource("2_q628h")]([SubResource("Resource_dj72a"), SubResource("Resource_7u6n1")])
+party_data = Array[ExtResource("2_xw0ea")]([SubResource("Resource_br1iv"), SubResource("Resource_seu7c"), SubResource("Resource_qvxlj"), SubResource("Resource_6n1l0")])
+enemy_data = Array[ExtResource("2_xw0ea")]([SubResource("Resource_dj72a"), SubResource("Resource_7u6n1")])
 is_party_advantage = true
 max_enemy_count = 1
 

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="EntityProperties" load_steps=5 format=3 uid="uid://decrb0fmjlux1"]
+
+[ext_resource type="Script" path="res://entities/common/entity_properties.gd" id="1_2sy3o"]
+[ext_resource type="Script" path="res://entities/common/combat_stats.gd" id="2_63ryt"]
+[ext_resource type="Texture2D" uid="uid://c6dn11c567imk" path="res://entities/party-members/black_mage/player-shinobi.png" id="3_4qh0a"]
+
+[sub_resource type="Resource" id="Resource_ww2nl"]
+script = ExtResource("2_63ryt")
+max_hp = 60
+attack = 17
+defence = 0
+scaler_hp = 1
+scaler_attack = 4
+scaler_defence = 0
+scaler_required_xp = 100
+level = 0
+xp_drop = 0
+gil_drop = 0
+
+[resource]
+script = ExtResource("1_2sy3o")
+stats = SubResource("Resource_ww2nl")
+name = "walk"
+texture = ExtResource("3_4qh0a")

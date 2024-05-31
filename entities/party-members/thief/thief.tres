@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="EntityProperties" load_steps=5 format=3 uid="uid://e7aktw8tfcx8"]
+
+[ext_resource type="Script" path="res://entities/common/entity_properties.gd" id="1_mgklo"]
+[ext_resource type="Script" path="res://entities/common/combat_stats.gd" id="2_bcubm"]
+[ext_resource type="Texture2D" uid="uid://j4i7k7rqc1fo" path="res://entities/party-members/thief/player-thief.png" id="3_0g7mr"]
+
+[sub_resource type="Resource" id="Resource_5w5tk"]
+script = ExtResource("2_bcubm")
+max_hp = 25
+attack = 30
+defence = 0
+scaler_hp = 1
+scaler_attack = 4
+scaler_defence = 0
+scaler_required_xp = 120
+level = 0
+xp_drop = 0
+gil_drop = 0
+
+[resource]
+script = ExtResource("1_mgklo")
+stats = SubResource("Resource_5w5tk")
+name = "big"
+texture = ExtResource("3_0g7mr")

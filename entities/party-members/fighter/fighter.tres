@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="EntityProperties" load_steps=5 format=3 uid="uid://cjhhsdse33ewh"]
+
+[ext_resource type="Script" path="res://entities/common/entity_properties.gd" id="1_rxncl"]
+[ext_resource type="Script" path="res://entities/common/combat_stats.gd" id="2_dk4vk"]
+[ext_resource type="Texture2D" uid="uid://2aeni7r1e2v5" path="res://entities/party-members/fighter/combat_character_1.png" id="3_2108i"]
+
+[sub_resource type="Resource" id="Resource_57gg4"]
+script = ExtResource("2_dk4vk")
+max_hp = 80
+attack = 7
+defence = 0
+scaler_hp = 8
+scaler_attack = 1
+scaler_defence = 0
+scaler_required_xp = 140
+level = 0
+xp_drop = 0
+gil_drop = 0
+
+[resource]
+script = ExtResource("1_rxncl")
+stats = SubResource("Resource_57gg4")
+name = "meds"
+texture = ExtResource("3_2108i")

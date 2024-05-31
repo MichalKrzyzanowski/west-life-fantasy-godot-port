@@ -11,7 +11,7 @@
 [ext_resource type="TileSet" uid="uid://lmlrfvna3b4l" path="res://scenes/common/cactus_tileset.tres" id="7_ad4e1"]
 [ext_resource type="PackedScene" uid="uid://0viy8iyuvprv" path="res://scenes/desert/instructions-board/instructions_board.tscn" id="10_kfu8i"]
 [ext_resource type="PackedScene" uid="uid://b48jo5oludty5" path="res://scenes/combat/combat_manager.tscn" id="11_t00au"]
-[ext_resource type="Script" path="res://entities/common/combat_entity_experimental.gd" id="12_2fudo"]
+[ext_resource type="Script" path="res://entities/common/entity_properties.gd" id="12_l8k10"]
 [ext_resource type="Script" path="res://entities/common/combat_stats.gd" id="13_j4eom"]
 [ext_resource type="Texture2D" uid="uid://bcntixpe5nb3c" path="res://snail.png" id="14_rc64v"]
 [ext_resource type="Texture2D" uid="uid://bd66bt1gm0jax" path="res://desert-warrior.png" id="15_ap8io"]
@@ -30,7 +30,7 @@ xp_drop = 1
 gil_drop = 20
 
 [sub_resource type="Resource" id="Resource_jkhr2"]
-script = ExtResource("12_2fudo")
+script = ExtResource("12_l8k10")
 stats = SubResource("Resource_kmauy")
 name = "snul"
 texture = ExtResource("14_rc64v")
@@ -49,7 +49,7 @@ xp_drop = 500
 gil_drop = 105
 
 [sub_resource type="Resource" id="Resource_u1pbq"]
-script = ExtResource("12_2fudo")
+script = ExtResource("12_l8k10")
 stats = SubResource("Resource_ld056")
 name = "warr"
 texture = ExtResource("15_ap8io")
@@ -105,5 +105,5 @@ scale = Vector2(0.67, 0.67)
 
 [node name="CombatManager" parent="." node_paths=PackedStringArray("overworld_player") instance=ExtResource("11_t00au")]
 enable_random_encounters = true
-enemy_spawn_table = Array[ExtResource("12_2fudo")]([SubResource("Resource_jkhr2"), SubResource("Resource_u1pbq")])
+enemy_spawn_table = Array[ExtResource("12_l8k10")]([SubResource("Resource_jkhr2"), SubResource("Resource_u1pbq")])
 overworld_player = NodePath("../OverworldPlayer")

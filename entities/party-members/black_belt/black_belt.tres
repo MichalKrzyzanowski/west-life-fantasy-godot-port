@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="EntityProperties" load_steps=5 format=3 uid="uid://ckv2df1at61qs"]
+
+[ext_resource type="Script" path="res://entities/common/entity_properties.gd" id="1_l3b8o"]
+[ext_resource type="Script" path="res://entities/common/combat_stats.gd" id="2_e5k8f"]
+[ext_resource type="Texture2D" uid="uid://b50ussga4ddv" path="res://entities/party-members/black_belt/combat_character_2.png" id="3_wmjmk"]
+
+[sub_resource type="Resource" id="Resource_6e0gq"]
+script = ExtResource("2_e5k8f")
+max_hp = 55
+attack = 12
+defence = 0
+scaler_hp = 4
+scaler_attack = 4
+scaler_defence = 0
+scaler_required_xp = 120
+level = 0
+xp_drop = 0
+gil_drop = 0
+
+[resource]
+script = ExtResource("1_l3b8o")
+stats = SubResource("Resource_6e0gq")
+name = "wife"
+texture = ExtResource("3_wmjmk")

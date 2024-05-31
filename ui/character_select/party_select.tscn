@@ -1,92 +1,320 @@
-[gd_scene load_steps=18 format=3 uid="uid://bkavfc7fsmbyc"]
+[gd_scene load_steps=42 format=3 uid="uid://bkavfc7fsmbyc"]
 
 [ext_resource type="Script" path="res://ui/character_select/party_select.gd" id="1_8k5ua"]
 [ext_resource type="PackedScene" uid="uid://hwvpspp4pbni" path="res://ui/character_select/character_select_box.tscn" id="2_xnrnh"]
-[ext_resource type="Script" path="res://entities/common/combat_entity_experimental.gd" id="3_g4o2y"]
+[ext_resource type="Script" path="res://entities/common/entity_properties.gd" id="3_0nq2c"]
 [ext_resource type="Script" path="res://entities/common/combat_stats.gd" id="4_nlfj8"]
 [ext_resource type="Texture2D" uid="uid://b50ussga4ddv" path="res://entities/party-members/black_belt/combat_character_2.png" id="5_cu0fk"]
-[ext_resource type="Texture2D" uid="uid://dltxmw47ynbb0" path="res://entities/party-members/fallback/fallback.png" id="6_3lum1"]
+[ext_resource type="Texture2D" uid="uid://c6dn11c567imk" path="res://entities/party-members/black_mage/player-shinobi.png" id="6_3is88"]
 [ext_resource type="Texture2D" uid="uid://2aeni7r1e2v5" path="res://entities/party-members/fighter/combat_character_1.png" id="7_dwyog"]
 [ext_resource type="Texture2D" uid="uid://j4i7k7rqc1fo" path="res://entities/party-members/thief/player-thief.png" id="8_tr7pt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1s8pe"]
 bg_color = Color(0, 0, 0, 1)
 
-[sub_resource type="Resource" id="Resource_642v7"]
+[sub_resource type="Resource" id="Resource_tlssm"]
 script = ExtResource("4_nlfj8")
-max_hp = 10
-attack = 100
-defence = 1
-scaler_hp = 0
-scaler_attack = 0
+max_hp = 60
+attack = 17
+defence = 0
+scaler_hp = 1
+scaler_attack = 4
 scaler_defence = 0
-scaler_required_xp = 0
+scaler_required_xp = 100
+level = 1
+xp_drop = 0
+gil_drop = 0
+
+[sub_resource type="Resource" id="Resource_0o63n"]
+script = ExtResource("3_0nq2c")
+stats = SubResource("Resource_tlssm")
+name = "walk"
+texture = ExtResource("6_3is88")
+
+[sub_resource type="Resource" id="Resource_pvx45"]
+script = ExtResource("4_nlfj8")
+max_hp = 80
+attack = 7
+defence = 0
+scaler_hp = 8
+scaler_attack = 1
+scaler_defence = 0
+scaler_required_xp = 140
 level = 0
 xp_drop = 0
 gil_drop = 0
 
-[sub_resource type="Resource" id="Resource_n3xu0"]
-script = ExtResource("3_g4o2y")
-stats = SubResource("Resource_642v7")
-name = "mono"
-texture = ExtResource("5_cu0fk")
-
-[sub_resource type="Resource" id="Resource_hffqi"]
-script = ExtResource("4_nlfj8")
-max_hp = 1
-attack = 1
-defence = 1
-scaler_hp = 0
-scaler_attack = 0
-scaler_defence = 0
-scaler_required_xp = 0
-level = 0
-xp_drop = 0
-gil_drop = 0
-
-[sub_resource type="Resource" id="Resource_vfgi0"]
-script = ExtResource("3_g4o2y")
-stats = SubResource("Resource_hffqi")
-name = "snel"
-texture = ExtResource("6_3lum1")
-
-[sub_resource type="Resource" id="Resource_rvnah"]
-script = ExtResource("4_nlfj8")
-max_hp = 1
-attack = 1
-defence = 1
-scaler_hp = 0
-scaler_attack = 0
-scaler_defence = 0
-scaler_required_xp = 0
-level = 0
-xp_drop = 0
-gil_drop = 0
-
-[sub_resource type="Resource" id="Resource_erijy"]
-script = ExtResource("3_g4o2y")
-stats = SubResource("Resource_rvnah")
-name = "uwu"
+[sub_resource type="Resource" id="Resource_7shgr"]
+script = ExtResource("3_0nq2c")
+stats = SubResource("Resource_pvx45")
+name = "sour"
 texture = ExtResource("7_dwyog")
 
-[sub_resource type="Resource" id="Resource_t8w51"]
+[sub_resource type="Resource" id="Resource_4tlh6"]
 script = ExtResource("4_nlfj8")
-max_hp = 1
-attack = 1
-defence = 1
-scaler_hp = 0
-scaler_attack = 0
+max_hp = 55
+attack = 12
+defence = 0
+scaler_hp = 4
+scaler_attack = 4
 scaler_defence = 0
-scaler_required_xp = 0
+scaler_required_xp = 120
 level = 0
 xp_drop = 0
 gil_drop = 0
 
-[sub_resource type="Resource" id="Resource_tt6w1"]
-script = ExtResource("3_g4o2y")
-stats = SubResource("Resource_t8w51")
-name = "thef"
+[sub_resource type="Resource" id="Resource_5qyd0"]
+script = ExtResource("3_0nq2c")
+stats = SubResource("Resource_4tlh6")
+name = "chest"
+texture = ExtResource("5_cu0fk")
+
+[sub_resource type="Resource" id="Resource_1wi5x"]
+script = ExtResource("4_nlfj8")
+max_hp = 25
+attack = 30
+defence = 0
+scaler_hp = 1
+scaler_attack = 4
+scaler_defence = 0
+scaler_required_xp = 120
+level = 0
+xp_drop = 0
+gil_drop = 0
+
+[sub_resource type="Resource" id="Resource_6hljy"]
+script = ExtResource("3_0nq2c")
+stats = SubResource("Resource_1wi5x")
+name = "ben"
 texture = ExtResource("8_tr7pt")
+
+[sub_resource type="Resource" id="Resource_li3qr"]
+script = ExtResource("4_nlfj8")
+max_hp = 80
+attack = 7
+defence = 0
+scaler_hp = 8
+scaler_attack = 1
+scaler_defence = 0
+scaler_required_xp = 140
+level = 0
+xp_drop = 0
+gil_drop = 0
+
+[sub_resource type="Resource" id="Resource_xdaxu"]
+script = ExtResource("3_0nq2c")
+stats = SubResource("Resource_li3qr")
+name = "wok"
+texture = ExtResource("7_dwyog")
+
+[sub_resource type="Resource" id="Resource_f81td"]
+script = ExtResource("4_nlfj8")
+max_hp = 60
+attack = 17
+defence = 0
+scaler_hp = 1
+scaler_attack = 4
+scaler_defence = 0
+scaler_required_xp = 100
+level = 0
+xp_drop = 0
+gil_drop = 0
+
+[sub_resource type="Resource" id="Resource_kpd14"]
+script = ExtResource("3_0nq2c")
+stats = SubResource("Resource_f81td")
+name = "baba"
+texture = ExtResource("6_3is88")
+
+[sub_resource type="Resource" id="Resource_ju4bf"]
+script = ExtResource("4_nlfj8")
+max_hp = 25
+attack = 30
+defence = 0
+scaler_hp = 1
+scaler_attack = 4
+scaler_defence = 0
+scaler_required_xp = 120
+level = 0
+xp_drop = 0
+gil_drop = 0
+
+[sub_resource type="Resource" id="Resource_dajxt"]
+script = ExtResource("3_0nq2c")
+stats = SubResource("Resource_ju4bf")
+name = "mike"
+texture = ExtResource("8_tr7pt")
+
+[sub_resource type="Resource" id="Resource_w4y0a"]
+script = ExtResource("4_nlfj8")
+max_hp = 55
+attack = 12
+defence = 0
+scaler_hp = 4
+scaler_attack = 4
+scaler_defence = 0
+scaler_required_xp = 120
+level = 0
+xp_drop = 0
+gil_drop = 0
+
+[sub_resource type="Resource" id="Resource_3f68p"]
+script = ExtResource("3_0nq2c")
+stats = SubResource("Resource_w4y0a")
+name = "benny"
+texture = ExtResource("5_cu0fk")
+
+[sub_resource type="Resource" id="Resource_d0odt"]
+script = ExtResource("4_nlfj8")
+max_hp = 60
+attack = 17
+defence = 0
+scaler_hp = 1
+scaler_attack = 4
+scaler_defence = 0
+scaler_required_xp = 100
+level = 0
+xp_drop = 0
+gil_drop = 0
+
+[sub_resource type="Resource" id="Resource_b26ce"]
+script = ExtResource("3_0nq2c")
+stats = SubResource("Resource_d0odt")
+name = "monke"
+texture = ExtResource("6_3is88")
+
+[sub_resource type="Resource" id="Resource_dh0pr"]
+script = ExtResource("4_nlfj8")
+max_hp = 80
+attack = 7
+defence = 0
+scaler_hp = 8
+scaler_attack = 1
+scaler_defence = 0
+scaler_required_xp = 140
+level = 0
+xp_drop = 0
+gil_drop = 0
+
+[sub_resource type="Resource" id="Resource_vdko6"]
+script = ExtResource("3_0nq2c")
+stats = SubResource("Resource_dh0pr")
+name = "stoic"
+texture = ExtResource("7_dwyog")
+
+[sub_resource type="Resource" id="Resource_cycnu"]
+script = ExtResource("4_nlfj8")
+max_hp = 55
+attack = 12
+defence = 0
+scaler_hp = 4
+scaler_attack = 4
+scaler_defence = 0
+scaler_required_xp = 120
+level = 0
+xp_drop = 0
+gil_drop = 0
+
+[sub_resource type="Resource" id="Resource_811ui"]
+script = ExtResource("3_0nq2c")
+stats = SubResource("Resource_cycnu")
+name = "creek"
+texture = ExtResource("5_cu0fk")
+
+[sub_resource type="Resource" id="Resource_k6sv6"]
+script = ExtResource("4_nlfj8")
+max_hp = 25
+attack = 30
+defence = 0
+scaler_hp = 1
+scaler_attack = 4
+scaler_defence = 0
+scaler_required_xp = 120
+level = 0
+xp_drop = 0
+gil_drop = 0
+
+[sub_resource type="Resource" id="Resource_kwnml"]
+script = ExtResource("3_0nq2c")
+stats = SubResource("Resource_k6sv6")
+name = "weeb"
+texture = ExtResource("8_tr7pt")
+
+[sub_resource type="Resource" id="Resource_eu8is"]
+script = ExtResource("4_nlfj8")
+max_hp = 80
+attack = 7
+defence = 0
+scaler_hp = 8
+scaler_attack = 1
+scaler_defence = 0
+scaler_required_xp = 140
+level = 0
+xp_drop = 0
+gil_drop = 0
+
+[sub_resource type="Resource" id="Resource_cmqhj"]
+script = ExtResource("3_0nq2c")
+stats = SubResource("Resource_eu8is")
+name = "meds"
+texture = ExtResource("7_dwyog")
+
+[sub_resource type="Resource" id="Resource_jbye8"]
+script = ExtResource("4_nlfj8")
+max_hp = 60
+attack = 17
+defence = 0
+scaler_hp = 1
+scaler_attack = 4
+scaler_defence = 0
+scaler_required_xp = 100
+level = 0
+xp_drop = 0
+gil_drop = 0
+
+[sub_resource type="Resource" id="Resource_cw7yw"]
+script = ExtResource("3_0nq2c")
+stats = SubResource("Resource_jbye8")
+name = "shot"
+texture = ExtResource("6_3is88")
+
+[sub_resource type="Resource" id="Resource_aj6ym"]
+script = ExtResource("4_nlfj8")
+max_hp = 25
+attack = 30
+defence = 0
+scaler_hp = 1
+scaler_attack = 4
+scaler_defence = 0
+scaler_required_xp = 120
+level = 0
+xp_drop = 0
+gil_drop = 0
+
+[sub_resource type="Resource" id="Resource_irwih"]
+script = ExtResource("3_0nq2c")
+stats = SubResource("Resource_aj6ym")
+name = "big"
+texture = ExtResource("8_tr7pt")
+
+[sub_resource type="Resource" id="Resource_e2t4t"]
+script = ExtResource("4_nlfj8")
+max_hp = 55
+attack = 12
+defence = 0
+scaler_hp = 4
+scaler_attack = 4
+scaler_defence = 0
+scaler_required_xp = 120
+level = 0
+xp_drop = 0
+gil_drop = 0
+
+[sub_resource type="Resource" id="Resource_vu75b"]
+script = ExtResource("3_0nq2c")
+stats = SubResource("Resource_e2t4t")
+name = "wife"
+texture = ExtResource("5_cu0fk")
 
 [node name="PartySelect" type="Control"]
 layout_mode = 3
@@ -125,28 +353,28 @@ columns = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-character_data = Array[ExtResource("3_g4o2y")]([SubResource("Resource_n3xu0")])
+character_data = Array[ExtResource("3_0nq2c")]([SubResource("Resource_0o63n"), SubResource("Resource_7shgr"), SubResource("Resource_5qyd0"), SubResource("Resource_6hljy")])
 character_name_overrides = Array[String](["walk", "sour", "chest", "ben"])
 
 [node name="CharacterSelectBox2" parent="CharacterGrid" instance=ExtResource("2_xnrnh")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-character_data = Array[ExtResource("3_g4o2y")]([SubResource("Resource_vfgi0")])
+character_data = Array[ExtResource("3_0nq2c")]([SubResource("Resource_xdaxu"), SubResource("Resource_kpd14"), SubResource("Resource_dajxt"), SubResource("Resource_3f68p")])
 character_name_overrides = Array[String](["wok", "baba", "mike", "benny"])
 
 [node name="CharacterSelectBox3" parent="CharacterGrid" instance=ExtResource("2_xnrnh")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-character_data = Array[ExtResource("3_g4o2y")]([SubResource("Resource_erijy")])
+character_data = Array[ExtResource("3_0nq2c")]([SubResource("Resource_b26ce"), SubResource("Resource_vdko6"), SubResource("Resource_811ui"), SubResource("Resource_kwnml")])
 character_name_overrides = Array[String](["monke", "stoic", "creek", "weeb"])
 
 [node name="CharacterSelectBox4" parent="CharacterGrid" instance=ExtResource("2_xnrnh")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-character_data = Array[ExtResource("3_g4o2y")]([SubResource("Resource_tt6w1")])
+character_data = Array[ExtResource("3_0nq2c")]([SubResource("Resource_cmqhj"), SubResource("Resource_cw7yw"), SubResource("Resource_irwih"), SubResource("Resource_vu75b")])
 character_name_overrides = Array[String](["meds", "shot", "big", "wife"])
 
 [node name="ContinueButton" type="Button" parent="."]
