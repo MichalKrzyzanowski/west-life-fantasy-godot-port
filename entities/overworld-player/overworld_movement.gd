@@ -1,7 +1,11 @@
 extends CharacterBody2D
 
+# signals
+signal on_enemy_hit(body: Node2D, on_advantage: bool)
 
 @export var speed: float = 5.0
+
+var combat_manager_ref: Node
 
 @onready var sprite := get_node("Sprite2D") as Sprite2D
 @onready var camp_menu := get_node("UI/CampMenu") as Control

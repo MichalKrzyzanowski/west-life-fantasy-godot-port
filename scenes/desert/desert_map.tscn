@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ckqmboktfdvg2"]
+[gd_scene load_steps=18 format=3 uid="uid://ckqmboktfdvg2"]
 
 [ext_resource type="PackedScene" uid="uid://d02rs8t4d5gwn" path="res://entities/overworld-player/overworld_player.tscn" id="1_3eak2"]
 [ext_resource type="Script" path="res://scenes/desert/desert_map.gd" id="1_vowdh"]
@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://cm5l8es7a6hsk" path="res://entities/enemies/dark_ninja/dark_ninja.tres" id="14_u8kt6"]
 [ext_resource type="Resource" uid="uid://bpsxlfo8fw8e7" path="res://entities/enemies/cactus/cactus.tres" id="15_g7u6l"]
 [ext_resource type="Resource" uid="uid://bdw0t65416n83" path="res://entities/enemies/desert_ninja/desert_ninja.tres" id="16_pw241"]
+[ext_resource type="PackedScene" uid="uid://csx3cuf43jnq8" path="res://entities/overworld-enemy/overworld_enemy.tscn" id="17_sqsuv"]
 
 [node name="DesertMap" type="Node2D" groups=["persist"]]
 script = ExtResource("1_vowdh")
@@ -70,3 +71,7 @@ scale = Vector2(0.67, 0.67)
 enable_random_encounters = true
 enemy_spawn_table = Array[Resource("res://entities/common/entity_properties.gd")]([ExtResource("12_fjvd6"), ExtResource("13_045pm"), ExtResource("14_u8kt6"), ExtResource("15_g7u6l"), ExtResource("16_pw241")])
 overworld_player = NodePath("../OverworldPlayer")
+
+[node name="OverworldEnemy" parent="." instance=ExtResource("17_sqsuv")]
+position = Vector2(-21, -251)
+scale = Vector2(0.5, 0.5)

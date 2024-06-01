@@ -35,12 +35,16 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-	pass
+	overworld_player.on_enemy_hit.connect(on_player_enemy_hit)
 
 
 # remaining builtins e.g. _process, _input
 func _process(_delta: float) -> void:
-	if overworld_player && !overworld_player.velocity.is_zero_approx():
+	if (
+			enable_random_encounters
+			&& overworld_player
+			&& !overworld_player.velocity.is_zero_approx()
+	):
 		_counter += counter_increment
 		print(_counter)
 		if _counter >= _counter_end:
@@ -50,7 +54,10 @@ func _process(_delta: float) -> void:
 
 
 # public methods
-func trigger_combat(enemies: Array[EntityProperties] = []) -> void:
+func trigger_combat(player_advantage: bool = true,
+		player: Node2D = null,
+		overworld_enemy: Node2D = null,
+		enemies: Array[EntityProperties] = []) -> void:
 	get_tree().paused = true
 	var combat_scene := CombatScene.instantiate()
 	overworld_player.camera.enabled = false
@@ -59,6 +66,10 @@ func trigger_combat(enemies: Array[EntityProperties] = []) -> void:
 		combat_scene.enemy_data = enemies
 	else:
 		combat_scene.enemy_data = enemy_spawn_table
+
+	combat_scene.is_party_advantage = player_advantage
+	combat_scene.overworld_player = player
+	combat_scene.overworld_enemy = overworld_enemy
 
 	combat_scene.party_data = PartyManager.party
 	combat_scene.on_combat_end.connect(_on_combat_end)
@@ -80,6 +91,15 @@ func _on_combat_end() -> void:
 	get_tree().paused = false
 	overworld_player.camera.enabled = true
 	get_parent().show()
+
+
+func on_player_enemy_hit(body: Node2D, on_advantage: bool) -> void:
+	for bullet in get_tree().get_nodes_in_group("bullet"):
+		bullet.queue_free()
+
+	print("player: %s, enemy: %s" % [overworld_player.name, body.name])
+	print("begin combat")
+	trigger_combat(on_advantage, overworld_player, body)
 
 
 # subclasses

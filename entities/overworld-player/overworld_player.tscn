@@ -28,6 +28,7 @@ zoom = Vector2(3.85, 3.85)
 
 [node name="BulletEmitter" type="Node2D" parent="."]
 script = ExtResource("3_ya1km")
+bullet_collision_mask = 13
 
 [node name="UI" type="CanvasLayer" parent="."]
 

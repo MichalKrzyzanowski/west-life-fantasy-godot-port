@@ -29,6 +29,10 @@ var has_party_won: bool = false
 var has_party_fled: bool = false
 var rng := RandomNumberGenerator.new()
 var current_member: Node2D
+# overworld references to entities involved in combat.
+# only used for non-random encounters
+var overworld_player: Node2D
+var overworld_enemy: Node2D
 
 # private vars
 var _party: Array
@@ -155,9 +159,13 @@ func _end_combat() -> void:
 		interface.update_rewards_info(_xp_reward, _gil_reward)
 		for member in _party:
 			member.entity_properties.stats.xp += _xp_reward
+			if overworld_player:
+				overworld_enemy.queue_free()
 	# if player has lost
 	elif !has_party_won && !has_party_fled:
 		interface.update_combat_info("you lost the battle...")
+		if overworld_enemy:
+			overworld_player.queue_free()
 
 	# turn on input processing
 	set_process_input(true)

@@ -19,7 +19,6 @@ signal on_flee_successfull(entity: Node2D)
 
 # public vars
 var is_alive: bool = true
-var sprite: Sprite2D
 var hide_ui: bool = false
 var action: Callable
 var action_msg: String
@@ -27,12 +26,13 @@ var action_msg: String
 # shake vars
 var trauma: float = 0.0
 var trauma_power: float = 3.0
-var max_offset := Vector2(10.0, 10.0)
+var max_offset := Vector2(2.0, 2.0)
 var decay: float = 0.8
 
 # private vars
 
 # @onready vars
+@onready var sprite := $Sprite2D as Sprite2D
 @onready var ui := $UI as CanvasLayer
 @onready var hp_bar := $UI/Control/HPBar as TextureProgressBar
 @onready var level_up_sprite := $LevelUpSprite as Sprite2D
