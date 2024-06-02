@@ -19,27 +19,40 @@ signal on_combat_end()
 ## list of enemies to choose from when generating enemies
 @export var enemy_data: Array[EntityProperties]
 
+## governs if the party starts first
 @export var is_party_advantage: bool
+## position to move a party member when it is
+## his turn
 @export var member_ready_offset: float = 86.0
+## time delay between each turn
 @export var turn_wait_time: float = 1.5
+## max enemies that can spawn
 @export var max_enemy_count: int = 9
 
 # public vars
+# combat status trackers
 var has_party_won: bool = false
 var has_party_fled: bool = false
-var rng := RandomNumberGenerator.new()
+# ready member reference
 var current_member: Node2D
+
 # overworld references to entities involved in combat.
 # only used for non-random encounters
 var overworld_player: Node2D
 var overworld_enemy: Node2D
 
 # private vars
+## reference to party_grid.get_children
 var _party: Array
+## reference to enemy_grid.get_children
 var _enemies: Array
+## order in which turns are played out
 var _battle_order: Array
 var _is_enemy_select_enabled: bool = false
+# index of the currently ready member
 var _current_party_index: int = 0
+## checks if combat is over in the middle of a turn
+## e.g. when escaping, when looking for a valid target
 var _is_combat_over_early: bool = false
 # awards
 var _xp_reward: int = 0
@@ -47,7 +60,7 @@ var _gil_reward: int = 0
 
 # @onready vars
 @onready var GenericEntity := preload(
-		"res://entities/common/generic_entity.tscn") as PackedScene
+		"res://entities/common/generic_entity.tscn")
 #@onready var ShadeNinja := preload("res://entities/common/generic_entity.tscn") as Area2D
 # TODO: figure out how to implement static typing for Grid2D plugin type
 @onready var party_grid = $PartyGrid
@@ -64,9 +77,7 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-	# randomize rng seed
-	rng.randomize()
-
+	# set input processing off until combat end
 	set_process_input(false)
 
 	# connect to interface signals
@@ -84,12 +95,14 @@ func _ready() -> void:
 	# spawn enemies and add them to the grid
 	_spawn_enemies()
 
+	# generate awards
 	_init_rewards()
 
 	# organise battle order
 	_setup_battle_order()
 
-	current_member = party_grid.get_child(_current_party_index)
+	# initialise current party member and move into ready position
+	current_member = _party[_current_party_index]
 	_member_ready_position()
 
 
@@ -104,6 +117,9 @@ func _input(event: InputEvent) -> void:
 
 
 # private methods
+## initialise party members from [param data].
+## creates an instance of generic_entity based on
+## [param data] properties and attach them to designated Grid2D
 func _init_party(data: Array[EntityProperties]) -> void:
 	if !data.is_empty():
 		for member_data in data:
@@ -111,17 +127,22 @@ func _init_party(data: Array[EntityProperties]) -> void:
 			# TODO: look into _get_property_list for EntityProperties resource
 			# to prevent full deep duplication
 			party_member.entity_properties = member_data
+			# party should not display hp bars
 			party_member.hide_ui = true
 			party_member.on_flee_successfull.connect(_on_entity_flee)
 			party_grid.add_child(party_member)
 
+	# update the grid manually to increase performance
 	party_grid.update_grid()
 	_party = party_grid.get_children()
+	# update combat ui with initialised party
 	interface.init_party_stat_boxes(_party)
 
 
+## generate randomly selected enemies from enemy_data.
+## each enemy is an instance of generic_entity
 func _spawn_enemies() -> void:
-	var enemy_count: int = rng.randi_range(1, max_enemy_count)
+	var enemy_count: int = randi_range(1, max_enemy_count)
 
 	if !enemy_data.is_empty():
 		for index in range(0, enemy_count):
@@ -138,6 +159,8 @@ func _spawn_enemies() -> void:
 	_enemies = enemy_grid.get_children()
 
 
+## calculate total gil and xp to be rewarded from
+## the spawned enemies
 func _init_rewards() -> void:
 	for enemy in _enemies:
 		_gil_reward += enemy.entity_properties.stats.gil_drop
@@ -261,7 +284,7 @@ func _next_member() -> void:
 	_member_default_position()
 	_current_party_index += 1
 
-	if _current_party_index >= party_grid.get_children().size():
+	if _current_party_index >= _party.size():
 		interface.process_mode = Node.PROCESS_MODE_DISABLED
 		interface.update_combat_info("commence battle!")
 		_generate_enemy_actions()
@@ -275,7 +298,7 @@ func _next_member() -> void:
 		_next_member()
 		return
 
-	current_member = party_grid.get_child(_current_party_index)
+	current_member = _party[_current_party_index]
 	_member_ready_position()
 
 
@@ -287,12 +310,12 @@ func _reset_battle_status() -> void:
 
 
 func _generate_enemy_actions() -> void:
-	for enemy in enemy_grid.get_children():
+	for enemy in _enemies:
 		if !enemy.is_alive:
 			continue
 
 		# null action passed in forces the action to be selected at random
-		enemy.set_action("", _get_random_entity(party_grid.get_children()))
+		enemy.set_action("", _get_random_entity(_party))
 
 
 ## loops through the [param entities] array, looking
@@ -336,19 +359,19 @@ func _commence_battle() -> bool:
 			if _is_combat_over_early:
 				return true
 
-			if entity in party_grid.get_children():
+			if entity in _party:
 				entity.set_action(entity.action.get_method(),
-						_get_next_entity(enemy_grid.get_children()))
+						_get_next_entity(_enemies))
 				success_code = entity.call_action()
 			else:
 				entity.set_action(entity.action.get_method(),
-						_get_next_entity(party_grid.get_children()))
+						_get_next_entity(_party))
 				success_code = entity.call_action()
 
 		# only move entity to ready position if entity is
 		# a party member and it is attacking
 		if (
-				entity in party_grid.get_children()
+				entity in _party
 				&& entity.action.get_method().contains("attack")
 		):
 			_member_ready_position(entity)
@@ -356,7 +379,7 @@ func _commence_battle() -> bool:
 		interface.update_combat_info(entity.action_msg)
 		await get_tree().create_timer(turn_wait_time).timeout
 
-		if entity in party_grid.get_children():
+		if entity in _party:
 			_member_default_position(entity)
 
 	return _is_combat_over()

@@ -42,7 +42,8 @@ func _on_area_entered(area: Area2D) -> void:
 
 
 ## handles bullet collisions with non-bullet entities
-## will be used in the future to determine combat advantage
+## if both of the involved objects are player an enemy,
+## combat will be triggered
 func _on_body_entered(body: Node2D) -> void:
 	# this will be used to begin combat with player advantage/disadvantage
 	# player's bullet hit the enemy or vice versa

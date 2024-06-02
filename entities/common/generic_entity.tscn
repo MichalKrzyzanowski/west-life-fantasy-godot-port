@@ -10,6 +10,8 @@
 size = Vector2(128, 128)
 
 [node name="Entity" type="Area2D"]
+monitoring = false
+monitorable = false
 script = ExtResource("1_8ype6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

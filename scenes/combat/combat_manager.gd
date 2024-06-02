@@ -99,6 +99,7 @@ func on_player_enemy_hit(body: Node2D, on_advantage: bool) -> void:
 
 	print("player: %s, enemy: %s" % [overworld_player.name, body.name])
 	print("begin combat")
+	await get_tree().process_frame
 	trigger_combat(on_advantage, overworld_player, body)
 
 
