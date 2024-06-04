@@ -108,6 +108,7 @@ func _ready() -> void:
 
 # remaining builtins e.g. _process, _input
 func _input(event: InputEvent) -> void:
+	# free combat scene when combat end is met
 	if event.is_action_released("exit_combat"):
 		on_combat_end.emit()
 		queue_free()
@@ -159,6 +160,18 @@ func _spawn_enemies() -> void:
 	_enemies = enemy_grid.get_children()
 
 
+## setup the turn order that will be followed by _commence_battle func.
+## if party is on advantage, party is included at the start of the list,
+## vice versa for no party advantage
+func _setup_battle_order() -> void:
+	if is_party_advantage:
+		print("you get to strike first.")
+		_battle_order = _party + _enemies
+	else:
+		print("enemies get to strike first.")
+		_battle_order = _enemies + _party
+
+
 ## calculate total gil and xp to be rewarded from
 ## the spawned enemies
 func _init_rewards() -> void:
@@ -167,33 +180,48 @@ func _init_rewards() -> void:
 		_xp_reward += enemy.entity_properties.stats.xp_drop
 
 
+## called when combat has been finished either by standard means
+## (check if any party members or enemies are still alive)
+## or when combat was ended early (entity successfully fled, cannot find
+## a new target when attacking and current target = null)
 func _end_combat() -> void:
 	# bring all party members back to default position
 	for member in _party:
 		_member_default_position(member)
 	# disable process for interface
+	# we don't want the player from using the interface when combat is over
 	interface.process_mode = Node.PROCESS_MODE_DISABLED
 
 	# check win conditions
 
 	# if player has won
 	if has_party_won && !has_party_fled:
+		# update combat info box and rewards box
 		interface.update_combat_info("you won the battle!")
 		interface.update_rewards_info(_xp_reward, _gil_reward)
+		# add xp to party
 		for member in _party:
 			member.entity_properties.stats.xp += _xp_reward
-			if overworld_player:
+			# remove shot overworld enemy if not null
+			if overworld_enemy:
 				overworld_enemy.queue_free()
 	# if player has lost
 	elif !has_party_won && !has_party_fled:
+		# update combat info box
 		interface.update_combat_info("you lost the battle...")
+		# remove overworld player if not null
 		if overworld_enemy:
 			overworld_player.queue_free()
 
 	# turn on input processing
+	# this allows the player to exit the combat scene
+	# only after combat has concluded
 	set_process_input(true)
 
 
+## check if either the party or the enemies are wiped.
+## returns true if either of the groups has wiped
+## if enemies are wiped, has_party_won property = true
 func _is_combat_over() -> bool:
 	var check_one_dead = func(entity): return !entity.is_alive
 
@@ -209,21 +237,14 @@ func _is_combat_over() -> bool:
 	return false
 
 
-func _setup_battle_order() -> void:
-	if is_party_advantage:
-		print("you get to strike first.")
-		_battle_order = _party + _enemies
-	else:
-		print("enemies get to strike first.")
-		_battle_order = _enemies + _party
-
-	for i in _battle_order:
-		print(i.entity_properties.stats)
-
+## signal callback that is triggered when the attack button is clicked.
+## this prevents the player from being able to choose other actions when attacking
 func _on_enemy_select_enabled(state: bool) -> void:
 	_is_enemy_select_enabled = state
 
 
+## signal callback triggered when block button is clicked.
+## sets the current party member action to block
 func _on_block_button_pressed() -> void:
 	if _is_enemy_select_enabled:
 		return
@@ -232,6 +253,8 @@ func _on_block_button_pressed() -> void:
 	_next_member()
 
 
+## signal callback triggered when flee button is clicked.
+## sets the current party member action to flee
 func _on_flee_button_pressed() -> void:
 	if _is_enemy_select_enabled:
 		return
@@ -240,7 +263,11 @@ func _on_flee_button_pressed() -> void:
 	_next_member()
 
 
+## signal callback triggered when entity has successfully fled.
+## ends combat early and sets has_party_fled to true, this governs whether
+## the player should recieve any awards after combat
 func _on_entity_flee(entity: Node2D) -> void:
+	# only check if fled if at least 1 party member is present
 	if entity in _party:
 		_is_combat_over_early = true
 		has_party_fled = true
@@ -252,34 +279,44 @@ func _on_entity_flee(entity: Node2D) -> void:
 		_gil_reward = min(0, _gil_reward - entity.entity_properties.stats.gil_drop)
 
 
-func _on_enemy_selected(node: Node2D) -> void:
+## signal callback triggered when an [param entity] is selected as a target for
+## another entity. sets action of other entity to attack with [param entity] as target
+func _on_enemy_selected(entity: Node2D) -> void:
 	if !_is_enemy_select_enabled:
 		return
 
-	if node.entity_properties:
-		print(node.entity_properties.name)
+	if entity.entity_properties:
+		print(entity.entity_properties.name)
 
-	current_member.set_action("action_attack", node)
+	current_member.set_action("action_attack", entity)
 
+	# move to the next party member and update interface
 	print(current_member.action)
 	interface.press_attack_button()
 	_next_member()
 
 
-func _member_ready_position(member: Node2D = null) -> void:
-	if !member:
+## sets the [param entity] position to ready i.e. slightly moved to the left.
+## if [param entity] not preset, use current_member. this is default behaviour
+## TODO: change name to be more readable
+func _member_ready_position(entity: Node2D = null) -> void:
+	if !entity:
 		current_member.position.x = 0.0 - member_ready_offset
 		return
-	member.position.x -= member_ready_offset
+	entity.position.x -= member_ready_offset
 
 
-func _member_default_position(member: Node2D = null) -> void:
-	if !member:
+## sets the [param entity] position to default i.e. 0, 0
+## if [param entity] not preset, use current_member. this is default behaviour
+## TODO: change name to be more readable
+func _member_default_position(entity: Node2D = null) -> void:
+	if !entity:
 		current_member.position.x = 0.0
 		return
-	member.position.x = 0
+	entity.position.x = 0
 
 
+## TODO: come back to this one, big
 func _next_member() -> void:
 	_member_default_position()
 	_current_party_index += 1
@@ -302,6 +339,8 @@ func _next_member() -> void:
 	_member_ready_position()
 
 
+## turns on interface process, updates combat info, and returns to first party
+## member, thus looping the battle order until one of the end conditions are met
 func _reset_battle_status() -> void:
 	interface.process_mode = Node.PROCESS_MODE_INHERIT
 	interface.update_combat_info()
@@ -309,6 +348,7 @@ func _reset_battle_status() -> void:
 	_next_member()
 
 
+## randomly generate enemy actions. only for alive enemies
 func _generate_enemy_actions() -> void:
 	for enemy in _enemies:
 		if !enemy.is_alive:
@@ -332,6 +372,7 @@ func _get_next_entity(entities: Array) -> Node2D:
 	return null
 
 
+## get random entity from [param entities]
 func _get_random_entity(entities: Array) -> Node2D:
 	return entities[randi() % entities.size()]
 
@@ -340,6 +381,7 @@ func _get_random_entity(entities: Array) -> Node2D:
 ## in _battle_order. returns true if the battle ends early
 ## e.g. all enemies killed/party wiped
 func _commence_battle() -> bool:
+	# check if battle ended early
 	for entity in _battle_order:
 		if _is_combat_over_early:
 			return true
@@ -348,9 +390,13 @@ func _commence_battle() -> bool:
 		if _is_combat_over():
 			return true
 
+		# skip turn if entity is dead
 		if !entity.is_alive:
 			continue
 
+		# initial call to the entity action.
+		# if success_code is 0, the below loop does not trigger and
+		# the turn is concluded
 		var success_code = entity.call_action()
 
 		# attack action will return -1 if target is null, or becomes null
@@ -376,12 +422,16 @@ func _commence_battle() -> bool:
 		):
 			_member_ready_position(entity)
 
+		# update interface info box with entity action message, which is set after
+		# the action is played. a timer is created and awaited for a few seconds
 		interface.update_combat_info(entity.action_msg)
 		await get_tree().create_timer(turn_wait_time).timeout
 
+		# move to default position if a party member
 		if entity in _party:
 			_member_default_position(entity)
 
+	# check if combat end conditions have been met
 	return _is_combat_over()
 
 
