@@ -78,10 +78,6 @@ func _on_next_char_button_pressed() -> void:
 ## by checking if stats export is available
 func _is_valid(entity_data: EntityProperties) -> bool:
 	return entity_data.stats != null
-	#for i in range(0, state.get_node_count()):
-		#for j in range(0, state.get_node_property_count(i)):
-			#if state.get_node_property_name(i, j) == "stats":
-				#return true
 
 
 ## update character box information such as
@@ -93,16 +89,6 @@ func _update_character_box() -> void:
 	if _character_list.is_empty():
 		print("no characters to display")
 		return
-
-	# apply name override if name override present
-	#if _character_index < character_name_overrides.size():
-		#_character_list[_character_index].entity_name = \
-		#character_name_overrides[_character_index]
-
-		# update node name for easier debugging and clearer
-		# savefile
-		#_character_list[_character_index].name = \
-		#_character_list[_character_index].entity_name.to_pascal_case()
 
 	title.text = _character_list[_character_index].name
 	image.texture = _character_list[_character_index].texture

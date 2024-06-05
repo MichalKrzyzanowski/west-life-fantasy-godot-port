@@ -46,6 +46,7 @@ func _ready() -> void:
 
 
 # private methods
+## initialise ui based on current entity
 func _init_ui() -> void:
 	# connect stats related signals
 	party_member.entity_properties.stats.on_hp_changed.connect(_on_party_member_hp_changed)

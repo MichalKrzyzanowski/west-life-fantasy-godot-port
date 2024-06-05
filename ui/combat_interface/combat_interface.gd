@@ -51,6 +51,7 @@ func _input(event: InputEvent) -> void:
 
 
 # public methods
+## pass information to the character boxes so they can be initialized
 func init_party_stat_boxes(party_list: Array) -> void:
 	if !party:
 		party = $Party
@@ -62,11 +63,14 @@ func init_party_stat_boxes(party_list: Array) -> void:
 		party_boxes[i].party_member = party_list[i]
 
 
+## simulate attack button pressed, used for shortcuts
 func press_attack_button() -> void:
 	attack_button.button_pressed = !attack_button.button_pressed
 	block_action_select = attack_button.button_pressed
 
 
+## updates main combat info part of the box.
+## if [param info] is empty, default to "choose action"
 func update_combat_info(info: String = "") -> void:
 	if info == "":
 		info_label.text = "choose action"
@@ -74,6 +78,7 @@ func update_combat_info(info: String = "") -> void:
 	info_label.text = info
 
 
+## updates rewards info part of the combat info box
 func update_rewards_info(xp: int, gil: int, got_new_gear: bool = false) -> void:
 	rewards_label.show()
 	gil_xp_label.text = "%dg\n%dxp" % [gil, xp]
@@ -83,6 +88,8 @@ func update_rewards_info(xp: int, gil: int, got_new_gear: bool = false) -> void:
 
 
 # private methods
+## signal callback triggered when attack button is pressed.
+## toggles between "choose action" and "choose enemy" modes
 func _on_attack_button_toggled(toggled_on: bool) -> void:
 	block_action_select = toggled_on
 	print("pressed")

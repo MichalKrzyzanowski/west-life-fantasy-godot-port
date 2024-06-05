@@ -93,6 +93,7 @@ func _on_combat_end() -> void:
 	get_parent().show()
 
 
+## signal callback when an entity is shot
 func on_player_enemy_hit(body: Node2D, on_advantage: bool) -> void:
 	for bullet in get_tree().get_nodes_in_group("bullet"):
 		bullet.queue_free()

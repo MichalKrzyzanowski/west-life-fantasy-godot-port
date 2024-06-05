@@ -15,6 +15,8 @@ signal on_revival()
 @export var stats: CombatStats
 ## character name
 @export var name: String
+## character texture. make sure texture is 32x32px and faces
+## left for best results
 @export var texture: Texture
 
 # public vars

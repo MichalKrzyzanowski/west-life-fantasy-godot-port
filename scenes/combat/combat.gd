@@ -103,7 +103,7 @@ func _ready() -> void:
 
 	# initialise current party member and move into ready position
 	current_member = _party[_current_party_index]
-	_member_ready_position()
+	_move_entity_ready_position()
 
 
 # remaining builtins e.g. _process, _input
@@ -187,7 +187,7 @@ func _init_rewards() -> void:
 func _end_combat() -> void:
 	# bring all party members back to default position
 	for member in _party:
-		_member_default_position(member)
+		_move_entity_default_position(member)
 	# disable process for interface
 	# we don't want the player from using the interface when combat is over
 	interface.process_mode = Node.PROCESS_MODE_DISABLED
@@ -202,6 +202,8 @@ func _end_combat() -> void:
 		# add xp to party
 		for member in _party:
 			member.entity_properties.stats.xp += _xp_reward
+			# save game
+			SaveManager.save_game(SaveManager.SAVE_FILE)
 			# remove shot overworld enemy if not null
 			if overworld_enemy:
 				overworld_enemy.queue_free()
@@ -299,7 +301,7 @@ func _on_enemy_selected(entity: Node2D) -> void:
 ## sets the [param entity] position to ready i.e. slightly moved to the left.
 ## if [param entity] not preset, use current_member. this is default behaviour
 ## TODO: change name to be more readable
-func _member_ready_position(entity: Node2D = null) -> void:
+func _move_entity_ready_position(entity: Node2D = null) -> void:
 	if !entity:
 		current_member.position.x = 0.0 - member_ready_offset
 		return
@@ -309,34 +311,45 @@ func _member_ready_position(entity: Node2D = null) -> void:
 ## sets the [param entity] position to default i.e. 0, 0
 ## if [param entity] not preset, use current_member. this is default behaviour
 ## TODO: change name to be more readable
-func _member_default_position(entity: Node2D = null) -> void:
+func _move_entity_default_position(entity: Node2D = null) -> void:
 	if !entity:
 		current_member.position.x = 0.0
 		return
 	entity.position.x = 0
 
 
-## TODO: come back to this one, big
+## move to the next party member when selecting party action.
+## if all actions selected, commence battle.
+## this is a recursive method
 func _next_member() -> void:
-	_member_default_position()
+	# move to the next party member and update previous party member
+	# position
+	_move_entity_default_position()
 	_current_party_index += 1
 
+	# if _party has been exhausted, commence combat.
+	## interface process is disabled
 	if _current_party_index >= _party.size():
 		interface.process_mode = Node.PROCESS_MODE_DISABLED
 		interface.update_combat_info("commence battle!")
 		_generate_enemy_actions()
+		# wait for all turns to be processed.
+		# if _commence_battle returns true, the battle has ended
 		if await _commence_battle():
 			_end_combat()
 			return
+		# reset current party positions and index
 		_reset_battle_status()
 		return
 
+	# only call this function on a living party member
 	if !_party[_current_party_index].is_alive:
 		_next_member()
 		return
 
+	# update position of current party member
 	current_member = _party[_current_party_index]
-	_member_ready_position()
+	_move_entity_ready_position()
 
 
 ## turns on interface process, updates combat info, and returns to first party
@@ -405,6 +418,7 @@ func _commence_battle() -> bool:
 			if _is_combat_over_early:
 				return true
 
+			# make sure the entity has a valid target else, exit combat early
 			if entity in _party:
 				entity.set_action(entity.action.get_method(),
 						_get_next_entity(_enemies))
@@ -420,7 +434,7 @@ func _commence_battle() -> bool:
 				entity in _party
 				&& entity.action.get_method().contains("attack")
 		):
-			_member_ready_position(entity)
+			_move_entity_ready_position(entity)
 
 		# update interface info box with entity action message, which is set after
 		# the action is played. a timer is created and awaited for a few seconds
@@ -429,7 +443,7 @@ func _commence_battle() -> bool:
 
 		# move to default position if a party member
 		if entity in _party:
-			_member_default_position(entity)
+			_move_entity_default_position(entity)
 
 	# check if combat end conditions have been met
 	return _is_combat_over()

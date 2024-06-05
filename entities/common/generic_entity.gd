@@ -47,15 +47,14 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-	# TODO: remove this when godot devs update _init behaviour when initializing
-	# after resource export
+	 # connect signals if entity_properties and stats exist
 	if entity_properties && entity_properties.stats:
 		entity_properties.stats.on_hp_depleted.connect(_on_entity_hp_depleted)
 		entity_properties.stats.on_hp_changed.connect(_on_entity_hp_changed)
 		entity_properties.on_revival.connect(_on_entity_revival)
 		entity_properties.stats.on_level_up.connect(_on_entity_level_up)
 
-		# init hp bar
+		# init hp bar if user choose not to hide the health bars
 		if hide_ui:
 			hide_hp_bar()
 		else:
@@ -71,6 +70,7 @@ func _process(delta: float) -> void:
 		shake()
 
 
+## update ui offset to match entity position after transform change
 func _notification(what: int) -> void:
 	match what:
 		NOTIFICATION_TRANSFORM_CHANGED:
@@ -78,28 +78,40 @@ func _notification(what: int) -> void:
 
 
 # public methods
+## add strength to the shake effect
 func add_trauma(amount: float) -> void:
 	trauma = min(trauma + amount, 1.0)
 
 
+## apply shake effect to the entity
 func shake() -> void:
 	var total_trauma: float = pow(trauma, trauma_power)
 	sprite.offset.x = max_offset.x * total_trauma * randf_range(-1.0, 1.0)
 	sprite.offset.y = max_offset.y * total_trauma * randf_range(-1.0, 1.0)
 
 
+## set the action callback of the entity.
+## action is set based on [param action_name] string.
+## [param target] is only required by some actions, defaults to null
 func set_action(action_name: String = "", target: Node2D = null) -> void:
 	# reset defence multiplier i.e. stop blocking
 	entity_properties.stats.defence_multiplier = 1
 	if action_name == "":
 		action_name = select_smart_action()
 
+	# if method with action_name exists, bind target to a new callable
 	if has_method(action_name):
 		action = Callable(self, action_name).bind(target)
+		# call action passive, if it exists
 		if has_method("_%s_passive" % action.get_method()):
 			call("_%s_passive" % action.get_method())
 
 
+## ai entity selects action based on hp remaining.
+## if hp <= 50%, ai entity will have 60% to defend.
+## defaults to attack action
+## TODO: future: add cowardice parameter that governs chance to choose flee
+## action
 func select_smart_action() -> String:
 	if (
 			entity_properties.stats.hp
@@ -111,6 +123,7 @@ func select_smart_action() -> String:
 	return "action_attack"
 
 
+## randomly selects action
 func select_random_action() -> String:
 	var actions: Array = \
 			get_method_list().filter(func(i): \
@@ -129,6 +142,12 @@ func clear_action() -> void:
 
 
 # actions
+## attack actions. deals damage to the [param target] based on:
+## formula: A-(A/100*(TD*TDM))
+## where:
+## A: attack
+## TD: target defence
+## TDM: target defence multiplier
 func action_attack(target: Node2D) -> int:
 	if !target || !target.is_alive:
 		print("target is dead, looking for new target")
@@ -149,17 +168,22 @@ func action_attack(target: Node2D) -> int:
 	)
 
 	target.entity_properties.stats.hp -= attack_formula
+	# shake target entity
 	target.add_trauma(1.0)
+	# update message, this will be displayed in the combat info box
 	action_msg = "%s deals\n%d dmg\nto %s" % \
 			[entity_properties.name, attack_formula, target.entity_properties.name]
 	return 0
 
 
+## block action. updates action message, dmg reduction
+## is applied in the passive
 func action_block(_target: Node2D) -> int:
 	action_msg = "%s\nis blocking" % entity_properties.name
 	return 0
 
 
+## flee action. entity has 50% chance to escape battle
 func action_flee(_target: Node2D) -> int:
 	var success: int = randi_range(1, 100)
 	if success > 50:
@@ -220,10 +244,7 @@ func set_sprite_texture(texture: Texture) -> void:
 
 # private methods
 # action passives
-func _action_attack_passive() -> void:
-	print("%s enables attack passive" % entity_properties.name)
-
-
+## apply block multiplier
 func _action_block_passive() -> void:
 	entity_properties.stats.defence_multiplier = 2
 
@@ -234,6 +255,7 @@ func _on_entity_hp_changed() -> void:
 		hp_bar.value = entity_properties.stats.hp
 
 
+## hide entity if hp < 1
 func _on_entity_hp_depleted() -> void:
 	is_alive = false
 	hide()
@@ -242,6 +264,7 @@ func _on_entity_hp_depleted() -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED
 
 
+## revive entity, currently not used
 func _on_entity_revival() -> void:
 	show()
 	if !hide_ui:
@@ -249,6 +272,7 @@ func _on_entity_revival() -> void:
 	process_mode = Node.PROCESS_MODE_INHERIT
 
 
+## update hp bar and show level up sprite on level up
 func _on_entity_level_up() -> void:
 	if !hide_ui:
 		hp_bar.max_value = entity_properties.stats.max_hp
@@ -256,6 +280,7 @@ func _on_entity_level_up() -> void:
 	level_up_sprite.show()
 
 
+## emit on_entity_clicked signal when clicked. used for selecting target
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_action_pressed("select_enemy"):
 		print("entity clicked")
