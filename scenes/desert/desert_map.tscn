@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ckqmboktfdvg2"]
+[gd_scene load_steps=21 format=3 uid="uid://ckqmboktfdvg2"]
 
 [ext_resource type="PackedScene" uid="uid://d02rs8t4d5gwn" path="res://entities/overworld-player/overworld_player.tscn" id="1_3eak2"]
 [ext_resource type="Script" path="res://scenes/desert/desert_map.gd" id="1_vowdh"]
@@ -17,6 +17,11 @@
 [ext_resource type="Resource" uid="uid://bpsxlfo8fw8e7" path="res://entities/enemies/cactus/cactus.tres" id="15_g7u6l"]
 [ext_resource type="Resource" uid="uid://bdw0t65416n83" path="res://entities/enemies/desert_ninja/desert_ninja.tres" id="16_pw241"]
 [ext_resource type="PackedScene" uid="uid://csx3cuf43jnq8" path="res://entities/overworld-enemy/overworld_enemy.tscn" id="17_sqsuv"]
+[ext_resource type="PackedScene" uid="uid://dujvgle5ockxo" path="res://scenes/common/transition_area/transition_area.tscn" id="18_we0hj"]
+[ext_resource type="Texture2D" uid="uid://ds1neb28g8cpd" path="res://door.png" id="19_w4n4h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1cvgx"]
+size = Vector2(32, 32)
 
 [node name="DesertMap" type="Node2D" groups=["persist"]]
 script = ExtResource("1_vowdh")
@@ -68,10 +73,14 @@ position = Vector2(-156, -234)
 scale = Vector2(0.67, 0.67)
 
 [node name="CombatManager" parent="." node_paths=PackedStringArray("overworld_player") instance=ExtResource("11_t00au")]
-enable_random_encounters = true
 enemy_spawn_table = Array[Resource("res://entities/common/entity_properties.gd")]([ExtResource("12_fjvd6"), ExtResource("13_045pm"), ExtResource("14_u8kt6"), ExtResource("15_g7u6l"), ExtResource("16_pw241")])
 overworld_player = NodePath("../OverworldPlayer")
 
 [node name="OverworldEnemy" parent="." instance=ExtResource("17_sqsuv")]
 position = Vector2(-21, -251)
 scale = Vector2(0.5, 0.5)
+
+[node name="TransitionArea" parent="." instance=ExtResource("18_we0hj")]
+position = Vector2(124, -238)
+shape = SubResource("RectangleShape2D_1cvgx")
+texture = ExtResource("19_w4n4h")

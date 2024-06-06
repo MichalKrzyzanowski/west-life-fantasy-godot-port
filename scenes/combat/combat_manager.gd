@@ -51,7 +51,6 @@ func _process(_delta: float) -> void:
 		# increase counter, trigger combat chance when counter
 		# reaches end
 		_counter += counter_increment
-		print(_counter)
 		if _counter >= _counter_end:
 			_counter = 0
 			_trigger_random_encounter()
