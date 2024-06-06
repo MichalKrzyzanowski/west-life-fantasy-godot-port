@@ -13,6 +13,7 @@ func _input(event: InputEvent) -> void:
 		emit_bullet()
 
 
+## create instance of bullet, called when player/enemy shoots
 func emit_bullet(target: Node2D = null) -> void:
 	var target_position
 	# set target position to target's global_position if
