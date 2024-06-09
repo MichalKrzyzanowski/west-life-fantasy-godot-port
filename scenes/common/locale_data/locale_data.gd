@@ -1,4 +1,6 @@
-extends Node2D
+# @tool
+class_name LocaleData
+extends Resource
 # docstring
 
 
@@ -9,6 +11,10 @@ extends Node2D
 # constants
 
 # @export vars
+@export var name: String
+@export var entrance_position: Vector2
+@export_file var scene_file: String
+
 
 # public vars
 
@@ -33,11 +39,6 @@ func _ready() -> void:
 
 
 # public methods
-func save() -> Dictionary:
-	return {
-		"filename": get_scene_file_path(),
-		"parent": get_parent().get_path(),
-	}
 
 
 # private methods

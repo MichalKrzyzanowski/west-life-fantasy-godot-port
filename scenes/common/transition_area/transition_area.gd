@@ -13,6 +13,8 @@ extends Area2D
 # @export vars
 @export var shape: Shape2D
 @export var texture: Texture
+@export var locale: LocaleData
+
 
 # public vars
 
@@ -43,8 +45,15 @@ func _ready() -> void:
 
 
 # private methods
-func _on_body_entered(body: Node2D) -> void:
-	print("transition")
+func _on_body_entered(_body: Node2D) -> void:
+	print("entering: %s" % locale.name)
+	var new_map = load(locale.scene_file).instantiate()
+	await get_tree().process_frame
+	get_tree().root.add_child(new_map)
+	var new_player = new_map.find_child("OverworldPlayer")
+	if new_player:
+		new_player.global_position = locale.entrance_position
+	get_parent().queue_free()
 
 
 # subclasses

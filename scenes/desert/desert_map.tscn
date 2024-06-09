@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ckqmboktfdvg2"]
+[gd_scene load_steps=23 format=3 uid="uid://ckqmboktfdvg2"]
 
 [ext_resource type="PackedScene" uid="uid://d02rs8t4d5gwn" path="res://entities/overworld-player/overworld_player.tscn" id="1_3eak2"]
 [ext_resource type="Script" path="res://scenes/desert/desert_map.gd" id="1_vowdh"]
@@ -19,9 +19,16 @@
 [ext_resource type="PackedScene" uid="uid://csx3cuf43jnq8" path="res://entities/overworld-enemy/overworld_enemy.tscn" id="17_sqsuv"]
 [ext_resource type="PackedScene" uid="uid://dujvgle5ockxo" path="res://scenes/common/transition_area/transition_area.tscn" id="18_we0hj"]
 [ext_resource type="Texture2D" uid="uid://ds1neb28g8cpd" path="res://door.png" id="19_w4n4h"]
+[ext_resource type="Script" path="res://scenes/common/locale_data/locale_data.gd" id="20_3tgwn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1cvgx"]
 size = Vector2(32, 32)
+
+[sub_resource type="Resource" id="Resource_1edn1"]
+script = ExtResource("20_3tgwn")
+name = "testing"
+entrance_position = Vector2(200, 264)
+scene_file = "res://scenes/test/testing_map.tscn"
 
 [node name="DesertMap" type="Node2D" groups=["persist"]]
 script = ExtResource("1_vowdh")
@@ -84,3 +91,4 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(124, -238)
 shape = SubResource("RectangleShape2D_1cvgx")
 texture = ExtResource("19_w4n4h")
+locale = SubResource("Resource_1edn1")
