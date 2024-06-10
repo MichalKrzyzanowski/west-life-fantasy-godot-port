@@ -20,6 +20,7 @@ var player_position := Vector2()
 # @onready vars
 @onready var player = $OverworldPlayer as CharacterBody2D
 @onready var CombatScene = preload("res://scenes/combat/combat.tscn")
+@onready var fader := $Fader as AnimationPlayer
 
 
 func _init() -> void:
@@ -31,7 +32,8 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-	pass
+	fader.play("fade")
+
 
 
 # remaining builtins e.g. _process, _input
@@ -60,7 +62,9 @@ func load(data) -> void:
 
 
 # private methods
+func _on_transition_area_on_transition_start() -> void:
+	fader.play_backwards("fade")
+	await fader.animation_finished
 
 
 # subclasses
-

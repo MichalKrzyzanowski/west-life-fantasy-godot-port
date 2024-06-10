@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ckqmboktfdvg2"]
+[gd_scene load_steps=24 format=3 uid="uid://ckqmboktfdvg2"]
 
 [ext_resource type="PackedScene" uid="uid://d02rs8t4d5gwn" path="res://entities/overworld-player/overworld_player.tscn" id="1_3eak2"]
 [ext_resource type="Script" path="res://scenes/desert/desert_map.gd" id="1_vowdh"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://dujvgle5ockxo" path="res://scenes/common/transition_area/transition_area.tscn" id="18_we0hj"]
 [ext_resource type="Texture2D" uid="uid://ds1neb28g8cpd" path="res://door.png" id="19_w4n4h"]
 [ext_resource type="Script" path="res://scenes/common/locale_data/locale_data.gd" id="20_3tgwn"]
+[ext_resource type="PackedScene" uid="uid://b4hhb0gjpr7ab" path="res://common/fader.tscn" id="21_eco2k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1cvgx"]
 size = Vector2(32, 32)
@@ -92,3 +93,7 @@ position = Vector2(124, -238)
 shape = SubResource("RectangleShape2D_1cvgx")
 texture = ExtResource("19_w4n4h")
 locale = SubResource("Resource_1edn1")
+
+[node name="Fader" parent="." instance=ExtResource("21_eco2k")]
+
+[connection signal="on_transition_start" from="TransitionArea" to="." method="_on_transition_area_on_transition_start"]

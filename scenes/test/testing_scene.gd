@@ -15,6 +15,7 @@ extends Node2D
 # private vars
 
 # @onready vars
+@onready var fader := $Fader as AnimationPlayer
 
 
 func _init() -> void:
@@ -26,7 +27,7 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-	pass
+	fader.play("fade")
 
 
 # remaining builtins e.g. _process, _input

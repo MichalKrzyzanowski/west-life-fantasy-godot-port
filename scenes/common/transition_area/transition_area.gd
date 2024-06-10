@@ -5,6 +5,7 @@ extends Area2D
 
 
 # signals
+signal on_transition_start
 
 # enums
 
@@ -23,6 +24,7 @@ extends Area2D
 # @onready vars
 @onready var collision_shape := $CollisionShape2D as CollisionShape2D
 @onready var sprite := $Sprite2D as Sprite2D
+@onready var parent := get_parent() as Node2D
 
 
 func _init() -> void:
@@ -45,15 +47,27 @@ func _ready() -> void:
 
 
 # private methods
+func _wait_for_faders() -> void:
+	print(parent)
+	if parent.has_node("Fader"):
+		parent.fader.play_backwards("fade")
+		await parent.fader.animation_finished
+	else:
+		print("no fader present in parent")
+
+
 func _on_body_entered(_body: Node2D) -> void:
 	print("entering: %s" % locale.name)
+
+	await _wait_for_faders()
+
 	var new_map = load(locale.scene_file).instantiate()
 	await get_tree().process_frame
 	get_tree().root.add_child(new_map)
 	var new_player = new_map.find_child("OverworldPlayer")
 	if new_player:
 		new_player.global_position = locale.entrance_position
-	get_parent().queue_free()
+	parent.queue_free()
 
 
 # subclasses
