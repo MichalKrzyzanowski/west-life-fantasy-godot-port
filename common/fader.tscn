@@ -27,12 +27,13 @@ bg_color = Color(0, 0, 0, 1)
 libraries = {
 "": SubResource("AnimationLibrary_lqkj2")
 }
+speed_scale = 1.5
 
 [node name="Fade" type="CanvasLayer" parent="."]
 layer = 5
 
 [node name="Panel" type="Panel" parent="Fade"]
-modulate = Color(0, 0, 0, 0)
+modulate = Color(0, 0, 0, 0.857143)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
