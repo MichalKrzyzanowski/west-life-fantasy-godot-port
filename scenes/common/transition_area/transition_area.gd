@@ -1,4 +1,4 @@
-# @tool
+@tool
 # class_name name
 extends Area2D
 # docstring
@@ -12,8 +12,16 @@ signal on_transition_start
 # constants
 
 # @export vars
-@export var shape: Shape2D
-@export var texture: Texture
+@export var shape: Shape2D:
+	set(new_shape):
+		shape = new_shape
+		if collision_shape:
+			collision_shape.shape = shape
+@export var texture: Texture:
+	set(new_texture):
+		texture = new_texture
+		if sprite:
+			sprite.texture = texture
 @export var locale: LocaleData
 
 
