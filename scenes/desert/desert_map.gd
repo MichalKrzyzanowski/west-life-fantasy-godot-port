@@ -16,6 +16,7 @@ extends Node2D
 var player_position := Vector2()
 
 # private vars
+var _previous_locale: LocaleData
 
 # @onready vars
 @onready var player = $OverworldPlayer as CharacterBody2D
@@ -35,7 +36,6 @@ func _ready() -> void:
 	fader.play("fade")
 
 
-
 # remaining builtins e.g. _process, _input
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey && event.pressed:
@@ -45,6 +45,14 @@ func _input(event: InputEvent) -> void:
 
 
 # public methods
+func get_previous_locale() -> LocaleData:
+	return _previous_locale
+
+
+func set_previous_locale(locale: LocaleData) -> void:
+	_previous_locale = locale
+
+
 ## saves data as dictionary for JSON format
 func save() -> Dictionary:
 	player_position = player.position

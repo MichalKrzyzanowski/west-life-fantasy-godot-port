@@ -11,7 +11,6 @@ extends Resource
 # constants
 
 # @export vars
-@export var name: String
 @export var entrance_position: Vector2
 @export_file var scene_file: String
 

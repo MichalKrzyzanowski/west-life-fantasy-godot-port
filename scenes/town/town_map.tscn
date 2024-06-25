@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cks12v4jq01wl"]
+[gd_scene load_steps=11 format=3 uid="uid://cks12v4jq01wl"]
 
 [ext_resource type="TileSet" uid="uid://1jku0k0we0ls" path="res://scenes/common/path_tileset.tres" id="1_68dcb"]
 [ext_resource type="TileSet" uid="uid://rimkebejbyxw" path="res://scenes/common/fence_tileset.tres" id="2_rrliv"]
@@ -7,16 +7,9 @@
 [ext_resource type="TileSet" uid="uid://lmlrfvna3b4l" path="res://scenes/common/cactus_tileset.tres" id="4_ll411"]
 [ext_resource type="PackedScene" uid="uid://d02rs8t4d5gwn" path="res://entities/overworld-player/overworld_player.tscn" id="6_wau1r"]
 [ext_resource type="PackedScene" uid="uid://dujvgle5ockxo" path="res://scenes/common/transition_area/transition_area.tscn" id="7_4sy1f"]
-[ext_resource type="Script" path="res://scenes/common/locale_data/locale_data.gd" id="8_hau8x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_so7h4"]
 size = Vector2(16, 16)
-
-[sub_resource type="Resource" id="Resource_wwld0"]
-script = ExtResource("8_hau8x")
-name = "desert map"
-entrance_position = Vector2(0, 0)
-scene_file = ""
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_drbdj"]
 size = Vector2(16, 4)
@@ -60,7 +53,6 @@ speed = 1.7
 [node name="TownExit" parent="." instance=ExtResource("7_4sy1f")]
 position = Vector2(8, 168)
 shape = SubResource("RectangleShape2D_so7h4")
-locale = SubResource("Resource_wwld0")
 
 [node name="WeaponShop" parent="." instance=ExtResource("7_4sy1f")]
 position = Vector2(-136, 130)

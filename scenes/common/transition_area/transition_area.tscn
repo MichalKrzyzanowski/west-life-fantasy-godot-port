@@ -1,8 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dujvgle5ockxo"]
+[gd_scene load_steps=2 format=3 uid="uid://dujvgle5ockxo"]
 
 [ext_resource type="Script" path="res://scenes/common/transition_area/transition_area.gd" id="1_dauki"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7sa5u"]
 
 [node name="TransitionArea" type="Area2D"]
 position = Vector2(1, 0)
@@ -10,7 +8,6 @@ collision_mask = 2
 script = ExtResource("1_dauki")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_7sa5u")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
