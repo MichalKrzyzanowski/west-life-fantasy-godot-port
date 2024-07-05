@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cks12v4jq01wl"]
+[gd_scene load_steps=12 format=3 uid="uid://cks12v4jq01wl"]
 
 [ext_resource type="TileSet" uid="uid://1jku0k0we0ls" path="res://scenes/common/path_tileset.tres" id="1_68dcb"]
+[ext_resource type="Script" path="res://scenes/town/town_map.gd" id="1_i12ha"]
 [ext_resource type="TileSet" uid="uid://rimkebejbyxw" path="res://scenes/common/fence_tileset.tres" id="2_rrliv"]
 [ext_resource type="TileSet" uid="uid://c65312ml6h3a6" path="res://scenes/common/desert_tileset.tres" id="2_x6pwr"]
 [ext_resource type="TileSet" uid="uid://cx2yak8k0gq4c" path="res://scenes/common/house_tileset.tres" id="3_u2c0v"]
@@ -18,6 +19,7 @@ size = Vector2(16, 4)
 size = Vector2(32, 5)
 
 [node name="TownMap" type="Node2D"]
+script = ExtResource("1_i12ha")
 
 [node name="Map" type="Node2D" parent="."]
 
@@ -48,7 +50,6 @@ layer_0/tile_data = PackedInt32Array(-524271, 65536, 5, -786415, 65536, 1, -7208
 
 [node name="OverworldPlayer" parent="." instance=ExtResource("6_wau1r")]
 position = Vector2(8, 136)
-speed = 1.7
 
 [node name="TownExit" parent="." instance=ExtResource("7_4sy1f")]
 position = Vector2(8, 168)

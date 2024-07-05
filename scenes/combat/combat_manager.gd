@@ -13,10 +13,10 @@ extends Node
 # @export vars
 @export var enable_random_encounters: bool = false
 @export var enemy_spawn_table: Array[EntityProperties]
-@export var overworld_player: CharacterBody2D
 @export var counter_increment: int = 1
 
 # public vars
+var overworld_player: CharacterBody2D
 
 # private vars
 # counters used for triggering encounter chance
@@ -36,6 +36,8 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
+	# temp measure, refactor combat manager in the future
+	overworld_player = get_parent().find_child("OverworldPlayer")
 	overworld_player.on_enemy_hit.connect(on_player_enemy_hit)
 
 

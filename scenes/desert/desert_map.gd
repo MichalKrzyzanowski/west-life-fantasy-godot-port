@@ -11,6 +11,7 @@ extends Node2D
 # constants
 
 # @export vars
+@export var spawn_position: Vector2
 
 # public vars
 var player_position := Vector2()
@@ -34,6 +35,7 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	fader.play("fade")
+	print(player)
 
 
 # remaining builtins e.g. _process, _input

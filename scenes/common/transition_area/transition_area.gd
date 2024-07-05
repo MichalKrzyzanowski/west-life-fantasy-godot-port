@@ -79,6 +79,7 @@ func _on_body_entered(_body: Node2D) -> void:
 	else:
 		locale = target_locale
 
+
 	var new_map = load(locale.scene_file).instantiate()
 	# set previous map for new map, for backtracking purposes
 	if target_locale && new_map.has_method("set_previous_locale"):
@@ -87,9 +88,12 @@ func _on_body_entered(_body: Node2D) -> void:
 	await get_tree().process_frame
 	get_tree().root.add_child(new_map)
 
-	var new_player = new_map.find_child("OverworldPlayer")
-	if new_player:
-		new_player.global_position = locale.entrance_position
+	var player = map_ref.find_child("OverworldPlayer")
+	# var new_player = new_map.find_child("OverworldPlayer")
+	# if new_player:
+		# new_map.remove_child(new_player)
+	player.reparent(new_map, false)
+		# player.global_position = locale.entrance_position
 	map_ref.queue_free()
 
 
