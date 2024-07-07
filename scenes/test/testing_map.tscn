@@ -30,7 +30,6 @@ position = Vector2(232, 104)
 texture = ExtResource("2_8w5m8")
 
 [node name="OverworldPlayer" parent="." instance=ExtResource("4_6tlv0")]
-speed = 1.7
 
 [node name="TransitionArea" parent="." node_paths=PackedStringArray("map_ref") instance=ExtResource("5_4ghxh")]
 position = Vector2(200, 232)

@@ -67,7 +67,7 @@ func _wait_for_faders() -> void:
 
 
 func _on_body_entered(_body: Node2D) -> void:
-	if !map_ref && !map_ref.has_method("get_previous_locale"):
+	if !map_ref || !map_ref.has_method("get_previous_locale"):
 		return
 
 	await _wait_for_faders()
@@ -81,7 +81,7 @@ func _on_body_entered(_body: Node2D) -> void:
 
 	var new_map = load(locale.scene_file).instantiate()
 	# set previous map for new map, for backtracking purposes
-	if target_locale && new_map.has_method("set_previous_locale"):
+	if origin_locale && new_map.has_method("set_previous_locale"):
 		new_map.call("set_previous_locale", origin_locale)
 
 	await get_tree().process_frame

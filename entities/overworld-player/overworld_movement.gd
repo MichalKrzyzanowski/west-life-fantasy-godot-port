@@ -13,11 +13,13 @@ var allow_movement: bool = true
 
 
 func _ready() -> void:
+	if !get_parent().has_node("Fader"):
+		return
+
 	var fader = get_parent().get_node("Fader")
-	if fader:
-		print("found fader")
-		fader.animation_started.connect(_on_fade_begin)
-		fader.animation_finished.connect(_on_fade_end)
+	print("found fader")
+	fader.animation_started.connect(_on_fade_begin)
+	fader.animation_finished.connect(_on_fade_end)
 
 
 ## physics process function that handles player movement,
