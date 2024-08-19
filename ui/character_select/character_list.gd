@@ -55,7 +55,7 @@ func move_character_index(amount: int) -> void:
 	# stop if character_data array is null
 	if !character_data:
 		return
-	_character_index = (_character_index + amount + character_data.size()) % character_data.size()
+	_character_index = wrap(_character_index + amount, 0, character_data.size())
 	_update_character_box()
 
 
