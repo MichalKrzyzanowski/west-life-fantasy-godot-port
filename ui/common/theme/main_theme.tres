@@ -49,6 +49,8 @@ texture_margin_bottom = 3.0
 modulate_color = Color(0.651042, 0.651042, 0.651042, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uoatp"]
+content_margin_top = 25.0
+content_margin_bottom = 25.0
 texture = ExtResource("1_pfacf")
 texture_margin_left = 4.0
 texture_margin_top = 4.0
@@ -57,6 +59,8 @@ texture_margin_bottom = 3.0
 modulate_color = Color(0.78, 0.78, 0.78, 0.498039)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kceo7"]
+content_margin_top = 25.0
+content_margin_bottom = 25.0
 texture = ExtResource("1_pfacf")
 texture_margin_left = 4.0
 texture_margin_top = 4.0
@@ -65,6 +69,8 @@ texture_margin_bottom = 3.0
 modulate_color = Color(1, 1, 1, 0)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aqg7b"]
+content_margin_top = 25.0
+content_margin_bottom = 25.0
 texture = ExtResource("1_pfacf")
 texture_margin_left = 4.0
 texture_margin_top = 4.0
@@ -73,6 +79,8 @@ texture_margin_bottom = 3.0
 modulate_color = Color(0.960784, 0.960784, 0.960784, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mw5h2"]
+content_margin_top = 25.0
+content_margin_bottom = 25.0
 texture = ExtResource("1_pfacf")
 texture_margin_left = 4.0
 texture_margin_top = 4.0

@@ -74,4 +74,3 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 
 	player.on_enemy_hit.emit(enemy, player_advantage)
-

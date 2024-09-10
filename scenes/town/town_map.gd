@@ -50,4 +50,3 @@ func set_previous_locale(locale: LocaleData) -> void:
 
 
 # subclasses
-

@@ -1,0 +1,153 @@
++------+
+| DONE |
++------+
+- overworld character
+	- movement
+	- camera tracking player
+	- shooting
+- desert overworld add boulder/grass/lake tilesets
+	- add town and cactus props
+	- implement collisions between player and environment
+		- cactus: collide with bottom half, use y sorting to provide ilusion of depth (try to be authentic)
+		- basic collisions with anything else
+		- fix issue where bullet is rendered on top of the instructions board, not below
+- player party
+	- add party system
+	- add stats and leveling
+	- add possible player characters
+		- should have different stats and growth
+- saving/loading
+	- save via json
+	- one save slot only
+- main menu
+	- add main menu screen
+	- add party select screen
+	- add load option
+	- add options screen with basic options
+		- sound volume/mute
+- camp menu
+	- party stats
+	- inventory menus e.g weapon/armour management
+	- add empty orbs, without logic
+- combat
+	- rework player to be a resource instead of a scene
+		- the data should be used when creating party members during combat
+	- implement ui
+	- add overall mechanics (fight, defend, flee)
+	- add extra ui (level bar, enemy hp bar)
+- refactor code base:
+	- camp_character_stats_box
+- towns
+	- map transitions
+	- add town scene
+- buglist
+	- loading game messes up map tiles i.e. path is glitched, looks like path tex with river tex, river is replaced by boulder tex
+		- also happens when when selecting new game
+		- caused by older version of godot 4.2. fixed on godot 4.3+
+
+
++-------------+
+| IN PROGRESS |
++-------------+
+- enhancements:
+	- move project to godot 4.3
+		- convert tilemaps to tilemaplayers
+- buglist
+	- mouse is not registered in the camp menu, unless the camp menu is ran individualy
+	- godot 4.3: main menu continue button is not greyed out when no saves are present
+	- godot 4.3: main menu continue button is smaller than the rest
+		- specifially affecting disabled button, theme might be broken
+- inventory system
+	- managing consumables e.g. using items to heal other party members
+	- equip/unequip weapons and armour
+	- upgrade weapons
+	- drop any item
+	- consumable stacks
+	- implementation #1:
+		- item resource:
+			- items inherit base item resource
+			- base item props:
+				- name
+				- stack_size: defaults to 1 for gear compat
+				- amount: (1-stack_size)
+					- if amount = 0, the item should be removed from player inventory
+				- signals:
+					- on_remove:
+						- when item stack_size reaches 0
+					- on_amount_changed:
+						- when item is either dropped/aquired/sold. anyway that amount is changed
+					- aquired:
+						- when item is added to player's inventory
+			- different custom resources types:
+				- consumable: stack size defaults to 15, item effect/action e.g. heal party
+					- effect func should have a target entity/list of entities as parameter
+					- effect func can alter entity stats in a positive/negative way
+				- gear: stats, stack_size = 1
+					- stats: can hold a stat of defence, attack, etc.
+						- maybe use combat_stats resource
+						- up to combat scene how entity gear stats affect combat e.g. only use attack
+					- entity type/class that can equip:
+						- e.g. only warrior can equip plate armour
+						- armour/weapon select screen should sort by party member like in original
+		- inventory autoload:
+			- this will manage player inventory: add/remove/use item, stacks, etc.
+			- a dict or array, holding custom item resources
+			- signals:
+				- on_item_added(item)
+					- when new item is added to player's inventory
+		- gui item:
+			- button that is used to display item name and count to the player in the camp menu
+			- clicking on the button performs the item's action if consumable
+		- camp_menu:
+			- item inventory fetches player inventory from inventory autoload, updates ui list of items
+		- item management flow example:
+			- item buys a potion from the item shop
+			- potion is added to the player's inventory
+			- inventory manager emit's signal on_item_added
+			- gui inventory in party camp recieves the signal
+			- gui item scene is instantiated
+			- gui item scene connects item's on_amount_changed and other stat changing signals
+			- gui inventory connects item's on_remove signal
+	- implementation #2:
+		- same item resource as before
+		- each item has a unique id
+		- stored in an item database dict
+			- dict(id, item_resource)
+		- gui inventory fetches the list of items in the player's inventory and displays them
+			- try to handle it from another thread
+
++------+
+| TODO |
++------+
+- enhancements:
+	- add fade in/out to ui buttons and maps
+	- add _get_property_list to EntityProperties and CombatStats
+	- update grid_2d plugin to also use _get_property_list for conditional exports
+- buglist:
+	- camp menu can be opened during fade in/out transition
+- refactor code base:
+	- clean up project i.e. better structure, more folders
+- enemies
+	- add static positions
+	- implement collision detection with player, environment and bullets
+	- simple path finding when player in range
+	- wander ai
+	- only update when in range, performance
+- boss encounter
+	- add boss encounters to overworld map
+- audio
+	- add overworld and combat music
+	- add combat sounds
+- shops
+	- add ability to buy/sell items
+	- add weapon/armour shops
+	- add healer shop
+- tavern
+	- tavern minigame
+- credits
+	- simple credit scene
+- minimap
+	- add minimap in the bottom right corner in the overworld
+- quests and orbs
+	- quest dialog box in the top right corner of the screen
+	- orbs in camp menu that regain color after beating corresponding boss 

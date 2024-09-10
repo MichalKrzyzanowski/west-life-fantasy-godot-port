@@ -119,4 +119,3 @@ func on_player_enemy_hit(body: Node2D, on_advantage: bool) -> void:
 
 
 # subclasses
-

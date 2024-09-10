@@ -1,0 +1,131 @@
+- converting unity to godot transform:
+	- move decimal right 2 times i.e. x100. e.g. 0.75 = 75.0
+	- reverse negative number on y axis e.g. 1.25 = -1.25
+
+- damage formula:
+	- reduction: attack / 100 * (target_def * target_def_muliplier)
+	- total_attack: attack + weapon_attack
+	- final: total_attack - reduction (clamped at 1/0?)
+	- full formula: attack + weapon_attack - (attack / 100 * (target_def * target_def_muliplier))
+
+- transitions:
+	- better off to have to two locales per transition point:
+		- origin and target locales
+		- target locale takes you to the next map
+		- origin locale stores data of map that the transition point is located in e.g. desert map
+		- previous locale is used to store the origin locale when moving to the target locale, so that we can move back to the previous locale with ease
+		- if target locale = null, go back to previous locale
+	- need to support mutliple entrance locations to the same locale e.g.
+		multiple towns in desert map should lead to same town scene and back to
+		different position on the desert map
+	- current solution:
+		- locale data: name, entrance pos, and scene file
+		- go to scene and update player position to entrance pos
+	- maybe?
+		- track name of locale player is entering
+		- use dict of locales when exiting, match the name of the previous locale
+		- if locales dict == 1, no need to match locales
+
+- combat system:
+	- ui:
+		- interface:
+			- needs:
+				- gold reward
+				- xp reward
+				- current entity name
+				- current entity damage
+				- target name
+			- solutions:
+				- add actions and target reference to generic_entity script
+				- create on_turn_end(entity) signal
+				- connect signal to combat interface
+		- party stats box:
+			- needs:
+				- member health
+				- member name
+				- member xp
+				- member required xp
+			- solutions:
+				- add entity_properties reference
+				- connect party stats box to party member stats signals:
+					- hp changed
+					- xp changed
+
+- map transition system (door system?) maybe??
+	- door class/scene:
+		- holds scene to load
+		- holds position of player to store, that is the position of the player before the door
+	- autoload manager that stores previous door used
+
+- the player should not be a child of any of the maps (town, desert)
+	- player should not be destroyed when switching maps
+
+- general code refactor:
+	- rename all load/preload vars to PascalCase
+	- fix instructions board
+
+- saving system:
+	- what to save:
+		- party members:
+			- name
+			- combat stats
+		- inventory:
+			- items:
+				- count
+			- weapons:
+				- upgrade level
+				- damage
+			- armor:
+				- upgrade level
+				- defence
+		- overworld:
+			- current scene (either town or desert)
+			- position
+	- when choosing new game:
+		- create party and append each member to party manager
+	- when choosing continue game:
+		- check if save file present
+		- load from file if save file present
+		- add members to party manager
+	- how to save:
+		- first, remove the current scene
+		- load in the singleton saved items e.g. items, party
+		- then, load map data
+	- when the game is actually saved:
+		- when opening the camp menu
+		- when leaving the combat scene
+
+- party system:
+	- base combat entity class (name = combat_stats)
+		- create entity resource that holds all necessary stats
+			- hp/max hp
+			- damage
+			- defense
+			- xp/required xp
+			- level
+			- stat scalars
+				- hp, damage, required xp, etc.
+			- weapon (extra damage)
+			- armour (extra defense)
+	- create an entity scene for each combat entity in the game
+		- party members:
+			- fighter
+			- mage
+			- thief
+			- black belt
+		- enemies:
+			- Snail
+			- Cactus
+			- Bandit
+			- DesertWarrior
+			- DesertShinobi
+			- DarkShinobi
+			- ShadeShinobi
+		- bosses
+			- BossBoss
+			- BossSpy
+			- BossMan
+			- BossWalk
+			- BossBossBoss
+			- BossWif
+		- combat scene will have an enemy spawn table, with percent chance to spawn each enemy

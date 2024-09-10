@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ckqmboktfdvg2"]
+[gd_scene load_steps=32 format=3 uid="uid://ckqmboktfdvg2"]
 
 [ext_resource type="PackedScene" uid="uid://d02rs8t4d5gwn" path="res://entities/overworld-player/overworld_player.tscn" id="1_3eak2"]
 [ext_resource type="Script" path="res://scenes/desert/desert_map.gd" id="1_vowdh"]
@@ -10,6 +10,7 @@
 [ext_resource type="TileSet" uid="uid://cx2yak8k0gq4c" path="res://scenes/common/house_tileset.tres" id="6_yybwe"]
 [ext_resource type="TileSet" uid="uid://lmlrfvna3b4l" path="res://scenes/common/cactus_tileset.tres" id="7_ad4e1"]
 [ext_resource type="PackedScene" uid="uid://0viy8iyuvprv" path="res://scenes/desert/instructions-board/instructions_board.tscn" id="10_kfu8i"]
+[ext_resource type="Script" path="res://entities/common/entity_properties.gd" id="11_dcgj7"]
 [ext_resource type="PackedScene" uid="uid://b48jo5oludty5" path="res://scenes/combat/combat_manager.tscn" id="11_t00au"]
 [ext_resource type="Resource" uid="uid://t4krtc6a7vbh" path="res://entities/enemies/snail/snail.tres" id="12_fjvd6"]
 [ext_resource type="Resource" uid="uid://bhugyhiqyrca3" path="res://entities/enemies/bandit/bandit.tres" id="13_045pm"]
@@ -107,7 +108,7 @@ position = Vector2(-156, -234)
 scale = Vector2(0.67, 0.67)
 
 [node name="CombatManager" parent="." node_paths=PackedStringArray("overworld_player") instance=ExtResource("11_t00au")]
-enemy_spawn_table = Array[Resource("res://entities/common/entity_properties.gd")]([ExtResource("12_fjvd6"), ExtResource("13_045pm"), ExtResource("14_u8kt6"), ExtResource("15_g7u6l"), ExtResource("16_pw241")])
+enemy_spawn_table = Array[ExtResource("11_dcgj7")]([ExtResource("12_fjvd6"), ExtResource("13_045pm"), ExtResource("14_u8kt6"), ExtResource("15_g7u6l"), ExtResource("16_pw241")])
 overworld_player = NodePath("../OverworldPlayer")
 
 [node name="OverworldEnemy" parent="." instance=ExtResource("17_sqsuv")]
