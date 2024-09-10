@@ -85,11 +85,12 @@ func _on_body_entered(_body: Node2D) -> void:
 		new_map.call("set_previous_locale", origin_locale)
 
 	await get_tree().process_frame
-	get_tree().root.add_child(new_map)
 
 	var new_player = new_map.find_child("OverworldPlayer")
 	if new_player:
 		new_player.global_position = locale.entrance_position
+
+	get_tree().root.add_child(new_map)
 	map_ref.queue_free()
 
 

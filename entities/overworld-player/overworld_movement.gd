@@ -5,8 +5,6 @@ signal on_enemy_hit(body: Node2D, on_advantage: bool)
 
 @export var speed: float = 5.0
 
-var allow_movement: bool = true
-
 @onready var sprite := get_node("Sprite2D") as Sprite2D
 @onready var camp_menu := get_node("UI/CampMenu") as Control
 @onready var camera := $Camera2D as Camera2D
@@ -25,9 +23,6 @@ func _ready() -> void:
 ## physics process function that handles player movement,
 ## player facing the direction of movement, and collisions
 func _physics_process(_delta: float) -> void:
-	if !allow_movement:
-		return
-
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	velocity = input_dir * speed
 
@@ -41,8 +36,9 @@ func _physics_process(_delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
+	if !_block_camp_menu && event.is_action_pressed("pause"):
 		get_tree().paused = true
+		print("game is paused")
 		camp_menu.show()
 
 
@@ -73,8 +69,10 @@ func _flip_sprite(input_dir: Vector2):
 
 
 func _on_fade_begin(_anim_name: String) -> void:
-	allow_movement = false
+	set_physics_process(false)
+	set_process_input(false)
 
 
 func _on_fade_end(_anim_name: String) -> void:
-	allow_movement = true
+	set_physics_process(true)
+	set_process_input(true)

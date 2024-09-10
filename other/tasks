@@ -44,19 +44,23 @@
 	- loading game messes up map tiles i.e. path is glitched, looks like path tex with river tex, river is replaced by boulder tex
 		- also happens when when selecting new game
 		- caused by older version of godot 4.2. fixed on godot 4.3+
+	- mouse is not registered in the camp menu, unless the camp menu is ran individualy
+		- fix: all mouse events stopped on fader panel
+	- godot 4.3: main menu continue button is not greyed out when no saves are present
+	- godot 4.3: main menu continue button is smaller than the rest
+		- specifially affecting disabled button, theme might be broken
+		- fix: edit theme button margins for all modes i.e. normal, disabled, toggle, etc.
+- enhancements
+	- move project to godot 4.3
+		- convert tilemaps to tilemaplayers
 
 
 +-------------+
 | IN PROGRESS |
 +-------------+
-- enhancements:
-	- move project to godot 4.3
-		- convert tilemaps to tilemaplayers
+- enhancements
 - buglist
-	- mouse is not registered in the camp menu, unless the camp menu is ran individualy
-	- godot 4.3: main menu continue button is not greyed out when no saves are present
-	- godot 4.3: main menu continue button is smaller than the rest
-		- specifially affecting disabled button, theme might be broken
+	- camp menu can be opened during fade in/out transition when transitioning from map to map
 - inventory system
 	- managing consumables e.g. using items to heal other party members
 	- equip/unequip weapons and armour
@@ -120,11 +124,11 @@
 | TODO |
 +------+
 - enhancements:
-	- add fade in/out to ui buttons and maps
+	- add fade in/out when clicking ui buttons
+	- add fade in/out to camp menu
 	- add _get_property_list to EntityProperties and CombatStats
 	- update grid_2d plugin to also use _get_property_list for conditional exports
 - buglist:
-	- camp menu can be opened during fade in/out transition
 - refactor code base:
 	- clean up project i.e. better structure, more folders
 - enemies
