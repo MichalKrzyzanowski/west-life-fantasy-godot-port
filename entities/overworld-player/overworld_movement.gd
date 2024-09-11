@@ -36,7 +36,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if !_block_camp_menu && event.is_action_pressed("pause"):
+	if event.is_action_pressed("pause"):
 		get_tree().paused = true
 		print("game is paused")
 		camp_menu.show()
