@@ -129,6 +129,7 @@
 	- add _get_property_list to EntityProperties and CombatStats
 	- update grid_2d plugin to also use _get_property_list for conditional exports
 - buglist:
+	- when rapidly pressing esc during fade in/out, small chance of pausing the game and hard locking
 - refactor code base:
 	- clean up project i.e. better structure, more folders
 - enemies
