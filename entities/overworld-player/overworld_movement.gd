@@ -11,6 +11,7 @@ signal on_enemy_hit(body: Node2D, on_advantage: bool)
 
 
 func _ready() -> void:
+	# TODO: remove fader code
 	if !get_parent().has_node("Fader"):
 		return
 
@@ -69,10 +70,12 @@ func _flip_sprite(input_dir: Vector2):
 
 
 func _on_fade_begin(_anim_name: String) -> void:
-	set_physics_process(false)
-	set_process_input(false)
+	pass
+	# set_physics_process(false)
+	# set_process_input(false)
 
 
 func _on_fade_end(_anim_name: String) -> void:
-	set_physics_process(true)
-	set_process_input(true)
+	pass
+	# set_physics_process(true)
+	# set_process_input(true)

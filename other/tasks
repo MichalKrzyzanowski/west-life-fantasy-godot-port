@@ -58,6 +58,21 @@
 +-------------+
 | IN PROGRESS |
 +-------------+
+- refactor
+	- rework game world structure & player
+		- create a main scene that has following:
+			- world: node that holds the map details, makes it easy to manage maps
+			- player: characterbody2d that is the overworld player. should be seperated from playable maps.
+				- will make it easier to transition from map to map
+			- ui: players hud, camp menu, etc. this should not be part of the player scene in the first place.
+				- easier to manage and update future inventory
+				- no need to rebuild player ui everytime player moves maps
+			- extras: that can be extra items such as faders, etc.
+		- scenes that need to fetch e.g. world node can use a utils resource:
+			- said utils res would have paths for each main node
+		- issues:
+			- fix editor errors for transition area, fails to fetch main nodes because of @tool
+				- move onready var declarations to ready()
 - enhancements
 - buglist
 	- camp menu can be opened during fade in/out transition when transitioning from map to map
@@ -123,14 +138,14 @@
 +------+
 | TODO |
 +------+
-- enhancements:
+- enhancements
 	- add fade in/out when clicking ui buttons
 	- add fade in/out to camp menu
 	- add _get_property_list to EntityProperties and CombatStats
 	- update grid_2d plugin to also use _get_property_list for conditional exports
-- buglist:
+- buglist
 	- when rapidly pressing esc during fade in/out, small chance of pausing the game and hard locking
-- refactor code base:
+- refactor
 	- clean up project i.e. better structure, more folders
 - enemies
 	- add static positions

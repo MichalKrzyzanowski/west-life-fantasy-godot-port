@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://cks12v4jq01wl"]
+[gd_scene load_steps=11 format=4 uid="uid://cks12v4jq01wl"]
 
 [ext_resource type="TileSet" uid="uid://1jku0k0we0ls" path="res://scenes/common/path_tileset.tres" id="1_68dcb"]
 [ext_resource type="Script" path="res://scenes/town/town_map.gd" id="1_i12ha"]
@@ -6,9 +6,7 @@
 [ext_resource type="TileSet" uid="uid://c65312ml6h3a6" path="res://scenes/common/desert_tileset.tres" id="2_x6pwr"]
 [ext_resource type="TileSet" uid="uid://cx2yak8k0gq4c" path="res://scenes/common/house_tileset.tres" id="3_u2c0v"]
 [ext_resource type="TileSet" uid="uid://lmlrfvna3b4l" path="res://scenes/common/cactus_tileset.tres" id="4_ll411"]
-[ext_resource type="PackedScene" uid="uid://d02rs8t4d5gwn" path="res://entities/overworld-player/overworld_player.tscn" id="6_wau1r"]
 [ext_resource type="PackedScene" uid="uid://dujvgle5ockxo" path="res://scenes/common/transition_area/transition_area.tscn" id="7_4sy1f"]
-[ext_resource type="PackedScene" uid="uid://b4hhb0gjpr7ab" path="res://common/fader.tscn" id="9_vd4y3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_so7h4"]
 size = Vector2(16, 16)
@@ -49,9 +47,6 @@ use_parent_material = true
 tile_map_data = PackedByteArray("AAARAPj/AAABAAUAAAARAPT/AAABAAEAAAARAPX/AAABAAEAAAARAPb/AAABAAIAAAARAPf/AAABAAEAAAASAPb/AAACAAIAAAARAPP/AAABAAAAAAAXAPT/AAABAAMAAAAXAPX/AAABAAEAAAAXAPb/AAABAAIAAAAXAPf/AAABAAEAAAAXAPj/AAABAAUAAAAYAPb/AAACAAIAAAAXAPP/AAABAAEAAAAXAPL/AAABAAAAAAAWAPT/AAAAAAMAAAAMAPP/AAABAAUAAAAMAO//AAAAAAAAAAAMAPD/AAABAAEAAAAMAPH/AAABAAIAAAAMAPL/AAABAAEAAAANAPH/AAACAAIAAAAFAPL/AAABAAIAAAAFAPP/AAABAAEAAAAFAPH/AAABAAEAAAAFAPD/AAABAAEAAAAFAPT/AAABAAUAAAAGAPL/AAACAAIAAAAFAO//AAAAAAAAAAD+/+7/AAAAAAMAAAD//+z/AAAAAAAAAAD//+3/AAABAAEAAAD//+7/AAABAAMAAAD//+//AAABAAEAAAD///D/AAABAAUAAAD7//P/AAAAAAMAAAD8//H/AAAAAAAAAAD8//L/AAABAAEAAAD8//P/AAABAAMAAAD8//T/AAABAAEAAAD8//X/AAABAAUAAAD0//H/AAAAAAMAAAD1/+//AAABAAAAAAD1//D/AAABAAEAAAD1//H/AAABAAMAAAD1//L/AAABAAEAAAD1//P/AAABAAUAAADu//X/AAABAAAAAADu//b/AAABAAEAAADu//f/AAABAAEAAADu//j/AAABAAMAAADu//n/AAABAAUAAADt//j/AAAAAAMAAADr//z/AAAAAAMAAADs//r/AAAAAAAAAADs//v/AAABAAEAAADs//z/AAABAAQAAADs//3/AAABAAEAAADs//7/AAABAAUAAADt//z/AAACAAIAAADk//n/AAAAAAMAAADl//f/AAABAAAAAADl//j/AAABAAEAAADl//n/AAABAAQAAADl//r/AAABAAEAAADl//v/AAABAAUAAADm//n/AAACAAIAAADk//7/AAAAAAAAAADu/wAAAAAAAAAAAADq/wIAAAAAAAAAAADu/wEAAAABAAEAAADu/wIAAAABAAEAAADu/wMAAAABAAQAAADu/wQAAAABAAEAAADq/wMAAAABAAEAAADq/wQAAAABAAQAAADq/wUAAAABAAEAAADq/wYAAAABAAEAAADq/wcAAAABAAUAAADu/wUAAAABAAUAAADp/wQAAAAAAAMAAADt/wMAAAAAAAMAAADv/wMAAAACAAIAAADr/wQAAAACAAIAAADk////AAABAAEAAADk/wAAAAABAAQAAADk/wEAAAABAAEAAADk/wIAAAABAAEAAADk/wMAAAABAAUAAADj/wAAAAAAAAMAAADl/wAAAAACAAIAAAATAPr/AAAAAAAAAAATAPv/AAABAAEAAAATAPz/AAABAAIAAAATAP3/AAABAAEAAAATAP7/AAABAAUAAAAUAPz/AAACAAIAAAAXAPz/AAAAAAAAAAARAAAAAAAAAAAAAAARAAEAAAABAAEAAAARAAIAAAABAAEAAAARAAMAAAABAAIAAAARAAQAAAABAAEAAAAXAP3/AAABAAEAAAAXAP7/AAABAAIAAAAXAP//AAABAAQAAAAXAAAAAAABAAEAAAARAAUAAAABAAUAAAAXAAEAAAABAAUAAAAYAP7/AAACAAIAAAASAAMAAAACAAIAAAAWAP//AAAAAAMAAAAYAP//AAACAAIAAAA=")
 tile_set = ExtResource("4_ll411")
 
-[node name="OverworldPlayer" parent="." instance=ExtResource("6_wau1r")]
-position = Vector2(8, 136)
-
 [node name="TownExit" parent="." node_paths=PackedStringArray("map_ref") instance=ExtResource("7_4sy1f")]
 position = Vector2(8, 168)
 shape = SubResource("RectangleShape2D_so7h4")
@@ -73,4 +68,5 @@ shape = SubResource("RectangleShape2D_xpaiv")
 position = Vector2(88, 2)
 shape = SubResource("RectangleShape2D_drbdj")
 
-[node name="Fader" parent="." instance=ExtResource("9_vd4y3")]
+[node name="PlayerPosition" type="Marker2D" parent="."]
+position = Vector2(8, 136)

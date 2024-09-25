@@ -1,0 +1,25 @@
+[gd_scene load_steps=7 format=3 uid="uid://wi37yb2p8jg4"]
+
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_fidbw"]
+[ext_resource type="PackedScene" uid="uid://d02rs8t4d5gwn" path="res://entities/overworld-player/overworld_player.tscn" id="1_p8x4f"]
+[ext_resource type="PackedScene" uid="uid://ckqmboktfdvg2" path="res://scenes/desert/desert_map.tscn" id="1_rdyyc"]
+[ext_resource type="Script" path="res://scenes/main/world.gd" id="2_a5uw6"]
+[ext_resource type="PackedScene" uid="uid://b4hhb0gjpr7ab" path="res://common/fader.tscn" id="5_lrnne"]
+[ext_resource type="Script" path="res://common/fader.gd" id="6_w70om"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_fidbw")
+
+[node name="World" type="Node" parent="."]
+script = ExtResource("2_a5uw6")
+
+[node name="DesertMap" parent="World" instance=ExtResource("1_rdyyc")]
+
+[node name="OverworldPlayer" parent="." instance=ExtResource("1_p8x4f")]
+
+[node name="Fader" parent="." instance=ExtResource("5_lrnne")]
+process_mode = 2
+script = ExtResource("6_w70om")
+
+[connection signal="animation_finished" from="Fader" to="Fader" method="_on_animation_finished"]
+[connection signal="animation_started" from="Fader" to="Fader" method="_on_animation_started"]

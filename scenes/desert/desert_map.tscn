@@ -1,6 +1,5 @@
-[gd_scene load_steps=32 format=4 uid="uid://ckqmboktfdvg2"]
+[gd_scene load_steps=30 format=4 uid="uid://ckqmboktfdvg2"]
 
-[ext_resource type="PackedScene" uid="uid://d02rs8t4d5gwn" path="res://entities/overworld-player/overworld_player.tscn" id="1_3eak2"]
 [ext_resource type="Script" path="res://scenes/desert/desert_map.gd" id="1_vowdh"]
 [ext_resource type="TileSet" uid="uid://b0q4gowtnjlif" path="res://scenes/common/river_tileset.tres" id="2_25t3h"]
 [ext_resource type="TileSet" uid="uid://1jku0k0we0ls" path="res://scenes/common/path_tileset.tres" id="2_xvfha"]
@@ -21,7 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://dujvgle5ockxo" path="res://scenes/common/transition_area/transition_area.tscn" id="18_we0hj"]
 [ext_resource type="Texture2D" uid="uid://ds1neb28g8cpd" path="res://door.png" id="19_w4n4h"]
 [ext_resource type="Script" path="res://scenes/common/locale_data/locale_data.gd" id="20_3tgwn"]
-[ext_resource type="PackedScene" uid="uid://b4hhb0gjpr7ab" path="res://common/fader.tscn" id="21_eco2k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1cvgx"]
 size = Vector2(32, 32)
@@ -107,16 +105,15 @@ tile_set = ExtResource("7_ad4e1")
 position = Vector2(-156, -234)
 scale = Vector2(0.67, 0.67)
 
-[node name="CombatManager" parent="." node_paths=PackedStringArray("overworld_player") instance=ExtResource("11_t00au")]
+[node name="CombatManager" parent="." instance=ExtResource("11_t00au")]
 enemy_spawn_table = Array[ExtResource("11_dcgj7")]([ExtResource("12_fjvd6"), ExtResource("13_045pm"), ExtResource("14_u8kt6"), ExtResource("15_g7u6l"), ExtResource("16_pw241")])
-overworld_player = NodePath("../OverworldPlayer")
 
 [node name="OverworldEnemy" parent="." instance=ExtResource("17_sqsuv")]
 position = Vector2(-21, -251)
 scale = Vector2(0.5, 0.5)
 
 [node name="TestDoor" parent="." node_paths=PackedStringArray("map_ref") instance=ExtResource("18_we0hj")]
-position = Vector2(124, -238)
+position = Vector2(-10, -313)
 shape = SubResource("RectangleShape2D_1cvgx")
 texture = ExtResource("19_w4n4h")
 origin_locale = SubResource("Resource_48ea0")
@@ -137,9 +134,7 @@ origin_locale = SubResource("Resource_c20gl")
 target_locale = SubResource("Resource_4fj5c")
 map_ref = NodePath("..")
 
-[node name="Fader" parent="." instance=ExtResource("21_eco2k")]
-
-[node name="OverworldPlayer" parent="." instance=ExtResource("1_3eak2")]
+[node name="PlayerPosition" type="Marker2D" parent="."]
 position = Vector2(-75, -250)
 
 [connection signal="on_transition_start" from="TestDoor" to="." method="_on_transition_area_on_transition_start"]

@@ -18,7 +18,7 @@ extends Control
 
 # @onready vars
 @onready var character_grid = $CharacterGrid as GridContainer
-@onready var desert_scene = preload("res://scenes/desert/desert_map.tscn")
+@onready var desert_scene = preload("res://scenes/main/main.tscn")
 
 
 func _init() -> void:

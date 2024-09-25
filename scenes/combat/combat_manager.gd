@@ -13,7 +13,6 @@ extends Node
 # @export vars
 @export var enable_random_encounters: bool = false
 @export var enemy_spawn_table: Array[EntityProperties]
-@export var overworld_player: CharacterBody2D
 @export var counter_increment: int = 1
 
 # public vars
@@ -25,7 +24,7 @@ var _counter_end: int = 100
 
 # @onready vars
 @onready var CombatScene := preload("res://scenes/combat/combat.tscn")
-
+@onready var overworld_player: CharacterBody2D = get_node(MainUtils.PLAYER_PATH)
 
 func _init() -> void:
 	pass
@@ -36,7 +35,8 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-	overworld_player.on_enemy_hit.connect(on_player_enemy_hit)
+	if overworld_player:
+		overworld_player.on_enemy_hit.connect(on_player_enemy_hit)
 
 
 # remaining builtins e.g. _process, _input

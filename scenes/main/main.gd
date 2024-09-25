@@ -11,15 +11,14 @@ extends Node2D
 # constants
 
 # @export vars
-@export var spawn_position: Vector2
 
 # public vars
 
 # private vars
-var _previous_locale: LocaleData
 
 # @onready vars
-@onready var fader: AnimationPlayer = get_node(MainUtils.FADER_PATH)
+@onready var player: CharacterBody2D = $OverworldPlayer
+@onready var world: CharacterBody2D = $OverworldPlayer
 
 
 func _init() -> void:
@@ -31,19 +30,17 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-	fader.play("fade")
+	pass
 
 
 # remaining builtins e.g. _process, _input
 
 
 # public methods
-func get_previous_locale() -> LocaleData:
-	return _previous_locale
-
-
-func set_previous_locale(locale: LocaleData) -> void:
-	_previous_locale = locale
+func get_player() -> CharacterBody2D:
+	if !player:
+		player = $OverworldPlayer
+	return player
 
 
 # private methods

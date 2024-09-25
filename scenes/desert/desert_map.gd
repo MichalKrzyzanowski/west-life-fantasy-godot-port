@@ -19,9 +19,10 @@ var player_position := Vector2()
 var _previous_locale: LocaleData
 
 # @onready vars
-@onready var player = $OverworldPlayer as CharacterBody2D
+@onready var player: CharacterBody2D = get_node(MainUtils.PLAYER_PATH)
 @onready var CombatScene = preload("res://scenes/combat/combat.tscn")
-@onready var fader := $Fader as AnimationPlayer
+@onready var fader:AnimationPlayer = get_node(MainUtils.FADER_PATH)
+@onready var default_position: Marker2D = $PlayerPosition
 
 
 func _init() -> void:
@@ -33,7 +34,8 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-	fader.play("fade")
+	if fader:
+		fader.play("fade")
 
 
 # remaining builtins e.g. _process, _input
@@ -51,6 +53,10 @@ func get_previous_locale() -> LocaleData:
 
 func set_previous_locale(locale: LocaleData) -> void:
 	_previous_locale = locale
+
+
+func get_default_position() -> Vector2:
+	return default_position.position
 
 
 ## saves data as dictionary for JSON format
@@ -71,8 +77,9 @@ func load(data) -> void:
 
 # private methods
 func _on_transition_area_on_transition_start() -> void:
-	fader.play_backwards("fade")
-	await fader.animation_finished
+	pass
+	# fader.play_backwards("fade")
+	# await fader.animation_finished
 
 
 # subclasses

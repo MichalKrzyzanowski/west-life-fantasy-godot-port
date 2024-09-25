@@ -1,6 +1,6 @@
 # @tool
 # class_name name
-extends Node2D
+extends Node
 # docstring
 
 
@@ -11,15 +11,12 @@ extends Node2D
 # constants
 
 # @export vars
-@export var spawn_position: Vector2
 
 # public vars
 
 # private vars
-var _previous_locale: LocaleData
 
 # @onready vars
-@onready var fader: AnimationPlayer = get_node(MainUtils.FADER_PATH)
 
 
 func _init() -> void:
@@ -31,19 +28,30 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-	fader.play("fade")
+	pass
 
 
 # remaining builtins e.g. _process, _input
 
 
 # public methods
-func get_previous_locale() -> LocaleData:
-	return _previous_locale
+func clear() -> void:
+	for child: Node in get_children():
+		remove_child(child)
+		child.queue_free()
 
 
-func set_previous_locale(locale: LocaleData) -> void:
-	_previous_locale = locale
+func replace_map(map: Node) -> void:
+	if get_child_count() > 0:
+		clear()
+
+	add_child(map)
+
+
+func get_map() -> Node:
+	if get_child_count() == 0:
+		return null
+	return get_child(0)
 
 
 # private methods

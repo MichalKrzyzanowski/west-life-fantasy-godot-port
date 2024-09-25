@@ -35,6 +35,10 @@ signal on_transition_start
 # @onready vars
 @onready var collision_shape := $CollisionShape2D as CollisionShape2D
 @onready var sprite := $Sprite2D as Sprite2D
+# TODO: move to _ready()
+@onready var world: Node = get_node(MainUtils.WORLD_PATH)
+@onready var overworld_player: CharacterBody2D = get_node(MainUtils.PLAYER_PATH)
+@onready var fader: AnimationPlayer = get_node(MainUtils.FADER_PATH)
 
 
 func _init() -> void:
@@ -57,20 +61,18 @@ func _ready() -> void:
 
 
 # private methods
-func _wait_for_faders() -> void:
-	print(map_ref)
-	if map_ref.has_node("Fader"):
-		map_ref.fader.play_backwards("fade")
-		await map_ref.fader.animation_finished
-	else:
-		print("no fader present in map")
+func _await_fader() -> void:
+	if fader:
+		fader.play_backwards("fade")
+		await fader.animation_finished
 
 
 func _on_body_entered(_body: Node2D) -> void:
 	if !map_ref || !map_ref.has_method("get_previous_locale"):
 		return
 
-	await _wait_for_faders()
+	fader.keep_paused = true
+	await _await_fader()
 
 	var locale: LocaleData
 	# if target locale is missing, get the saved previous map
@@ -86,12 +88,20 @@ func _on_body_entered(_body: Node2D) -> void:
 
 	await get_tree().process_frame
 
-	var new_player = new_map.find_child("OverworldPlayer")
-	if new_player:
-		new_player.global_position = locale.entrance_position
+	# var new_player = new_map.find_child("OverworldPlayer")
+	# if new_player:
+		# new_player.global_position = locale.entrance_position
+	if locale:
+		overworld_player.global_position = locale.entrance_position
+	elif new_map.has_method("get_default_position"):
+		overworld_player.global_position = new_map.call("get_default_position")
+	else:
+		overworld_player.global_position = Vector2()
 
-	get_tree().root.add_child(new_map)
-	map_ref.queue_free()
+	# get_tree().root.add_child(new_map)
+	# map_ref.queue_free()
+	world.replace_map(new_map)
+	fader.keep_paused = false
 
 
 # subclasses
