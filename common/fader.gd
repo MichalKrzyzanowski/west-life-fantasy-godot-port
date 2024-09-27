@@ -14,6 +14,7 @@ extends AnimationPlayer
 
 # public vars
 var keep_paused: bool = false
+var prevent_pause: bool = false
 
 # private vars
 
@@ -40,10 +41,14 @@ func _ready() -> void:
 
 # private methods
 func _on_animation_started(anim_name: StringName) -> void:
+	print("%s started" % anim_name)
+	if prevent_pause:
+		return
 	get_tree().paused = true
 
 
 func _on_animation_finished(anim_name: StringName) -> void:
+	print("%s finished" % anim_name)
 	if keep_paused:
 		return
 	get_tree().paused = false

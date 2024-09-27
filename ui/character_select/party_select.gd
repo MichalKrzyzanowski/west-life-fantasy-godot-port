@@ -18,7 +18,7 @@ extends Control
 
 # @onready vars
 @onready var character_grid = $CharacterGrid as GridContainer
-@onready var desert_scene = preload("res://scenes/main/main.tscn")
+@onready var main_scene = preload("res://scenes/main/main.tscn")
 
 
 func _init() -> void:
@@ -51,4 +51,9 @@ func _on_continue_button_pressed() -> void:
 	for item in character_grid.get_children():
 		if item.has_method("add_current_to_party"):
 			item.call("add_current_to_party")
-	get_tree().change_scene_to_packed(desert_scene)
+
+	var main_instance = main_scene.instantiate()
+	get_tree().root.add_child(main_instance)
+	main_instance.set_player_position_to_current_map_default()
+	get_node(MainUtils.FADER_PATH).play("fade")
+	queue_free()

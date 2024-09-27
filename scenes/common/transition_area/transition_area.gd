@@ -72,6 +72,7 @@ func _on_body_entered(_body: Node2D) -> void:
 		return
 
 	fader.keep_paused = true
+	fader.prevent_pause = false
 	await _await_fader()
 
 	var locale: LocaleData
@@ -88,19 +89,18 @@ func _on_body_entered(_body: Node2D) -> void:
 
 	await get_tree().process_frame
 
-	# var new_player = new_map.find_child("OverworldPlayer")
-	# if new_player:
-		# new_player.global_position = locale.entrance_position
 	if locale:
+		print("moving player to locale entrance position")
 		overworld_player.global_position = locale.entrance_position
 	elif new_map.has_method("get_default_position"):
+		print("moving player to default map position")
 		overworld_player.global_position = new_map.call("get_default_position")
 	else:
+		print("moving player to origin position (0, 0)")
 		overworld_player.global_position = Vector2()
 
-	# get_tree().root.add_child(new_map)
-	# map_ref.queue_free()
 	world.replace_map(new_map)
+	fader.play("fade")
 	fader.keep_paused = false
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://wi37yb2p8jg4"]
+[gd_scene load_steps=8 format=3 uid="uid://wi37yb2p8jg4"]
 
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_fidbw"]
 [ext_resource type="PackedScene" uid="uid://d02rs8t4d5gwn" path="res://entities/overworld-player/overworld_player.tscn" id="1_p8x4f"]
@@ -6,8 +6,9 @@
 [ext_resource type="Script" path="res://scenes/main/world.gd" id="2_a5uw6"]
 [ext_resource type="PackedScene" uid="uid://b4hhb0gjpr7ab" path="res://common/fader.tscn" id="5_lrnne"]
 [ext_resource type="Script" path="res://common/fader.gd" id="6_w70om"]
+[ext_resource type="PackedScene" uid="uid://xi1op1ppabul" path="res://ui/camp_menu/camp_menu.tscn" id="7_phpdi"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" groups=["persist"]]
 script = ExtResource("1_fidbw")
 
 [node name="World" type="Node" parent="."]
@@ -18,8 +19,12 @@ script = ExtResource("2_a5uw6")
 [node name="OverworldPlayer" parent="." instance=ExtResource("1_p8x4f")]
 
 [node name="Fader" parent="." instance=ExtResource("5_lrnne")]
-process_mode = 2
 script = ExtResource("6_w70om")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="CampMenu" parent="UI" instance=ExtResource("7_phpdi")]
+visible = false
 
 [connection signal="animation_finished" from="Fader" to="Fader" method="_on_animation_finished"]
 [connection signal="animation_started" from="Fader" to="Fader" method="_on_animation_started"]

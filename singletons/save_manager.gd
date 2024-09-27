@@ -34,13 +34,13 @@ func _ready() -> void:
 
 
 # remaining builtins e.g. _process, _input
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey && event.pressed:
-		match event.keycode:
-			KEY_2:
-				save_game("debug")
-			KEY_3:
-				load_game("debug")
+# func _input(event: InputEvent) -> void:
+# 	if event is InputEventKey && event.pressed:
+# 		match event.keycode:
+# 			KEY_2:
+# 				save_game("debug")
+# 			KEY_3:
+# 				load_game("debug")
 
 
 # function for acting on notifications
@@ -70,7 +70,7 @@ func save_game(savefile_name: String) -> void:
 
 	# this will be used for marking already saved nodes
 	# to prevent nodes from being saved twice
-	var marked : Dictionary = {}
+	var marked: Dictionary = {}
 
 	# save each node
 	for node in save_nodes:
@@ -157,17 +157,31 @@ func load_node(data) -> void:
 		return
 
 	print("loading %s" % data["filename"])
-	var new_object = load(data["filename"]).instantiate()
+
 	var object_parent = get_node(data["parent"])
 
-	# if new_object already exists, free existing object
+	var new_object = load(data["filename"]).instantiate()
 	var present_object = object_parent.find_child(new_object.name)
+
+	# if new_object already exists, free existing object
 	if present_object:
+		# if new_object saved with preserve_on_load flag, do not recreate object
+		if data.has("preserve_on_load") && data["preserve_on_load"]:
+			print("preserving %s" % present_object.name)
+			if present_object.has_method("load"):
+				present_object.call("load", data)
+			new_object.queue_free()
+			return
+
 		print("%s already has node %s" % [object_parent.name, present_object])
 		present_object.name = "%s@%s" % [present_object.name, str(randi() % 255)]
 		present_object.queue_free()
 
-	object_parent.add_child(new_object)
+
+	if data.has("deferred_load") && data["deferred_load"]:
+		object_parent.call_deferred("add_child", new_object)
+	else:
+		object_parent.add_child(new_object)
 
 	if new_object.has_method("load"):
 		new_object.call("load", data)
@@ -182,4 +196,3 @@ func is_save_present() -> bool:
 
 
 # subclasses
-

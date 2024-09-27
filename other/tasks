@@ -70,9 +70,12 @@
 			- extras: that can be extra items such as faders, etc.
 		- scenes that need to fetch e.g. world node can use a utils resource:
 			- said utils res would have paths for each main node
+		- update saving:
+			- should save the main scene and any autoloads
 		- issues:
 			- fix editor errors for transition area, fails to fetch main nodes because of @tool
 				- move onready var declarations to ready()
+			- combat has missing sprites for enemies and party
 - enhancements
 - buglist
 	- camp menu can be opened during fade in/out transition when transitioning from map to map

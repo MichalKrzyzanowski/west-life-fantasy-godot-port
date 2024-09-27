@@ -17,8 +17,9 @@ size = Vector2(16, 4)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xpaiv"]
 size = Vector2(32, 5)
 
-[node name="TownMap" type="Node2D"]
+[node name="TownMap" type="Node2D" groups=["persist"]]
 script = ExtResource("1_i12ha")
+deferred_load = true
 
 [node name="Map" type="Node2D" parent="."]
 

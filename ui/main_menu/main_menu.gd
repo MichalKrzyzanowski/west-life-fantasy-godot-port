@@ -32,8 +32,8 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	# disable button if save file not present
-	# continue_button.disabled = !SaveManager.is_save_present()
-	continue_button.disabled = true
+	continue_button.disabled = !SaveManager.is_save_present()
+	# continue_button.disabled = true
 
 
 # remaining builtins e.g. _process, _input
@@ -46,6 +46,9 @@ func _ready() -> void:
 ## load the game
 func _on_continue_button_pressed() -> void:
 	if SaveManager.load_game(SaveManager.SAVE_FILE):
+		var fader: AnimationPlayer = get_node(MainUtils.FADER_PATH)
+		# TODO: prevent player from moving when loading
+		fader.play("fade")
 		queue_free()
 
 

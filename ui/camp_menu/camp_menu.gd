@@ -38,6 +38,7 @@ func _ready() -> void:
 # remaining builtins e.g. _process, _input
 func _input(event: InputEvent) -> void:
 	if visible && event.is_action_pressed("exit_menu"):
+		print("exit menu")
 		SaveManager.save_game(SaveManager.SAVE_FILE)
 		hide()
 		options_menu.hide()

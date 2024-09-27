@@ -1,20 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://d02rs8t4d5gwn"]
+[gd_scene load_steps=5 format=3 uid="uid://d02rs8t4d5gwn"]
 
 [ext_resource type="Script" path="res://entities/overworld-player/overworld_movement.gd" id="1_edl3d"]
 [ext_resource type="Texture2D" uid="uid://bkgm4b6mrvwlq" path="res://entities/overworld-player/mc-ride-wife.png" id="2_4ou8k"]
 [ext_resource type="Script" path="res://entities/bullet/bullet_emitter.gd" id="3_ya1km"]
-[ext_resource type="PackedScene" uid="uid://xi1op1ppabul" path="res://ui/camp_menu/camp_menu.tscn" id="4_6mh1l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hov66"]
 size = Vector2(31, 20)
 
-[node name="OverworldPlayer" type="CharacterBody2D"]
+[node name="OverworldPlayer" type="CharacterBody2D" groups=["persist"]]
 z_index = 1
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
 collision_mask = 29
 script = ExtResource("1_edl3d")
 speed = 1.7
+preserve_on_load = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -30,8 +30,3 @@ zoom = Vector2(3.85, 3.85)
 [node name="BulletEmitter" type="Node2D" parent="."]
 script = ExtResource("3_ya1km")
 bullet_collision_mask = 13
-
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="CampMenu" parent="UI" instance=ExtResource("4_6mh1l")]
-visible = false

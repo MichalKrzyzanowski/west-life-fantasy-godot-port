@@ -38,6 +38,19 @@ func _ready() -> void:
 
 
 # public methods
+## saves data as dictionary for JSON format
+func save() -> Dictionary:
+	return {
+		"entrance_position_x": entrance_position.x,
+		"entrance_position_y": entrance_position.y,
+		"scene_file": scene_file,
+	}
+
+
+## load data from JSON savefile
+func load(data: Dictionary) -> void:
+	entrance_position = Vector2(data["entrance_position_x"], data["entrance_position_y"])
+	scene_file = data["scene_file"]
 
 
 # private methods
