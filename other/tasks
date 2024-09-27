@@ -41,6 +41,8 @@
 	- map transitions
 	- add town scene
 - buglist
+	- when rapidly pressing esc during fade in/out, small chance of pausing the game and hard locking
+	- camp menu can be opened during fade in/out transition when transitioning from map to map
 	- loading game messes up map tiles i.e. path is glitched, looks like path tex with river tex, river is replaced by boulder tex
 		- also happens when when selecting new game
 		- caused by older version of godot 4.2. fixed on godot 4.3+
@@ -53,11 +55,6 @@
 - enhancements
 	- move project to godot 4.3
 		- convert tilemaps to tilemaplayers
-
-
-+-------------+
-| IN PROGRESS |
-+-------------+
 - refactor
 	- rework game world structure & player
 		- create a main scene that has following:
@@ -74,11 +71,23 @@
 			- should save the main scene and any autoloads
 		- issues:
 			- fix editor errors for transition area, fails to fetch main nodes because of @tool
-				- move onready var declarations to ready()
+				- moved onready var declarations to ready()
 			- combat has missing sprites for enemies and party
+				- fixed itself lol
+
+
++-------------+
+| IN PROGRESS |
++-------------+
 - enhancements
+	- split up stats (hp, dmg, etc) from combat stats
+		- stat scalers should be part of said split
+			- both stats + scalers can be reused on weapon/armour stats + upgrades
+		- combat stats resource should be renamed and hold only level, xp, etc. data
+		- name = CombatProperties? CharacterProperties? EntityProperties?
+	- add stat scalers scaling type: multiplicative, additive, pow?
+		- should be an enum
 - buglist
-	- camp menu can be opened during fade in/out transition when transitioning from map to map
 - inventory system
 	- managing consumables e.g. using items to heal other party members
 	- equip/unequip weapons and armour
@@ -146,8 +155,9 @@
 	- add fade in/out to camp menu
 	- add _get_property_list to EntityProperties and CombatStats
 	- update grid_2d plugin to also use _get_property_list for conditional exports
+	- add stat scaling to enemies
 - buglist
-	- when rapidly pressing esc during fade in/out, small chance of pausing the game and hard locking
+	- combat stat scaling has been reset for each party member
 - refactor
 	- clean up project i.e. better structure, more folders
 - enemies

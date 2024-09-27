@@ -29,16 +29,15 @@ signal on_transition_start
 @export var map_ref : Node2D
 
 # public vars
+var world: Node
+var overworld_player: CharacterBody2D
+var fader: AnimationPlayer
 
 # private vars
 
 # @onready vars
 @onready var collision_shape := $CollisionShape2D as CollisionShape2D
 @onready var sprite := $Sprite2D as Sprite2D
-# TODO: move to _ready()
-@onready var world: Node = get_node(MainUtils.WORLD_PATH)
-@onready var overworld_player: CharacterBody2D = get_node(MainUtils.PLAYER_PATH)
-@onready var fader: AnimationPlayer = get_node(MainUtils.FADER_PATH)
 
 
 func _init() -> void:
@@ -50,6 +49,11 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
+	if !Engine.is_editor_hint():
+		world = get_node(MainUtils.WORLD_PATH)
+		overworld_player = get_node(MainUtils.PLAYER_PATH)
+		fader = get_node(MainUtils.FADER_PATH)
+
 	collision_shape.shape = shape
 	sprite.texture = texture
 

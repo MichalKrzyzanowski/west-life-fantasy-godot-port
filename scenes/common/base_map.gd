@@ -20,7 +20,7 @@ var _previous_locale: LocaleData
 
 # @onready vars
 @onready var fader: AnimationPlayer = get_node(MainUtils.FADER_PATH)
-@onready var default_position: Marker2D = $PlayerPosition
+@onready var default_position: Marker2D = get_node("PlayerPosition")
 
 
 func _init() -> void:
