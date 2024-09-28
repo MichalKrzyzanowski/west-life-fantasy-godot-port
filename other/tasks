@@ -1,3 +1,17 @@
++-----------+
+| CANCELLED |
++-----------+
+- enhancements
+	- split up stats (hp, dmg, etc) from combat stats
+		- stat scalers should be part of said split
+			- both stats + scalers can be reused on weapon/armour stats + upgrades
+		- combat stats resource should be renamed and hold only level, xp, etc. data
+		- name = CombatProperties? CharacterProperties? EntityProperties?
+	- reason: combat stats are already well reusable for weapons/armour
+		- gear can have levels and could potentially level up just like a character would
+			- e.g. ratchet & clank style
+			- level could track current weapon upgrade
+
 +------+
 | DONE |
 +------+
@@ -75,18 +89,10 @@
 			- combat has missing sprites for enemies and party
 				- fixed itself lol
 
-
 +-------------+
 | IN PROGRESS |
 +-------------+
 - enhancements
-	- split up stats (hp, dmg, etc) from combat stats
-		- stat scalers should be part of said split
-			- both stats + scalers can be reused on weapon/armour stats + upgrades
-		- combat stats resource should be renamed and hold only level, xp, etc. data
-		- name = CombatProperties? CharacterProperties? EntityProperties?
-	- add stat scalers scaling type: multiplicative, additive, pow?
-		- should be an enum
 - buglist
 - inventory system
 	- managing consumables e.g. using items to heal other party members
@@ -184,3 +190,50 @@
 - quests and orbs
 	- quest dialog box in the top right corner of the screen
 	- orbs in camp menu that regain color after beating corresponding boss 
+
+
++-------------+
+| TODO (1.0+) |
++-------------+
+- combat stats overhaul 
+	- add stat scalers scaling type: multiplicative, additive, pow?
+		- maybe an enum?
+	- add elements
+		- element res + damage
+		- with scalers
+	- replace damage, defence, hp, etc. with attributes (advanced)
+		- strength: governs damage using formula e.g. str * (weapon_dmg / 2) = damage
+		- dexterity: governs dodge chance
+		- speed: governs turn frequency in combat
+		- luck: governs loot drop quality + quantity
+- super secret post-game map:
+	- once all quests are marked as complete, open a path to the secret map
+	- secret map includes boss fight that alters unlocks new paths in desert map
+	- endgame content:
+		- armour upgrades
+		- increase map level for gear upgrading
+		- mine dungeon
+		- materials for upgrading
+		- increase protection cap: 50% -> 90%
+- add dungeon hub map
+	- this should be a simple map with a single portal
+	- allows the user to open a menu of modded maps and load them into the portal
+- mod support
+	- game fetches items, weapons, armour, enemies, & maps from a mod folder
+		- add randomized enemies option to allow for all enemies (base + mod) to spawn in combat
+- add cheat codes
+	- section in main menu
+	- possible cheats:
+		- monke mode: makes the game yellow with "unique" sound effects
+		- god mode: party members do not take damage
+		- evil mode: enemies are added to party select mode, replacing the party members
+			- party members are added to the pool of desert enemies
+		- where sprites?: party members are all replaced by secret "snail" class
+			- inside joke from development
+		- are you ok?: replaces all sounds to allexis walk meme
+		- alcoholic: replaces all potions with alcohol, that no longer heals you
+- bring back cut content
+	- cut content from original unity version of the game should be brought back:
+		- interactions: able to read signs, talk to npcs
+		- npcs: walk around the town etc.
+		- make all weapon + armour from shops usable + upgradable

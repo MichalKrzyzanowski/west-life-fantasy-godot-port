@@ -52,7 +52,7 @@ func save() -> Dictionary:
 
 
 ## load data from JSON savefile
-func load(data) -> void:
+func load(data: CombatStats) -> void:
 	name = data["name"]
 	texture = ResourceLoader.load(data["texture_path"])
 	stats.load(data["combat_stats"])

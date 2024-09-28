@@ -135,7 +135,7 @@ func save() -> Dictionary:
 
 
 ## load data from JSON savefile
-func load(data) -> void:
+func load(data: Dictionary) -> void:
 	max_hp = data["max_hp"]
 	hp = data["hp"]
 	level = data["level"]

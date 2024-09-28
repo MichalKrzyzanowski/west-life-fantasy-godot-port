@@ -26,16 +26,16 @@ var action_msg: String
 # shake vars
 var trauma: float = 0.0
 var trauma_power: float = 3.0
-var max_offset := Vector2(2.0, 2.0)
+var max_offset: Vector2 = Vector2(2.0, 2.0)
 var decay: float = 0.8
 
 # private vars
 
 # @onready vars
-@onready var sprite := $Sprite2D as Sprite2D
-@onready var ui := $UI as CanvasLayer
-@onready var hp_bar := $UI/Control/HPBar as TextureProgressBar
-@onready var level_up_sprite := $LevelUpSprite as Sprite2D
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var ui: CanvasLayer = $UI
+@onready var hp_bar: TextureProgressBar = $UI/Control/HPBar
+@onready var level_up_sprite: Sprite2D = $LevelUpSprite
 
 
 func _init() -> void:
@@ -117,7 +117,7 @@ func select_smart_action() -> String:
 			entity_properties.stats.hp
 			<= entity_properties.stats.hp / 2
 	):
-		var chance = randi_range(1, 100)
+		var chance: int = randi_range(1, 100)
 		if chance >= 60:
 			return "action_block"
 	return "action_attack"
@@ -126,7 +126,7 @@ func select_smart_action() -> String:
 ## randomly selects action
 func select_random_action() -> String:
 	var actions: Array = \
-			get_method_list().filter(func(i): \
+			get_method_list().filter(func(i: Dictionary) -> Array: \
 			return i["name"].begins_with("action_"))
 
 	var action_type: int = randi() % actions.size()
@@ -202,7 +202,7 @@ func save() -> Dictionary:
 
 
 ## load data from JSON savefile
-func load(data) -> void:
+func load(data: Dictionary) -> void:
 	entity_properties.load(data["entity_properties"])
 
 
