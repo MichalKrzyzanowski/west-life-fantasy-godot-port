@@ -136,11 +136,20 @@ func save() -> Dictionary:
 
 ## load data from JSON savefile
 func load(data: Dictionary) -> void:
-	max_hp = data["max_hp"]
-	hp = data["hp"]
-	level = data["level"]
-	_max_level = data["max_level"]
-	required_xp = data["required_xp"]
-	xp = data["xp"]
-	attack = data["attack"]
-	defence = data["defence"]
+	# TODO: convert this mess into a list
+	if data.has("max_hp"):
+		max_hp = data["max_hp"]
+	if data.has("hp"):
+		hp = data["hp"]
+	if data.has("level"):
+		level = data["level"]
+	if data.has("max_level"):
+		_max_level = data["max_level"]
+	if data.has("required_xp"):
+		required_xp = data["required_xp"]
+	if data.has("xp"):
+		xp = data["xp"]
+	if data.has("attack"):
+		attack = data["attack"]
+	if data.has("defence"):
+		defence = data["defence"]

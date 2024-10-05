@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 PartyManager="*res://singletons/party_manager.gd"
 SaveManager="*res://singletons/save_manager.gd"
+ItemDatabase="*res://singletons/item_database.gd"
 
 [debug]
 

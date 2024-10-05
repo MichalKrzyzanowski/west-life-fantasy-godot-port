@@ -1,5 +1,4 @@
-class_name EntityProperties
-extends Resource
+class_name EntityProperties extends Resource
 # docstring
 
 

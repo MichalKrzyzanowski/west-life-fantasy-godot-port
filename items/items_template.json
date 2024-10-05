@@ -1,0 +1,21 @@
+// template for adding items in bulk
+{
+	// basic item
+	"json_item_id": { // this key can be anything
+		"name": "item_name", // internal item name, use snake_case
+		"stack_size": 64, // max amount of items in a single stack
+		"type": "ItemType", // which Item class to use e.g. Gear. can be omitted if base Item class is enough.
+							// use PascalCase
+	},
+	"json_weapon_or_armour": {
+		"name": "item_name",
+		"stack_size": 64,
+		"type": "Gear",
+		"combat_stats": { // weapon stats, can omit any of the following to use default values.
+			"attack": 0, // damage that will combined with entities base attack. mainly used on weapons
+			"defence": 0, // defence that will combined with entities base defence. mainly used on armours
+			"level": 1 // weapon level. used for upgrading
+		}
+	}
+}
+

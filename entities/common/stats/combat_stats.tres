@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CombatStats" load_steps=2 format=3 uid="uid://dbbj05sn6dkjm"]
 
-[ext_resource type="Script" path="res://entities/common/combat_stats.gd" id="1_33jmd"]
+[ext_resource type="Script" path="res://entities/common/stats/combat_stats.gd" id="1_33jmd"]
 
 [resource]
 resource_name = "CombatStats"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://dpshg8ft6w0na"]
+
+[ext_resource type="Script" path="res://items/common/item.gd" id="1_gxgih"]
+
+[resource]
+script = ExtResource("1_gxgih")
+id = 10
+name = "fire_monke_plush+"
+amount = 0
+stack_size = 64

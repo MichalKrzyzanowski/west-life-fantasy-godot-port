@@ -29,8 +29,7 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-	for i in get_tree().get_nodes_in_group("persist"):
-		print(i.name)
+	pass
 
 
 # remaining builtins e.g. _process, _input

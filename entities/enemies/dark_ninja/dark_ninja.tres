@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EntityProperties" load_steps=5 format=3 uid="uid://cm5l8es7a6hsk"]
 
-[ext_resource type="Script" path="res://entities/common/entity_properties.gd" id="1_x7xjm"]
-[ext_resource type="Script" path="res://entities/common/combat_stats.gd" id="2_xdwft"]
+[ext_resource type="Script" path="res://entities/common/entity/entity_properties.gd" id="1_x7xjm"]
+[ext_resource type="Script" path="res://entities/common/stats/combat_stats.gd" id="2_xdwft"]
 [ext_resource type="Texture2D" uid="uid://tqp8f8oj04hj" path="res://entities/enemies/dark_ninja/dark-ninja.png" id="3_4j6qs"]
 
 [sub_resource type="Resource" id="Resource_ds5go"]

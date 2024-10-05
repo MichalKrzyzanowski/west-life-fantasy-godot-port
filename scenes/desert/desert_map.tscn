@@ -9,7 +9,7 @@
 [ext_resource type="TileSet" uid="uid://cx2yak8k0gq4c" path="res://scenes/common/house_tileset.tres" id="6_yybwe"]
 [ext_resource type="TileSet" uid="uid://lmlrfvna3b4l" path="res://scenes/common/cactus_tileset.tres" id="7_ad4e1"]
 [ext_resource type="PackedScene" uid="uid://0viy8iyuvprv" path="res://scenes/desert/instructions-board/instructions_board.tscn" id="10_kfu8i"]
-[ext_resource type="Script" path="res://entities/common/entity_properties.gd" id="11_dcgj7"]
+[ext_resource type="Script" path="res://entities/common/entity/entity_properties.gd" id="11_dcgj7"]
 [ext_resource type="PackedScene" uid="uid://b48jo5oludty5" path="res://scenes/combat/combat_manager.tscn" id="11_t00au"]
 [ext_resource type="Resource" uid="uid://t4krtc6a7vbh" path="res://entities/enemies/snail/snail.tres" id="12_fjvd6"]
 [ext_resource type="Resource" uid="uid://bhugyhiqyrca3" path="res://entities/enemies/bandit/bandit.tres" id="13_045pm"]

@@ -2,6 +2,17 @@
 	- move decimal right 2 times i.e. x100. e.g. 0.75 = 75.0
 	- reverse negative number on y axis e.g. 1.25 = -1.25
 
+- item use function:
+	- part of base item class
+	- parameter: list of entity_properties objects
+	- returns: integer success code ( 0=pass, 1=fail)
+	- base use: print item description
+	- used for:
+		- using items e.g. potion to heal party member(s)
+		- equip weapon on party member
+		- party member(s) take dmg, gain/lose gold, lose items, etc.
+			- whacky!
+
 - damage formula:
 	- reduction: attack / 100 * (target_def * target_def_muliplier)
 	- total_attack: attack + weapon_attack

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EntityProperties" load_steps=2 format=3 uid="uid://finwmwxc414a"]
 
-[ext_resource type="Script" path="res://entities/common/entity_properties.gd" id="1_m6cpd"]
+[ext_resource type="Script" path="res://entities/common/entity/entity_properties.gd" id="1_m6cpd"]
 
 [resource]
 resource_name = "EntityProperties"

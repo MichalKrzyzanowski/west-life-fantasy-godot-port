@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EntityProperties" load_steps=5 format=3 uid="uid://bhugyhiqyrca3"]
 
-[ext_resource type="Script" path="res://entities/common/entity_properties.gd" id="1_4bmpm"]
-[ext_resource type="Script" path="res://entities/common/combat_stats.gd" id="2_pvb06"]
+[ext_resource type="Script" path="res://entities/common/entity/entity_properties.gd" id="1_4bmpm"]
+[ext_resource type="Script" path="res://entities/common/stats/combat_stats.gd" id="2_pvb06"]
 [ext_resource type="Texture2D" uid="uid://bms47f3c7kofx" path="res://entities/enemies/bandit/bandit.png" id="3_cnrk2"]
 
 [sub_resource type="Resource" id="Resource_ebeci"]

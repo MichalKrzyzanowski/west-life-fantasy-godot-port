@@ -138,7 +138,7 @@
 		- camp_menu:
 			- item inventory fetches player inventory from inventory autoload, updates ui list of items
 		- item management flow example:
-			- item buys a potion from the item shop
+			- player buys a potion from the item shop
 			- potion is added to the player's inventory
 			- inventory manager emit's signal on_item_added
 			- gui inventory in party camp recieves the signal
