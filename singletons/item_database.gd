@@ -137,6 +137,11 @@ func get_item(id: int) -> Item:
 	return data[id]
 
 
+## fetch all item ids
+func get_ids() -> Array:
+	return data.keys()
+
+
 # private methods
 ## item database initialization.
 ## only populates item database with base game items,
@@ -146,7 +151,7 @@ func _populate_database() -> void:
 	_parse_dir(ITEMS_DIR)
 	print("finished populating item database")
 	for i in data.keys():
-		print(data[i].name.capitalize())
+		print("[%d]%s" % [data[i].id, data[i].name.capitalize()])
 
 
 ## iterate over [param dir_path] and it's subdirs.

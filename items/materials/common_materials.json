@@ -1,20 +1,24 @@
 {
 	"wolf_hide": {
+		"id": 1,
 		"name": "wolf_hide",
 		"amount": 0,
 		"stack_size": 64
 	},
 	"wolf_claw": {
 		"id": 112,
+		"name": "wolf_claw",
 		"amount": 0,
 		"stack_size": 64
 	},
 	"wolf_fang": {
+		"id": 2,
+		"name": "name_fang",
 		"amount": 0,
 		"stack_size": 64
 	},
 	"wolf_ear": {
-		"id": 3,
+		"id": 4,
 		"name": "wolf_ear",
 		"amount": 0,
 		"stack_size": 64

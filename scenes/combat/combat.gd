@@ -60,7 +60,7 @@ var _gil_reward: int = 0
 
 # @onready vars
 @onready var GenericEntity := preload(
-		"res://entities/common/generic_entity.tscn")
+		"res://entities/common/entity/generic_entity.tscn")
 #@onready var ShadeNinja := preload("res://entities/common/generic_entity.tscn") as Area2D
 # TODO: figure out how to implement static typing for Grid2D plugin type
 @onready var party_grid = $PartyGrid
