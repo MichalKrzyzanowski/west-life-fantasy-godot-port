@@ -9,6 +9,7 @@ extends Button
 # enums
 
 # constants
+const DEFAULT_NAME: String = "----"
 
 # @export vars
 
@@ -65,12 +66,11 @@ func _update_amount_label() -> void:
 
 
 func _set_defaults() -> void:
-	text = "----"
+	text = DEFAULT_NAME
 	if !amount_label:
 		amount_label = $AmountLabel
 
 	amount_label.hide()
-
 
 
 # subclasses

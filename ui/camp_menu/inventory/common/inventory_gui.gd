@@ -26,8 +26,8 @@ extends HFlowContainer
 @export var item_gui: PackedScene
 
 # public vars
-## reference to inventory dictionary that will be displayed
-var item_dict: Dictionary
+## reference to inventory object that will be displayed
+var inventory: Inventory
 
 # private vars
 var _first_page: int = 0
@@ -39,7 +39,7 @@ var _item_arr: Array
 
 
 # @onready vars
-@onready var inventory_grid: GridContainer = $Inv
+@onready var inventory_grid: GridContainer = $ItemGrid
 @onready var scrollbar: VScrollBar = $VScrollBar
 
 
@@ -86,12 +86,12 @@ func _input(event: InputEvent) -> void:
 # public methods
 ## update gui inventory page count and scrollbar
 func update_inventory() -> void:
-	_page_count = ceili(item_dict.size() / (rows * columns * 1.0)) - 1
+	_page_count = ceili(inventory.size() / (rows * columns * 1.0)) - 1
 	scrollbar.max_value = _page_count
 	_update_scrollbar_grabber_length()
 
 	# update reference to item array from inventory dictionary
-	_item_arr = item_dict.values()
+	_item_arr = inventory.values()
 	_update_item_gui()
 
 

@@ -60,6 +60,14 @@ func remove_item(item_id: int, amount: int = 1) -> void:
 	inventory.erase(item_id)
 
 
+func size() -> int:
+	return inventory.size()
+
+
+func values() -> Array:
+	return inventory.values()
+
+
 # private methods
 
 

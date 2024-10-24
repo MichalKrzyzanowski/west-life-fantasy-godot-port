@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2bhbuwxh85sr"]
+
+[ext_resource type="Script" path="res://ui/camp_menu/inventory/common/inventory_gui.gd" id="1_n3uok"]
+
+[node name="InventoryGui" type="HFlowContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_n3uok")
+
+[node name="ItemGrid" type="GridContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="VScrollBar" type="VScrollBar" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+rounded = true
+
+[connection signal="value_changed" from="VScrollBar" to="." method="_set_page"]
