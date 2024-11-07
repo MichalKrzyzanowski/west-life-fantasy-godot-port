@@ -1,5 +1,5 @@
 # @tool
-class_name Consumable extends Node
+class_name Consumable extends Item
 # docstring
 
 
@@ -10,6 +10,7 @@ class_name Consumable extends Node
 # constants
 
 # @export vars
+@export var stats: CombatStats = CombatStats.new()
 
 # public vars
 
@@ -37,6 +38,15 @@ func _ready() -> void:
 
 
 # public methods
+func load(data: Dictionary) -> void:
+	super(data)
+	if data.has("stats"):
+		stats.load(data["stats"])
+
+
+func use(entity: EntityProperties) -> int:
+	entity.stats.add(stats)
+	return 1
 
 
 # private methods

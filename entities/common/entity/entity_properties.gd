@@ -64,6 +64,25 @@ func revive() -> void:
 	stats.hp = stats.max_hp
 	on_revival.emit()
 
+## returns [name].
+func entity_name() -> String:
+	if !stats:
+		return "null"
+	return name.to_upper()
+
+## wrapper for [CombatStats.hp] property
+func hp() -> float:
+	if !stats:
+		return -1
+	return stats.hp
+
+
+## returns hp and max hp formatted as a string
+func hp_str() -> String:
+	if !stats:
+		return "null"
+	return "%d/%d" % [stats.hp, stats.max_hp]
+
 
 # private methods
 

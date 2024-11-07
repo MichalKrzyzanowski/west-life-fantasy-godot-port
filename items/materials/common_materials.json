@@ -1,45 +1,52 @@
 {
 	"wolf_hide": {
-		"id": 1,
+		"id": 1111,
 		"name": "wolf_hide",
 		"amount": 0,
 		"stack_size": 64
 	},
 	"wolf_claw": {
-		"id": 112,
+		"id": 1112,
 		"name": "wolf_claw",
 		"amount": 0,
 		"stack_size": 64
 	},
 	"wolf_fang": {
-		"id": 2,
+		"id": 1113,
 		"name": "name_fang",
 		"amount": 0,
 		"stack_size": 64
 	},
 	"wolf_ear": {
-		"id": 4,
+		"id": 1114,
 		"name": "wolf_ear",
 		"amount": 0,
 		"stack_size": 1
 	},
 	"wolf_heart": {
-		"id": 190,
+		"id": 1115,
 		"name": "wolf_heart",
 		"amount": 0,
 		"stack_size": 64
 	},
 	"wolf_sword": {
 		"type": "gear",
-		"id": 3434,
+		"id": 1116,
 		"name": "wolf_sword",
 		"amount": 0,
 		"stack_size": 64
 	},
 	"dirt_ball": {
-		"id": 3,
+		"id": 1117,
 		"name": "dirt_ball",
 		"amount": 0,
 		"stack_size": 64
+	},
+	"potion": {
+		"id": 1118,
+		"type": "consumable",
+		"name": "potion",
+		"amount": 0,
+		"stack_size": 10
 	}
 }

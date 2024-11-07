@@ -11,7 +11,8 @@ signal on_hp_depleted()
 @export var max_hp: int:
 	set(new_max_hp):
 		max_hp = new_max_hp
-		hp = max_hp
+		if config_restore_hp:
+			hp = max_hp
 ## base character damage dealt during combat, increased upon level up
 @export var attack: int
 ## base character defence, reduces damage taken during combat
@@ -26,6 +27,14 @@ signal on_hp_depleted()
 @export var scaler_defence: int
 ## hp scaling factor, multiplicative
 @export var scaler_required_xp: int
+
+@export_group("Config", "config_")
+## allows hp to overflow max hp
+@export var config_allow_hp_overlimit: bool = false
+## allows hp to be fully restored when max hp is altered.
+## e.g. when leveling up, using an item that increases
+## max hp only
+@export var config_restore_hp: bool = true
 
 ## character level
 @export var level: int = 1
@@ -59,7 +68,8 @@ func init() -> void:
 	# TODO: update to _init after godot engine changes
 	print("init stats")
 	# fully heals character
-	hp = max_hp
+	if config_restore_hp:
+		hp = max_hp
 
 
 ## convert stats object to string
@@ -90,7 +100,11 @@ func set_hp(new_hp: float) -> void:
 	if has_hp_depleted:
 		return
 
-	hp = clamp(new_hp, 0, max_hp)
+	if config_allow_hp_overlimit:
+		hp = new_hp
+	else:
+		hp = clamp(new_hp, 0, max_hp)
+
 	on_hp_changed.emit()
 	if hp == 0:
 		has_hp_depleted = true
@@ -120,6 +134,17 @@ func level_up() -> void:
 	on_level_up.emit()
 
 
+## addition method, since gdscript does not
+## support operator overloading
+func add(stats: CombatStats) -> void:
+	hp += stats.hp
+	if stats.max_hp > 0:
+		max_hp += stats.max_hp
+	attack += stats.attack
+	defence += stats.defence
+	xp += stats.xp
+
+
 ## saves data as dictionary for JSON format
 func save() -> Dictionary:
 	return {
@@ -131,16 +156,14 @@ func save() -> Dictionary:
 		"xp": xp,
 		"attack": attack,
 		"defence": defence,
+		"allow_hp_overlimit": config_allow_hp_overlimit,
+		"restore_hp": config_restore_hp,
 	}
 
 
 ## load data from JSON savefile
 func load(data: Dictionary) -> void:
 	# TODO: convert this mess into a list
-	if data.has("max_hp"):
-		max_hp = data["max_hp"]
-	if data.has("hp"):
-		hp = data["hp"]
 	if data.has("level"):
 		level = data["level"]
 	if data.has("max_level"):
@@ -153,3 +176,11 @@ func load(data: Dictionary) -> void:
 		attack = data["attack"]
 	if data.has("defence"):
 		defence = data["defence"]
+	if data.has("allow_hp_overlimit"):
+		config_allow_hp_overlimit = data["allow_hp_overlimit"]
+	if data.has("restore_hp"):
+		config_restore_hp = data["restore_hp"]
+	if data.has("max_hp"):
+		max_hp = data["max_hp"]
+	if data.has("hp"):
+		hp = data["hp"]

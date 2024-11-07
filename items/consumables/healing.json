@@ -1,0 +1,41 @@
+{
+	"heal": {
+		"id": 1,
+		"name": "heal",
+		"type": "consumable",
+		"amount": 0,
+		"stack_size": 64,
+		"description": "Heals 10 points",
+		"stats": {
+			"hp": -5,
+			"allow_hp_overlimit": true,
+			"restore_hp": false
+		}
+	},
+	"pure": {
+		"id": 2,
+		"name": "pure",
+		"amount": 0,
+		"type": "consumable",
+		"stack_size": 64,
+		"description": "Heals 20 points",
+		"stats": {
+			"hp": 20,
+			"allow_hp_overlimit": true,
+			"restore_hp": false
+		}
+	},
+	"tent": {
+		"id": 3,
+		"name": "tent",
+		"amount": 0,
+		"type": "consumable",
+		"stack_size": 64,
+		"description": "Heals 50 points",
+		"stats": {
+			"hp": 50,
+			"allow_hp_overlimit": true,
+			"restore_hp": false
+		}
+	}
+}

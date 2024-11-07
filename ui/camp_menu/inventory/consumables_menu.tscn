@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7ijfs16qlhfq"]
+[gd_scene load_steps=7 format=3 uid="uid://b7ijfs16qlhfq"]
 
 [ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/sprite/text_box.png" id="1_s3tg8"]
 [ext_resource type="Script" path="res://ui/camp_menu/inventory/consumables_menu.gd" id="1_wol85"]
 [ext_resource type="FontFile" uid="uid://duujn5vjqjbyi" path="res://ui/common/font/arialbd.ttf" id="2_sc00e"]
+[ext_resource type="PackedScene" uid="uid://d2bhbuwxh85sr" path="res://ui/camp_menu/inventory/common/inventory_gui.tscn" id="4_7fg46"]
+[ext_resource type="PackedScene" uid="uid://bj18dtq305e74" path="res://ui/camp_menu/inventory/common/item_gui.tscn" id="5_6deds"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2b1d"]
 bg_color = Color(0, 0, 0, 1)
@@ -59,6 +61,7 @@ theme_override_font_sizes/font_size = 28
 text = "Inventory"
 
 [node name="PartyInfoPanel" type="NinePatchRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.207031
@@ -67,6 +70,7 @@ anchor_right = 0.702148
 anchor_bottom = 0.615885
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 0
 texture = ExtResource("1_s3tg8")
 patch_margin_left = 4
 patch_margin_top = 4
@@ -85,29 +89,35 @@ offset_top = -10.5
 offset_bottom = 10.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/separation = 20
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="PartyInfoPanel/HBoxContainer"]
+[node name="PartyMemberOneLabel" type="Label" parent="PartyInfoPanel/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
-text = "BEN"
+text = "BEN's
+health 61/61"
+horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="PartyInfoPanel/HBoxContainer"]
+[node name="PartyMemberTwoLabel" type="Label" parent="PartyInfoPanel/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "WEEB"
+horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="PartyInfoPanel/HBoxContainer"]
+[node name="PartyMemberThreeLabel" type="Label" parent="PartyInfoPanel/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "BIG"
+horizontal_alignment = 1
 
-[node name="Label4" type="Label" parent="PartyInfoPanel/HBoxContainer"]
+[node name="PartyMemberFourLabel" type="Label" parent="PartyInfoPanel/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "CHEST"
+horizontal_alignment = 1
 
 [node name="InventoryTitle" type="NinePatchRect" parent="."]
 layout_mode = 1
@@ -173,20 +183,13 @@ grow_vertical = 2
 theme_override_constants/separation = 40
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="InventoryPanel/VBoxContainer"]
+[node name="ConsumablesGui" parent="InventoryPanel/VBoxContainer" instance=ExtResource("4_7fg46")]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "Pure x1"
-
-[node name="Label2" type="Label" parent="InventoryPanel/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "Tent x1"
-
-[node name="Label3" type="Label" parent="InventoryPanel/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "pure x1"
+rows = 3
+hide_scrollbar = true
+disable_scrolling = true
+item_gui = ExtResource("5_6deds")
 
 [node name="DescriptionPanel" type="NinePatchRect" parent="."]
 layout_mode = 1
@@ -218,7 +221,6 @@ offset_bottom = 20.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 36
-text = "Heals 10 points"
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 1
@@ -238,4 +240,5 @@ theme_override_font_sizes/font_size = 28
 text = "Back"
 metadata/_edit_use_anchors_ = true
 
+[connection signal="gui_input" from="PartyInfoPanel" to="." method="_on_party_info_panel_gui_input"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

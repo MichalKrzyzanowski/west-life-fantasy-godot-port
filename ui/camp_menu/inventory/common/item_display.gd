@@ -1,6 +1,6 @@
 # @tool
 # class_name name
-extends Button
+extends "item_gui.gd"
 # docstring
 
 
@@ -9,20 +9,10 @@ extends Button
 # enums
 
 # constants
-const DEFAULT_NAME: String = "----"
 
 # @export vars
 
 # public vars
-var item: Item:
-	set(new_item):
-		if new_item == null:
-			_set_defaults()
-			return
-
-		item = new_item
-		text = item.name
-		_update_amount_label()
 
 # private vars
 
@@ -30,16 +20,13 @@ var item: Item:
 @onready var amount_label: Label = $AmountLabel
 
 
-func _init() -> void:
-	pass
+# func _init() -> void:
 
 
-func _enter_tree() -> void:
-	pass
+# func _enter_tree() -> void:
 
 
-func _ready() -> void:
-	_set_defaults()
+# func _ready() -> void:
 
 
 # remaining builtins e.g. _process, _input
@@ -66,7 +53,7 @@ func _update_amount_label() -> void:
 
 
 func _set_defaults() -> void:
-	text = DEFAULT_NAME
+	super()
 	if !amount_label:
 		amount_label = $AmountLabel
 

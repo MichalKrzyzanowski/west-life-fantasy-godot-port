@@ -4,6 +4,7 @@ class_name Inventory extends Resource
 
 
 # signals
+signal on_inventory_update()
 
 # enums
 
@@ -50,22 +51,33 @@ func add_item(item_id: int, amount: int = 1) -> void:
 		inventory[item_id] = new_item
 	inventory[item_id].add(amount)
 
+	on_inventory_update.emit()
+
 
 func remove_item(item_id: int, amount: int = 1) -> void:
 	if inventory.has(item_id):
 		# should always be negative amount
 		inventory[item_id].remove(amount)
 		if inventory[item_id].amount > 0:
+			on_inventory_update.emit()
 			return
 	inventory.erase(item_id)
+	on_inventory_update.emit()
 
 
+## Dictionary size() wrapper
 func size() -> int:
 	return inventory.size()
 
 
+## Dictionary values() wrapper
 func values() -> Array:
 	return inventory.values()
+
+
+## Dictionary get() wrapper
+func get_item(id: int) -> Item:
+	return inventory.get(id)
 
 
 # private methods

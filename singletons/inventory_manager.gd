@@ -29,7 +29,7 @@ func _init() -> void:
 
 
 func _enter_tree() -> void:
-	pass
+	consumables_inventory = Inventory.new()
 
 
 func _ready() -> void:
@@ -64,6 +64,11 @@ func test_populate_inventories() -> void:
 		var amount_gen: int = randi_range(0, item_ids.size() - 1)
 		for n in amount_gen:
 			i.add_item(item_ids[randi_range(0, item_ids.size() - 1)])
+
+	# for consumables
+	var amount_gen: int = randi_range(0, item_ids.size() - 1)
+	for n in amount_gen:
+		consumables_inventory.add_item(item_ids[randi_range(0, item_ids.size() - 1)])
 
 
 # private methods

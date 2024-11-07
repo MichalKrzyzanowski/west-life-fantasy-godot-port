@@ -5,6 +5,7 @@ extends HFlowContainer
 
 
 # signals
+signal on_item_used(item: Item)
 
 # enums
 
@@ -24,6 +25,8 @@ extends HFlowContainer
 @export var inv_grid_v_seperation: int = 0
 ## scene to be used for displaying item data
 @export var item_gui: PackedScene
+@export var enable_item_use_method: bool = true
+@export var party: Array[EntityProperties]
 
 # public vars
 ## reference to inventory object that will be displayed
@@ -65,6 +68,8 @@ func _ready() -> void:
 	for i: int in gui_amount:
 		var gui: Control  = item_gui.instantiate()
 		inventory_grid.add_child(gui)
+		if enable_item_use_method:
+			gui.connect("on_item_clicked", _on_item_gui_clicked)
 
 	_init_scrollbar()
 
@@ -82,8 +87,14 @@ func _input(event: InputEvent) -> void:
 		_change_page(1)
 
 
-
 # public methods
+## sets inventory reference and updates inventory
+func set_inventory(new_inventory: Inventory) -> void:
+	inventory = new_inventory
+	inventory.on_inventory_update.connect(_on_inventory_update)
+	update_inventory()
+
+
 ## update gui inventory page count and scrollbar
 func update_inventory() -> void:
 	_page_count = ceili(inventory.size() / (rows * columns * 1.0)) - 1
@@ -179,6 +190,33 @@ func _is_inventory_highlighted() -> bool:
 	var mouse_position: Vector2 = get_viewport().get_mouse_position()
 
 	return grid_rect.has_point(mouse_position)
+
+
+func _on_item_gui_clicked(item_id: int) -> void:
+	var current_item: Item = inventory.get_item(item_id)
+	if !current_item:
+		return
+
+	# bool in integer form, needed for bit &
+	var consume_item: int = 1
+	print(item_id, ": ", current_item)
+
+	if party.size() > 0:
+		for member: EntityProperties in party:
+			consume_item &= current_item.use(member)
+
+	on_item_used.emit(inventory.get_item(item_id))
+	# return code above 0 means that the item was used up
+	# i.e. removed
+	if consume_item:
+		inventory.remove_item(item_id)
+	for i: int in inventory_grid.get_child_count():
+		var gui_item: Node = inventory_grid.get_child(i)
+		print("item: ", i, ": ", gui_item.item)
+
+
+func _on_inventory_update() -> void:
+	update_inventory()
 
 
 # subclasses

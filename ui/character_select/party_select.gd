@@ -55,10 +55,13 @@ func _on_continue_button_pressed() -> void:
 			item.call("add_current_to_party")
 			InventoryManager.create_party_inventory()
 
+	InventoryManager.consumables_inventory = Inventory.new()
 	# TODO: remove after testing
 	InventoryManager.test_populate_inventories()
 	for i in InventoryManager._party_inventories:
 		print("inventory: ", i)
+
+	print("consumables: ", InventoryManager.consumables_inventory)
 
 	var main_instance = main_scene.instantiate()
 	get_tree().root.add_child(main_instance)

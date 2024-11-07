@@ -10,7 +10,7 @@ class_name Gear extends Item
 # constants
 
 # @export vars
-@export var combat_stats: CombatStats = CombatStats.new()
+@export var stats: CombatStats = CombatStats.new()
 
 # public vars
 
@@ -40,13 +40,18 @@ func _ready() -> void:
 # public methods
 func load(data: Dictionary) -> void:
 	super(data)
-	if data.has("combat_stats"):
-		combat_stats.load(data["combat_stats"])
+	if data.has("stats"):
+		stats.load(data["stats"])
+
+
+func use(entity: EntityProperties) -> int:
+	# TODO: add equip func
+	return 0
 
 
 # private methods
 func _to_string() -> String:
-	return super() + " %s" % combat_stats
+	return super() + " %s" % stats
 
 
 # subclasses
