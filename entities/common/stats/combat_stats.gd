@@ -1,12 +1,24 @@
 class_name CombatStats
 extends Resource
+# docstring
 
 
+# signals
 signal on_level_up()
 signal on_hp_changed()
 signal on_xp_changed()
 signal on_hp_depleted()
 
+# constants
+const PARAMETERS_LOAD_ORDER: Array[String] = [
+		"level", "max_level",
+		"required_xp", "xp",
+		"attack", "defence",
+		"allow_hp_overlimit", "restore_hp",
+		"max_hp", "hp",
+	]
+
+# export vars
 ## max character hp, increased upon level up
 @export var max_hp: int:
 	set(new_max_hp):
@@ -163,24 +175,6 @@ func save() -> Dictionary:
 
 ## load data from JSON savefile
 func load(data: Dictionary) -> void:
-	# TODO: convert this mess into a list
-	if data.has("level"):
-		level = data["level"]
-	if data.has("max_level"):
-		_max_level = data["max_level"]
-	if data.has("required_xp"):
-		required_xp = data["required_xp"]
-	if data.has("xp"):
-		xp = data["xp"]
-	if data.has("attack"):
-		attack = data["attack"]
-	if data.has("defence"):
-		defence = data["defence"]
-	if data.has("allow_hp_overlimit"):
-		config_allow_hp_overlimit = data["allow_hp_overlimit"]
-	if data.has("restore_hp"):
-		config_restore_hp = data["restore_hp"]
-	if data.has("max_hp"):
-		max_hp = data["max_hp"]
-	if data.has("hp"):
-		hp = data["hp"]
+	for param: String in PARAMETERS_LOAD_ORDER:
+		if data.has(param):
+			level = data[param]
