@@ -7,7 +7,7 @@
 		"stack_size": 64,
 		"description": "Heals 10 points",
 		"stats": {
-			"hp": -5,
+			"hp": 10,
 			"allow_hp_overlimit": true,
 			"restore_hp": false
 		}

@@ -20,8 +20,8 @@ class_name Gear extends Item
 
 
 # _init
-func _init() -> void:
-	pass
+# func _init() -> void:
+# 	pass
 
 
 # _enter_tree
@@ -44,14 +44,25 @@ func load(data: Dictionary) -> void:
 		stats.load(data["stats"])
 
 
-func use(entity: EntityProperties) -> int:
-	# TODO: add equip func
-	return 0
+# func use(entity: EntityProperties) -> int:
+# 	# TODO: add equip func
+# 	return 0
 
 
 # private methods
 func _to_string() -> String:
 	return super() + " %s" % stats
+
+
+## actions
+func _action_equip_weapon(entity: EntityProperties) -> int:
+	printerr("equiping weapon...")
+	return -1
+
+
+func _action_equip_armour(entity: EntityProperties) -> int:
+	printerr("equiping armour...")
+	return -1
 
 
 # subclasses

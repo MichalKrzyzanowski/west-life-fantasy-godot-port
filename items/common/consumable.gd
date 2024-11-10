@@ -20,8 +20,8 @@ class_name Consumable extends Item
 
 
 # _init
-func _init() -> void:
-	pass
+# func _init() -> void:
+# 	pass
 
 
 # _enter_tree
@@ -44,13 +44,16 @@ func load(data: Dictionary) -> void:
 		stats.load(data["stats"])
 
 
-func use(entity: EntityProperties) -> int:
+# func use(entity: EntityProperties) -> int:
+# 	entity.stats.add(stats)
+# 	return 1
+
+
+# private methods
+## actions
+func _action_consume(entity: EntityProperties) -> int:
 	entity.stats.add(stats)
 	return 1
 
 
-# private methods
-
-
 # subclasses
-

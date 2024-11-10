@@ -10,13 +10,20 @@ signal on_xp_changed()
 signal on_hp_depleted()
 
 # constants
-const PARAMETERS_LOAD_ORDER: Array[String] = [
-		"level", "max_level",
-		"required_xp", "xp",
-		"attack", "defence",
-		"allow_hp_overlimit", "restore_hp",
-		"max_hp", "hp",
-	]
+## dictionary of parameters to be loaded in a specific order.
+## format: param: property_name
+const PARAMETERS_LOAD_ORDER: Dictionary = {
+		"level": "level",
+		"max_level": "_max_level",
+		"required_xp": "required_xp",
+		"xp": "xp",
+		"attack": "attack",
+		"defence": "defence",
+		"allow_hp_overlimit": "config_allow_hp_overlimit",
+		"restore_hp": "config_restore_hp",
+		"max_hp": "max_hp",
+		"hp": "hp",
+	}
 
 # export vars
 ## max character hp, increased upon level up
@@ -175,6 +182,6 @@ func save() -> Dictionary:
 
 ## load data from JSON savefile
 func load(data: Dictionary) -> void:
-	for param: String in PARAMETERS_LOAD_ORDER:
+	for param: String in PARAMETERS_LOAD_ORDER.keys():
 		if data.has(param):
-			level = data[param]
+			set(PARAMETERS_LOAD_ORDER[param], data[param])

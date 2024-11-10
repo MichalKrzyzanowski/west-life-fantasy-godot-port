@@ -36,8 +36,10 @@ var data: Dictionary = {}
 # private vars
 ## holds callbacks for creating different types of [Item]
 var _item_type_callbacks: Dictionary = {
-	"consumable": func() -> Consumable: return Consumable.new(),
+	"consumable": func() -> Consumable: return Consumable.new("consume"),
 	"gear": func() -> Gear: return Gear.new(),
+	"weapon": func() -> Gear: return Gear.new("equip_weapon"),
+	"armour": func() -> Gear: return Gear.new("equip_armour"),
 }
 
 # @onready vars

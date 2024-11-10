@@ -19,6 +19,7 @@ class_name Item extends Resource
 @export var amount: int = 0
 @export var stack_size: int = 64
 @export var description: String = "dummy"
+@export var item_action: Callable
 
 # public vars
 
@@ -28,8 +29,17 @@ class_name Item extends Resource
 
 
 # _init
-func _init() -> void:
-	pass
+func _init(item_action_name: String = "") -> void:
+	if !item_action_name:
+		return
+
+	var final_action_name: String = "_action_%s" % item_action_name
+	if has_method(final_action_name):
+		print("has method %s" % final_action_name)
+		item_action = Callable(self, final_action_name)
+	else:
+		print("no method found %s" % final_action_name)
+	print(item_action)
 
 
 # _enter_tree
@@ -62,11 +72,10 @@ func remove(amount_to_remove: int = 1) -> void:
 ## will be called when item in inventory is clicked.
 ## returns: 0 = item not used up, 1+: item used up
 func use(entity: EntityProperties) -> int:
-	var entity_name: String = "undefined"
-	if entity:
-		entity_name = entity.name
-	print("%s interacting with" % [entity_name])
-	return 0
+	if !item_action:
+		printerr("item action is null")
+		return -1
+	return item_action.call(entity)
 
 
 func save() -> Dictionary:
