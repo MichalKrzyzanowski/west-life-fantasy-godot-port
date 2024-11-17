@@ -5,7 +5,7 @@ extends HFlowContainer
 
 
 # signals
-signal on_item_used(item: Item)
+signal on_item_gui_clicked(inventory: Inventory, item_id: int)
 
 # enums
 
@@ -25,7 +25,7 @@ signal on_item_used(item: Item)
 @export var inv_grid_v_seperation: int = 0
 ## scene to be used for displaying item data
 @export var item_gui: PackedScene
-@export var enable_item_use_method: bool = true
+@export var enable_item_use_action: bool = true
 @export var party: Array[EntityProperties]
 
 # public vars
@@ -39,7 +39,6 @@ var _previous_page: int = _current_page
 var _page_count: int = _current_page
 
 var _item_arr: Array
-
 
 # @onready vars
 @onready var inventory_grid: GridContainer = $ItemGrid
@@ -68,8 +67,7 @@ func _ready() -> void:
 	for i: int in gui_amount:
 		var gui: Control  = item_gui.instantiate()
 		inventory_grid.add_child(gui)
-		if enable_item_use_method:
-			gui.connect("on_item_clicked", _on_item_gui_clicked)
+		gui.connect("on_item_clicked", _on_item_clicked)
 
 	_init_scrollbar()
 
@@ -89,8 +87,9 @@ func _input(event: InputEvent) -> void:
 
 # public methods
 ## sets inventory reference and updates inventory
-func set_inventory(new_inventory: Inventory) -> void:
+func set_inventory(new_inventory: Inventory, party_ref: Array[EntityProperties] = []) -> void:
 	inventory = new_inventory
+	inventory.set_party_ref(party_ref)
 	inventory.on_inventory_update.connect(_on_inventory_update)
 	update_inventory()
 
@@ -192,27 +191,22 @@ func _is_inventory_highlighted() -> bool:
 	return grid_rect.has_point(mouse_position)
 
 
-func _on_item_gui_clicked(item_id: int) -> void:
-	var current_item: Item = inventory.get_item(item_id)
-	if !current_item:
+## handles item click event.
+## if [member enable_item_use_action] is true,
+## this method emits a signal to allow other classes to 
+## have custom item use implementations.
+## otherwise, this method calls [method inventory.use_item]
+func _on_item_clicked(item_id: int) -> void:
+	if !inventory.has_item(item_id):
+		printerr("no item found with id %d" % item_id)
 		return
 
-	# bool in integer form, needed for bit &
-	var consume_item: int = 1
-	print(item_id, ": ", current_item)
+	if !enable_item_use_action:
+		# inventory.emit_signal("on_item_used", inventory, item_id)
+		on_item_gui_clicked.emit(inventory, item_id)
+		return
 
-	if party.size() > 0:
-		for member: EntityProperties in party:
-			consume_item &= current_item.use(member)
-
-	on_item_used.emit(inventory.get_item(item_id))
-	# return code above 0 means that the item was used up
-	# i.e. removed
-	if consume_item:
-		inventory.remove_item(item_id)
-	for i: int in inventory_grid.get_child_count():
-		var gui_item: Node = inventory_grid.get_child(i)
-		print("item: ", i, ": ", gui_item.item)
+	inventory.use_item(item_id)
 
 
 func _on_inventory_update() -> void:

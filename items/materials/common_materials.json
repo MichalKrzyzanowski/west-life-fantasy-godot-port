@@ -30,20 +30,33 @@
 		"stack_size": 64
 	},
 	"wolf_sword": {
-		"type": "gear",
+		"type": "weapon",
 		"id": 1116,
 		"name": "wolf_sword",
 		"amount": 0,
-		"stack_size": 64
+		"stack_size": 1,
+		"stats": {
+			"attack": 10
+		}
+	},
+	"wolf_plate": {
+		"type": "armour",
+		"id": 1117,
+		"name": "wolf_armour",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"defence": 40
+		}
 	},
 	"dirt_ball": {
-		"id": 1117,
+		"id": 1118,
 		"name": "dirt_ball",
 		"amount": 0,
 		"stack_size": 64
 	},
 	"potion": {
-		"id": 1118,
+		"id": 1119,
 		"type": "consumable",
 		"name": "potion",
 		"amount": 0,

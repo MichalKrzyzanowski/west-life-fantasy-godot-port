@@ -1,12 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://bj18dtq305e74"]
+[gd_scene load_steps=8 format=3 uid="uid://bj18dtq305e74"]
 
 [ext_resource type="Script" path="res://ui/camp_menu/inventory/common/item_gui.gd" id="1_em23q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mcif1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h4grh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qh4is"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3t70h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nhil4"]
+
+[sub_resource type="Theme" id="Theme_nkrbd"]
+Button/styles/disabled = SubResource("StyleBoxEmpty_mcif1")
+Button/styles/focus = SubResource("StyleBoxEmpty_h4grh")
+Button/styles/hover = SubResource("StyleBoxEmpty_qh4is")
+Button/styles/normal = SubResource("StyleBoxEmpty_3t70h")
+Button/styles/pressed = SubResource("StyleBoxEmpty_nhil4")
 
 [node name="ItemGui" type="Button"]
 offset_right = 8.0
 offset_bottom = 50.0
+theme = SubResource("Theme_nkrbd")
 text = "---"
-flat = true
 script = ExtResource("1_em23q")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

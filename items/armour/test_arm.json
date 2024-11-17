@@ -1,0 +1,24 @@
+{
+	"a": {
+		"id": 31,
+		"name": "steel_armour",
+		"type": "armour",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"defence": 40
+		}
+	},
+	"b": {
+		"id": 32,
+		"name": "rune_armour",
+		"type": "armour",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"defence": 65
+		}
+	}
+}
+
+

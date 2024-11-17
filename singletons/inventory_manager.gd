@@ -53,6 +53,10 @@ func get_party_inventory(index: int) -> Inventory:
 	return _party_inventories[index]
 
 
+func get_party_inventories() -> Array[Inventory]:
+	return _party_inventories
+
+
 func add_party_inventory(inventory: Inventory) -> void:
 	_party_inventories.append(inventory)
 
@@ -73,7 +77,7 @@ func test_populate_inventories() -> void:
 
 # private methods
 func _inventory_exists(index: int) -> bool:
-	return index >= _party_inventories.size()
+	return index < _party_inventories.size()
 
 
 # subclasses

@@ -27,6 +27,8 @@ var item: Item:
 		text = item.name.capitalize()
 		if item.amount > 1:
 			text += " x%d" % item.amount
+		if "is_equipped" in item && item.is_equipped:
+			text = "E:%s" % text
 
 # private vars
 

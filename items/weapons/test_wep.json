@@ -1,0 +1,23 @@
+{
+	"a": {
+		"id": 21,
+		"name": "sword",
+		"type": "weapon",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"attack": 5
+		}
+	},
+	"b": {
+		"id": 22,
+		"name": "axe",
+		"type": "weapon",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"attack": 15
+		}
+	}
+}
+

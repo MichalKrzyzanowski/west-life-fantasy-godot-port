@@ -42,16 +42,15 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	# TODO: remove most of this code
-	consumables_gui.on_item_used.connect(_on_item_used)
-	consumables_gui.set_inventory(InventoryManager.consumables_inventory)
 	PartyManager.add_member(mem1)
 	PartyManager.add_member(mem2)
 	PartyManager.add_member(mem3)
 	PartyManager.add_member(mem4)
-	consumables_gui.party = PartyManager.party
 	InventoryManager.consumables_inventory.add_item(1, 5)
 	InventoryManager.consumables_inventory.add_item(2, 5)
 	InventoryManager.consumables_inventory.add_item(3, 5)
+	consumables_gui.set_inventory(InventoryManager.consumables_inventory, PartyManager.party)
+	consumables_gui.on_item_gui_clicked.connect(_on_item_used)
 	_update_party_hp()
 
 
@@ -73,7 +72,8 @@ func _on_back_button_pressed() -> void:
 	hide()
 
 
-func _on_item_used(item: Item) -> void:
+func _on_item_used(inventory: Inventory, item_id: int) -> void:
+	var item: Item = inventory.get_item(item_id)
 	description_label.text = item.description
 	party_status_panel.show()
 	_update_party_hp()

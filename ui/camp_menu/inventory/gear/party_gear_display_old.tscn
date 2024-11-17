@@ -1,17 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://73ak5i73pvg2"]
+[gd_scene load_steps=2 format=3 uid="uid://kjxhpgqymjft"]
 
-[ext_resource type="Script" path="res://ui/camp_menu/inventory/gear/party_gear_display.gd" id="1_16hq7"]
-[ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/sprite/text_box.png" id="1_j4ik8"]
-[ext_resource type="PackedScene" uid="uid://d2bhbuwxh85sr" path="res://ui/camp_menu/inventory/common/inventory_gui.tscn" id="2_mrigj"]
-[ext_resource type="PackedScene" uid="uid://bj18dtq305e74" path="res://ui/camp_menu/inventory/common/item_gui.tscn" id="3_3st1m"]
-[ext_resource type="Theme" uid="uid://dia0gxxbh53kd" path="res://ui/camp_menu/inventory/common/green_button_text_theme.tres" id="4_tk1nj"]
+[ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/sprite/text_box.png" id="1_k63ey"]
 
 [node name="PartyGearDisplay" type="Control"]
 layout_mode = 3
 anchor_right = 1.0
 anchor_bottom = 0.139323
 grow_horizontal = 2
-script = ExtResource("1_16hq7")
 metadata/_edit_use_anchors_ = true
 
 [node name="PartyNamePanel" type="NinePatchRect" parent="."]
@@ -24,7 +19,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_j4ik8")
+texture = ExtResource("1_k63ey")
 patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
@@ -56,27 +51,51 @@ anchor_right = 0.875
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_j4ik8")
+texture = ExtResource("1_k63ey")
 patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="InventoryGui" parent="InventoryPanel" instance=ExtResource("2_mrigj")]
+[node name="GridContainer" type="GridContainer" parent="InventoryPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0920245
+anchor_left = 0.0674847
 anchor_top = 0.111516
 anchor_right = 0.952454
-anchor_bottom = 0.92254
-theme = ExtResource("4_tk1nj")
-rows = 2
+anchor_bottom = 0.922541
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 300
+theme_override_constants/v_separation = 35
 columns = 2
-hide_scrollbar = true
-disable_scrolling = true
-inv_grid_h_seperation = 300
-inv_grid_v_seperation = 35
-item_gui = ExtResource("3_3st1m")
-enable_item_use_action = false
 metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Button" parent="InventoryPanel/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CharacterSelectButton"
+theme_override_font_sizes/font_size = 17
+text = "New Text"
+flat = true
+
+[node name="Label2" type="Button" parent="InventoryPanel/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CharacterSelectButton"
+theme_override_font_sizes/font_size = 17
+text = "New Text"
+flat = true
+
+[node name="Label3" type="Button" parent="InventoryPanel/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CharacterSelectButton"
+theme_override_font_sizes/font_size = 17
+text = "New Text"
+flat = true
+
+[node name="Label4" type="Button" parent="InventoryPanel/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CharacterSelectButton"
+theme_override_font_sizes/font_size = 17
+text = "New Text"
+flat = true

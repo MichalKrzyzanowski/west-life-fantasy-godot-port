@@ -13,6 +13,7 @@ class_name Gear extends Item
 @export var stats: CombatStats = CombatStats.new()
 
 # public vars
+var is_equipped: bool = false
 
 # private vars
 
@@ -44,25 +45,21 @@ func load(data: Dictionary) -> void:
 		stats.load(data["stats"])
 
 
-# func use(entity: EntityProperties) -> int:
-# 	# TODO: add equip func
-# 	return 0
-
-
 # private methods
 func _to_string() -> String:
 	return super() + " %s" % stats
 
 
+# TODO: add equip funcs logic
 ## actions
 func _action_equip_weapon(entity: EntityProperties) -> int:
 	printerr("equiping weapon...")
-	return -1
+	return 0
 
 
 func _action_equip_armour(entity: EntityProperties) -> int:
 	printerr("equiping armour...")
-	return -1
+	return 0
 
 
 # subclasses

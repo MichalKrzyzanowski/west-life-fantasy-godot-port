@@ -1,6 +1,6 @@
 # @tool
 # class_name name
-extends "res://ui/camp_menu/inventory/gear/gear_menu.gd"
+extends Control
 # docstring
 
 
@@ -17,25 +17,31 @@ extends "res://ui/camp_menu/inventory/gear/gear_menu.gd"
 # private vars
 
 # @onready vars
-@onready var gil_label := $UpgradeInfoPanel/GilLabel as Label
+@onready var inventory_gui: HFlowContainer = $InventoryPanel/InventoryGui
 
 
+# _init
 func _init() -> void:
 	pass
 
 
+# _enter_tree
 func _enter_tree() -> void:
 	pass
 
 
+# _ready
 func _ready() -> void:
-	gil_label.text = "Gil: %d" % PartyManager.gil
+	pass
 
 
 # remaining builtins e.g. _process, _input
 
 
 # public methods
+## gui inventory getter
+func get_gui_inventory() -> HFlowContainer:
+	return inventory_gui
 
 
 # private methods
