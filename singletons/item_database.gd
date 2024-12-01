@@ -139,6 +139,11 @@ func get_item(id: int) -> Item:
 	return data[id]
 
 
+## returns true if [param id] is inside [member data]
+func has_item(id: int) -> bool:
+	return data.has(id)
+
+
 ## fetch all item ids
 func get_ids() -> Array:
 	return data.keys()

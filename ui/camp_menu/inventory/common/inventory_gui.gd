@@ -141,10 +141,8 @@ func _update_item_gui() -> void:
 		var gui_item: Node = inventory_grid.get_child(i)
 		if _page_index(i) >= _item_arr.size():
 			_set_gui_item_resource(gui_item, null)
-			# inventory_grid.get_child(i).item = null
 			continue
 
-		# inventory_grid.get_child(i).item = _item_arr[_page_index(i)]
 		_set_gui_item_resource(gui_item, _item_arr[_page_index(i)])
 
 
@@ -193,7 +191,7 @@ func _is_inventory_highlighted() -> bool:
 
 ## handles item click event.
 ## if [member enable_item_use_action] is true,
-## this method emits a signal to allow other classes to 
+## this method emits a signal to allow other classes to
 ## have custom item use implementations.
 ## otherwise, this method calls [method inventory.use_item]
 func _on_item_clicked(item_id: int) -> void:
@@ -207,6 +205,7 @@ func _on_item_clicked(item_id: int) -> void:
 		return
 
 	inventory.use_item(item_id)
+	update_inventory()
 
 
 func _on_inventory_update() -> void:

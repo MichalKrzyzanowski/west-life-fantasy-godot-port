@@ -17,6 +17,9 @@ signal on_revival()
 ## character texture. make sure texture is 32x32px and faces
 ## left for best results
 @export var texture: Texture
+# equipment
+@export var weapon: Gear
+@export var armour: Gear
 
 # public vars
 
@@ -64,11 +67,55 @@ func revive() -> void:
 	stats.hp = stats.max_hp
 	on_revival.emit()
 
+
+func change_weapon(new_weapon: Gear) -> void:
+	# check if new_weapon is null
+	if !new_weapon:
+		printerr("no weapon to equip")
+		return
+
+	# if new weapon has same id i.e. same weapon, unequip weapon
+	if weapon && new_weapon.id == weapon.id:
+		weapon.is_equipped = false
+		weapon = null
+		return
+
+	# unset equip flag for currently equipped weapon
+	if weapon:
+		weapon.is_equipped = false
+
+	# equip new weapon
+	weapon = new_weapon
+	weapon.is_equipped = true
+
+
+# TODO: cleanup if statements
+func change_armour(new_armour: Gear) -> void:
+	if !new_armour:
+		printerr("no armour to equip")
+		return
+
+	# if new armour has same id i.e. same armour, unequip armour
+	if armour && new_armour.id == armour.id:
+		armour.is_equipped = false
+		armour = null
+		return
+
+	# unset equip flag for currently equipped armour
+	if armour:
+		armour.is_equipped = false
+
+	# equip new armour
+	armour = new_armour
+	armour.is_equipped = true
+
+
 ## returns [name].
 func entity_name() -> String:
 	if !stats:
 		return "null"
 	return name.to_upper()
+
 
 ## wrapper for [CombatStats.hp] property
 func hp() -> float:

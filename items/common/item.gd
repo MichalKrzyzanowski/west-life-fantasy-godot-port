@@ -8,6 +8,7 @@ class_name Item extends Resource
 
 
 # signals
+# signal on_amount_changed()
 
 # enums
 
@@ -16,12 +17,16 @@ class_name Item extends Resource
 # @export vars
 @export var id: int = -1
 @export var name: String = "dummy"
-@export var amount: int = 0
+@export var amount: int= 0
+	# set(new_amount):
+	# 	amount = new_amount
+	# 	on_amount_changed.emit()
 @export var stack_size: int = 64
 @export var description: String = "dummy"
-@export var item_action: Callable
+@export var item_action_name: String = "dummy"
 
 # public vars
+var item_action: Callable
 
 # private vars
 
@@ -29,17 +34,12 @@ class_name Item extends Resource
 
 
 # _init
-func _init(item_action_name: String = "") -> void:
-	if !item_action_name:
+func _init(new_item_action_name: String = "") -> void:
+	if !new_item_action_name:
 		return
 
-	var final_action_name: String = "_action_%s" % item_action_name
-	if has_method(final_action_name):
-		print("has method %s" % final_action_name)
-		item_action = Callable(self, final_action_name)
-	else:
-		print("no method found %s" % final_action_name)
-	print(item_action)
+	# var final_action_name: String = "_action_%s" % new_item_action_name
+	item_action_name = "_action_%s" % new_item_action_name
 
 
 # _enter_tree
@@ -56,6 +56,16 @@ func _ready() -> void:
 
 
 # public methods
+## creates a callable to the correct action, if exists,
+## based on [member Item.item_action_name]
+func update_item_action() -> void:
+	if has_method(item_action_name):
+		print("has method %s" % item_action_name)
+		item_action = Callable(self, item_action_name)
+	else:
+		print("no method found %s" % item_action_name)
+
+
 ## increase item amount by [param amount_to_add]
 ## capped at [param stack_size]
 func add(amount_to_add: int = 1) -> void:

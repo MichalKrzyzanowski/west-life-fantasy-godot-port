@@ -83,7 +83,6 @@ func _unpress_action_buttons() -> void:
 ## drop: removes 1 item from clicked item's stack
 ## does nothing if no gear action is selected
 func _on_item_clicked(inventory: Inventory, item_id: int) -> void:
-	var item: Item = inventory.get_item(item_id)
 	match (_gear_action_state):
 		GearActionState.EQUIP:
 			print("equip gear action")
