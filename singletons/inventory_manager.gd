@@ -62,17 +62,33 @@ func add_party_inventory(inventory: Inventory) -> void:
 
 
 # TODO: test func, remove after testing
-func test_populate_inventories() -> void:
-	var item_ids: Array = ItemDatabase.get_ids()
-	for i in _party_inventories:
-		var amount_gen: int = randi_range(0, item_ids.size() - 1)
-		for n in amount_gen:
-			i.add_item(item_ids[randi_range(0, item_ids.size() - 1)])
+func test_populate_inventories(generate_party: bool = false) -> void:
+	if generate_party:
+		var mem1 = load("res://entities/party-members/black_belt/black_belt.tres")
+		var mem2 = load("res://entities/party-members/fighter/fighter.tres")
+		var mem3 = load("res://entities/party-members/black_mage/black_mage.tres")
+		var mem4 = load("res://entities/party-members/thief/thief.tres")
+		PartyManager.add_member(mem1)
+		create_party_inventory()
+		PartyManager.add_member(mem2)
+		create_party_inventory()
+		PartyManager.add_member(mem3)
+		create_party_inventory()
+		PartyManager.add_member(mem4)
+		create_party_inventory()
 
-	# for consumables
-	var amount_gen: int = randi_range(0, item_ids.size() - 1)
-	for n in amount_gen:
-		consumables_inventory.add_item(item_ids[randi_range(0, item_ids.size() - 1)])
+	# setup consumables
+	consumables_inventory = Inventory.new()
+	consumables_inventory.add_item(1, 5)
+	consumables_inventory.add_item(2, 5)
+	consumables_inventory.add_item(3, 5)
+
+	# setup party equip
+	for i: Inventory in _party_inventories:
+		i.add_item(31)
+		i.add_item(32)
+		i.add_item(21)
+		i.add_item(22)
 
 
 # private methods

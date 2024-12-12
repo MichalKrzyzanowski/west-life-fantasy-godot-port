@@ -18,6 +18,7 @@ extends Control
 
 # @onready vars
 @onready var inventory_gui: HFlowContainer = $InventoryPanel/InventoryGui
+@onready var party_name_label: Label = $PartyNamePanel/Label
 
 
 # _init
@@ -42,6 +43,11 @@ func _ready() -> void:
 ## gui inventory getter
 func get_gui_inventory() -> HFlowContainer:
 	return inventory_gui
+
+
+## setter for party_name_label text property
+func set_party_name_text(entity: EntityProperties) -> void:
+	party_name_label.text = entity.name
 
 
 # private methods

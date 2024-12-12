@@ -44,11 +44,6 @@ func load(data: Dictionary) -> void:
 		stats.load(data["stats"])
 
 
-# func use(entity: EntityProperties) -> int:
-# 	entity.stats.add(stats)
-# 	return 1
-
-
 # private methods
 ## actions
 func _action_consume(entity: EntityProperties) -> int:

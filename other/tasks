@@ -152,6 +152,8 @@
 			- dict(id, item_resource)
 		- gui inventory fetches the list of items in the player's inventory and displays them
 			- try to handle it from another thread
+	- gui_inventory should have filter options to filter items by type
+		- could be used to only display items of x type in one gui_inventory without needing to have an inventory for armour & a seperate one for weapons
 
 +------+
 | TODO |

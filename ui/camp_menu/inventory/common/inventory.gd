@@ -64,19 +64,6 @@ func add_item(item_id: int, amount: int = 1) -> void:
 	on_inventory_update.emit()
 
 
-# func add_item(item_id: int, amount: int = 1) -> void:
-# 	var new_item: Item = ItemDatabase.get_item(item_id).duplicate()
-# 	if !new_item:
-# 		printerr("item with id %d not available in database" % item_id)
-# 		return
-
-# 	if !inventory.has(item_id):
-# 		inventory[item_id] = new_item
-# 	inventory[item_id].add(amount)
-
-# 	on_inventory_update.emit()
-
-
 func remove_item(item_id: int, amount: int = 1) -> void:
 	if !inventory.has(item_id):
 		printerr("no item present with id %d" % item_id)
@@ -111,8 +98,7 @@ func use_item(item_id: int) -> void:
 
 	if party.size() > 0:
 		for member: EntityProperties in party:
-			# consume_item = current_item.use(member)
-			consume_item = current_item._action_equip_armour(member)
+			consume_item = current_item.use(member)
 
 	on_item_used.emit(item_id)
 	# use() return code is used to determine what to do with

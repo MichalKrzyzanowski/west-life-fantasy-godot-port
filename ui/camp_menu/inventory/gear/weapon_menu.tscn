@@ -25,6 +25,7 @@ offset_right = -234.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 25
+toggle_mode = true
 text = "UPGRADE"
 flat = true
 metadata/_edit_use_anchors_ = true
@@ -77,3 +78,5 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 25
 text = "Cost: +1-5 = 25G, +6-10 = 50G"
 vertical_alignment = 1
+
+[connection signal="toggled" from="ActionsPanel/UpgradeButton" to="." method="_on_upgrade_button_toggled"]

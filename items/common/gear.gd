@@ -4,7 +4,6 @@ class_name Gear extends Item
 
 
 # signals
-# signal on_item_equip_state_changed()
 
 # enums
 
@@ -15,9 +14,6 @@ class_name Gear extends Item
 
 # public vars
 var is_equipped: bool = false
-	# set(new_is_equipped):
-	# 	is_equipped = new_is_equipped
-	# 	on_item_equip_state_changed.emit()
 
 # private vars
 
@@ -54,20 +50,16 @@ func _to_string() -> String:
 	return super() + " %s" % stats
 
 
-# TODO: add equip funcs logic
 ## actions
 func _action_equip_weapon(entity: EntityProperties) -> int:
 	printerr("equiping weapon...")
 	entity.change_weapon(self)
-	print(is_equipped)
 	return 2
 
 
 func _action_equip_armour(entity: EntityProperties) -> int:
 	printerr("equiping armour...")
 	entity.change_armour(self)
-	print(entity.armour)
-	print(is_equipped)
 	return 2
 
 

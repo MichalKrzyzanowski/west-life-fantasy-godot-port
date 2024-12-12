@@ -31,6 +31,7 @@ signal on_item_gui_clicked(inventory: Inventory, item_id: int)
 # public vars
 ## reference to inventory object that will be displayed
 var inventory: Inventory
+var item_filter: String = ""
 
 # private vars
 var _first_page: int = 0
@@ -101,8 +102,21 @@ func update_inventory() -> void:
 	_update_scrollbar_grabber_length()
 
 	# update reference to item array from inventory dictionary
-	_item_arr = inventory.values()
+	_item_arr = get_inventory_items(item_filter)
 	_update_item_gui()
+
+
+func set_item_filter(filter: String) -> void:
+	item_filter = filter
+
+
+## fetch inventory items as array.
+## items can be filtered by [param item_type]
+func get_inventory_items(item_type: String = "") -> Array:
+	if !item_type:
+		return inventory.values()
+	var filter_lambda: Callable = func(item: Item) -> bool: return item.type == item_type
+	return inventory.values().filter(filter_lambda)
 
 
 ## fetch gui inventory children
@@ -200,7 +214,6 @@ func _on_item_clicked(item_id: int) -> void:
 		return
 
 	if !enable_item_use_action:
-		# inventory.emit_signal("on_item_used", inventory, item_id)
 		on_item_gui_clicked.emit(inventory, item_id)
 		return
 

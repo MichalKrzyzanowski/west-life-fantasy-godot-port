@@ -19,6 +19,7 @@ enum GearActionState {
 # @export vars
 
 # public vars
+var item_filter: String = "armour"
 
 # private vars
 var _gear_action_state: GearActionState = GearActionState.NONE
@@ -29,12 +30,6 @@ var _gear_action_state: GearActionState = GearActionState.NONE
 @onready var equip_button: Button = $ActionsPanel/EquipButton
 @onready var drop_button: Button = $ActionsPanel/DropButton
 
-	# TODO: remove onready statements here
-@onready var mem1 = preload("res://entities/party-members/black_belt/black_belt.tres")
-@onready var mem2 = preload("res://entities/party-members/fighter/fighter.tres")
-@onready var mem3 = preload("res://entities/party-members/black_mage/black_mage.tres")
-@onready var mem4 = preload("res://entities/party-members/thief/thief.tres")
-var _invs: Array[Inventory] = []
 
 func _init() -> void:
 	pass
@@ -45,23 +40,12 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-	# TODO: most of this is test code, remove after testing finished
-	PartyManager.add_member(mem1)
-	InventoryManager.create_party_inventory()
-	PartyManager.add_member(mem2)
-	InventoryManager.create_party_inventory()
-	PartyManager.add_member(mem3)
-	InventoryManager.create_party_inventory()
-	PartyManager.add_member(mem4)
-	InventoryManager.create_party_inventory()
-
 	# initialize inventories for each gui inventory in the scene
 	for i: int in gui_inventories.get_child_count():
-		# TODO: remove temp code
-		InventoryManager.get_party_inventory(i).add_item(31)
-		InventoryManager.get_party_inventory(i).add_item(32)
+		gui_inventories.get_child(i).set_party_name_text(PartyManager.get_member(i))
 		var gui_inventory: HFlowContainer = gui_inventories.get_child(i).get_gui_inventory()
-		var inv_party_ref: Array[EntityProperties]= [PartyManager.get_member(i)]
+		gui_inventory.set_item_filter(item_filter)
+		var inv_party_ref: Array[EntityProperties] = [PartyManager.get_member(i)]
 		gui_inventory.set_inventory(InventoryManager.get_party_inventory(i), inv_party_ref)
 		gui_inventory.on_item_gui_clicked.connect(_on_item_clicked)
 
@@ -90,6 +74,8 @@ func _on_item_clicked(inventory: Inventory, item_id: int) -> void:
 		GearActionState.DROP:
 			print("drop gear action")
 			inventory.remove_item(item_id)
+		GearActionState.UPGRADE:
+			print("upgrade gear action")
 		_:
 			print("no gear action")
 
@@ -114,6 +100,7 @@ func _on_drop_button_toggled(toggled_on: bool) -> void:
 
 ## hides current scene i.e. return to previous menu
 func _on_back_button_pressed() -> void:
+	_unpress_action_buttons()
 	hide()
 
 

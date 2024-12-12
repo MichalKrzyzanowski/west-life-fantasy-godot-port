@@ -8,7 +8,6 @@ class_name Item extends Resource
 
 
 # signals
-# signal on_amount_changed()
 
 # enums
 
@@ -17,10 +16,8 @@ class_name Item extends Resource
 # @export vars
 @export var id: int = -1
 @export var name: String = "dummy"
+@export var type: String = ""
 @export var amount: int= 0
-	# set(new_amount):
-	# 	amount = new_amount
-	# 	on_amount_changed.emit()
 @export var stack_size: int = 64
 @export var description: String = "dummy"
 @export var item_action_name: String = "dummy"
@@ -92,6 +89,7 @@ func save() -> Dictionary:
 	return {
 		"id": id,
 		"name": name,
+		"type": type,
 		"amount": amount,
 		"stack_size": stack_size,
 		"description": description,
@@ -107,6 +105,8 @@ func load(data: Dictionary) -> void:
 		stack_size = data["stack_size"]
 	if data.has("description"):
 		description = data["description"]
+	if data.has("type"):
+		type = data["type"]
 
 
 # private methods

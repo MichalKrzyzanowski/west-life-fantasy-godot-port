@@ -18,6 +18,7 @@ extends "res://ui/camp_menu/inventory/gear/gear_menu.gd"
 
 # @onready vars
 @onready var gil_label := $UpgradeInfoPanel/GilLabel as Label
+@onready var upgrade_button: Button = $ActionsPanel/UpgradeButton
 
 
 func _init() -> void:
@@ -29,6 +30,8 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
+	item_filter = "weapon"
+	super()
 	gil_label.text = "Gil: %d" % PartyManager.gil
 
 
@@ -39,6 +42,12 @@ func _ready() -> void:
 
 
 # private methods
+func _on_upgrade_button_toggled(toggled_on: bool) -> void:
+	_unpress_action_buttons()
+	_gear_action_state = GearActionState.NONE
+	upgrade_button.set_pressed_no_signal(toggled_on)
+	if toggled_on:
+		_gear_action_state = GearActionState.UPGRADE
 
 
 # subclasses
