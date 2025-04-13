@@ -4,6 +4,7 @@ class_name EntityProperties extends Resource
 
 # signals
 signal on_revival()
+signal on_gear_changed()
 
 # enums
 
@@ -78,6 +79,7 @@ func change_weapon(new_weapon: Gear) -> void:
 	if weapon && new_weapon.id == weapon.id:
 		weapon.is_equipped = false
 		weapon = null
+		on_gear_changed.emit()
 		return
 
 	# unset equip flag for currently equipped weapon
@@ -87,6 +89,7 @@ func change_weapon(new_weapon: Gear) -> void:
 	# equip new weapon
 	weapon = new_weapon
 	weapon.is_equipped = true
+	on_gear_changed.emit()
 
 
 # TODO: cleanup if statements
@@ -99,6 +102,7 @@ func change_armour(new_armour: Gear) -> void:
 	if armour && new_armour.id == armour.id:
 		armour.is_equipped = false
 		armour = null
+		on_gear_changed.emit()
 		return
 
 	# unset equip flag for currently equipped armour
@@ -108,6 +112,31 @@ func change_armour(new_armour: Gear) -> void:
 	# equip new armour
 	armour = new_armour
 	armour.is_equipped = true
+	on_gear_changed.emit()
+
+
+## unequip gear with matching [param gear_id]
+func unequip_gear(gear_id: int) -> void:
+	if weapon && weapon.id == gear_id:
+		weapon = null
+		on_gear_changed.emit()
+
+	elif armour && armour.id == gear_id:
+		armour = null
+		on_gear_changed.emit()
+
+
+## get currently equipped gear ids
+func get_gear_ids() -> Array[int]:
+	var gear_ids: Array[int] = []
+
+	if weapon:
+		gear_ids.append(weapon.id)
+
+	if armour:
+		gear_ids.append(armour.id)
+
+	return gear_ids
 
 
 ## returns [name].

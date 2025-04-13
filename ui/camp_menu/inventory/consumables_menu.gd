@@ -62,11 +62,12 @@ func _on_back_button_pressed() -> void:
 
 
 func _on_item_used(inventory: Inventory, item_id: int) -> void:
+	var item: Item = inventory.get_item(item_id)
+	description_label.text = item.description
+
 	inventory.use_item(item_id)
 	consumables_gui.update_inventory()
 
-	var item: Item = inventory.get_item(item_id)
-	description_label.text = item.description
 	_update_party_hp()
 	party_status_panel.show()
 

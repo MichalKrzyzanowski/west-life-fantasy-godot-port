@@ -32,13 +32,16 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	item_filter = "weapon"
 	super()
-	gil_label.text = "Gil: %d" % PartyManager.gil
+	update_gil()
+	PartyManager.on_gil_changed.connect(update_gil)
 
 
 # remaining builtins e.g. _process, _input
 
 
 # public methods
+func update_gil() -> void:
+	gil_label.text = "Gil: %d" % PartyManager.gil
 
 
 # private methods

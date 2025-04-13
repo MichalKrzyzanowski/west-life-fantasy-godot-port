@@ -43,6 +43,9 @@ func _ready() -> void:
 	if _entity_exists():
 		_entity.stats.on_hp_changed.connect(_on_entity_hp_changed)
 		_entity.stats.on_level_up.connect(_on_entity_level_up)
+		# connect gear related signals
+		_entity.on_gear_changed.connect(_update_gear_labels)
+
 	update_status()
 
 
@@ -68,14 +71,10 @@ func update_status() -> void:
 	hp_label.text = "HP\n  %d/ %d" \
 	% [_entity.stats.hp, _entity.stats.max_hp]
 
-	defence_label.text = "Defence %d" \
-	% _entity.stats.defence
-
 	attack_label.text = "Damage %d" \
 	% _entity.stats.attack
 
-	# TODO: add weapons
-	weapon_attack_label.text = "W.DMG 0"
+	_update_gear_labels()
 
 
 # private methods
@@ -109,6 +108,24 @@ func _on_entity_level_up() -> void:
 
 	attack_label.text = "Damage %d" \
 	% _entity.stats.attack
+
+
+## updates weapon attack and entity defence labels
+## when entity changes gear
+func _update_gear_labels() -> void:
+	var current_weapon_attack: int = 0
+	if _entity.weapon:
+		current_weapon_attack = _entity.weapon.stats.attack
+
+	weapon_attack_label.text = "W.DMG %d" \
+	% current_weapon_attack
+
+	var current_armour_defence: int = _entity.stats.defence
+	if _entity.armour:
+		current_armour_defence = _entity.armour.stats.defence
+
+	defence_label.text = "Defence %d" \
+		% current_armour_defence
 
 
 # subclasses

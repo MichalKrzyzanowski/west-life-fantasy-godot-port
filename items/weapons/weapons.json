@@ -1,0 +1,195 @@
+{
+	"hip_crack": {
+		"id": 101,
+		"name": "hip_crack",
+		"type": "weapon",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"attack": 3,
+			"scaler_attack": 1
+		}
+	},
+	"sour": {
+		"id": 102,
+		"name": "sour",
+		"type": "weapon",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"attack": 3,
+			"scaler_attack": 1
+		}
+	},
+	"windows": {
+		"id": 103,
+		"name": "windows",
+		"type": "weapon",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"attack": 3,
+			"scaler_attack": 1
+		}
+	},
+	"plush": {
+		"id": 104,
+		"name": "plush",
+		"type": "weapon",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"attack": 3,
+			"scaler_attack": 1
+		}
+	},
+	"shame_walk": {
+		"id": 105,
+		"name": "shame_walk",
+		"type": "weapon",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"attack": 12,
+			"scaler_attack": 1
+		}
+	},
+	"jaeger_bomb": {
+		"id": 106,
+		"name": "jaeger_bomb",
+		"type": "weapon",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"attack": 15,
+			"scaler_attack": 1
+		}
+	},
+	"ubuntu": {
+		"id": 107,
+		"name": "ubuntu",
+		"type": "weapon",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"attack": 16,
+			"scaler_attack": 1
+		}
+	},
+	"gura_plush": {
+		"id": 108,
+		"name": "gura_plush",
+		"type": "weapon",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"attack": 11,
+			"scaler_attack": 1
+		}
+	},
+	"penguin": {
+		"id": 109,
+		"name": "penguin",
+		"type": "weapon",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"attack": 23,
+			"scaler_attack": 1
+		}
+	},
+	"tequila": {
+		"id": 110,
+		"name": "tequila",
+		"type": "weapon",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"attack": 29,
+			"scaler_attack": 1
+		}
+	},
+	"linux": {
+		"id": 111,
+		"name": "linux",
+		"type": "weapon",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"attack": 28,
+			"scaler_attack": 1
+		}
+	},
+	"body_pillow": {
+		"id": 112,
+		"name": "body_pillow",
+		"type": "weapon",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"attack": 26,
+			"scaler_attack": 1
+		}
+	},
+	"war_penguin": {
+		"id": 113,
+		"name": "war_penguin",
+		"type": "weapon",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"attack": 100,
+			"scaler_attack": 1
+		}
+	},
+	"chateruse": {
+		"id": 114,
+		"name": "chateruse",
+		"type": "weapon",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"attack": 100,
+			"scaler_attack": 1
+		}
+	},
+	"arch_linux": {
+		"id": 115,
+		"name": "arch_linux",
+		"type": "weapon",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"attack": 100,
+			"scaler_attack": 1
+		}
+	},
+	"gura_pillow": {
+		"id": 116,
+		"name": "gura_pillow",
+		"type": "weapon",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"attack": 100,
+			"scaler_attack": 1
+		}
+	}
+}
+

@@ -3,6 +3,7 @@ extends Node
 
 
 # signals
+signal on_gil_changed()
 
 # enums
 
@@ -11,7 +12,10 @@ extends Node
 # @export vars
 
 # public vars
-var gil: int = 500
+var gil: int = 500:
+	set(new_gil):
+		gil = new_gil
+		on_gil_changed.emit()
 var party: Array[EntityProperties]
 
 # private vars
@@ -38,6 +42,7 @@ func _input(event: InputEvent) -> void:
 		match event.keycode:
 			KEY_1:
 				party.map(func (item): item.stats.xp += _debug_xp_gain)
+				gil += 1000
 			KEY_0:
 				# party.all(func (item): print(item.stats))
 				for member in party:
@@ -58,6 +63,17 @@ func get_member(index: int) -> EntityProperties:
 		return null
 
 	return party[index]
+
+
+## check if party can afford buying something worth
+## [param gil_cost]
+func can_afford(gil_cost: int) -> bool:
+	return gil - gil_cost >= 0
+
+
+## spend [param gil_cost] of party gil
+func spend_gil(gil_cost: int) -> void:
+	gil -= gil_cost
 
 
 func save() -> Dictionary:

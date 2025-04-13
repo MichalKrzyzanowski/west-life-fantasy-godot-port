@@ -94,6 +94,8 @@
 +-------------+
 - enhancements
 - buglist
+	- upgrading a weapon upgrades all instances of this weapon
+	- using last consumable in a stack causes a crash due to description being called on null
 - inventory system
 	- managing consumables e.g. using items to heal other party members
 	- equip/unequip weapons and armour

@@ -33,6 +33,7 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	update_gil()
+	PartyManager.on_gil_changed.connect(update_gil)
 
 
 # remaining builtins e.g. _process, _input

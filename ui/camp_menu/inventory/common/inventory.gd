@@ -56,7 +56,7 @@ func add_item(item_id: int, amount: int = 1) -> void:
 		return
 
 	# add new item to inventory
-	var new_item: Item = ItemDatabase.get_item(item_id).duplicate()
+	var new_item: Item = ItemDatabase.get_item(item_id).duplicate(true)
 	new_item.update_item_action()
 
 	inventory[item_id] = new_item
@@ -68,6 +68,13 @@ func remove_item(item_id: int, amount: int = 1) -> void:
 	if !inventory.has(item_id):
 		printerr("no item present with id %d" % item_id)
 		return
+
+	# unequip gear for party member that
+	# had removed item equipped.
+	for member: EntityProperties in party:
+		if item_id in member.get_gear_ids():
+			member.unequip_gear(item_id)
+			break
 
 	# should always be negative amount
 	inventory[item_id].remove(amount)
@@ -114,6 +121,24 @@ func use_item(item_id: int) -> void:
 			on_inventory_update.emit()
 		_:
 			printerr("unknown item use return code %s" % consume_item)
+
+
+func upgrade_item(item_id: int) -> void:
+	if !inventory.has(item_id):
+		printerr("no item present with id %d" % item_id)
+		return
+
+	var item: Item = get_item(item_id)
+	if item.has_method("upgrade"):
+		item.upgrade()
+		on_inventory_update.emit()
+
+	# send out gear update signal for party member that has
+	# upgraded item equipped
+	for member: EntityProperties in party:
+		if item_id in member.get_gear_ids():
+			member.on_gear_changed.emit()
+			return
 
 
 ## Dictionary size() wrapper

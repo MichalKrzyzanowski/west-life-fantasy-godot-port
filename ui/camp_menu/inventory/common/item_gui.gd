@@ -25,14 +25,9 @@ var item: Item:
 			return
 
 		_current_item_name = item.name.capitalize()
-		_on_item_amount_changed(false)
-		_on_item_equip_state_changed(false)
-
-		# if !item.on_amount_changed.is_connected(_on_item_amount_changed):
-		# 	item.on_amount_changed.connect(_on_item_amount_changed)
-		# if item is Gear && !item.on_item_equip_state_changed.is_connected(_on_item_equip_state_changed):
-		# 	print("gear is connected: ", item)
-		# 	item.on_item_equip_state_changed.connect(_on_item_equip_state_changed)
+		update_item_equip()
+		update_item_level()
+		update_item_amount()
 
 		update_label_text()
 
@@ -80,20 +75,22 @@ func _on_pressed() -> void:
 	on_item_clicked.emit(item.id)
 
 
-func _on_item_amount_changed(update_text: bool = true) -> void:
+func update_item_amount() -> void:
 	if item.amount > 1:
 		_current_item_name += " x%d" % item.amount
 
-	if update_text:
-		update_label_text()
 
-
-func _on_item_equip_state_changed(update_text: bool = true) -> void:
+func update_item_equip() -> void:
 	if item is Gear && item.is_equipped:
 		_current_item_name = "E:%s" % _current_item_name
 
-	if update_text:
-		update_label_text()
+
+func update_item_level() -> void:
+	if item.stats.level > 1:
+		_current_item_name = "%s + %d" % [
+				_current_item_name,
+				item.stats.level - 1
+		]
 
 
 # subclasses

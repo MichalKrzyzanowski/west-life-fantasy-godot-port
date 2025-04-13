@@ -45,6 +45,22 @@ func load(data: Dictionary) -> void:
 		stats.load(data["stats"])
 
 
+func upgrade() -> void:
+	if stats.has_reached_max_level():
+		print("%s is max level" % name)
+		return
+	elif !PartyManager.can_afford(stats.gil_level_cost):
+		print("cannot afford %s upgrade. cost: %d, gil: %d" % [
+				name, stats.gil_level_cost, PartyManager.gil
+		])
+		return
+
+	# spend party gil and upgrade
+	PartyManager.spend_gil(stats.gil_level_cost)
+	stats.level_up()
+	print(stats)
+
+
 # private methods
 func _to_string() -> String:
 	return super() + " %s" % stats

@@ -152,13 +152,19 @@ func action_attack(target: Node2D) -> int:
 	if !target || !target.is_alive:
 		print("target is dead, looking for new target")
 		return -1
-	print(entity_properties.stats.attack)
+
+	var true_attack: int = entity_properties.stats.attack
+	if entity_properties.weapon:
+		true_attack += entity_properties.weapon.stats.attack
+	print("atk: %d\natk (true): %d"
+			% [entity_properties.stats.attack, true_attack])
+
 	var attack_formula: int = (
 			# attack
-			entity_properties.stats.attack -
+			true_attack -
 			(
 				# damage reduction of the target
-				entity_properties.stats.attack / 100.0 *
+				true_attack / 100.0 *
 				(
 					# defence_multiplier is altered if entity is blocking
 					target.entity_properties.stats.defence *

@@ -199,6 +199,8 @@ func _end_combat() -> void:
 		# update combat info box and rewards box
 		interface.update_combat_info("you won the battle!")
 		interface.update_rewards_info(_xp_reward, _gil_reward)
+		# add gil reward
+		PartyManager.gil += _gil_reward
 		# add xp to party
 		for member in _party:
 			member.entity_properties.stats.xp += _xp_reward

@@ -76,6 +76,7 @@ func _on_item_clicked(inventory: Inventory, item_id: int) -> void:
 			inventory.remove_item(item_id)
 		GearActionState.UPGRADE:
 			print("upgrade gear action")
+			inventory.upgrade_item(item_id)
 		_:
 			print("no gear action")
 

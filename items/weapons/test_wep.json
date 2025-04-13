@@ -6,7 +6,23 @@
 		"amount": 0,
 		"stack_size": 1,
 		"stats": {
-			"attack": 5
+			"max_level": 10,
+			"attack": 5,
+			"scaler_attack": 1,
+			"extra_level_up_gains": {
+				"2": {
+					"max_level": 1,
+					"defence": 2,
+					"scaler_attack": 4
+				},
+				"5": {
+					"max_level": 1
+				},
+				"10": {
+					"max_level": 0,
+					"attack": 100
+				}
+			}
 		}
 	},
 	"b": {
@@ -16,7 +32,9 @@
 		"amount": 0,
 		"stack_size": 1,
 		"stats": {
-			"attack": 15
+			"max_level": 10,
+			"attack": 15,
+			"scaler_attack": 5
 		}
 	}
 }

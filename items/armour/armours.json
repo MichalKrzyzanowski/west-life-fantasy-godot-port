@@ -1,0 +1,179 @@
+{
+	"socks": {
+		"id": 201,
+		"name": "socks",
+		"type": "armour",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"defence": 1
+		}
+	},
+	"hoodie": {
+		"id": 202,
+		"name": "hoodie",
+		"type": "armour",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"defence": 5
+		}
+	},
+	"big_chest": {
+		"id": 203,
+		"name": "big_chest",
+		"type": "armour",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"defence": 5
+		}
+	},
+	"gura_pin": {
+		"id": 204,
+		"name": "gura_pin",
+		"type": "armour",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"defence": 1
+		}
+	},
+	"suit": {
+		"id": 205,
+		"name": "suit",
+		"type": "armour",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"defence": 11
+		}
+	},
+	"gray_hoodie": {
+		"id": 206,
+		"name": "gray_hoodie",
+		"type": "armour",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"defence": 20
+		}
+	},
+	"polo_shirt": {
+		"id": 207,
+		"name": "polo_shirt",
+		"type": "armour",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"defence": 14
+		}
+	},
+	"gura_hat": {
+		"id": 208,
+		"name": "gura_hat",
+		"type": "armour",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"defence": 15
+		}
+	},
+	"penguin_suit": {
+		"id": 209,
+		"name": "penguin_suit",
+		"type": "armour",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"defence": 18
+		}
+	},
+	"grey_hoodie": {
+		"id": 210,
+		"name": "grey_hoodie",
+		"type": "armour",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"defence": 25
+		}
+	},
+	"tavern_jacket": {
+		"id": 211,
+		"name": "tavern_jacket",
+		"type": "armour",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"defence": 15
+		}
+	},
+	"gura_hoodie": {
+		"id": 212,
+		"name": "gura_hoodie",
+		"type": "armour",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"defence": 20
+		}
+	},
+	"stopy_amrour": {
+		"id": 213,
+		"name": "stopy_amrour",
+		"type": "armour",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"defence": 25
+		}
+	},
+	"hoodie_amrour": {
+		"id": 214,
+		"name": "hoodie_amrour",
+		"type": "armour",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"defence": 50
+		}
+	},
+	"toyota_amrour": {
+		"id": 215,
+		"name": "TOYOTA_amrour",
+		"type": "armour",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"defence": 35
+		}
+	},
+	"gura_amrour": {
+		"id": 216,
+		"name": "gura_amrour",
+		"type": "armour",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"defence": 40
+		}
+	}
+}
+
