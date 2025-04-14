@@ -66,6 +66,8 @@
 	- godot 4.3: main menu continue button is smaller than the rest
 		- specifially affecting disabled button, theme might be broken
 		- fix: edit theme button margins for all modes i.e. normal, disabled, toggle, etc.
+	- upgrading a weapon upgrades all instances of this weapon
+	- using last consumable in a stack causes a crash due to description being called on null
 - enhancements
 	- move project to godot 4.3
 		- convert tilemaps to tilemaplayers
@@ -88,14 +90,6 @@
 				- moved onready var declarations to ready()
 			- combat has missing sprites for enemies and party
 				- fixed itself lol
-
-+-------------+
-| IN PROGRESS |
-+-------------+
-- enhancements
-- buglist
-	- upgrading a weapon upgrades all instances of this weapon
-	- using last consumable in a stack causes a crash due to description being called on null
 - inventory system
 	- managing consumables e.g. using items to heal other party members
 	- equip/unequip weapons and armour
@@ -157,6 +151,16 @@
 	- gui_inventory should have filter options to filter items by type
 		- could be used to only display items of x type in one gui_inventory without needing to have an inventory for armour & a seperate one for weapons
 
++-------------+
+| IN PROGRESS |
++-------------+
+- enhancements
+- buglist
+- shops
+	- add ability to buy/sell items
+	- add weapon/armour shops
+	- add healer shop
+
 +------+
 | TODO |
 +------+
@@ -181,10 +185,6 @@
 - audio
 	- add overworld and combat music
 	- add combat sounds
-- shops
-	- add ability to buy/sell items
-	- add weapon/armour shops
-	- add healer shop
 - tavern
 	- tavern minigame
 - credits

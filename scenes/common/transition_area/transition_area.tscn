@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dujvgle5ockxo"]
 
-[ext_resource type="Script" path="res://scenes/common/transition_area/transition_area.gd" id="1_dauki"]
+[ext_resource type="Script" uid="uid://b7lbtwfmuc5ni" path="res://scenes/common/transition_area/transition_area.gd" id="1_dauki"]
 
 [node name="TransitionArea" type="Area2D"]
 position = Vector2(1, 0)

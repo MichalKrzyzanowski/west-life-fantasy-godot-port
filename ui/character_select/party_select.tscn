@@ -1,9 +1,9 @@
 [gd_scene load_steps=42 format=3 uid="uid://bkavfc7fsmbyc"]
 
-[ext_resource type="Script" path="res://ui/character_select/party_select.gd" id="1_8k5ua"]
+[ext_resource type="Script" uid="uid://du31g7wdrxajv" path="res://ui/character_select/party_select.gd" id="1_8k5ua"]
 [ext_resource type="PackedScene" uid="uid://hwvpspp4pbni" path="res://ui/character_select/character_select_box.tscn" id="2_xnrnh"]
-[ext_resource type="Script" path="res://entities/common/entity/entity_properties.gd" id="3_0nq2c"]
-[ext_resource type="Script" path="res://entities/common/stats/combat_stats.gd" id="4_nlfj8"]
+[ext_resource type="Script" uid="uid://c58mgmklnekfj" path="res://entities/common/entity/entity_properties.gd" id="3_0nq2c"]
+[ext_resource type="Script" uid="uid://d2dfuqtwgbcq" path="res://entities/common/stats/combat_stats.gd" id="4_nlfj8"]
 [ext_resource type="Texture2D" uid="uid://b50ussga4ddv" path="res://entities/party-members/black_belt/combat_character_2.png" id="5_cu0fk"]
 [ext_resource type="Texture2D" uid="uid://c6dn11c567imk" path="res://entities/party-members/black_mage/player-shinobi.png" id="6_3is88"]
 [ext_resource type="Texture2D" uid="uid://2aeni7r1e2v5" path="res://entities/party-members/fighter/combat_character_1.png" id="7_dwyog"]
@@ -21,9 +21,14 @@ scaler_hp = 1
 scaler_attack = 4
 scaler_defence = 0
 scaler_required_xp = 100
+config_allow_hp_overlimit = false
+config_restore_hp = true
+extra_level_up_gains = {}
 level = 1
+max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_0o63n"]
 script = ExtResource("3_0nq2c")
@@ -40,9 +45,14 @@ scaler_hp = 8
 scaler_attack = 1
 scaler_defence = 0
 scaler_required_xp = 140
+config_allow_hp_overlimit = false
+config_restore_hp = true
+extra_level_up_gains = {}
 level = 1
+max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_7shgr"]
 script = ExtResource("3_0nq2c")
@@ -59,9 +69,14 @@ scaler_hp = 4
 scaler_attack = 4
 scaler_defence = 0
 scaler_required_xp = 120
+config_allow_hp_overlimit = false
+config_restore_hp = true
+extra_level_up_gains = {}
 level = 1
+max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_5qyd0"]
 script = ExtResource("3_0nq2c")
@@ -78,9 +93,14 @@ scaler_hp = 1
 scaler_attack = 4
 scaler_defence = 0
 scaler_required_xp = 120
+config_allow_hp_overlimit = false
+config_restore_hp = true
+extra_level_up_gains = {}
 level = 1
+max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_6hljy"]
 script = ExtResource("3_0nq2c")
@@ -97,9 +117,14 @@ scaler_hp = 8
 scaler_attack = 1
 scaler_defence = 0
 scaler_required_xp = 140
+config_allow_hp_overlimit = false
+config_restore_hp = true
+extra_level_up_gains = {}
 level = 1
+max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_xdaxu"]
 script = ExtResource("3_0nq2c")
@@ -116,9 +141,14 @@ scaler_hp = 1
 scaler_attack = 4
 scaler_defence = 0
 scaler_required_xp = 100
+config_allow_hp_overlimit = false
+config_restore_hp = true
+extra_level_up_gains = {}
 level = 1
+max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_kpd14"]
 script = ExtResource("3_0nq2c")
@@ -135,9 +165,14 @@ scaler_hp = 1
 scaler_attack = 4
 scaler_defence = 0
 scaler_required_xp = 120
+config_allow_hp_overlimit = false
+config_restore_hp = true
+extra_level_up_gains = {}
 level = 1
+max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_dajxt"]
 script = ExtResource("3_0nq2c")
@@ -154,9 +189,14 @@ scaler_hp = 4
 scaler_attack = 4
 scaler_defence = 0
 scaler_required_xp = 120
+config_allow_hp_overlimit = false
+config_restore_hp = true
+extra_level_up_gains = {}
 level = 1
+max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_3f68p"]
 script = ExtResource("3_0nq2c")
@@ -173,9 +213,14 @@ scaler_hp = 1
 scaler_attack = 4
 scaler_defence = 0
 scaler_required_xp = 100
+config_allow_hp_overlimit = false
+config_restore_hp = true
+extra_level_up_gains = {}
 level = 1
+max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_b26ce"]
 script = ExtResource("3_0nq2c")
@@ -192,9 +237,14 @@ scaler_hp = 8
 scaler_attack = 1
 scaler_defence = 0
 scaler_required_xp = 140
+config_allow_hp_overlimit = false
+config_restore_hp = true
+extra_level_up_gains = {}
 level = 1
+max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_vdko6"]
 script = ExtResource("3_0nq2c")
@@ -211,9 +261,14 @@ scaler_hp = 4
 scaler_attack = 4
 scaler_defence = 0
 scaler_required_xp = 120
+config_allow_hp_overlimit = false
+config_restore_hp = true
+extra_level_up_gains = {}
 level = 1
+max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_811ui"]
 script = ExtResource("3_0nq2c")
@@ -230,9 +285,14 @@ scaler_hp = 1
 scaler_attack = 4
 scaler_defence = 0
 scaler_required_xp = 120
+config_allow_hp_overlimit = false
+config_restore_hp = true
+extra_level_up_gains = {}
 level = 1
+max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_kwnml"]
 script = ExtResource("3_0nq2c")
@@ -249,9 +309,14 @@ scaler_hp = 8
 scaler_attack = 1
 scaler_defence = 0
 scaler_required_xp = 140
+config_allow_hp_overlimit = false
+config_restore_hp = true
+extra_level_up_gains = {}
 level = 1
+max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_cmqhj"]
 script = ExtResource("3_0nq2c")
@@ -268,9 +333,14 @@ scaler_hp = 1
 scaler_attack = 4
 scaler_defence = 0
 scaler_required_xp = 100
+config_allow_hp_overlimit = false
+config_restore_hp = true
+extra_level_up_gains = {}
 level = 1
+max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_cw7yw"]
 script = ExtResource("3_0nq2c")
@@ -287,9 +357,14 @@ scaler_hp = 1
 scaler_attack = 4
 scaler_defence = 0
 scaler_required_xp = 120
+config_allow_hp_overlimit = false
+config_restore_hp = true
+extra_level_up_gains = {}
 level = 1
+max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_irwih"]
 script = ExtResource("3_0nq2c")
@@ -306,9 +381,14 @@ scaler_hp = 4
 scaler_attack = 4
 scaler_defence = 0
 scaler_required_xp = 120
+config_allow_hp_overlimit = false
+config_restore_hp = true
+extra_level_up_gains = {}
 level = 1
+max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_vu75b"]
 script = ExtResource("3_0nq2c")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://co1vc605bs523"]
 
-[ext_resource type="Script" path="res://ui/camp_menu/inventory/common/item_display.gd" id="2_jauba"]
+[ext_resource type="Script" uid="uid://cidh4ieafvypi" path="res://ui/camp_menu/inventory/common/item_display.gd" id="2_jauba"]
 
 [node name="ItemDisplay" type="Button"]
 anchors_preset = -1

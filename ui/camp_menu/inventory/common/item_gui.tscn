@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bj18dtq305e74"]
 
-[ext_resource type="Script" path="res://ui/camp_menu/inventory/common/item_gui.gd" id="1_em23q"]
+[ext_resource type="Script" uid="uid://f0f6sslr3lk" path="res://ui/camp_menu/inventory/common/item_gui.gd" id="1_em23q"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mcif1"]
 

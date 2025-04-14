@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://d02rs8t4d5gwn"]
 
-[ext_resource type="Script" path="res://entities/overworld-player/overworld_movement.gd" id="1_edl3d"]
+[ext_resource type="Script" uid="uid://bn6t0f6h7cyvv" path="res://entities/overworld-player/overworld_movement.gd" id="1_edl3d"]
 [ext_resource type="Texture2D" uid="uid://bkgm4b6mrvwlq" path="res://entities/overworld-player/mc-ride-wife.png" id="2_4ou8k"]
-[ext_resource type="Script" path="res://entities/bullet/bullet_emitter.gd" id="3_ya1km"]
+[ext_resource type="Script" uid="uid://dcj8lgtjl0phx" path="res://entities/bullet/bullet_emitter.gd" id="3_ya1km"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hov66"]
 size = Vector2(31, 20)

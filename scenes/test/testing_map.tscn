@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dfc7tf5mfwrwn"]
 
 [ext_resource type="Texture2D" uid="uid://bu5h8vht6vsh4" path="res://scenes/common/desert-tileset.png" id="1_qalj0"]
-[ext_resource type="Script" path="res://scenes/test/testing_scene.gd" id="1_xw6dw"]
+[ext_resource type="Script" uid="uid://bgb17tt6k5vc2" path="res://scenes/test/testing_scene.gd" id="1_xw6dw"]
 [ext_resource type="Texture2D" uid="uid://cginfw6h6hs30" path="res://entities/enemies/cactus/cactus-revenge.png" id="2_8w5m8"]
 [ext_resource type="PackedScene" uid="uid://dujvgle5ockxo" path="res://scenes/common/transition_area/transition_area.tscn" id="5_4ghxh"]
 [ext_resource type="Texture2D" uid="uid://bisihv52a2ynm" path="res://entities/enemies/desert_ninja/desert-shinobi.png" id="6_ylo6u"]

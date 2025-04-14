@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://csx3cuf43jnq8"]
 
 [ext_resource type="Texture2D" uid="uid://bms47f3c7kofx" path="res://entities/enemies/bandit/bandit.png" id="1_f1ly6"]
-[ext_resource type="Script" path="res://entities/bullet/bullet_emitter.gd" id="2_dfiul"]
+[ext_resource type="Script" uid="uid://dcj8lgtjl0phx" path="res://entities/bullet/bullet_emitter.gd" id="2_dfiul"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dh2qo"]
 size = Vector2(11, 32)

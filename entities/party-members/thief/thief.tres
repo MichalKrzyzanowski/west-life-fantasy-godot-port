@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EntityProperties" load_steps=5 format=3 uid="uid://e7aktw8tfcx8"]
 
-[ext_resource type="Script" path="res://entities/common/entity/entity_properties.gd" id="1_mgklo"]
-[ext_resource type="Script" path="res://entities/common/stats/combat_stats.gd" id="2_bcubm"]
+[ext_resource type="Script" uid="uid://c58mgmklnekfj" path="res://entities/common/entity/entity_properties.gd" id="1_mgklo"]
+[ext_resource type="Script" uid="uid://d2dfuqtwgbcq" path="res://entities/common/stats/combat_stats.gd" id="2_bcubm"]
 [ext_resource type="Texture2D" uid="uid://j4i7k7rqc1fo" path="res://entities/party-members/thief/player-thief.png" id="3_0g7mr"]
 
 [sub_resource type="Resource" id="Resource_5w5tk"]
@@ -13,9 +13,14 @@ scaler_hp = 1
 scaler_attack = 4
 scaler_defence = 0
 scaler_required_xp = 120
+config_allow_hp_overlimit = false
+config_restore_hp = true
+extra_level_up_gains = {}
 level = 0
+max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_level_cost = 25
 
 [resource]
 script = ExtResource("1_mgklo")

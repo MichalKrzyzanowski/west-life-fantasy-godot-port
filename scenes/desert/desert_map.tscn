@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=4 uid="uid://ckqmboktfdvg2"]
 
-[ext_resource type="Script" path="res://scenes/desert/desert_map.gd" id="1_vowdh"]
+[ext_resource type="Script" uid="uid://cte7526luc2h6" path="res://scenes/desert/desert_map.gd" id="1_vowdh"]
 [ext_resource type="TileSet" uid="uid://b0q4gowtnjlif" path="res://scenes/common/river_tileset.tres" id="2_25t3h"]
 [ext_resource type="TileSet" uid="uid://1jku0k0we0ls" path="res://scenes/common/path_tileset.tres" id="2_xvfha"]
 [ext_resource type="TileSet" uid="uid://c65312ml6h3a6" path="res://scenes/common/desert_tileset.tres" id="3_c17u3"]
@@ -9,7 +9,7 @@
 [ext_resource type="TileSet" uid="uid://cx2yak8k0gq4c" path="res://scenes/common/house_tileset.tres" id="6_yybwe"]
 [ext_resource type="TileSet" uid="uid://lmlrfvna3b4l" path="res://scenes/common/cactus_tileset.tres" id="7_ad4e1"]
 [ext_resource type="PackedScene" uid="uid://0viy8iyuvprv" path="res://scenes/desert/instructions-board/instructions_board.tscn" id="10_kfu8i"]
-[ext_resource type="Script" path="res://entities/common/entity/entity_properties.gd" id="11_dcgj7"]
+[ext_resource type="Script" uid="uid://c58mgmklnekfj" path="res://entities/common/entity/entity_properties.gd" id="11_dcgj7"]
 [ext_resource type="PackedScene" uid="uid://b48jo5oludty5" path="res://scenes/combat/combat_manager.tscn" id="11_t00au"]
 [ext_resource type="Resource" uid="uid://t4krtc6a7vbh" path="res://entities/enemies/snail/snail.tres" id="12_fjvd6"]
 [ext_resource type="Resource" uid="uid://bhugyhiqyrca3" path="res://entities/enemies/bandit/bandit.tres" id="13_045pm"]
@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://csx3cuf43jnq8" path="res://entities/overworld-enemy/overworld_enemy.tscn" id="17_sqsuv"]
 [ext_resource type="PackedScene" uid="uid://dujvgle5ockxo" path="res://scenes/common/transition_area/transition_area.tscn" id="18_we0hj"]
 [ext_resource type="Texture2D" uid="uid://ds1neb28g8cpd" path="res://door.png" id="19_w4n4h"]
-[ext_resource type="Script" path="res://scenes/common/locale_data/locale_data.gd" id="20_3tgwn"]
+[ext_resource type="Script" uid="uid://bbmrk0wf4vywj" path="res://scenes/common/locale_data/locale_data.gd" id="20_3tgwn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1cvgx"]
 size = Vector2(32, 32)

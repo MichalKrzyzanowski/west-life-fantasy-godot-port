@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://wi37yb2p8jg4"]
 
-[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_fidbw"]
+[ext_resource type="Script" uid="uid://2msr6u03b1m8" path="res://scenes/main/main.gd" id="1_fidbw"]
 [ext_resource type="PackedScene" uid="uid://d02rs8t4d5gwn" path="res://entities/overworld-player/overworld_player.tscn" id="1_p8x4f"]
 [ext_resource type="PackedScene" uid="uid://ckqmboktfdvg2" path="res://scenes/desert/desert_map.tscn" id="1_rdyyc"]
-[ext_resource type="Script" path="res://scenes/main/world.gd" id="2_a5uw6"]
+[ext_resource type="Script" uid="uid://b6sck8ijdomij" path="res://scenes/main/world.gd" id="2_a5uw6"]
 [ext_resource type="PackedScene" uid="uid://b4hhb0gjpr7ab" path="res://common/fader.tscn" id="5_lrnne"]
-[ext_resource type="Script" path="res://common/fader.gd" id="6_w70om"]
+[ext_resource type="Script" uid="uid://bxkg8q8b8hb5u" path="res://common/fader.gd" id="6_w70om"]
 [ext_resource type="PackedScene" uid="uid://xi1op1ppabul" path="res://ui/camp_menu/camp_menu.tscn" id="7_phpdi"]
 
 [node name="Main" type="Node2D" groups=["persist"]]

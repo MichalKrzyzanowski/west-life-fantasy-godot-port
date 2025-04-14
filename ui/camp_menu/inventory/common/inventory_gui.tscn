@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d2bhbuwxh85sr"]
 
-[ext_resource type="Script" path="res://ui/camp_menu/inventory/common/inventory_gui.gd" id="1_n3uok"]
+[ext_resource type="Script" uid="uid://csyyr7urmncxb" path="res://ui/camp_menu/inventory/common/inventory_gui.gd" id="1_n3uok"]
 
 [node name="InventoryGui" type="HFlowContainer"]
 anchors_preset = 15

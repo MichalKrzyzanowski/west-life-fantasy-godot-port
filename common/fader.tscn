@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b4hhb0gjpr7ab"]
 
-[ext_resource type="Shader" path="res://common/test.gdshader" id="1_dpa0i"]
+[ext_resource type="Shader" uid="uid://cvm3f4hn0p7hb" path="res://common/test.gdshader" id="1_dpa0i"]
 
 [sub_resource type="Animation" id="Animation_bfm2x"]
 length = 0.001
@@ -34,8 +34,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lqkj2"]
 _data = {
-"RESET": SubResource("Animation_bfm2x"),
-"fade": SubResource("Animation_lyob1")
+&"RESET": SubResource("Animation_bfm2x"),
+&"fade": SubResource("Animation_lyob1")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tqceq"]

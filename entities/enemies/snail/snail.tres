@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EntityProperties" load_steps=5 format=3 uid="uid://t4krtc6a7vbh"]
 
-[ext_resource type="Script" path="res://entities/common/entity/entity_properties.gd" id="1_tgwda"]
-[ext_resource type="Script" path="res://entities/common/stats/combat_stats.gd" id="2_xij5a"]
+[ext_resource type="Script" uid="uid://c58mgmklnekfj" path="res://entities/common/entity/entity_properties.gd" id="1_tgwda"]
+[ext_resource type="Script" uid="uid://d2dfuqtwgbcq" path="res://entities/common/stats/combat_stats.gd" id="2_xij5a"]
 [ext_resource type="Texture2D" uid="uid://bcntixpe5nb3c" path="res://entities/enemies/snail/snail.png" id="3_agvp4"]
 
 [sub_resource type="Resource" id="Resource_gutpv"]
@@ -13,9 +13,14 @@ scaler_hp = 0
 scaler_attack = 0
 scaler_defence = 0
 scaler_required_xp = 0
+config_allow_hp_overlimit = false
+config_restore_hp = true
+extra_level_up_gains = {}
 level = 1
+max_level = 9999
 xp_drop = 1
 gil_drop = 2
+gil_level_cost = 25
 
 [resource]
 script = ExtResource("1_tgwda")

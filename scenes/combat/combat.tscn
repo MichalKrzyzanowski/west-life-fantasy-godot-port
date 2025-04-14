@@ -1,9 +1,9 @@
 [gd_scene load_steps=22 format=3 uid="uid://b607al0ll6nfe"]
 
-[ext_resource type="Script" path="res://addons/grid_2d/grid_2d.gd" id="1_7uh1k"]
-[ext_resource type="Script" path="res://scenes/combat/combat.gd" id="1_pefpc"]
-[ext_resource type="Script" path="res://entities/common/entity/entity_properties.gd" id="2_xw0ea"]
-[ext_resource type="Script" path="res://entities/common/stats/combat_stats.gd" id="3_klkua"]
+[ext_resource type="Script" uid="uid://bmcq7x3hecmkb" path="res://addons/grid_2d/grid_2d.gd" id="1_7uh1k"]
+[ext_resource type="Script" uid="uid://cx8126dcyq26t" path="res://scenes/combat/combat.gd" id="1_pefpc"]
+[ext_resource type="Script" uid="uid://c58mgmklnekfj" path="res://entities/common/entity/entity_properties.gd" id="2_xw0ea"]
+[ext_resource type="Script" uid="uid://d2dfuqtwgbcq" path="res://entities/common/stats/combat_stats.gd" id="3_klkua"]
 [ext_resource type="Texture2D" uid="uid://c6dn11c567imk" path="res://entities/party-members/black_mage/player-shinobi.png" id="3_kojkh"]
 [ext_resource type="Texture2D" uid="uid://j4i7k7rqc1fo" path="res://entities/party-members/thief/player-thief.png" id="4_kma1e"]
 [ext_resource type="Texture2D" uid="uid://bd66bt1gm0jax" path="res://entities/enemies/desert_warrior/desert-warrior.png" id="6_8cuq0"]
@@ -19,9 +19,14 @@ scaler_hp = 10
 scaler_attack = 10
 scaler_defence = 10
 scaler_required_xp = 10
+config_allow_hp_overlimit = false
+config_restore_hp = true
+extra_level_up_gains = {}
 level = 1
+max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_br1iv"]
 script = ExtResource("2_xw0ea")
@@ -38,9 +43,14 @@ scaler_hp = 10
 scaler_attack = 10
 scaler_defence = 10
 scaler_required_xp = 10
+config_allow_hp_overlimit = false
+config_restore_hp = true
+extra_level_up_gains = {}
 level = 1
+max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_seu7c"]
 script = ExtResource("2_xw0ea")
@@ -57,9 +67,14 @@ scaler_hp = 10
 scaler_attack = 10
 scaler_defence = 10
 scaler_required_xp = 10
+config_allow_hp_overlimit = false
+config_restore_hp = true
+extra_level_up_gains = {}
 level = 1
+max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_qvxlj"]
 script = ExtResource("2_xw0ea")
@@ -76,9 +91,14 @@ scaler_hp = 10
 scaler_attack = 10
 scaler_defence = 10
 scaler_required_xp = 10
+config_allow_hp_overlimit = false
+config_restore_hp = true
+extra_level_up_gains = {}
 level = 1
+max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_6n1l0"]
 script = ExtResource("2_xw0ea")
@@ -95,9 +115,14 @@ scaler_hp = 0
 scaler_attack = 0
 scaler_defence = 0
 scaler_required_xp = 0
+config_allow_hp_overlimit = false
+config_restore_hp = true
+extra_level_up_gains = {}
 level = 1
+max_level = 9999
 xp_drop = 20
 gil_drop = 50
+gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_dj72a"]
 script = ExtResource("2_xw0ea")
@@ -114,9 +139,14 @@ scaler_hp = 0
 scaler_attack = 0
 scaler_defence = 0
 scaler_required_xp = 0
+config_allow_hp_overlimit = false
+config_restore_hp = true
+extra_level_up_gains = {}
 level = 1
+max_level = 9999
 xp_drop = 40
 gil_drop = 10
+gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_7u6n1"]
 script = ExtResource("2_xw0ea")

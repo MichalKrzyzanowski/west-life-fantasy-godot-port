@@ -1,7 +1,9 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d0ipcspe8eia6"]
+[gd_resource type="Resource" script_class="LocaleData" load_steps=2 format=3 uid="uid://d0ipcspe8eia6"]
 
-[ext_resource type="Script" path="res://scenes/common/locale_data/locale_data.gd" id="1_1jqvq"]
+[ext_resource type="Script" uid="uid://bbmrk0wf4vywj" path="res://scenes/common/locale_data/locale_data.gd" id="1_1jqvq"]
 
 [resource]
 resource_name = "LocaleData"
 script = ExtResource("1_1jqvq")
+entrance_position = Vector2(0, 0)
+scene_file = ""

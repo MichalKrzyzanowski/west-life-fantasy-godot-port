@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://biwssbow6r5by"]
 
 [ext_resource type="FontFile" uid="uid://duujn5vjqjbyi" path="res://ui/common/font/arialbd.ttf" id="1_jsbla"]
-[ext_resource type="Script" path="res://ui/combat_interface/party_stats_combat_box.gd" id="2_4303b"]
+[ext_resource type="Script" uid="uid://bunub6565om0d" path="res://ui/combat_interface/party_stats_combat_box.gd" id="2_4303b"]
 [ext_resource type="Texture2D" uid="uid://dlhk1jakpfhv3" path="res://ui/combat_interface/CombatTextBox.png" id="3_10ayg"]
 [ext_resource type="Texture2D" uid="uid://dk3uklp1vx78h" path="res://ui/combat_interface/small-xpbar.png" id="4_s8llf"]
 [ext_resource type="Texture2D" uid="uid://4tk2ifb75s61" path="res://ui/combat_interface/xp1.png" id="5_xvrwb"]

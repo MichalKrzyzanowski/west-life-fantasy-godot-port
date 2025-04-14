@@ -1,6 +1,8 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=2 format=3 uid="uid://7m312qit41xu"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=3 format=3 uid="uid://7m312qit41xu"]
 
-[ext_resource type="Script" path="res://ui/camp_menu/inventory/common/inventory.gd" id="1_gqdnl"]
+[ext_resource type="Script" uid="uid://bgb0k3xdll7wc" path="res://ui/camp_menu/inventory/common/inventory.gd" id="1_gqdnl"]
+[ext_resource type="Script" uid="uid://c58mgmklnekfj" path="res://entities/common/entity/entity_properties.gd" id="1_pfys6"]
 
 [resource]
 script = ExtResource("1_gqdnl")
+party = Array[ExtResource("1_pfys6")]([])

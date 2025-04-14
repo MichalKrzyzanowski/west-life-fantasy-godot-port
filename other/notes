@@ -2,6 +2,53 @@
 	- move decimal right 2 times i.e. x100. e.g. 0.75 = 75.0
 	- reverse negative number on y axis e.g. 1.25 = -1.25
 
+- original shop implementation notes:
+	- 4 shop scenes (+ summary of differences):
+		- armour shop: shopkeeper text, options(buy, exit), inventory
+		- weapon shop: shopkeeper text, options(buy, exit), inventory
+		- item shop: shopkeeper text, options(buy, sell, exit), inventory
+		- revive shop: shopkeeper text, options(dynamic list of dead party members)
+	- each shop follows the same structure with less/more features
+	- generic shop:
+		- title at the top
+		- shopkeeper text box to the left
+			- text changes based on state:
+				- welcome state
+				- buy state
+				- purchased state
+				- declined state
+					- declined state text also triggers on sale specifically in item shop
+		- shop options box at the bottom
+			- buy option
+				- changes shopkeeper text
+				- hides shop options box
+			- exit
+				- exits shop back to town scene
+		- big shop inventory panel to the right
+			- clicking items without entering buy state still works (bug or qol?)
+			- this exists in every shop except for revive shop
+		- revive shop
+			- same panels, different logic as the generic shop
+			- shop options box lists dead party members
+			- clicking party member member prompts yes or no
+			- if yes clicked, member revived
+			- if no, return to previous state
+			- shopkeeper displayed 2 messages
+				- no revival needed
+				- revival available
+			- revival price is not displayed
+			- cannot exit revive if revive is available (bug)
+				- only way to leave is to revive party member (costs ~50g)
+				- could potentially cause a soft lock if player gil < 50
+		- armour and weapon shops:
+			- identical, differing only in inventory
+			- bought weapon/armour is not added into any party member's inventory (bug)
+		- item shop:
+			- same as armour/weapon shop with key differences:
+				- ability to sell items
+					- brings up player inventory, clicking items sells them instead of using them
+						- sell price: item value / 2.0
+
 - item use function:
 	- part of base item class
 	- parameter: list of entity_properties objects

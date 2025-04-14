@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://73ak5i73pvg2"]
 
-[ext_resource type="Script" path="res://ui/camp_menu/inventory/gear/party_gear_display.gd" id="1_16hq7"]
+[ext_resource type="Script" uid="uid://osyisla0imlg" path="res://ui/camp_menu/inventory/gear/party_gear_display.gd" id="1_16hq7"]
 [ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/sprite/text_box.png" id="1_j4ik8"]
 [ext_resource type="PackedScene" uid="uid://d2bhbuwxh85sr" path="res://ui/camp_menu/inventory/common/inventory_gui.tscn" id="2_mrigj"]
 [ext_resource type="PackedScene" uid="uid://bj18dtq305e74" path="res://ui/camp_menu/inventory/common/item_gui.tscn" id="3_3st1m"]

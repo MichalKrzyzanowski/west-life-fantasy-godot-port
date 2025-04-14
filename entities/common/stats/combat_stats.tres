@@ -1,17 +1,22 @@
 [gd_resource type="Resource" script_class="CombatStats" load_steps=2 format=3 uid="uid://dbbj05sn6dkjm"]
 
-[ext_resource type="Script" path="res://entities/common/stats/combat_stats.gd" id="1_33jmd"]
+[ext_resource type="Script" uid="uid://d2dfuqtwgbcq" path="res://entities/common/stats/combat_stats.gd" id="1_33jmd"]
 
 [resource]
 resource_name = "CombatStats"
 script = ExtResource("1_33jmd")
-max_hp = 0.0
-attack = 0.0
-defence = 0.0
+max_hp = 0
+attack = 0
+defence = 0
 scaler_hp = 0
 scaler_attack = 0
 scaler_defence = 0
 scaler_required_xp = 0
+config_allow_hp_overlimit = false
+config_restore_hp = true
+extra_level_up_gains = {}
 level = 1
+max_level = 9999
 xp_drop = 0
-gold_drop = 0
+gil_drop = 0
+gil_level_cost = 25

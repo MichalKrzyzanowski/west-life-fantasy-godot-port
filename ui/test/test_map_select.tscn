@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://di6s2lbhjeu2k"]
 
-[ext_resource type="Script" path="res://ui/test/test_ui_map_select.gd" id="1_jbrqq"]
+[ext_resource type="Script" uid="uid://cx01c6luv4lug" path="res://ui/test/test_ui_map_select.gd" id="1_jbrqq"]
 
 [node name="Control" type="VBoxContainer"]
 anchors_preset = 8
