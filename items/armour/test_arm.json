@@ -18,6 +18,36 @@
 		"stats": {
 			"defence": 65
 		}
+	},
+	"c": {
+		"id": 33,
+		"name": "cloth",
+		"type": "armour",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"defence": 12
+		}
+	},
+	"d": {
+		"id": 34,
+		"name": "wooden",
+		"type": "armour",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"defence": 30
+		}
+	},
+	"e": {
+		"id": 35,
+		"name": "chain",
+		"type": "armour",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"defence": 45
+		}
 	}
 }
 
