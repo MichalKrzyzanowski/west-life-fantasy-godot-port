@@ -6,7 +6,8 @@
 		"amount": 0,
 		"stack_size": 1,
 		"stats": {
-			"defence": 40
+			"defence": 40,
+			"gil_value": 400
 		}
 	},
 	"b": {
@@ -16,7 +17,8 @@
 		"amount": 0,
 		"stack_size": 1,
 		"stats": {
-			"defence": 65
+			"defence": 65,
+			"gil_value": 600
 		}
 	},
 	"c": {
@@ -26,7 +28,8 @@
 		"amount": 0,
 		"stack_size": 1,
 		"stats": {
-			"defence": 12
+			"defence": 12,
+			"gil_value": 30
 		}
 	},
 	"d": {
@@ -36,7 +39,8 @@
 		"amount": 0,
 		"stack_size": 1,
 		"stats": {
-			"defence": 30
+			"defence": 30,
+			"gil_value": 60
 		}
 	},
 	"e": {
@@ -46,7 +50,8 @@
 		"amount": 0,
 		"stack_size": 1,
 		"stats": {
-			"defence": 45
+			"defence": 45,
+			"gil_value": 86
 		}
 	}
 }

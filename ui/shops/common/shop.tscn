@@ -1,11 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://da3fnqeol8pr3"]
+[gd_scene load_steps=10 format=3 uid="uid://da3fnqeol8pr3"]
 
 [ext_resource type="Script" uid="uid://cv4xgky5sgdrf" path="res://ui/shops/common/shop.gd" id="1_eb1bs"]
 [ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/sprite/text_box.png" id="1_haqqc"]
 [ext_resource type="FontFile" uid="uid://duujn5vjqjbyi" path="res://ui/common/font/arialbd.ttf" id="2_1swlb"]
+[ext_resource type="Script" uid="uid://c58mgmklnekfj" path="res://entities/common/entity/entity_properties.gd" id="2_i4tin"]
 [ext_resource type="PackedScene" uid="uid://d2bhbuwxh85sr" path="res://ui/camp_menu/inventory/common/inventory_gui.tscn" id="3_1swlb"]
+[ext_resource type="Script" uid="uid://bgb0k3xdll7wc" path="res://ui/camp_menu/inventory/common/inventory.gd" id="3_x620k"]
 [ext_resource type="PackedScene" uid="uid://bj18dtq305e74" path="res://ui/camp_menu/inventory/common/item_gui.tscn" id="4_1dawj"]
 [ext_resource type="Theme" uid="uid://pqyn725r5mhs" path="res://ui/common/theme/empty_button.tres" id="6_q6641"]
+
+[sub_resource type="Resource" id="Resource_wxpsf"]
+script = ExtResource("3_x620k")
+party = Array[ExtResource("2_i4tin")]([])
+inventory = {}
+metadata/_custom_type_script = "uid://bgb0k3xdll7wc"
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -15,6 +23,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eb1bs")
+shop_items = Array[int]([33, 34, 35])
+target_inventory = SubResource("Resource_wxpsf")
 
 [node name="TitlePanel" type="NinePatchRect" parent="."]
 layout_mode = 1

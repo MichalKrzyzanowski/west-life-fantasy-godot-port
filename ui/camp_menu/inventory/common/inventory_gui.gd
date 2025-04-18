@@ -89,9 +89,15 @@ func _input(event: InputEvent) -> void:
 # public methods
 ## sets inventory reference and updates inventory
 func set_inventory(new_inventory: Inventory, party_ref: Array[EntityProperties] = []) -> void:
+	# disconnect on_inventory_update signal if already connected
+	# mainly used when changing inventories often
+	if inventory && inventory.is_connected("on_inventory_update", _on_inventory_update):
+		inventory.disconnect("on_inventory_update", _on_inventory_update)
+
 	inventory = new_inventory
 	inventory.set_party_ref(party_ref)
 	inventory.on_inventory_update.connect(_on_inventory_update)
+
 	update_inventory()
 
 

@@ -10,15 +10,19 @@ extends Control
 enum ShopState {
 	STANDBY,
 	BUY,
+	SELL,
 }
 
 # constants
 
 # @export vars
 @export var shop_name: String
-@export var shop_inventory: Inventory
+## array of item ids to populate the shop with
+@export var shop_items: Array[int]
+@export var target_inventory: Inventory
 
 # public vars
+var shop_inventory: Inventory = Inventory.new()
 
 # private vars
 var shop_state: ShopState = ShopState.STANDBY:
@@ -36,11 +40,6 @@ var shop_state: ShopState = ShopState.STANDBY:
 				options_panel.show()
 
 var _selected_shop_item: Item
-# var _shopkeeper_dialogue: Dictionary[String, String] = {
-# 	"welcome": "Welcome",
-# 	"buy_mode": "",
-# 	"decline": "",
-# }
 
 # @onready vars
 @onready var shop_inventory_gui: HFlowContainer = $InventoryPanel/InventoryGui
@@ -64,15 +63,17 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-	shop_inventory = Inventory.new()
-	shop_inventory.add_item(33)
-	shop_inventory.add_item(34)
-	shop_inventory.add_item(35)
+	if !shop_items.is_empty():
+		shop_inventory.add_items(shop_items)
+	else:
+		shop_inventory.add_item(33)
+		shop_inventory.add_item(34)
+		shop_inventory.add_item(35)
 	shop_inventory_gui.enable_item_use_action = false
 	shop_inventory_gui.set_inventory(shop_inventory, PartyManager.party)
 
 	PartyManager.on_gil_changed.connect(_update_gil_text)
-	shop_inventory_gui.on_item_gui_clicked.connect(_buy_item)
+	shop_inventory_gui.on_item_gui_clicked.connect(_on_item_clicked)
 
 	_update_gil_text()
 
@@ -84,17 +85,35 @@ func _ready() -> void:
 
 
 # private methods
+func _on_item_clicked(inventory: Inventory, item_id: int) -> void:
+	match shop_state:
+		ShopState.STANDBY:
+			_buy_item(inventory, item_id)
+		ShopState.SELL:
+			_sell_item(inventory, item_id)
+
+
 func _buy_item(inventory: Inventory, item_id: int) -> void:
 	_selected_shop_item = inventory.get_item(item_id)
 	print("buying %s" % _selected_shop_item.name)
-	# TODO: replace with stats.gil_value once implemented
-	var gil = 15
-	info_label.text = "%d\nGold\nOK?" % gil
+
+	# player cannot afford the item, show a different message.
+	# shop state should not change
+	if PartyManager.gil < _selected_shop_item.stats.gil_value:
+		info_label.text = "You can't\nafford that."
+		return
+
+	info_label.text = "%d\nGold\nOK?" % _selected_shop_item.stats.gil_value
 	shop_state = ShopState.BUY
 
 
 func _sell_item(inventory: Inventory, item_id: int) -> void:
-	print("selling %s" % inventory.get_item(item_id).name)
+	_selected_shop_item = inventory.get_item(item_id)
+	print("selling %s" % _selected_shop_item.name)
+
+	if _selected_shop_item.stats.gil_value > 0:
+		PartyManager.gil += _selected_shop_item.stats.gil_value / 2.0
+	inventory.remove_item(item_id)
 
 
 func _update_gil_text() -> void:
@@ -107,13 +126,18 @@ func _on_buy_button_pressed() -> void:
 			options_panel.hide()
 			info_label.text = "What do you need"
 		ShopState.BUY:
-			# TODO: add purchase item logic
+			# spend gil and add item to target inventory e.g. party consumables inventory
+			PartyManager.spend_gil(_selected_shop_item.stats.gil_value)
+			target_inventory.add_item(_selected_shop_item.id)
+
 			shop_state = ShopState.STANDBY
 			info_label.text = "Thank you!\nWhat else?"
 
 
 func _on_sell_button_pressed() -> void:
 	print("sell button pressed")
+	shop_inventory_gui.set_inventory(target_inventory, PartyManager.party)
+	shop_state = ShopState.SELL
 
 
 func _on_exit_button_pressed() -> void:

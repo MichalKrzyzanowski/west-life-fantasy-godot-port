@@ -13,9 +13,9 @@ signal on_item_used(item_id: int)
 
 # @export vars
 @export var party: Array[EntityProperties]
+@export var inventory: Dictionary = {}
 
 # public vars
-var inventory: Dictionary = {}
 
 # private vars
 
@@ -62,6 +62,12 @@ func add_item(item_id: int, amount: int = 1) -> void:
 	inventory[item_id] = new_item
 	inventory[item_id].add(amount)
 	on_inventory_update.emit()
+
+
+## populate inventory with item ids from [param item_ids]
+func add_items(item_ids: Array[int]) -> void:
+	for id: int in item_ids:
+		add_item(id)
 
 
 func remove_item(item_id: int, amount: int = 1) -> void:

@@ -26,7 +26,8 @@ const PARAMETERS_LOAD_ORDER: Dictionary = {
 		"max_hp": "max_hp",
 		"hp": "hp",
 		"scaler_hp": "scaler_hp",
-		"gil_level_cost": "gil_level_cost"
+		"gil_level_cost": "gil_level_cost",
+		"gil_value": "gil_value",
 	}
 
 # export vars
@@ -69,6 +70,8 @@ const PARAMETERS_LOAD_ORDER: Dictionary = {
 @export var xp_drop: int
 ## gold the character drops upon death, mainly used for enemy entities
 @export var gil_drop: int
+## gil value of the entity/item, mainly used for selling/buying items
+@export var gil_value: int
 ## cost to level up, optional. mainly used for gear upgrading
 @export var gil_level_cost: int = 25
 
