@@ -11,6 +11,8 @@ size_flags_horizontal = 3
 text = "item name"
 alignment = 0
 script = ExtResource("2_jauba")
+item_display_opt = null
+default_name = null
 metadata/_edit_use_anchors_ = true
 
 [node name="AmountLabel" type="Label" parent="."]

@@ -6,8 +6,8 @@
 [ext_resource type="Script" uid="uid://c58mgmklnekfj" path="res://entities/common/entity/entity_properties.gd" id="2_i4tin"]
 [ext_resource type="PackedScene" uid="uid://d2bhbuwxh85sr" path="res://ui/camp_menu/inventory/common/inventory_gui.tscn" id="3_1swlb"]
 [ext_resource type="Script" uid="uid://bgb0k3xdll7wc" path="res://ui/camp_menu/inventory/common/inventory.gd" id="3_x620k"]
-[ext_resource type="PackedScene" uid="uid://bj18dtq305e74" path="res://ui/camp_menu/inventory/common/item_gui.tscn" id="4_1dawj"]
 [ext_resource type="Theme" uid="uid://pqyn725r5mhs" path="res://ui/common/theme/empty_button.tres" id="6_q6641"]
+[ext_resource type="PackedScene" uid="uid://cj65loh8on112" path="res://ui/camp_menu/inventory/common/shop_item_gui.tscn" id="7_i4tin"]
 
 [sub_resource type="Resource" id="Resource_wxpsf"]
 script = ExtResource("3_x620k")
@@ -23,8 +23,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eb1bs")
+shop_name = "Shop"
+enable_sell_mode = true
 shop_items = Array[int]([33, 34, 35])
 target_inventory = SubResource("Resource_wxpsf")
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TitlePanel" type="NinePatchRect" parent="."]
 layout_mode = 1
@@ -151,17 +162,19 @@ patch_margin_bottom = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="InventoryGui" parent="InventoryPanel" instance=ExtResource("3_1swlb")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0454547
+anchor_top = 0.0389611
+anchor_right = 0.954548
+anchor_bottom = 0.961039
 rows = 3
 hide_scrollbar = true
 disable_scrolling = true
-inv_grid_v_seperation = 30
-item_gui = ExtResource("4_1dawj")
+inv_grid_v_seperation = 60
+item_gui = ExtResource("7_i4tin")
+enable_item_use_action = false
+metadata/_edit_use_anchors_ = true
 
 [node name="OptionsPanel" type="NinePatchRect" parent="."]
 layout_mode = 1

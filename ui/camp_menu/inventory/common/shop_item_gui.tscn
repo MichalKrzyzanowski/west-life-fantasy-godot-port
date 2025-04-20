@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cj65loh8on112"]
+
+[ext_resource type="PackedScene" uid="uid://bj18dtq305e74" path="res://ui/camp_menu/inventory/common/item_gui.tscn" id="1_f7psr"]
+[ext_resource type="Script" uid="uid://bod6exm2h1jd2" path="res://ui/camp_menu/inventory/common/shop_item_gui.gd" id="2_6s5lc"]
+[ext_resource type="FontFile" uid="uid://duujn5vjqjbyi" path="res://ui/common/font/arialbd.ttf" id="3_y3wtf"]
+
+[node name="ShopItemGui" instance=ExtResource("1_f7psr")]
+script = ExtResource("2_6s5lc")
+
+[node name="Button" parent="." index="0"]
+theme_override_fonts/font = ExtResource("3_y3wtf")
+
+[node name="GilValueLabel" type="Label" parent="." index="1"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 30.0
+offset_bottom = 49.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_y3wtf")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 2

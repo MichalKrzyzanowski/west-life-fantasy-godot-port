@@ -20,6 +20,7 @@ level = 1
 max_level = 9999
 xp_drop = 64
 gil_drop = 67
+gil_value = 0
 gil_level_cost = 25
 
 [resource]

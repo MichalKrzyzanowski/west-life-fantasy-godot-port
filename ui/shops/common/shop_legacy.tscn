@@ -1,0 +1,142 @@
+[gd_scene load_steps=7 format=3 uid="uid://sjvoob1yswme"]
+
+[ext_resource type="PackedScene" uid="uid://da3fnqeol8pr3" path="res://ui/shops/common/shop.tscn" id="1_8tkr0"]
+[ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/sprite/text_box.png" id="2_ib4ht"]
+[ext_resource type="Script" uid="uid://6cjrrwkh05wh" path="res://ui/shops/common/shop_legacy.gd" id="2_n4f0x"]
+[ext_resource type="FontFile" uid="uid://duujn5vjqjbyi" path="res://ui/common/font/arialbd.ttf" id="3_n4f0x"]
+[ext_resource type="PackedScene" uid="uid://d2bhbuwxh85sr" path="res://ui/camp_menu/inventory/common/inventory_gui.tscn" id="4_s8ilv"]
+[ext_resource type="PackedScene" uid="uid://bj18dtq305e74" path="res://ui/camp_menu/inventory/common/item_gui.tscn" id="5_8yw2p"]
+
+[node name="ShopLegacy" instance=ExtResource("1_8tkr0")]
+script = ExtResource("2_n4f0x")
+shop_name = "Legacy"
+shop_items = Array[int]([])
+
+[node name="Inventory" type="Node" parent="." index="6"]
+
+[node name="TitlePanel" type="NinePatchRect" parent="Inventory" index="0"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.0556641
+anchor_top = 0.0833333
+anchor_right = 0.195312
+anchor_bottom = 0.0950521
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_ib4ht")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Inventory/TitlePanel" index="0"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = -16.0
+offset_right = 63.5
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_n4f0x")
+theme_override_font_sizes/font_size = 28
+text = "Inventory"
+
+[node name="InventoryTitle" type="NinePatchRect" parent="Inventory" index="1"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.765625
+anchor_top = 0.147135
+anchor_right = 0.898438
+anchor_bottom = 0.147135
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_ib4ht")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Inventory/InventoryTitle" index="0"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -12.5
+offset_right = 26.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+text = "Items"
+
+[node name="InventoryPanel" type="NinePatchRect" parent="Inventory" index="2"]
+visible = false
+anchors_preset = -1
+anchor_left = -0.00683594
+anchor_top = -0.0572917
+anchor_right = 0.107422
+anchor_bottom = 0.369792
+offset_left = 800.0
+offset_top = 208.0
+offset_right = 840.0
+offset_bottom = 248.0
+texture = ExtResource("2_ib4ht")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/InventoryPanel" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.503472
+anchor_top = 0.0434783
+anchor_right = 0.503472
+anchor_bottom = 0.956522
+offset_left = -37.5
+offset_right = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+metadata/_edit_use_anchors_ = true
+
+[node name="ConsumablesGui" parent="Inventory/InventoryPanel/VBoxContainer" index="0" instance=ExtResource("4_s8ilv")]
+unique_name_in_owner = true
+layout_mode = 2
+rows = 3
+hide_scrollbar = true
+disable_scrolling = true
+inv_grid_v_seperation = 60
+item_gui = ExtResource("5_8yw2p")
+enable_item_use_action = false
+
+[node name="BackButton" type="Button" parent="Inventory" index="3"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.800293
+anchor_top = 0.800781
+anchor_right = 0.887207
+anchor_bottom = 0.800781
+offset_left = -35.5
+offset_top = -41.0
+offset_right = 35.5
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"CharacterSelectButton"
+theme_override_font_sizes/font_size = 28
+text = "Back"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Inventory/BackButton" to="." method="_on_back_button_pressed"]

@@ -17,6 +17,7 @@ enum ShopState {
 
 # @export vars
 @export var shop_name: String
+@export var enable_sell_mode: bool = false
 ## array of item ids to populate the shop with
 @export var shop_items: Array[int]
 @export var target_inventory: Inventory
@@ -30,14 +31,11 @@ var shop_state: ShopState = ShopState.STANDBY:
 		shop_state = new_state
 		match shop_state:
 			ShopState.STANDBY:
-				buy_button.text = "Buy"
-				exit_button.text = "Exit"
-				sell_button.show()
+				_enter_standby_state()
 			ShopState.BUY:
-				buy_button.text = "Yes"
-				exit_button.text = "No"
-				sell_button.hide()
-				options_panel.show()
+				_enter_buy_state()
+			ShopState.SELL:
+				_enter_sell_state()
 
 var _selected_shop_item: Item
 
@@ -63,15 +61,25 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
+	# set shop name
+	title_label.text = shop_name
+
+	# hide sell button is sell mode is disabled
+	if !enable_sell_mode:
+		sell_button.hide()
+
+	# populate shop items from item ids
 	if !shop_items.is_empty():
 		shop_inventory.add_items(shop_items)
 	else:
 		shop_inventory.add_item(33)
 		shop_inventory.add_item(34)
 		shop_inventory.add_item(35)
-	shop_inventory_gui.enable_item_use_action = false
+
+	# set default inventory_gui options
 	shop_inventory_gui.set_inventory(shop_inventory, PartyManager.party)
 
+	# connect relevant gil & item signals
 	PartyManager.on_gil_changed.connect(_update_gil_text)
 	shop_inventory_gui.on_item_gui_clicked.connect(_on_item_clicked)
 
@@ -120,6 +128,28 @@ func _update_gil_text() -> void:
 	gil_label.text = "%d G" % PartyManager.gil
 
 
+func _enter_standby_state() -> void:
+	buy_button.text = "Buy"
+	exit_button.text = "Exit"
+	if enable_sell_mode:
+		sell_button.show()
+	buy_button.show()
+	exit_button.show()
+
+
+func _enter_buy_state() -> void:
+	buy_button.text = "Yes"
+	exit_button.text = "No"
+	sell_button.hide()
+	options_panel.show()
+
+
+func _enter_sell_state() -> void:
+	buy_button.hide()
+	sell_button.hide()
+	exit_button.text = "Back"
+
+
 func _on_buy_button_pressed() -> void:
 	match shop_state:
 		ShopState.STANDBY:
@@ -136,8 +166,10 @@ func _on_buy_button_pressed() -> void:
 
 func _on_sell_button_pressed() -> void:
 	print("sell button pressed")
+	title_label.text = "Inventory"
 	shop_inventory_gui.set_inventory(target_inventory, PartyManager.party)
 	shop_state = ShopState.SELL
+	info_label.text = "Whose item do want to sell?"
 
 
 func _on_exit_button_pressed() -> void:
@@ -147,6 +179,11 @@ func _on_exit_button_pressed() -> void:
 		ShopState.BUY:
 			shop_state = ShopState.STANDBY
 			info_label.text = "Thank you!\n...\nSomething else?"
+		ShopState.SELL:
+			title_label.text = shop_name
+			info_label.text = "Too bad\n...\nSomething else?"
+			shop_inventory_gui.set_inventory(shop_inventory, PartyManager.party)
+			shop_state = ShopState.STANDBY
 
 
 # subclasses

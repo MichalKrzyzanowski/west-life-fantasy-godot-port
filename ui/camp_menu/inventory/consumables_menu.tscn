@@ -189,7 +189,7 @@ layout_mode = 2
 rows = 3
 hide_scrollbar = true
 disable_scrolling = true
-inv_grid_v_seperation = 30
+inv_grid_v_seperation = 60
 item_gui = ExtResource("5_6deds")
 
 [node name="DescriptionPanel" type="NinePatchRect" parent="."]

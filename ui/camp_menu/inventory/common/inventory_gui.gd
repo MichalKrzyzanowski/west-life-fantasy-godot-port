@@ -67,6 +67,7 @@ func _ready() -> void:
 	var gui_amount: int = rows * columns
 	for i: int in gui_amount:
 		var gui: Control  = item_gui.instantiate()
+		gui.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		inventory_grid.add_child(gui)
 		gui.connect("on_item_clicked", _on_item_clicked)
 
