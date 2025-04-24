@@ -9,13 +9,14 @@
 [ext_resource type="Theme" uid="uid://pqyn725r5mhs" path="res://ui/common/theme/empty_button.tres" id="6_q6641"]
 [ext_resource type="PackedScene" uid="uid://cj65loh8on112" path="res://ui/camp_menu/inventory/common/shop_item_gui.tscn" id="7_i4tin"]
 
-[sub_resource type="Resource" id="Resource_wxpsf"]
+[sub_resource type="Resource" id="Resource_i4tin"]
 script = ExtResource("3_x620k")
 party = Array[ExtResource("2_i4tin")]([])
 inventory = {}
 metadata/_custom_type_script = "uid://bgb0k3xdll7wc"
 
 [node name="Shop" type="Control"]
+process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,10 +26,9 @@ grow_vertical = 2
 script = ExtResource("1_eb1bs")
 shop_name = "Shop"
 enable_sell_mode = true
-shop_items = Array[int]([33, 34, 35])
-target_inventory = SubResource("Resource_wxpsf")
+target_inventory = SubResource("Resource_i4tin")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="ColorRect" parent="."]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -168,7 +168,7 @@ anchor_left = 0.0454547
 anchor_top = 0.0389611
 anchor_right = 0.954548
 anchor_bottom = 0.961039
-rows = 3
+rows = 9
 hide_scrollbar = true
 disable_scrolling = true
 inv_grid_v_seperation = 60

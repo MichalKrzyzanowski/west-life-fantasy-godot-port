@@ -171,6 +171,7 @@ func level_up() -> void:
 
 ## addition method, since gdscript does not
 ## support operator overloading
+# TODO: rework this method, very buggy and static, needs to be more dynamic
 func add(stats: CombatStats) -> void:
 	hp += stats.hp
 	scaler_hp += stats.scaler_hp

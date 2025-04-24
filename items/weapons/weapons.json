@@ -190,6 +190,71 @@
 			"attack": 100,
 			"scaler_attack": 1
 		}
+	},
+	"wooden": {
+		"id": 117,
+		"name": "wooden",
+		"type": "weapon",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"attack": 1,
+			"scaler_attack": 1,
+			"gil_value": 5
+		}
+	},
+	"small": {
+		"id": 118,
+		"name": "small",
+		"type": "weapon",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"attack": 1,
+			"scaler_attack": 1,
+			"gil_value": 5
+		}
+	},
+	"wooden2": {
+		"id": 119,
+		"name": "wooden",
+		"type": "weapon",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"attack": 5,
+			"scaler_attack": 1,
+			"gil_value": 10
+		}
+	},
+	"rapier": {
+		"id": 120,
+		"name": "rapier",
+		"type": "weapon",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"attack": 7,
+			"scaler_attack": 1,
+			"gil_value": 10
+		}
+	},
+	"iron": {
+		"id": 121,
+		"name": "iron",
+		"type": "weapon",
+		"amount": 0,
+		"stack_size": 1,
+		"stats": {
+			"max_level": 11,
+			"attack": 8,
+			"scaler_attack": 1,
+			"gil_value": 10
+		}
 	}
 }
 

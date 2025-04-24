@@ -31,6 +31,7 @@
 			- same panels, different logic as the generic shop
 			- shop options box lists dead party members
 			- clicking party member member prompts yes or no
+				- prompt simply replaces all choices from options box with yes and no text boxes
 			- if yes clicked, member revived
 			- if no, return to previous state
 			- shopkeeper displayed 2 messages
@@ -38,8 +39,8 @@
 				- revival available
 			- revival price is not displayed
 			- cannot exit revive if revive is available (bug)
-				- only way to leave is to revive party member (costs ~50g)
-				- could potentially cause a soft lock if player gil < 50
+				- only way to leave is to revive party member (costs 40g)
+				- could potentially cause a soft lock if player gil < 40
 		- armour and weapon shops:
 			- identical, differing only in inventory
 			- bought weapon/armour is not added into any party member's inventory (bug)

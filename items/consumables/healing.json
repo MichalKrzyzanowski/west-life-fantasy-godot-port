@@ -8,6 +8,7 @@
 		"description": "Heals 10 points",
 		"stats": {
 			"hp": 10,
+			"gil_value": 60,
 			"allow_hp_overlimit": true,
 			"restore_hp": false
 		}
@@ -21,6 +22,7 @@
 		"description": "Heals 20 points",
 		"stats": {
 			"hp": 20,
+			"gil_value": 80,
 			"allow_hp_overlimit": true,
 			"restore_hp": false
 		}
@@ -34,6 +36,7 @@
 		"description": "Heals 50 points",
 		"stats": {
 			"hp": 50,
+			"gil_value": 100,
 			"allow_hp_overlimit": true,
 			"restore_hp": false
 		}

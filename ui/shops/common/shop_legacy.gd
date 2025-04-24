@@ -34,8 +34,10 @@ extends "shop.gd"
 
 func _ready() -> void:
 	super()
+	print(target_inventory)
 	# set default legacy inventory gui options
-	legacy_inventory_gui.set_inventory(target_inventory, PartyManager.party)
+	if target_inventory:
+		legacy_inventory_gui.set_inventory(target_inventory, PartyManager.party)
 
 	# connect item gui clicked signal
 	legacy_inventory_gui.on_item_gui_clicked.connect(_on_item_clicked)
@@ -45,6 +47,10 @@ func _ready() -> void:
 
 
 # public methods
+## updates [member target_inventory] with [param inventory]
+func set_target_inventory(inventory: Inventory) -> void:
+	super(inventory)
+	legacy_inventory_gui.set_inventory(target_inventory, PartyManager.party)
 
 
 # private methods
@@ -73,6 +79,7 @@ func _on_exit_button_pressed() -> void:
 	match shop_state:
 		ShopState.STANDBY:
 			print("exit button pressed")
+			on_exit.emit()
 		ShopState.BUY:
 			shop_state = ShopState.STANDBY
 			info_label.text = "Thank you!\n...\nSomething else?"

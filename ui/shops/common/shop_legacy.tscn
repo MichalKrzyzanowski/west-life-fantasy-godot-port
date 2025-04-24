@@ -10,7 +10,6 @@
 [node name="ShopLegacy" instance=ExtResource("1_8tkr0")]
 script = ExtResource("2_n4f0x")
 shop_name = "Legacy"
-shop_items = Array[int]([])
 
 [node name="Inventory" type="Node" parent="." index="6"]
 

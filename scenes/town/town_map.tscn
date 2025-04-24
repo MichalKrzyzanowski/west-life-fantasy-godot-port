@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://cks12v4jq01wl"]
+[gd_scene load_steps=19 format=4 uid="uid://cks12v4jq01wl"]
 
 [ext_resource type="TileSet" uid="uid://1jku0k0we0ls" path="res://scenes/common/path_tileset.tres" id="1_68dcb"]
 [ext_resource type="Script" uid="uid://c28r5klo7aje0" path="res://scenes/town/town_map.gd" id="1_i12ha"]
@@ -7,15 +7,32 @@
 [ext_resource type="TileSet" uid="uid://cx2yak8k0gq4c" path="res://scenes/common/house_tileset.tres" id="3_u2c0v"]
 [ext_resource type="TileSet" uid="uid://lmlrfvna3b4l" path="res://scenes/common/cactus_tileset.tres" id="4_ll411"]
 [ext_resource type="PackedScene" uid="uid://dujvgle5ockxo" path="res://scenes/common/transition_area/transition_area.tscn" id="7_4sy1f"]
+[ext_resource type="PackedScene" uid="uid://dkuaoj8xwwbnn" path="res://ui/shops/common/shop_entrance.tscn" id="8_r1ji4"]
+[ext_resource type="PackedScene" uid="uid://sjvoob1yswme" path="res://ui/shops/common/shop_legacy.tscn" id="9_t1mmq"]
+[ext_resource type="Script" uid="uid://c58mgmklnekfj" path="res://entities/common/entity/entity_properties.gd" id="10_es22g"]
+[ext_resource type="Script" uid="uid://bgb0k3xdll7wc" path="res://ui/camp_menu/inventory/common/inventory.gd" id="11_mxww1"]
+[ext_resource type="PackedScene" uid="uid://yuw0j5pyam6n" path="res://ui/shops/common/clinic.tscn" id="12_mxww1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_so7h4"]
 size = Vector2(16, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_drbdj"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1mmq"]
 size = Vector2(16, 4)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xpaiv"]
-size = Vector2(32, 5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nbyv5"]
+size = Vector2(32, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_es22g"]
+size = Vector2(16, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mxww1"]
+size = Vector2(16, 4)
+
+[sub_resource type="Resource" id="Resource_i4tin"]
+script = ExtResource("11_mxww1")
+party = Array[ExtResource("10_es22g")]([])
+inventory = {}
+metadata/_custom_type_script = "uid://bgb0k3xdll7wc"
 
 [node name="TownMap" type="Node2D" groups=["persist"]]
 script = ExtResource("1_i12ha")
@@ -53,21 +70,61 @@ position = Vector2(8, 168)
 shape = SubResource("RectangleShape2D_so7h4")
 map_ref = NodePath("..")
 
-[node name="WeaponShop" parent="." instance=ExtResource("7_4sy1f")]
-position = Vector2(-136, 130)
-shape = SubResource("RectangleShape2D_drbdj")
+[node name="Shops" type="Node" parent="."]
 
-[node name="ReviveShop" parent="." instance=ExtResource("7_4sy1f")]
-position = Vector2(120, 114)
-shape = SubResource("RectangleShape2D_drbdj")
-
-[node name="ArmourShop" parent="." instance=ExtResource("7_4sy1f")]
-position = Vector2(-112, 18)
-shape = SubResource("RectangleShape2D_xpaiv")
-
-[node name="ItemShop" parent="." instance=ExtResource("7_4sy1f")]
+[node name="ItemShop" parent="Shops" node_paths=PackedStringArray("shop_ref") instance=ExtResource("8_r1ji4")]
 position = Vector2(88, 2)
-shape = SubResource("RectangleShape2D_drbdj")
+monitorable = false
+shape = SubResource("RectangleShape2D_t1mmq")
+shop_ref = NodePath("../../ShopUI/ItemShop")
+
+[node name="ArmourShop" parent="Shops" node_paths=PackedStringArray("shop_ref") instance=ExtResource("8_r1ji4")]
+position = Vector2(-112, 18)
+monitorable = false
+shape = SubResource("RectangleShape2D_nbyv5")
+shop_ref = NodePath("../../ShopUI/ArmourShop")
+
+[node name="WeaponShop" parent="Shops" node_paths=PackedStringArray("shop_ref") instance=ExtResource("8_r1ji4")]
+position = Vector2(-136, 130)
+monitorable = false
+shape = SubResource("RectangleShape2D_es22g")
+shop_ref = NodePath("../../ShopUI/WeaponShop")
+
+[node name="Clinic" parent="Shops" node_paths=PackedStringArray("shop_ref") instance=ExtResource("8_r1ji4")]
+position = Vector2(120, 114)
+monitorable = false
+shape = SubResource("RectangleShape2D_mxww1")
+shop_ref = NodePath("../../ShopUI/Clinic")
 
 [node name="PlayerPosition" type="Marker2D" parent="."]
 position = Vector2(8, 136)
+
+[node name="ShopUI" type="CanvasLayer" parent="."]
+
+[node name="ItemShop" parent="ShopUI" instance=ExtResource("9_t1mmq")]
+visible = false
+shop_name = "Item"
+shop_items = Array[int]([1, 2, 3])
+target_inventory = SubResource("Resource_i4tin")
+
+[node name="WeaponShop" parent="ShopUI" instance=ExtResource("9_t1mmq")]
+visible = false
+shop_name = "Weapon"
+enable_sell_mode = false
+shop_items = Array[int]([117, 118, 119, 120, 121])
+target_inventory = SubResource("Resource_i4tin")
+
+[node name="ArmourShop" parent="ShopUI" instance=ExtResource("9_t1mmq")]
+visible = false
+shop_name = "Armour"
+enable_sell_mode = false
+shop_items = Array[int]([217, 218, 219])
+target_inventory = SubResource("Resource_i4tin")
+
+[node name="Clinic" parent="ShopUI" instance=ExtResource("12_mxww1")]
+visible = false
+
+[connection signal="body_entered" from="Shops/ItemShop" to="Shops/ItemShop" method="_enter_shop" unbinds=1]
+[connection signal="body_entered" from="Shops/ArmourShop" to="Shops/ArmourShop" method="_enter_shop" unbinds=1]
+[connection signal="body_entered" from="Shops/WeaponShop" to="Shops/WeaponShop" method="_enter_shop" unbinds=1]
+[connection signal="body_entered" from="Shops/Clinic" to="Shops/Clinic" method="_enter_shop" unbinds=1]

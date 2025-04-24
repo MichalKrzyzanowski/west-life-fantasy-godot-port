@@ -17,6 +17,7 @@ script = ExtResource("2_a5uw6")
 [node name="DesertMap" parent="World" instance=ExtResource("1_rdyyc")]
 
 [node name="OverworldPlayer" parent="." instance=ExtResource("1_p8x4f")]
+speed = 5.0
 
 [node name="Fader" parent="." instance=ExtResource("5_lrnne")]
 script = ExtResource("6_w70om")

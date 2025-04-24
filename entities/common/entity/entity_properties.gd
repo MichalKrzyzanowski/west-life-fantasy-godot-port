@@ -64,6 +64,8 @@ func load(data: Dictionary) -> void:
 ## restored hp to full and sets has_hp_depleted = true
 ## emits on_revival signal
 func revive() -> void:
+	if !stats:
+		printerr("failed to revive, stats object is null")
 	stats.has_hp_depleted = false
 	stats.hp = stats.max_hp
 	on_revival.emit()
@@ -137,6 +139,11 @@ func get_gear_ids() -> Array[int]:
 		gear_ids.append(armour.id)
 
 	return gear_ids
+
+
+## returns true if entity is alive
+func is_alive() -> bool:
+	return hp() > 0
 
 
 ## returns [name].

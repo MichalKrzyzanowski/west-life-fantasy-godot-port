@@ -1,0 +1,210 @@
+[gd_scene load_steps=5 format=3 uid="uid://yuw0j5pyam6n"]
+
+[ext_resource type="Script" uid="uid://dkstvbvxuxccq" path="res://ui/shops/common/clinic.gd" id="1_oeijp"]
+[ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/sprite/text_box.png" id="2_8igq0"]
+[ext_resource type="FontFile" uid="uid://duujn5vjqjbyi" path="res://ui/common/font/arialbd.ttf" id="3_nb6t0"]
+[ext_resource type="Theme" uid="uid://pqyn725r5mhs" path="res://ui/common/theme/empty_button.tres" id="4_8igq0"]
+
+[node name="Clinic" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oeijp")
+clinic_name = "Clinic"
+legacy_mode = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TitlePanel" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.402344
+anchor_top = 0.0729167
+anchor_right = 0.597656
+anchor_bottom = 0.128906
+offset_left = -4.0
+offset_right = 4.0
+offset_bottom = 7.0
+grow_horizontal = 2
+texture = ExtResource("2_8igq0")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="TitlePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -17.5
+offset_right = 37.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_nb6t0")
+theme_override_font_sizes/font_size = 30
+text = "Item"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="GilLabel" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.488281
+anchor_top = 0.833333
+anchor_right = 0.683594
+anchor_bottom = 0.889323
+offset_left = -4.0
+offset_right = 4.0
+offset_bottom = 7.0
+grow_horizontal = 2
+texture = ExtResource("2_8igq0")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="GilLabel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.370192
+anchor_top = 0.51
+anchor_right = 0.855769
+anchor_bottom = 0.51
+offset_left = -75.0
+offset_top = -17.5
+offset_bottom = 17.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_nb6t0")
+theme_override_font_sizes/font_size = 30
+text = "100 G"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="InfoPanel" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0507812
+anchor_top = 0.3125
+anchor_right = 0.230469
+anchor_bottom = 0.606771
+offset_left = -4.0
+offset_right = 4.0
+offset_bottom = 7.0
+grow_horizontal = 2
+texture = ExtResource("2_8igq0")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="InfoPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.0963855
+anchor_right = 1.0
+anchor_bottom = 0.935743
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_nb6t0")
+theme_override_font_sizes/font_size = 30
+text = "Welcome"
+horizontal_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="OptionsPanel" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.238281
+anchor_top = 0.697917
+anchor_right = 0.425781
+anchor_bottom = 0.949219
+offset_left = -4.0
+offset_right = 4.0
+offset_bottom = 7.0
+grow_horizontal = 2
+texture = ExtResource("2_8igq0")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="DeadPartyList" type="VBoxContainer" parent="OptionsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.863636
+anchor_bottom = 0.875
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ConfirmSelectionList" type="VBoxContainer" parent="OptionsPanel"]
+visible = false
+layout_mode = 2
+offset_top = 48.0
+offset_right = 172.0
+offset_bottom = 126.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ConfirmButton" type="Button" parent="OptionsPanel/ConfirmSelectionList"]
+layout_mode = 2
+theme = ExtResource("4_8igq0")
+theme_override_fonts/font = ExtResource("3_nb6t0")
+theme_override_font_sizes/font_size = 30
+text = "Yes"
+
+[node name="DeclineButton" type="Button" parent="OptionsPanel/ConfirmSelectionList"]
+layout_mode = 2
+theme = ExtResource("4_8igq0")
+theme_override_fonts/font = ExtResource("3_nb6t0")
+theme_override_font_sizes/font_size = 30
+text = "No"
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.800293
+anchor_top = 0.845052
+anchor_right = 0.887207
+anchor_bottom = 0.800781
+offset_left = -35.5
+offset_top = -41.0
+offset_right = 35.5
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"CharacterSelectButton"
+theme_override_font_sizes/font_size = 28
+text = "Exit"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="OptionsPanel/ConfirmSelectionList/ConfirmButton" to="." method="_on_confirm_button_pressed"]
+[connection signal="pressed" from="OptionsPanel/ConfirmSelectionList/DeclineButton" to="." method="_on_decline_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_exit_clinic"]

@@ -43,7 +43,7 @@ func _update_amount_label() -> void:
 	if !amount_label:
 		amount_label = $AmountLabel
 
-	text = item.name.capitalize()
+	button.text = item.name.capitalize()
 	if item.stack_size == 1:
 		amount_label.hide()
 		return

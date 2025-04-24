@@ -104,8 +104,8 @@ func _on_body_entered(_body: Node2D) -> void:
 		overworld_player.global_position = Vector2()
 
 	world.replace_map(new_map)
-	fader.play("fade")
 	fader.keep_paused = false
+	fader.play("fade")
 
 
 # subclasses

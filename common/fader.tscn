@@ -47,12 +47,11 @@ bg_color = Color(0, 0, 0, 1)
 [node name="Fader" type="AnimationPlayer"]
 process_mode = 3
 libraries = {
-"": SubResource("AnimationLibrary_lqkj2")
+&"": SubResource("AnimationLibrary_lqkj2")
 }
 speed_scale = 1.5
 
 [node name="Fade" type="CanvasLayer" parent="."]
-layer = 5
 
 [node name="Panel" type="Panel" parent="Fade"]
 modulate = Color(0, 0, 0, 1)

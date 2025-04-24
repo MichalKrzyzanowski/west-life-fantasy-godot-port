@@ -5,6 +5,7 @@ extends Control
 
 
 # signals
+signal on_exit()
 
 # enums
 enum ShopState {
@@ -71,10 +72,6 @@ func _ready() -> void:
 	# populate shop items from item ids
 	if !shop_items.is_empty():
 		shop_inventory.add_items(shop_items)
-	else:
-		shop_inventory.add_item(33)
-		shop_inventory.add_item(34)
-		shop_inventory.add_item(35)
 
 	# set default inventory_gui options
 	shop_inventory_gui.set_inventory(shop_inventory, PartyManager.party)
@@ -90,6 +87,9 @@ func _ready() -> void:
 
 
 # public methods
+## updates [member target_inventory] with [param inventory]
+func set_target_inventory(inventory: Inventory) -> void:
+	target_inventory = inventory
 
 
 # private methods
@@ -176,6 +176,7 @@ func _on_exit_button_pressed() -> void:
 	match shop_state:
 		ShopState.STANDBY:
 			print("exit button pressed")
+			on_exit.emit()
 		ShopState.BUY:
 			shop_state = ShopState.STANDBY
 			info_label.text = "Thank you!\n...\nSomething else?"

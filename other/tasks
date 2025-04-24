@@ -156,6 +156,12 @@
 +-------------+
 - enhancements
 - buglist
+	- healing items no longer heal
+	- using healing items increases character max level by 9999 (related to CombatStats.add() method)
+	- party member combat hp is displayed as floats
+	- camp menu is broken when entering a town
+		- game is not paused when entering town (can still shoot when camp menu is open)
+		- caused by clinic's wacky exit functionality..
 - shops
 	- add ability to buy/sell items
 	- add weapon/armour shops
@@ -167,9 +173,11 @@
 - enhancements
 	- add fade in/out when clicking ui buttons
 	- add fade in/out to camp menu
+	- add fade in/out to battle
 	- add _get_property_list to EntityProperties and CombatStats
 	- update grid_2d plugin to also use _get_property_list for conditional exports
 	- add stat scaling to enemies
+	- create/update new button theme that has less top/bottom margin
 - buglist
 	- combat stat scaling has been reset for each party member
 - refactor

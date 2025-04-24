@@ -17,6 +17,7 @@ extends BaseMap
 # private vars
 
 # @onready vars
+@onready var item_shop_ui: Control = $ShopUI/ItemShop
 
 
 func _init() -> void:
@@ -28,7 +29,7 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-	pass
+	item_shop_ui.set_target_inventory(InventoryManager.consumables_inventory)
 
 
 # remaining builtins e.g. _process, _input
