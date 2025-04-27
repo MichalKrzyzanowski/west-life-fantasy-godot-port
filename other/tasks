@@ -68,6 +68,8 @@
 		- fix: edit theme button margins for all modes i.e. normal, disabled, toggle, etc.
 	- upgrading a weapon upgrades all instances of this weapon
 	- using last consumable in a stack causes a crash due to description being called on null
+	- using healing items increases character max level by 9999 (related to CombatStats.add() method)
+	- party member combat hp is displayed as floats
 - enhancements
 	- move project to godot 4.3
 		- convert tilemaps to tilemaplayers
@@ -156,9 +158,8 @@
 +-------------+
 - enhancements
 - buglist
+	- fleeing from combat follows a pattern, is not random (needs more investigation)
 	- healing items no longer heal
-	- using healing items increases character max level by 9999 (related to CombatStats.add() method)
-	- party member combat hp is displayed as floats
 	- camp menu is broken when entering a town
 		- game is not paused when entering town (can still shoot when camp menu is open)
 		- caused by clinic's wacky exit functionality..

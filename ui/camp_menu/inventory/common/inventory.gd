@@ -13,11 +13,18 @@ signal on_item_used(item_id: int)
 
 # @export vars
 @export var party: Array[EntityProperties]
-@export var inventory: Dictionary = {}
+@export var inventory: Dictionary[int, Item] = {}
 
 # public vars
 
 # private vars
+# TODO: think of moving to item utility class
+var _item_type_callbacks: Dictionary = {
+	"consumable": func() -> Consumable: return Consumable.new("consume"),
+	"gear": func() -> Gear: return Gear.new(),
+	"weapon": func() -> Gear: return Gear.new("equip_weapon"),
+	"armour": func() -> Gear: return Gear.new("equip_armour"),
+}
 
 # @onready vars
 
@@ -165,6 +172,34 @@ func get_item(id: int) -> Item:
 ## Dictionary has() wrapper
 func has_item(id: int) -> bool:
 	return inventory.has(id)
+
+
+func save() -> Dictionary:
+	var dict: Dictionary = {}
+
+	for id: int in inventory.keys():
+		dict[id] = inventory[id].save()
+
+	return {
+		"inventory": dict
+	}
+
+
+func load(data: Dictionary) -> void:
+	for item_data: Dictionary in data["inventory"].values():
+		# TODO: think of moving below logic to item utility class
+		var item: Item
+		if !item_data.has("type") || !_item_type_callbacks.has(item_data["type"]):
+			item = Item.new()
+			item.load(item_data)
+			item.update_item_action()
+			inventory[item.id] = item
+			continue
+
+		item = _item_type_callbacks[item_data["type"]].call()
+		item.load(item_data)
+		item.update_item_action()
+		inventory[item.id] = item
 
 
 # private methods

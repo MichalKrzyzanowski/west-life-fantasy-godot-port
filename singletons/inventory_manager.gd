@@ -33,8 +33,7 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-	print("ids")
-	print(ItemDatabase.get_ids())
+	add_to_group("persist")
 
 
 # remaining builtins e.g. _process, _input
@@ -89,6 +88,34 @@ func test_populate_inventories(generate_party: bool = false) -> void:
 		i.add_item(32)
 		i.add_item(21)
 		i.add_item(22)
+
+
+func save() -> Dictionary:
+	var dict: Dictionary = {
+		"name": name,
+		"parent": get_parent().get_path(),
+		"consumables": consumables_inventory.save(),
+	}
+
+	var party_inv_dict: Dictionary = {}
+	for i: int in _party_inventories.size():
+		party_inv_dict[i] = _party_inventories[i].save()
+
+	dict["party_inventories"] = party_inv_dict
+	return dict
+
+
+func load(data: Dictionary) -> void:
+	consumables_inventory.load(data["consumables"])
+	for dict: Dictionary in data["party_inventories"].values():
+		var new_inventory: Inventory = Inventory.new()
+		new_inventory.load(dict)
+		add_party_inventory(new_inventory)
+	# for item in data["party_data"]:
+	# 	var entity_props := EntityProperties.new()
+	# 	entity_props.stats = CombatStats.new()
+	# 	entity_props.load(item)
+	# 	add_member(entity_props)
 
 
 # private methods

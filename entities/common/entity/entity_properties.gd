@@ -25,6 +25,13 @@ signal on_gear_changed()
 # public vars
 
 # private vars
+## index in party array.
+## -1 means entity is not part of a party
+var _party_index: int = -1
+## gear ids, used for loading correct equipment.
+## -1 means no gear equipped
+var _weapon_id: int = -1
+var _armour_id: int = -1
 
 # @onready vars
 
@@ -50,6 +57,8 @@ func save() -> Dictionary:
 	return {
 		"name": name,
 		"texture_path": texture.resource_path,
+		"party_index": _party_index,
+		"gear_ids": get_gear_ids(),
 		"combat_stats": stats.save(),
 	}
 
@@ -58,7 +67,17 @@ func save() -> Dictionary:
 func load(data: Dictionary) -> void:
 	name = data["name"]
 	texture = ResourceLoader.load(data["texture_path"])
+	_party_index = data["party_index"]
 	stats.load(data["combat_stats"])
+
+	# load equipped gear
+	if _party_index < 0:
+		return
+
+	var party_inventory: Inventory = InventoryManager.get_party_inventory(_party_index)
+	for gear_id: int in data["gear_ids"]:
+		if party_inventory.has_item(gear_id):
+			equip_gear(party_inventory.get_item(gear_id))
 
 
 ## restored hp to full and sets has_hp_depleted = true
@@ -117,6 +136,13 @@ func change_armour(new_armour: Gear) -> void:
 	on_gear_changed.emit()
 
 
+func equip_gear(gear: Gear) -> void:
+	if gear.type == "weapon":
+		change_weapon(gear)
+	elif gear.type == "armour":
+		change_armour(gear)
+
+
 ## unequip gear with matching [param gear_id]
 func unequip_gear(gear_id: int) -> void:
 	if weapon && weapon.id == gear_id:
@@ -139,6 +165,14 @@ func get_gear_ids() -> Array[int]:
 		gear_ids.append(armour.id)
 
 	return gear_ids
+
+
+func set_party_index(index: int) -> void:
+	_party_index = index
+
+
+func get_party_index() -> int:
+	return _party_index
 
 
 ## returns true if entity is alive

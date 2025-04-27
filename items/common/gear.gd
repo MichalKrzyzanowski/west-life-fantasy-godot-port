@@ -21,8 +21,9 @@ var is_equipped: bool = false
 
 
 # _init
-# func _init() -> void:
-# 	pass
+func _init(new_item_action_name: String = "") -> void:
+	stats.init(true)
+	super(new_item_action_name)
 
 
 # _enter_tree
@@ -39,6 +40,13 @@ func _ready() -> void:
 
 
 # public methods
+func save() -> Dictionary:
+	var dict: Dictionary = super()
+	dict["stats"] = stats.save()
+
+	return dict
+
+
 func load(data: Dictionary) -> void:
 	super(data)
 	if data.has("stats"):
@@ -68,13 +76,13 @@ func _to_string() -> String:
 
 ## actions
 func _action_equip_weapon(entity: EntityProperties) -> int:
-	printerr("equiping weapon...")
+	print("equiping weapon...")
 	entity.change_weapon(self)
 	return 2
 
 
 func _action_equip_armour(entity: EntityProperties) -> int:
-	printerr("equiping armour...")
+	print("equiping armour...")
 	entity.change_armour(self)
 	return 2
 

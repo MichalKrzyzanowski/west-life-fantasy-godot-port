@@ -54,6 +54,7 @@ func _input(event: InputEvent) -> void:
 # public methods
 ## add member_data to party array
 func add_member(entity_data: EntityProperties) -> void:
+	entity_data.set_party_index(party.size())
 	party.append(entity_data)
 
 
@@ -81,6 +82,7 @@ func save() -> Dictionary:
 		"name": name,
 		"parent": get_parent().get_path(),
 		"party_data": party.map(func(a): return a.save()),
+		"gil": gil,
 	}
 
 
@@ -90,6 +92,7 @@ func load(data: Dictionary) -> void:
 		entity_props.stats = CombatStats.new()
 		entity_props.load(item)
 		add_member(entity_props)
+	gil = data["gil"]
 
 
 # private methods

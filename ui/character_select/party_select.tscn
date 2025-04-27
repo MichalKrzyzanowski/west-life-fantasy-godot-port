@@ -28,6 +28,7 @@ level = 1
 max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_value = 0
 gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_0o63n"]
@@ -52,6 +53,7 @@ level = 1
 max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_value = 0
 gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_7shgr"]
@@ -76,6 +78,7 @@ level = 1
 max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_value = 0
 gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_5qyd0"]
@@ -100,6 +103,7 @@ level = 1
 max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_value = 0
 gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_6hljy"]
@@ -124,6 +128,7 @@ level = 1
 max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_value = 0
 gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_xdaxu"]
@@ -148,6 +153,7 @@ level = 1
 max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_value = 0
 gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_kpd14"]
@@ -172,6 +178,7 @@ level = 1
 max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_value = 0
 gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_dajxt"]
@@ -196,6 +203,7 @@ level = 1
 max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_value = 0
 gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_3f68p"]
@@ -220,6 +228,7 @@ level = 1
 max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_value = 0
 gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_b26ce"]
@@ -244,6 +253,7 @@ level = 1
 max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_value = 0
 gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_vdko6"]
@@ -268,6 +278,7 @@ level = 1
 max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_value = 0
 gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_811ui"]
@@ -292,6 +303,7 @@ level = 1
 max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_value = 0
 gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_kwnml"]
@@ -316,6 +328,7 @@ level = 1
 max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_value = 0
 gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_cmqhj"]
@@ -340,6 +353,7 @@ level = 1
 max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_value = 0
 gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_cw7yw"]
@@ -364,6 +378,7 @@ level = 1
 max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_value = 0
 gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_irwih"]
@@ -388,6 +403,7 @@ level = 1
 max_level = 9999
 xp_drop = 0
 gil_drop = 0
+gil_value = 0
 gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_vu75b"]

@@ -80,7 +80,7 @@ var xp: int:
 	set = set_xp
 
 # current hp, character dies if hp reaches 0
-var hp: float:
+var hp: int:
 	set = set_hp
 
 # xp required for the next level
@@ -94,9 +94,16 @@ var defence_multiplier: int = 1
 
 
 ## stats initializer
-func init() -> void:
+func init(reset_default_stats: bool = false) -> void:
 	# TODO: update to _init after godot engine changes
 	print("init stats")
+	# set stat value to 0 of stats that have non 0 defaults e.g. max_level.
+	# mainly used for items and extra level up gains that requires all stats to be 0
+	# except explicitly set stats
+	if reset_default_stats:
+		max_level = 0
+		required_xp = 0
+
 	# fully heals character
 	if config_restore_hp:
 		hp = max_hp
@@ -126,7 +133,7 @@ func set_xp(new_xp: int) -> void:
 
 
 ## hp setter, emits [CombatStats.on_hp_changed]
-func set_hp(new_hp: float) -> void:
+func set_hp(new_hp: int) -> void:
 	if has_hp_depleted:
 		return
 
@@ -155,7 +162,6 @@ func level_up() -> void:
 		return
 
 	level += 1
-	# TODO: call extra level up gains here
 	if extra_level_up_gains.has(level):
 		print("extra level up gains at level %d" % level)
 		add(extra_level_up_gains[level])
@@ -171,7 +177,6 @@ func level_up() -> void:
 
 ## addition method, since gdscript does not
 ## support operator overloading
-# TODO: rework this method, very buggy and static, needs to be more dynamic
 func add(stats: CombatStats) -> void:
 	hp += stats.hp
 	scaler_hp += stats.scaler_hp
@@ -193,7 +198,7 @@ func has_reached_max_level() -> bool:
 
 ## saves data as dictionary for JSON format
 func save() -> Dictionary:
-	return {
+	var dict: Dictionary = {
 		"max_hp": max_hp,
 		"hp": hp,
 		"scaler_hp": scaler_hp,
@@ -208,8 +213,17 @@ func save() -> Dictionary:
 		"allow_hp_overlimit": config_allow_hp_overlimit,
 		"restore_hp": config_restore_hp,
 		"gil_level_cost": gil_level_cost,
-		"extra_level_up_gains": extra_level_up_gains,
+		"gil_value": gil_value,
 	}
+
+	# convert value of extra_level_up_gains dict to dict format
+	var gains_dict: Dictionary = {}
+	for key: int in extra_level_up_gains:
+		gains_dict[key] = extra_level_up_gains[key].save()
+
+	dict["extra_level_up_gains"] = gains_dict
+
+	return dict
 
 
 ## load data from JSON savefile
@@ -226,6 +240,7 @@ func load(data: Dictionary) -> void:
 func load_extra_level_up_gains(data: Dictionary) -> void:
 	for key: String in data.keys():
 		var stats: CombatStats = CombatStats.new()
+		stats.init(true)
 		stats.gil_level_cost = 0
 		stats.load(data[key])
 		extra_level_up_gains[key.to_int()] = stats

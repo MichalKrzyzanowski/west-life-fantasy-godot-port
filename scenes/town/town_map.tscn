@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://cks12v4jq01wl"]
+[gd_scene load_steps=20 format=4 uid="uid://cks12v4jq01wl"]
 
 [ext_resource type="TileSet" uid="uid://1jku0k0we0ls" path="res://scenes/common/path_tileset.tres" id="1_68dcb"]
 [ext_resource type="Script" uid="uid://c28r5klo7aje0" path="res://scenes/town/town_map.gd" id="1_i12ha"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dujvgle5ockxo" path="res://scenes/common/transition_area/transition_area.tscn" id="7_4sy1f"]
 [ext_resource type="PackedScene" uid="uid://dkuaoj8xwwbnn" path="res://ui/shops/common/shop_entrance.tscn" id="8_r1ji4"]
 [ext_resource type="PackedScene" uid="uid://sjvoob1yswme" path="res://ui/shops/common/shop_legacy.tscn" id="9_t1mmq"]
+[ext_resource type="Script" uid="uid://7kc40c7xb0i6" path="res://items/common/item.gd" id="10_djvth"]
 [ext_resource type="Script" uid="uid://c58mgmklnekfj" path="res://entities/common/entity/entity_properties.gd" id="10_es22g"]
 [ext_resource type="Script" uid="uid://bgb0k3xdll7wc" path="res://ui/camp_menu/inventory/common/inventory.gd" id="11_mxww1"]
 [ext_resource type="PackedScene" uid="uid://yuw0j5pyam6n" path="res://ui/shops/common/clinic.tscn" id="12_mxww1"]
@@ -31,7 +32,7 @@ size = Vector2(16, 4)
 [sub_resource type="Resource" id="Resource_i4tin"]
 script = ExtResource("11_mxww1")
 party = Array[ExtResource("10_es22g")]([])
-inventory = {}
+inventory = Dictionary[int, ExtResource("10_djvth")]({})
 metadata/_custom_type_script = "uid://bgb0k3xdll7wc"
 
 [node name="TownMap" type="Node2D" groups=["persist"]]

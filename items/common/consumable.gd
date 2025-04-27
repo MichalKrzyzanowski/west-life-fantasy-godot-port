@@ -20,8 +20,9 @@ class_name Consumable extends Item
 
 
 # _init
-# func _init() -> void:
-# 	pass
+func _init(new_item_action_name: String = "") -> void:
+	stats.init(true)
+	super(new_item_action_name)
 
 
 # _enter_tree
@@ -38,6 +39,13 @@ func _ready() -> void:
 
 
 # public methods
+func save() -> Dictionary:
+	var dict: Dictionary = super()
+	dict["stats"] = stats.save()
+
+	return dict
+
+
 func load(data: Dictionary) -> void:
 	super(data)
 	if data.has("stats"):
