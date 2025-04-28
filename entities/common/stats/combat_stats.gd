@@ -112,7 +112,7 @@ func _to_string() -> String:
 ## only update xp if level cap has not been reached
 ## emits [CombatStats.on_xp_changed]
 func set_xp(new_xp: int) -> void:
-	if hp <= 0:
+	if hp < 1:
 		return
 
 	if has_reached_max_level():
@@ -127,7 +127,6 @@ func set_xp(new_xp: int) -> void:
 
 ## hp setter, emits [CombatStats.on_hp_changed]
 func set_hp(new_hp: int) -> void:
-	print("before: ", hp)
 
 	if config_allow_hp_overlimit:
 		hp = new_hp
@@ -137,7 +136,6 @@ func set_hp(new_hp: int) -> void:
 	on_hp_changed.emit()
 	if hp == 0:
 		on_hp_depleted.emit()
-	print("after: ", hp)
 
 
 ## level up character by increasing:
@@ -170,9 +168,7 @@ func level_up() -> void:
 ## addition method, since gdscript does not
 ## support operator overloading
 func add(stats: CombatStats) -> void:
-	print(hp, stats.hp)
 	hp += stats.hp
-	print(hp, stats.hp)
 	scaler_hp += stats.scaler_hp
 	if stats.max_hp > 0:
 		max_hp += stats.max_hp

@@ -8,7 +8,7 @@
 		"description": "Heals 10 points",
 		"stats": {
 			"hp": 10,
-			"gil_value": 44,
+			"gil_value": 60,
 			"allow_hp_overlimit": true,
 			"restore_hp": false
 		}
