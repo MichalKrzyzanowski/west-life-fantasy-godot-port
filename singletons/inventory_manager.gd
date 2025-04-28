@@ -13,13 +13,13 @@ extends Node
 # @export vars
 
 # public vars
+## inventory used in the items screen of camp menu
+## all consumables are shared between party members
 var consumables_inventory: Inventory
 
 # private vars
 ## all inventories used by party
 var _party_inventories: Array[Inventory]
-## inventory used in the items screen of camp menu
-## all consumables are shared between party members
 
 # @onready vars
 
@@ -111,11 +111,6 @@ func load(data: Dictionary) -> void:
 		var new_inventory: Inventory = Inventory.new()
 		new_inventory.load(dict)
 		add_party_inventory(new_inventory)
-	# for item in data["party_data"]:
-	# 	var entity_props := EntityProperties.new()
-	# 	entity_props.stats = CombatStats.new()
-	# 	entity_props.load(item)
-	# 	add_member(entity_props)
 
 
 # private methods

@@ -9,8 +9,8 @@ extends Node
 # enums
 
 # constants
-const SAVE_FILE = "save_1"
-const SAVE_PATH = "user://saves/%s.save"
+const SAVE_FILE: String = "save_1"
+const SAVE_PATH: String = "user://saves/%s.save"
 
 # @export vars
 # public vars

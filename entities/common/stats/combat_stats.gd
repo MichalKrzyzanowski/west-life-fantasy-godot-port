@@ -66,6 +66,9 @@ const PARAMETERS_LOAD_ORDER: Dictionary = {
 @export var level: int = 1
 ## max level
 @export var max_level: int = 9999
+# current hp, character dies if hp reaches 0
+@export_storage var hp: int = max_hp:
+	set = set_hp
 ## xp the character drops upon death, mainly used for enemy entities
 @export var xp_drop: int
 ## gold the character drops upon death, mainly used for enemy entities
@@ -79,14 +82,8 @@ const PARAMETERS_LOAD_ORDER: Dictionary = {
 var xp: int:
 	set = set_xp
 
-# current hp, character dies if hp reaches 0
-var hp: int:
-	set = set_hp
-
 # xp required for the next level
 var required_xp: int = 100
-
-var has_hp_depleted: bool = false
 
 # defence multiplier, used for blocking
 var defence_multiplier: int = 1
@@ -104,10 +101,6 @@ func init(reset_default_stats: bool = false) -> void:
 		max_level = 0
 		required_xp = 0
 
-	# fully heals character
-	if config_restore_hp:
-		hp = max_hp
-
 
 ## convert stats object to string
 func _to_string() -> String:
@@ -119,7 +112,7 @@ func _to_string() -> String:
 ## only update xp if level cap has not been reached
 ## emits [CombatStats.on_xp_changed]
 func set_xp(new_xp: int) -> void:
-	if has_hp_depleted:
+	if hp <= 0:
 		return
 
 	if has_reached_max_level():
@@ -134,8 +127,7 @@ func set_xp(new_xp: int) -> void:
 
 ## hp setter, emits [CombatStats.on_hp_changed]
 func set_hp(new_hp: int) -> void:
-	if has_hp_depleted:
-		return
+	print("before: ", hp)
 
 	if config_allow_hp_overlimit:
 		hp = new_hp
@@ -144,8 +136,8 @@ func set_hp(new_hp: int) -> void:
 
 	on_hp_changed.emit()
 	if hp == 0:
-		has_hp_depleted = true
 		on_hp_depleted.emit()
+	print("after: ", hp)
 
 
 ## level up character by increasing:
@@ -178,7 +170,9 @@ func level_up() -> void:
 ## addition method, since gdscript does not
 ## support operator overloading
 func add(stats: CombatStats) -> void:
+	print(hp, stats.hp)
 	hp += stats.hp
+	print(hp, stats.hp)
 	scaler_hp += stats.scaler_hp
 	if stats.max_hp > 0:
 		max_hp += stats.max_hp

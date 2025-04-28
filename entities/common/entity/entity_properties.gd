@@ -28,10 +28,6 @@ signal on_gear_changed()
 ## index in party array.
 ## -1 means entity is not part of a party
 var _party_index: int = -1
-## gear ids, used for loading correct equipment.
-## -1 means no gear equipped
-var _weapon_id: int = -1
-var _armour_id: int = -1
 
 # @onready vars
 
@@ -80,12 +76,11 @@ func load(data: Dictionary) -> void:
 			equip_gear(party_inventory.get_item(gear_id))
 
 
-## restored hp to full and sets has_hp_depleted = true
+## restored hp to full
 ## emits on_revival signal
 func revive() -> void:
 	if !stats:
 		printerr("failed to revive, stats object is null")
-	stats.has_hp_depleted = false
 	stats.hp = stats.max_hp
 	on_revival.emit()
 

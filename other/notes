@@ -2,6 +2,62 @@
 	- move decimal right 2 times i.e. x100. e.g. 0.75 = 75.0
 	- reverse negative number on y axis e.g. 1.25 = -1.25
 
+- inventory system implementation ideas:
+	- implementation #1:
+		- item resource:
+			- items inherit base item resource
+			- base item props:
+				- name
+				- stack_size: defaults to 1 for gear compat
+				- amount: (1-stack_size)
+					- if amount = 0, the item should be removed from player inventory
+				- signals:
+					- on_remove:
+						- when item stack_size reaches 0
+					- on_amount_changed:
+						- when item is either dropped/aquired/sold. anyway that amount is changed
+					- aquired:
+						- when item is added to player's inventory
+			- different custom resources types:
+				- consumable: stack size defaults to 15, item effect/action e.g. heal party
+					- effect func should have a target entity/list of entities as parameter
+					- effect func can alter entity stats in a positive/negative way
+				- gear: stats, stack_size = 1
+					- stats: can hold a stat of defence, attack, etc.
+						- maybe use combat_stats resource
+						- up to combat scene how entity gear stats affect combat e.g. only use attack
+					- entity type/class that can equip:
+						- e.g. only warrior can equip plate armour
+						- armour/weapon select screen should sort by party member like in original
+		- inventory autoload:
+			- this will manage player inventory: add/remove/use item, stacks, etc.
+			- a dict or array, holding custom item resources
+			- signals:
+				- on_item_added(item)
+					- when new item is added to player's inventory
+		- gui item:
+			- button that is used to display item name and count to the player in the camp menu
+			- clicking on the button performs the item's action if consumable
+		- camp_menu:
+			- item inventory fetches player inventory from inventory autoload, updates ui list of items
+		- item management flow example:
+			- player buys a potion from the item shop
+			- potion is added to the player's inventory
+			- inventory manager emit's signal on_item_added
+			- gui inventory in party camp recieves the signal
+			- gui item scene is instantiated
+			- gui item scene connects item's on_amount_changed and other stat changing signals
+			- gui inventory connects item's on_remove signal
+	- implementation #2:
+		- same item resource as before
+		- each item has a unique id
+		- stored in an item database dict
+			- dict(id, item_resource)
+		- gui inventory fetches the list of items in the player's inventory and displays them
+			- try to handle it from another thread
+	- gui_inventory should have filter options to filter items by type
+		- could be used to only display items of x type in one gui_inventory without needing to have an inventory for armour & a seperate one for weapons
+
 - original shop implementation notes:
 	- 4 shop scenes (+ summary of differences):
 		- armour shop: shopkeeper text, options(buy, exit), inventory

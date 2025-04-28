@@ -53,6 +53,9 @@ func _ready() -> void:
 		entity_properties.stats.on_hp_changed.connect(_on_entity_hp_changed)
 		entity_properties.on_revival.connect(_on_entity_revival)
 		entity_properties.stats.on_level_up.connect(_on_entity_level_up)
+		# entity has been created with 0 hp
+		if entity_properties.stats.hp < 1:
+			_on_entity_hp_depleted()
 
 		# init hp bar if user choose not to hide the health bars
 		if hide_ui:

@@ -55,7 +55,8 @@ func load(data: Dictionary) -> void:
 # private methods
 ## actions
 func _action_consume(entity: EntityProperties) -> int:
-	entity.stats.add(stats)
+	if entity.is_alive():
+		entity.stats.add(stats)
 	return 1
 
 
