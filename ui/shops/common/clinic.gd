@@ -5,19 +5,23 @@ extends Control
 
 
 # signals
+## emitted when exit button is clicked
 signal on_exit()
 
 # enums
+## enum class that represents state of the clinic
 enum ClinicState {
-	STANDBY,
-	REVIVE_AVAILABLE,
-	REVIVE,
+	STANDBY, ## initial state, when player enters shop
+	REVIVE_AVAILABLE, ## when at least one party member is dead
+	REVIVE, ## when dead party member is clicked
 }
 
 # constants
 
 # @export vars
+## cost to revive a dead party member
 @export var revive_cost: int = 40
+## clinic name
 @export var clinic_name: String
 ## toggles clinic legacy exit functionality
 ## which includes exiting the clinic by pressing
@@ -28,6 +32,7 @@ enum ClinicState {
 # public vars
 
 # private vars
+# current state of clinic
 var _clinic_state: ClinicState = ClinicState.STANDBY:
 	set(new_state):
 		_clinic_state = new_state
@@ -54,7 +59,7 @@ var _selected_dead_member_button: Button
 
 @onready var exit_button: Button = $ExitButton
 
-# preloads
+# theme assets that are applied to newly created dead party member button
 @onready var empty_button_theme: Theme = preload("res://ui/common/theme/empty_button.tres")
 @onready var arial_bold_font: Font = preload("res://ui/common/font/arialbd.ttf")
 
@@ -81,6 +86,7 @@ func _ready() -> void:
 
 
 # remaining builtins e.g. _process, _input
+## used only in when legacy mode is enabled
 func _input(event: InputEvent) -> void:
 	if !legacy_mode:
 		return
@@ -103,13 +109,14 @@ func _update_dead_party_members() -> void:
 		if !member.is_alive():
 			_add_dead_member_button(i, member.name)
 
+	# switch state when 1 or more party members are dead
 	if dead_party_list.get_child_count() > 0:
 		_clinic_state = ClinicState.REVIVE_AVAILABLE
 
 
-## adds new button dead party members options list.
-## button holds metadata of party member id and
-## pressed signal is connected
+## adds new button to dead party members options list.
+## button holds metadata of party [param member_id] and
+## pressed signal is connected. button text is set to [param member_name]
 func _add_dead_member_button(member_id: int, member_name: String) -> void:
 	# button setup
 	var button: Button = Button.new()
@@ -126,20 +133,27 @@ func _add_dead_member_button(member_id: int, member_name: String) -> void:
 	dead_party_list.add_child(button)
 
 
+## stores [param button_ref] into private variable and
+## switches state to [constant ClinicState.REVIVE]
 func _on_dead_member_button_pressed(button_ref: Button) -> void:
 	_selected_dead_member_button = button_ref
 	_clinic_state = ClinicState.REVIVE
 
 
+## updates gil text label with current party gil
 func _update_gil_text() -> void:
 	gil_label.text = "%d G" % PartyManager.gil
 
 
+## enter initial state.
+## changes clinic info text and hides options box
 func _enter_standby_state() -> void:
 	info_label.text = "You do not need my help now."
 	options_panel.hide()
 
 
+## called when one or more party members are dead.
+## changes clinic info text and shows options box
 func _enter_revive_available_state() -> void:
 	info_label.text = "Who shall be revived...."
 	options_panel.show()
@@ -147,17 +161,22 @@ func _enter_revive_available_state() -> void:
 	confirm_selection_list.hide()
 
 
+## called when dead party member is clicked.
+## shows yes/no prompt
 func _enter_revive_state() -> void:
 	confirm_selection_list.show()
 	dead_party_list.hide()
 
 
+## cleans up clinic by resetting state to standby.
+## called when exiting the clinic
 func _exit_clinic() -> void:
 	_selected_dead_member_button = null
 	_clinic_state = ClinicState.STANDBY
 	on_exit.emit()
 
 
+## revives dead party member, if player can afford it
 func _on_confirm_button_pressed() -> void:
 	if !_selected_dead_member_button:
 		printerr("dead member button is not selected")
@@ -184,6 +203,7 @@ func _on_confirm_button_pressed() -> void:
 		_clinic_state = ClinicState.STANDBY
 
 
+## called when player declines party member revival i.e. selects no
 func _on_decline_button_pressed() -> void:
 	_clinic_state = ClinicState.REVIVE_AVAILABLE
 

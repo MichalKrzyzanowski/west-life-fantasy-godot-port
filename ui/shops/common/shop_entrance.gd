@@ -11,12 +11,15 @@ extends Area2D
 # constants
 
 # @export vars
+## collision shape for player to collide with
+## in order to enter a shop
 @export var shape: Shape2D:
 	set(new_shape):
 		shape = new_shape
 		if collision_shape:
 			collision_shape.shape = shape
 
+## shop to enter
 @export var shop_ref: Control
 
 # public vars
@@ -28,14 +31,15 @@ var fader: AnimationPlayer
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 
-func _init() -> void:
-	pass
+# func _init() -> void:
+# 	pass
 
 
-func _enter_tree() -> void:
-	pass
+# func _enter_tree() -> void:
+# 	pass
 
 
+## initialize shop entrance shape & shop ref, including in editor
 func _ready() -> void:
 	collision_shape.shape = shape
 
@@ -60,6 +64,7 @@ func _ready() -> void:
 
 
 # private methods
+## pauses the game and fades into the shop
 func _enter_shop() -> void:
 	fader.keep_paused = true
 	fader.play_backwards("fade")
@@ -67,6 +72,7 @@ func _enter_shop() -> void:
 	shop_ref.show()
 
 
+## unpauses the game and fades out of the shop
 func _exit_shop() -> void:
 	fader.keep_paused = false
 	shop_ref.hide()

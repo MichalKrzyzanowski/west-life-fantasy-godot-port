@@ -5,28 +5,37 @@ extends Control
 
 
 # signals
+## emitted when exiting shop
 signal on_exit()
 
 # enums
+## enum class that represents shop state
 enum ShopState {
-	STANDBY,
-	BUY,
-	SELL,
+	STANDBY, ## initial state, when player enters shop
+	BUY, ## when buy button clicked, redundant mechanic, exists for legacy reasons
+	SELL, ## enter sell mode, player can sell items in this state
 }
 
 # constants
 
 # @export vars
+## name of shop
 @export var shop_name: String
+## enables sell mode feature of the shop, allowing
+## player to press "sell" button and sell currently available
+## items
 @export var enable_sell_mode: bool = false
 ## array of item ids to populate the shop with
 @export var shop_items: Array[int]
+## where bought items go and sold items are sold from
 @export var target_inventory: Inventory
 
 # public vars
+## shop inventory, populated with items from item id array
 var shop_inventory: Inventory = Inventory.new()
 
 # private vars
+## current state of shop, defaults to [constant ShopState.STANDBY]
 var shop_state: ShopState = ShopState.STANDBY:
 	set(new_state):
 		shop_state = new_state
@@ -38,6 +47,7 @@ var shop_state: ShopState = ShopState.STANDBY:
 			ShopState.SELL:
 				_enter_sell_state()
 
+## reference to currently selected item for purchase
 var _selected_shop_item: Item
 
 # @onready vars
@@ -53,14 +63,15 @@ var _selected_shop_item: Item
 @onready var exit_button: Button = $OptionsPanel/OptionsList/ExitButton
 
 
-func _init() -> void:
-	pass
+# func _init() -> void:
+# 	pass
 
 
-func _enter_tree() -> void:
-	pass
+# func _enter_tree() -> void:
+# 	pass
 
 
+## initialize shop name, relevant signals, etc.
 func _ready() -> void:
 	# set shop name
 	title_label.text = shop_name
@@ -93,6 +104,8 @@ func set_target_inventory(inventory: Inventory) -> void:
 
 
 # private methods
+## buy item with [param item_id] in [constant ShopState.STANDBY]
+## and sell said item in [constant ShopState.SELL]
 func _on_item_clicked(inventory: Inventory, item_id: int) -> void:
 	match shop_state:
 		ShopState.STANDBY:
@@ -101,6 +114,7 @@ func _on_item_clicked(inventory: Inventory, item_id: int) -> void:
 			_sell_item(inventory, item_id)
 
 
+## handles buy item logic
 func _buy_item(inventory: Inventory, item_id: int) -> void:
 	_selected_shop_item = inventory.get_item(item_id)
 	print("buying %s" % _selected_shop_item.name)
@@ -115,6 +129,8 @@ func _buy_item(inventory: Inventory, item_id: int) -> void:
 	shop_state = ShopState.BUY
 
 
+## handles sell item logic, gil gained is half of item's original value
+## i.e. gil += item_value / 2
 func _sell_item(inventory: Inventory, item_id: int) -> void:
 	_selected_shop_item = inventory.get_item(item_id)
 	print("selling %s" % _selected_shop_item.name)
@@ -124,10 +140,13 @@ func _sell_item(inventory: Inventory, item_id: int) -> void:
 	inventory.remove_item(item_id)
 
 
+## update gil label text with current party gil
 func _update_gil_text() -> void:
 	gil_label.text = "%d G" % PartyManager.gil
 
 
+## initial state, shows buy & exit buttons.
+## sell button is also shown if sell mode is available
 func _enter_standby_state() -> void:
 	buy_button.text = "Buy"
 	exit_button.text = "Exit"
@@ -137,6 +156,7 @@ func _enter_standby_state() -> void:
 	exit_button.show()
 
 
+## shows yes/no prompt, player has to confirm purchase
 func _enter_buy_state() -> void:
 	buy_button.text = "Yes"
 	exit_button.text = "No"
@@ -144,12 +164,14 @@ func _enter_buy_state() -> void:
 	options_panel.show()
 
 
+## shows back button
 func _enter_sell_state() -> void:
 	buy_button.hide()
 	sell_button.hide()
 	exit_button.text = "Back"
 
 
+## handles legacy buy button logic and purchase confirmation
 func _on_buy_button_pressed() -> void:
 	match shop_state:
 		ShopState.STANDBY:
@@ -164,6 +186,7 @@ func _on_buy_button_pressed() -> void:
 			info_label.text = "Thank you!\nWhat else?"
 
 
+## show player inventory and switch to sell state
 func _on_sell_button_pressed() -> void:
 	print("sell button pressed")
 	title_label.text = "Inventory"
@@ -172,6 +195,7 @@ func _on_sell_button_pressed() -> void:
 	info_label.text = "Whose item do want to sell?"
 
 
+## handles exiting shop, declining purchase, and exiting sell state
 func _on_exit_button_pressed() -> void:
 	match shop_state:
 		ShopState.STANDBY:
