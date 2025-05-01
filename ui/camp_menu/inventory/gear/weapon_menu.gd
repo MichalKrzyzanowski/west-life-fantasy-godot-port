@@ -29,6 +29,8 @@ func _enter_tree() -> void:
 	pass
 
 
+## connects [signal PartyManager.on_gil_changed] signal
+## and sets item_filter to "weapon"
 func _ready() -> void:
 	item_filter = "weapon"
 	super()
@@ -40,11 +42,13 @@ func _ready() -> void:
 
 
 # public methods
+## updates gil label with current party gil
 func update_gil() -> void:
 	gil_label.text = "Gil: %d" % PartyManager.gil
 
 
 # private methods
+## sets gear action to upgrade when drop button is toggled on
 func _on_upgrade_button_toggled(toggled_on: bool) -> void:
 	_unpress_action_buttons()
 	_gear_action_state = GearActionState.NONE

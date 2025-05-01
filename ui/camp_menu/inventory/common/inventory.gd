@@ -4,7 +4,10 @@ class_name Inventory extends Resource
 
 
 # signals
+## emitted when any inventory item is updated/removed
+## or a new item is added
 signal on_inventory_update()
+## emitted when item with [param item_id] is used
 signal on_item_used(item_id: int)
 
 # enums
@@ -12,7 +15,9 @@ signal on_item_used(item_id: int)
 # constants
 
 # @export vars
+## party reference
 @export var party: Array[EntityProperties]
+## dictionary that stores items, key is the items id
 @export var inventory: Dictionary[int, Item] = {}
 
 # public vars
@@ -30,26 +35,28 @@ var _item_type_callbacks: Dictionary = {
 
 
 # _init
-func _init() -> void:
-	pass
+# func _init() -> void:
+# 	pass
 
 
 # _enter_tree
-func _enter_tree() -> void:
-	pass
+# func _enter_tree() -> void:
+# 	pass
 
 
 # _ready
-func _ready() -> void:
-	pass
+# func _ready() -> void:
+# 	pass
 
 
 # remaining builtins e.g. _process, _input
+## returns string representation of the inventory
 func _to_string() -> String:
 	return str(inventory)
 
 
 # public methods
+## adds [param amount] item(s) with [param item_id]
 func add_item(item_id: int, amount: int = 1) -> void:
 	# return if item_id is not present in database
 	if !ItemDatabase.has_item(item_id):
@@ -77,6 +84,7 @@ func add_items(item_ids: Array[int]) -> void:
 		add_item(id)
 
 
+## removes [param amount] item(s) with [param item_id]
 func remove_item(item_id: int, amount: int = 1) -> void:
 	if !inventory.has(item_id):
 		printerr("no item present with id %d" % item_id)
@@ -136,11 +144,14 @@ func use_item(item_id: int) -> void:
 			printerr("unknown item use return code %s" % consume_item)
 
 
+## upgrade item with [param item_id] if applicable
+## and party can afford to do so
 func upgrade_item(item_id: int) -> void:
 	if !inventory.has(item_id):
 		printerr("no item present with id %d" % item_id)
 		return
 
+	# upgrade item only if the item has upgrade() method
 	var item: Item = get_item(item_id)
 	if item.has_method("upgrade"):
 		item.upgrade()
@@ -174,6 +185,7 @@ func has_item(id: int) -> bool:
 	return inventory.has(id)
 
 
+## saves data as dictionary for JSON format
 func save() -> Dictionary:
 	var dict: Dictionary = {}
 
@@ -185,6 +197,7 @@ func save() -> Dictionary:
 	}
 
 
+## load data from JSON savefile
 func load(data: Dictionary) -> void:
 	for item_data: Dictionary in data["inventory"].values():
 		# TODO: think of moving below logic to item utility class

@@ -5,6 +5,7 @@ extends HFlowContainer
 
 
 # signals
+## emitted when item is clicked
 signal on_item_gui_clicked(inventory: Inventory, item_id: int)
 
 # enums
@@ -20,25 +21,32 @@ signal on_item_gui_clicked(inventory: Inventory, item_id: int)
 @export var hide_scrollbar: bool = false
 ## disables scrolling
 @export var disable_scrolling: bool = false
-## horizontal and vertical seperation constants for inventory_grid
+## horizontal aseperation constant for inventory_grid
 @export var inv_grid_h_seperation: int = 0
+## vertical seperation constant for inventory_grid
 @export var inv_grid_v_seperation: int = 0
 ## scene to be used for displaying item data
 @export var item_gui: PackedScene
+## when true, clicked items call its use method
+## which usely means the item will be consumed on use
 @export var enable_item_use_action: bool = true
+## party reference
 @export var party: Array[EntityProperties]
 
 # public vars
 ## reference to inventory object that will be displayed
 var inventory: Inventory
+## item filter, inventory will only display items that pass this filter
 var item_filter: String = ""
 
 # private vars
+## inventory page vars
 var _first_page: int = 0
 var _current_page: int = _first_page
 var _previous_page: int = _current_page
 var _page_count: int = _current_page
 
+## inventory array as extracted from [class Inventory] dictionary
 var _item_arr: Array
 
 # @onready vars
@@ -46,8 +54,8 @@ var _item_arr: Array
 @onready var scrollbar: VScrollBar = $VScrollBar
 
 
-func _enter_tree() -> void:
-	pass
+# func _enter_tree() -> void:
+# 	pass
 
 
 ## initialize item grid and applies scrollbar setting.
@@ -113,6 +121,7 @@ func update_inventory() -> void:
 	_update_item_gui()
 
 
+## item_filter setter
 func set_item_filter(filter: String) -> void:
 	item_filter = filter
 
@@ -228,6 +237,7 @@ func _on_item_clicked(item_id: int) -> void:
 	update_inventory()
 
 
+## called when [signal Inventory.on_inventory_update] is emitted
 func _on_inventory_update() -> void:
 	update_inventory()
 

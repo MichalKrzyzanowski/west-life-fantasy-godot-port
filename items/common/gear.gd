@@ -10,9 +10,11 @@ class_name Gear extends Item
 # constants
 
 # @export vars
+## gear stats
 @export var stats: CombatStats = CombatStats.new()
 
 # public vars
+## marked true if item is equipped
 var is_equipped: bool = false
 
 # private vars
@@ -21,25 +23,27 @@ var is_equipped: bool = false
 
 
 # _init
+## initializes stats and item action identifier
 func _init(new_item_action_name: String = "") -> void:
 	stats.init(true)
 	super(new_item_action_name)
 
 
 # _enter_tree
-func _enter_tree() -> void:
-	pass
+# func _enter_tree() -> void:
+# 	pass
 
 
 # _ready
-func _ready() -> void:
-	pass
+# func _ready() -> void:
+# 	pass
 
 
 # remaining builtins e.g. _process, _input
 
 
 # public methods
+## saves data as dictionary for JSON format
 func save() -> Dictionary:
 	var dict: Dictionary = super()
 	dict["stats"] = stats.save()
@@ -47,12 +51,14 @@ func save() -> Dictionary:
 	return dict
 
 
+## load data from JSON savefile
 func load(data: Dictionary) -> void:
 	super(data)
 	if data.has("stats"):
 		stats.load(data["stats"])
 
 
+## handles logic for upgrading gear
 func upgrade() -> void:
 	if stats.has_reached_max_level():
 		print("%s is max level" % name)
@@ -66,7 +72,6 @@ func upgrade() -> void:
 	# spend party gil and upgrade
 	PartyManager.spend_gil(stats.gil_level_cost)
 	stats.level_up()
-	print(stats)
 
 
 # private methods
@@ -74,13 +79,19 @@ func _to_string() -> String:
 	return super() + " %s" % stats
 
 
-## actions
+# actions
+## action used for equiping weapon gear for [param entity].
+## return 2 simply means that [member Inventory.use] will only send out
+## [signal Inventory.on_inventory_update] on item use
 func _action_equip_weapon(entity: EntityProperties) -> int:
 	print("equiping weapon...")
 	entity.change_weapon(self)
 	return 2
 
 
+## action used for equiping armour gear for [param entity].
+## return 2 simply means that [member Inventory.use] will only send out
+## [signal Inventory.on_inventory_update] on item use
 func _action_equip_armour(entity: EntityProperties) -> int:
 	print("equiping armour...")
 	entity.change_armour(self)

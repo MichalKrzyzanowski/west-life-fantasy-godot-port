@@ -7,11 +7,14 @@ extends Control
 # signals
 
 # enums
+## enum class representing gear interaction
+## state. each state changes behaviour of click action
+## on a gear item
 enum GearActionState {
-	EQUIP = 0,
-	UPGRADE,
-	DROP,
-	NONE,
+	EQUIP = 0, ## equips clicked gear
+	UPGRADE, ## upgrades clicked gear
+	DROP, ## removes clicked gear from inventory
+	NONE, ## default state, nothing happens when item is clicked
 }
 
 # constants
@@ -19,9 +22,11 @@ enum GearActionState {
 # @export vars
 
 # public vars
+## gear item filter, defaults to "armour"
 var item_filter: String = "armour"
 
 # private vars
+## current gear action state defaults to [constant GearActionState.NONE]
 var _gear_action_state: GearActionState = GearActionState.NONE
 
 # @onready vars
@@ -39,14 +44,18 @@ func _enter_tree() -> void:
 	pass
 
 
+## initializes each party member's inventory gui display
 func _ready() -> void:
 	# initialize inventories for each gui inventory in the scene
 	for i: int in gui_inventories.get_child_count():
 		gui_inventories.get_child(i).set_party_name_text(PartyManager.get_member(i))
+
 		var gui_inventory: HFlowContainer = gui_inventories.get_child(i).get_gui_inventory()
 		gui_inventory.set_item_filter(item_filter)
+
 		var inv_party_ref: Array[EntityProperties] = [PartyManager.get_member(i)]
 		gui_inventory.set_inventory(InventoryManager.get_party_inventory(i), inv_party_ref)
+
 		gui_inventory.on_item_gui_clicked.connect(_on_item_clicked)
 
 # remaining builtins e.g. _process, _input
@@ -90,7 +99,7 @@ func _on_equip_button_toggled(toggled_on: bool) -> void:
 		_gear_action_state = GearActionState.EQUIP
 
 
-## sets drop action to equip when drop button is toggled on
+## sets gear action to equip when drop button is toggled on
 func _on_drop_button_toggled(toggled_on: bool) -> void:
 	_unpress_action_buttons()
 	_gear_action_state = GearActionState.NONE

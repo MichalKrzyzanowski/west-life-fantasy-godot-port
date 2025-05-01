@@ -1,9 +1,5 @@
 # @tool
 class_name Item extends Resource
-# TODO: add use() override func
-# TODO: add equip() override func
-# TODO: add stats (to gear & consumables)
-# TODO: add tooltip() override func
 # docstring
 
 
@@ -14,15 +10,25 @@ class_name Item extends Resource
 # constants
 
 # @export vars
+## item id
 @export var id: int = -1
+## item name
 @export var name: String = "dummy"
+## item type, used for inventory item filtering
 @export var type: String = ""
+## count of items in the stack
 @export var amount: int= 0
+## max amount of an item an inventory can hold
 @export var stack_size: int = 64
+## item description, mainly used for consumables
 @export var description: String = "dummy"
+## item action method identifier, used in [member item_action]
 @export var item_action_name: String = "dummy"
 
 # public vars
+## action to call when item is used
+## allows items to have functionality such as
+## healing, increasing max hp, etc. on use
 var item_action: Callable
 
 # private vars
@@ -31,6 +37,7 @@ var item_action: Callable
 
 
 # _init
+## initilizes item action identifier
 func _init(new_item_action_name: String = "") -> void:
 	if !new_item_action_name:
 		return
@@ -40,13 +47,13 @@ func _init(new_item_action_name: String = "") -> void:
 
 
 # _enter_tree
-func _enter_tree() -> void:
-	pass
+# func _enter_tree() -> void:
+# 	pass
 
 
 # _ready
-func _ready() -> void:
-	pass
+# func _ready() -> void:
+# 	pass
 
 
 # remaining builtins e.g. _process, _input
@@ -85,6 +92,7 @@ func use(entity: EntityProperties) -> int:
 	return item_action.call(entity)
 
 
+## saves data as dictionary for JSON format
 func save() -> Dictionary:
 	return {
 		"id": id,
@@ -96,6 +104,7 @@ func save() -> Dictionary:
 	}
 
 
+## load data from JSON savefile
 func load(data: Dictionary) -> void:
 	id = data["id"]
 	name = data["name"]
@@ -110,6 +119,7 @@ func load(data: Dictionary) -> void:
 
 
 # private methods
+## string representation of Item class
 func _to_string() -> String:
 	return "[%d]%s: amount: %d/%d" % [id, name, amount, stack_size]
 

@@ -39,11 +39,13 @@ func _ready() -> void:
 
 
 # private methods
+## updates gil value label with default
 func _set_defaults() -> void:
 	super()
 	gil_value_label.text = ""
 
 
+## sets item's gil value to gil value label if gil value > 0
 func _update_item_display() -> void:
 	super()
 	if item.stats.gil_value > 0:

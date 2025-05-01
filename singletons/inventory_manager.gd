@@ -24,14 +24,16 @@ var _party_inventories: Array[Inventory]
 # @onready vars
 
 
-func _init() -> void:
-	pass
+# func _init() -> void:
+# 	pass
 
 
+## initializes [member consumables_inventory]
 func _enter_tree() -> void:
 	consumables_inventory = Inventory.new()
 
 
+## allows saving/loading of current scene
 func _ready() -> void:
 	add_to_group("persist")
 
@@ -40,10 +42,13 @@ func _ready() -> void:
 
 
 # public methods
+## creates empty party inventory
 func create_party_inventory() -> void:
 	add_party_inventory(Inventory.new())
 
 
+## return [class Inventory] from _party_inventories array at
+## [param index]
 func get_party_inventory(index: int) -> Inventory:
 	if !_inventory_exists(index):
 		printerr("no inventory found with index: %d" % index)
@@ -52,15 +57,17 @@ func get_party_inventory(index: int) -> Inventory:
 	return _party_inventories[index]
 
 
+## _party_inventories getter
 func get_party_inventories() -> Array[Inventory]:
 	return _party_inventories
 
 
+## add [param inventory] to _party_inventories
 func add_party_inventory(inventory: Inventory) -> void:
 	_party_inventories.append(inventory)
 
 
-# TODO: test func, remove after testing
+# TODO: test func, remove after testing or once boss rewards are implemented
 func test_populate_inventories(generate_party: bool = false) -> void:
 	if generate_party:
 		var mem1 = load("res://entities/party-members/black_belt/black_belt.tres")
@@ -90,6 +97,7 @@ func test_populate_inventories(generate_party: bool = false) -> void:
 		i.add_item(22)
 
 
+## saves data as dictionary for JSON format
 func save() -> Dictionary:
 	var dict: Dictionary = {
 		"name": name,
@@ -105,6 +113,7 @@ func save() -> Dictionary:
 	return dict
 
 
+## load data from JSON savefile
 func load(data: Dictionary) -> void:
 	consumables_inventory.load(data["consumables"])
 	for dict: Dictionary in data["party_inventories"].values():
@@ -114,6 +123,8 @@ func load(data: Dictionary) -> void:
 
 
 # private methods
+## returns [code]true[code] if [param index]
+## exists in _party_inventories
 func _inventory_exists(index: int) -> bool:
 	return index < _party_inventories.size()
 
