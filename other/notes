@@ -244,3 +244,16 @@
 			- BossBossBoss
 			- BossWif
 		- combat scene will have an enemy spawn table, with percent chance to spawn each enemy
+
+- item duplicates in single inventory:
+	- need to inventigate how to implement ability for inventory to hold duplicate item with same id
+		- e.g. second stack of potions after first one reaches limit, 2 swords of the same type
+	- potential options:
+		- create seperate duplicate id
+			- temporary
+			- replace int key in inventory with string with format <id>-<dup-id>
+			- would not be saved
+		- replace id with uid
+		- convert inventory dict to array
+			- same way is done in gloot plugin
+	- future proofing

@@ -16,6 +16,7 @@ extends Node
 ## inventory used in the items screen of camp menu
 ## all consumables are shared between party members
 var consumables_inventory: Inventory
+var main_inventory: Inventory
 
 # private vars
 ## all inventories used by party
@@ -95,6 +96,15 @@ func test_populate_inventories(generate_party: bool = false) -> void:
 		i.add_item(32)
 		i.add_item(21)
 		i.add_item(22)
+
+	# setup main inventory
+	main_inventory.add_item(1, 5)
+	main_inventory.add_item(2, 5)
+	main_inventory.add_item(3, 5)
+	main_inventory.add_item(31)
+	main_inventory.add_item(32)
+	main_inventory.add_item(21)
+	main_inventory.add_item(22)
 
 
 ## saves data as dictionary for JSON format

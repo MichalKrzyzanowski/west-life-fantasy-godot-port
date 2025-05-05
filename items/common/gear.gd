@@ -12,6 +12,9 @@ class_name Gear extends Item
 # @export vars
 ## gear stats
 @export var stats: CombatStats = CombatStats.new()
+# TODO: replace with character class i.e. warrior, thief in the future
+## index of party member that is required to equip this item
+@export var required_party_index: int = -1
 
 # public vars
 ## marked true if item is equipped
@@ -46,6 +49,7 @@ func _init(new_item_action_name: String = "") -> void:
 ## saves data as dictionary for JSON format
 func save() -> Dictionary:
 	var dict: Dictionary = super()
+	dict["required_party_index"] = required_party_index
 	dict["stats"] = stats.save()
 
 	return dict
@@ -56,6 +60,8 @@ func load(data: Dictionary) -> void:
 	super(data)
 	if data.has("stats"):
 		stats.load(data["stats"])
+	if data.has("required_party_index"):
+		required_party_index = data["required_party_index"]
 
 
 ## handles logic for upgrading gear

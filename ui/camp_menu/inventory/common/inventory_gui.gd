@@ -38,6 +38,7 @@ signal on_item_gui_clicked(inventory: Inventory, item_id: int)
 var inventory: Inventory
 ## item filter, inventory will only display items that pass this filter
 var item_filter: String = ""
+var item_filter_experimental: Dictionary[String, Variant] = {}
 
 # private vars
 ## inventory page vars
@@ -126,12 +127,20 @@ func set_item_filter(filter: String) -> void:
 	item_filter = filter
 
 
+func set_item_filter_exp(filter: Dictionary[String, Variant]) -> void:
+	item_filter_experimental = filter
+
+
 ## fetch inventory items as array.
 ## items can be filtered by [param item_type]
 func get_inventory_items(item_type: String = "") -> Array:
 	if !item_type:
 		return inventory.values()
-	var filter_lambda: Callable = func(item: Item) -> bool: return item.type == item_type
+	var filter_lambda: Callable = func(item: Item) -> bool:
+		return item.has_properties_and_values(item_filter_experimental)
+		# item.get_property_list().all()
+		# return item.type == item_type
+
 	return inventory.values().filter(filter_lambda)
 
 

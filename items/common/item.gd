@@ -92,6 +92,14 @@ func use(entity: EntityProperties) -> int:
 	return item_action.call(entity)
 
 
+func has_properties_and_values(filter: Dictionary[String, Variant]) -> bool:
+	var filter_result: Array[Variant] = filter.keys()
+	return filter_result.all(func(prop: String) -> bool:
+		var prop_value: Variant = get(prop)
+		return prop_value != null && filter[prop] == prop_value
+	)
+
+
 ## saves data as dictionary for JSON format
 func save() -> Dictionary:
 	return {

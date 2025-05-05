@@ -5,6 +5,7 @@
 		"type": "weapon",
 		"amount": 0,
 		"stack_size": 1,
+		"required_party_index": 0,
 		"stats": {
 			"max_level": 10,
 			"attack": 5,
@@ -31,6 +32,7 @@
 		"type": "weapon",
 		"amount": 0,
 		"stack_size": 1,
+		"required_party_index": 1,
 		"stats": {
 			"max_level": 10,
 			"attack": 15,

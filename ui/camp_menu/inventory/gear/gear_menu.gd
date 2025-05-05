@@ -24,6 +24,7 @@ enum GearActionState {
 # public vars
 ## gear item filter, defaults to "armour"
 var item_filter: String = "armour"
+var item_filter_exp: Dictionary[String, Variant] = {"type": "armour", "id": 21}
 
 # private vars
 ## current gear action state defaults to [constant GearActionState.NONE]
@@ -51,10 +52,12 @@ func _ready() -> void:
 		gui_inventories.get_child(i).set_party_name_text(PartyManager.get_member(i))
 
 		var gui_inventory: HFlowContainer = gui_inventories.get_child(i).get_gui_inventory()
-		gui_inventory.set_item_filter(item_filter)
+		# gui_inventory.set_item_filter(item_filter)
+		gui_inventory.set_item_filter_exp(item_filter_exp)
 
 		var inv_party_ref: Array[EntityProperties] = [PartyManager.get_member(i)]
-		gui_inventory.set_inventory(InventoryManager.get_party_inventory(i), inv_party_ref)
+		# gui_inventory.set_inventory(InventoryManager.get_party_inventory(i), inv_party_ref)
+		gui_inventory.set_inventory(InventoryManager.main_inventory, inv_party_ref)
 
 		gui_inventory.on_item_gui_clicked.connect(_on_item_clicked)
 
