@@ -70,10 +70,12 @@ func load(data: Dictionary) -> void:
 	if _party_index < 0:
 		return
 
-	var party_inventory: Inventory = InventoryManager.get_party_inventory(_party_index)
-	for gear_id: int in data["gear_ids"]:
-		if party_inventory.has_item(gear_id):
-			equip_gear(party_inventory.get_item(gear_id))
+	# var party_inventory: Inventory = InventoryManager.get_party_inventory(_party_index)
+	for gear_id: String in data["gear_ids"]:
+		# if party_inventory.has_item(gear_id):
+		if InventoryManager.main_inventory.has_item(gear_id):
+			# equip_gear(party_inventory.get_item(gear_id))
+			equip_gear(InventoryManager.main_inventory.get_item(gear_id))
 
 
 ## restored hp to full
@@ -139,25 +141,25 @@ func equip_gear(gear: Gear) -> void:
 
 
 ## unequip gear with matching [param gear_id]
-func unequip_gear(gear_id: int) -> void:
-	if weapon && weapon.id == gear_id:
+func unequip_gear(gear_id: String) -> void:
+	if weapon && weapon.get_full_id() == gear_id:
 		weapon = null
 		on_gear_changed.emit()
 
-	elif armour && armour.id == gear_id:
+	elif armour && armour.get_full_id() == gear_id:
 		armour = null
 		on_gear_changed.emit()
 
 
 ## get currently equipped gear ids
-func get_gear_ids() -> Array[int]:
-	var gear_ids: Array[int] = []
+func get_gear_ids() -> Array[String]:
+	var gear_ids: Array[String] = []
 
 	if weapon:
-		gear_ids.append(weapon.id)
+		gear_ids.append(weapon.get_full_id())
 
 	if armour:
-		gear_ids.append(armour.id)
+		gear_ids.append(armour.get_full_id())
 
 	return gear_ids
 

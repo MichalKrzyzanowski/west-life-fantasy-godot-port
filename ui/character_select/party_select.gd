@@ -53,9 +53,10 @@ func _on_continue_button_pressed() -> void:
 		# add selected chatacter to party and create new inventory
 		if item.has_method("add_current_to_party"):
 			item.call("add_current_to_party")
-			InventoryManager.create_party_inventory()
+			# InventoryManager.create_party_inventory()
 
-	InventoryManager.consumables_inventory = Inventory.new()
+	# InventoryManager.consumables_inventory = Inventory.new()
+	InventoryManager.main_inventory = Inventory.new()
 
 	# TODO: remove after testing
 	InventoryManager.test_populate_inventories()

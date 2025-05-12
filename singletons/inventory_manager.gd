@@ -105,6 +105,7 @@ func test_populate_inventories(generate_party: bool = false) -> void:
 	main_inventory.add_item(32)
 	main_inventory.add_item(21)
 	main_inventory.add_item(22)
+	main_inventory.add_item(22)
 
 
 ## saves data as dictionary for JSON format

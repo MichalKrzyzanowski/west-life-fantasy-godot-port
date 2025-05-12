@@ -13,6 +13,7 @@ extends Control
 # @export vars
 
 # public vars
+var item_filter_exp: Dictionary[String, Variant] = {"type": "consumable"}
 
 # private vars
 
@@ -34,7 +35,8 @@ extends Control
 # initialize consumables inventory
 func _ready() -> void:
 	consumables_gui.enable_item_use_action = false
-	consumables_gui.set_inventory(InventoryManager.consumables_inventory, PartyManager.party)
+	consumables_gui.set_item_filter_exp(item_filter_exp)
+	consumables_gui.set_inventory(InventoryManager.main_inventory, PartyManager.party)
 	consumables_gui.on_item_gui_clicked.connect(_on_item_used)
 	_update_party_hp()
 
@@ -52,7 +54,7 @@ func _on_back_button_pressed() -> void:
 
 
 ## handles logic of using item that was selected, mainly healing the party
-func _on_item_used(inventory: Inventory, item_id: int) -> void:
+func _on_item_used(inventory: Inventory, item_id: String) -> void:
 	var item: Item = inventory.get_item(item_id)
 	description_label.text = item.description
 

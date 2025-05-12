@@ -6,7 +6,7 @@ extends HFlowContainer
 
 # signals
 ## emitted when item is clicked
-signal on_item_gui_clicked(inventory: Inventory, item_id: int)
+signal on_item_gui_clicked(inventory: Inventory, item_id: String)
 
 # enums
 
@@ -134,8 +134,8 @@ func set_item_filter_exp(filter: Dictionary[String, Variant]) -> void:
 ## fetch inventory items as array.
 ## items can be filtered by [param item_type]
 func get_inventory_items(item_type: String = "") -> Array:
-	if !item_type:
-		return inventory.values()
+	# if !item_type:
+	# 	return inventory.values()
 	var filter_lambda: Callable = func(item: Item) -> bool:
 		return item.has_properties_and_values(item_filter_experimental)
 		# item.get_property_list().all()
@@ -233,7 +233,7 @@ func _is_inventory_highlighted() -> bool:
 ## this method emits a signal to allow other classes to
 ## have custom item use implementations.
 ## otherwise, this method calls [method inventory.use_item]
-func _on_item_clicked(item_id: int) -> void:
+func _on_item_clicked(item_id: String) -> void:
 	if !inventory.has_item(item_id):
 		printerr("no item found with id %d" % item_id)
 		return

@@ -5,7 +5,7 @@ extends Panel
 
 
 # signals
-signal on_item_clicked(item_id: int)
+signal on_item_clicked(item_id: String)
 
 # enums
 ## enum class used by display options bitflags
@@ -96,7 +96,7 @@ func _on_pressed() -> void:
 	if !item:
 		printerr("no item present, cannot send signal")
 		return
-	on_item_clicked.emit(item.id)
+	on_item_clicked.emit(item.get_full_id())
 
 
 ## add xN to item name if amount > 1 (e.g. name x4)

@@ -157,7 +157,7 @@ func _populate_database() -> void:
 	print("populating item database")
 	_parse_dir(ITEMS_DIR)
 	print("finished populating item database")
-	for i in data.keys():
+	for i: int in data.keys():
 		print("[%d]%s" % [data[i].id, data[i].name.capitalize()])
 
 

@@ -18,7 +18,7 @@ signal on_item_used(item_id: int)
 ## party reference
 @export var party: Array[EntityProperties]
 ## dictionary that stores items, key is the items id
-@export var inventory: Dictionary[int, Item] = {}
+@export var inventory: Dictionary[String, Item] = {}
 
 # public vars
 
@@ -63,9 +63,18 @@ func add_item(item_id: int, amount: int = 1) -> void:
 		printerr("item with id %d not available in database" % item_id)
 		return
 
+	var id_str: String = "%s-%s" % [item_id, 0]
+
 	# add amount if item already present in inventory
-	if inventory.has(item_id):
-		inventory[item_id].add(amount)
+	if inventory.has(id_str):
+		# item stack size has been passed,
+		# duplicate item has to be created with the overflown
+		# amount
+		var amount_overflow: int = inventory[id_str].get_item_overflow(amount)
+		if amount_overflow > 0:
+			# TODO: implement duplicate logic
+			pass
+		inventory[id_str].add(amount)
 		on_inventory_update.emit()
 		return
 
@@ -73,8 +82,8 @@ func add_item(item_id: int, amount: int = 1) -> void:
 	var new_item: Item = ItemDatabase.get_item(item_id).duplicate(true)
 	new_item.update_item_action()
 
-	inventory[item_id] = new_item
-	inventory[item_id].add(amount)
+	inventory[id_str] = new_item
+	inventory[id_str].add(amount)
 	on_inventory_update.emit()
 
 
@@ -85,7 +94,7 @@ func add_items(item_ids: Array[int]) -> void:
 
 
 ## removes [param amount] item(s) with [param item_id]
-func remove_item(item_id: int, amount: int = 1) -> void:
+func remove_item(item_id: String, amount: int = 1) -> void:
 	if !inventory.has(item_id):
 		printerr("no item present with id %d" % item_id)
 		return
@@ -119,7 +128,7 @@ func set_party_ref(party_ref: Array[EntityProperties]) -> void:
 ## 0: do nothing
 ## 1: remove item, send [signal Inventory.on_inventory_update]
 ## 2: send [signal Inventory.on_inventory_update]
-func use_item(item_id: int) -> void:
+func use_item(item_id: String) -> void:
 	var current_item: Item = get_item(item_id)
 
 	var consume_item: int = 0
@@ -146,7 +155,7 @@ func use_item(item_id: int) -> void:
 
 ## upgrade item with [param item_id] if applicable
 ## and party can afford to do so
-func upgrade_item(item_id: int) -> void:
+func upgrade_item(item_id: String) -> void:
 	if !inventory.has(item_id):
 		printerr("no item present with id %d" % item_id)
 		return
@@ -176,12 +185,12 @@ func values() -> Array:
 
 
 ## Dictionary get() wrapper
-func get_item(id: int) -> Item:
+func get_item(id: String) -> Item:
 	return inventory.get(id)
 
 
 ## Dictionary has() wrapper
-func has_item(id: int) -> bool:
+func has_item(id: String) -> bool:
 	return inventory.has(id)
 
 
@@ -189,7 +198,7 @@ func has_item(id: int) -> bool:
 func save() -> Dictionary:
 	var dict: Dictionary = {}
 
-	for id: int in inventory.keys():
+	for id: String in inventory.keys():
 		dict[id] = inventory[id].save()
 
 	return {
@@ -206,13 +215,13 @@ func load(data: Dictionary) -> void:
 			item = Item.new()
 			item.load(item_data)
 			item.update_item_action()
-			inventory[item.id] = item
+			inventory[item.get_full_id()] = item
 			continue
 
 		item = _item_type_callbacks[item_data["type"]].call()
 		item.load(item_data)
 		item.update_item_action()
-		inventory[item.id] = item
+		inventory[item.get_full_id()] = item
 
 
 # private methods

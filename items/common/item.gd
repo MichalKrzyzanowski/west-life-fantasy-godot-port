@@ -12,6 +12,8 @@ class_name Item extends Resource
 # @export vars
 ## item id
 @export var id: int = -1
+## id of duplicate item
+@export_storage var sub_id: int = 0
 ## item name
 @export var name: String = "dummy"
 ## item type, used for inventory item filtering
@@ -92,6 +94,7 @@ func use(entity: EntityProperties) -> int:
 	return item_action.call(entity)
 
 
+# TODO: add comment
 func has_properties_and_values(filter: Dictionary[String, Variant]) -> bool:
 	var filter_result: Array[Variant] = filter.keys()
 	return filter_result.all(func(prop: String) -> bool:
@@ -100,10 +103,27 @@ func has_properties_and_values(filter: Dictionary[String, Variant]) -> bool:
 	)
 
 
+# TODO: add comment
+func get_full_id() -> String:
+	# return str(id) + "-" + str(sub_id)
+	return "%d-%d" %[id, sub_id]
+
+
+# TODO: add comment
+func get_item_overflow(extra_amount: int) -> int:
+	return (amount + extra_amount) - stack_size
+
+
+# func set_full_id(new_id: String, new_sub_id: String) -> void:
+# 	id = new_id
+# 	sub_id = new_sub_id
+
+
 ## saves data as dictionary for JSON format
 func save() -> Dictionary:
 	return {
 		"id": id,
+		"sub_id": sub_id,
 		"name": name,
 		"type": type,
 		"amount": amount,
@@ -116,6 +136,8 @@ func save() -> Dictionary:
 func load(data: Dictionary) -> void:
 	id = data["id"]
 	name = data["name"]
+	if data.has("sub_id"):
+		sub_id = data["sub_id"]
 	if data.has("amount"):
 		amount = data["amount"]
 	if data.has("stack_size"):
@@ -129,7 +151,7 @@ func load(data: Dictionary) -> void:
 # private methods
 ## string representation of Item class
 func _to_string() -> String:
-	return "[%d]%s: amount: %d/%d" % [id, name, amount, stack_size]
+	return "[%s]%s: amount: %d/%d" % [get_full_id(), name, amount, stack_size]
 
 
 # subclasses

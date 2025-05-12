@@ -32,7 +32,8 @@ func _enter_tree() -> void:
 ## connects [signal PartyManager.on_gil_changed] signal
 ## and sets item_filter to "weapon"
 func _ready() -> void:
-	item_filter = "weapon"
+	# item_filter = "weapon"
+	item_filter_exp = {"type": "weapon"}
 	super()
 	update_gil()
 	PartyManager.on_gil_changed.connect(update_gil)

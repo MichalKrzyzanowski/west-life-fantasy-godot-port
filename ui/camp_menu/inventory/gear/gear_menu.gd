@@ -23,8 +23,8 @@ enum GearActionState {
 
 # public vars
 ## gear item filter, defaults to "armour"
-var item_filter: String = "armour"
-var item_filter_exp: Dictionary[String, Variant] = {"type": "armour", "id": 21}
+# var item_filter: String = "armour"
+var item_filter_exp: Dictionary[String, Variant] = {"type": "armour"}
 
 # private vars
 ## current gear action state defaults to [constant GearActionState.NONE]
@@ -78,7 +78,7 @@ func _unpress_action_buttons() -> void:
 ## equip: uses the item, gear defaults to equiping
 ## drop: removes 1 item from clicked item's stack
 ## does nothing if no gear action is selected
-func _on_item_clicked(inventory: Inventory, item_id: int) -> void:
+func _on_item_clicked(inventory: Inventory, item_id: String) -> void:
 	match (_gear_action_state):
 		GearActionState.EQUIP:
 			print("equip gear action")
