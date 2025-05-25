@@ -22,6 +22,9 @@ extends Node
 var _counter: int = 0
 var _counter_end: int = 100
 
+# TODO: remove temp testing data
+@onready var Cactus := preload("res://entities/enemies/cactus/cactus.tres")
+
 # @onready vars
 @onready var CombatScene := preload("res://scenes/combat/combat.tscn")
 @onready var overworld_player: CharacterBody2D = get_node(MainUtils.PLAYER_PATH)
@@ -80,6 +83,12 @@ func trigger_combat(player_advantage: bool = true,
 	combat_scene.overworld_enemy = overworld_enemy
 
 	combat_scene.party_data = PartyManager.party
+	combat_scene.max_enemy_count = 1
+
+	# TODO: remove after testing
+	# var temp_arr: Array[EntityProperties] = [Cactus]
+	combat_scene.enemy_data.assign([Cactus])
+
 	combat_scene.on_combat_end.connect(_on_combat_end)
 	add_child(combat_scene)
 	# hide parent, which would be the map itself e.g. desert, town

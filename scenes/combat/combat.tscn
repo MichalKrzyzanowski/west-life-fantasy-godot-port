@@ -24,8 +24,10 @@ config_restore_hp = true
 extra_level_up_gains = {}
 level = 1
 max_level = 9999
+hp = null
 xp_drop = 0
 gil_drop = 0
+gil_value = 0
 gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_br1iv"]
@@ -48,8 +50,10 @@ config_restore_hp = true
 extra_level_up_gains = {}
 level = 1
 max_level = 9999
+hp = null
 xp_drop = 0
 gil_drop = 0
+gil_value = 0
 gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_seu7c"]
@@ -72,8 +76,10 @@ config_restore_hp = true
 extra_level_up_gains = {}
 level = 1
 max_level = 9999
+hp = null
 xp_drop = 0
 gil_drop = 0
+gil_value = 0
 gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_qvxlj"]
@@ -96,8 +102,10 @@ config_restore_hp = true
 extra_level_up_gains = {}
 level = 1
 max_level = 9999
+hp = null
 xp_drop = 0
 gil_drop = 0
+gil_value = 0
 gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_6n1l0"]
@@ -120,8 +128,10 @@ config_restore_hp = true
 extra_level_up_gains = {}
 level = 1
 max_level = 9999
+hp = null
 xp_drop = 20
 gil_drop = 50
+gil_value = 0
 gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_dj72a"]
@@ -144,8 +154,10 @@ config_restore_hp = true
 extra_level_up_gains = {}
 level = 1
 max_level = 9999
+hp = null
 xp_drop = 40
 gil_drop = 10
+gil_value = 0
 gil_level_cost = 25
 
 [sub_resource type="Resource" id="Resource_7u6n1"]

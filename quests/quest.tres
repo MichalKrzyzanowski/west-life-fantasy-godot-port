@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=2 format=3 uid="uid://cn25tv4j7ymto"]
+
+[ext_resource type="Script" uid="uid://d4n13cm6qw3fb" path="res://quests/quest.gd" id="1_8bni4"]
+
+[resource]
+resource_name = "quest"
+script = ExtResource("1_8bni4")
+title = ""
+description = ""

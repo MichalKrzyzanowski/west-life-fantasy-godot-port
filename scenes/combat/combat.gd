@@ -209,6 +209,9 @@ func _end_combat() -> void:
 			# remove shot overworld enemy if not null
 			if overworld_enemy:
 				overworld_enemy.queue_free()
+		# check if any enemy slain was required for quests
+		for enemy: Area2D in _enemies:
+			QuestManager.check_slain_entity(enemy.entity_properties)
 	# if player has lost
 	elif !has_party_won && !has_party_fled:
 		# update combat info box
