@@ -27,6 +27,7 @@ var _counter_end: int = 100
 
 # @onready vars
 @onready var CombatScene := preload("res://scenes/combat/combat.tscn")
+@onready var hud: CanvasLayer = get_node(MainUtils.HUD_PATH)
 @onready var overworld_player: CharacterBody2D = get_node(MainUtils.PLAYER_PATH)
 
 func _init() -> void:
@@ -92,7 +93,13 @@ func trigger_combat(player_advantage: bool = true,
 	combat_scene.on_combat_end.connect(_on_combat_end)
 	add_child(combat_scene)
 	# hide parent, which would be the map itself e.g. desert, town
+	toggle_hud()
 	get_parent().hide()
+
+
+# TODO: ideally should be part of MainUtils class or Main scene
+func toggle_hud() -> void:
+	hud.visible = !hud.visible
 
 
 # private methods
@@ -110,6 +117,7 @@ func _trigger_random_encounter() -> void:
 func _on_combat_end() -> void:
 	get_tree().paused = false
 	overworld_player.camera.enabled = true
+	toggle_hud()
 	get_parent().show()
 
 

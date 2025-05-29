@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://wi37yb2p8jg4"]
+[gd_scene load_steps=9 format=3 uid="uid://wi37yb2p8jg4"]
 
 [ext_resource type="Script" uid="uid://2msr6u03b1m8" path="res://scenes/main/main.gd" id="1_fidbw"]
 [ext_resource type="PackedScene" uid="uid://d02rs8t4d5gwn" path="res://entities/overworld-player/overworld_player.tscn" id="1_p8x4f"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b4hhb0gjpr7ab" path="res://common/fader.tscn" id="5_lrnne"]
 [ext_resource type="Script" uid="uid://bxkg8q8b8hb5u" path="res://common/fader.gd" id="6_w70om"]
 [ext_resource type="PackedScene" uid="uid://xi1op1ppabul" path="res://ui/camp_menu/camp_menu.tscn" id="7_phpdi"]
+[ext_resource type="PackedScene" uid="uid://bolfqja0sch8o" path="res://ui/quest_tracker/quest_tracker.tscn" id="8_yyfjg"]
 
 [node name="Main" type="Node2D" groups=["persist"]]
 script = ExtResource("1_fidbw")
@@ -22,7 +23,17 @@ speed = 5.0
 [node name="Fader" parent="." instance=ExtResource("5_lrnne")]
 script = ExtResource("6_w70om")
 
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="QuestTracker" parent="HUD" instance=ExtResource("8_yyfjg")]
+offset_left = 3.0
+offset_top = 3.0
+use_verbose_description = true
+complete_color = Color(0, 1, 0, 1)
+
 [node name="UI" type="CanvasLayer" parent="."]
+layer = 0
 
 [node name="CampMenu" parent="UI" instance=ExtResource("7_phpdi")]
 visible = false

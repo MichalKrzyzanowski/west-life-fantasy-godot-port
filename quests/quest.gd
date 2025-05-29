@@ -5,6 +5,8 @@ extends Resource
 
 
 # signals
+signal on_quest_finished()
+signal on_task_changed()
 
 # enums
 ## quest state
@@ -40,7 +42,7 @@ var _quest_state: QuestState = QuestState.NOT_STARTED:
 			QuestState.IN_PROGRESS:
 				print("quest: %s in progress" % title)
 			QuestState.FINISHED:
-				print("quest: %s finished" % title)
+				pass
 
 # @onready vars
 
@@ -99,6 +101,7 @@ func add_task(task: Task) -> void:
 func check_completion_status() -> void:
 	if _current_task_index == task_list.size():
 		_quest_state = QuestState.FINISHED
+		on_quest_finished.emit()
 
 
 ## checks if quest is [enum QuestState.IN_PROGRESS]
@@ -121,10 +124,11 @@ func _on_current_task_completed() -> void:
 	check_completion_status()
 
 	if is_finished():
-		print("all tasks completed!")
+		print("all tasks for quest \"%s\" completed!" % title)
 		return
 
 	task_list[_current_task_index].on_task_complete.connect(_on_current_task_completed)
+	on_task_changed.emit()
 
 
 ## quest string representation

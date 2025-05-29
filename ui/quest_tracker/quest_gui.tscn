@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bclf2ln6crf5l"]
+
+[ext_resource type="Script" uid="uid://bwk61udyc3qv3" path="res://ui/quest_tracker/quest_gui.gd" id="1_258tv"]
+
+[node name="Label" type="Label"]
+offset_right = 40.0
+offset_bottom = 19.0
+script = ExtResource("1_258tv")
+complete_color = Color(0, 0.643585, 1, 1)

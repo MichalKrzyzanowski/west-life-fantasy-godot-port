@@ -5,6 +5,8 @@ extends Node
 
 
 # signals
+## emitted when a tracked quest is added or removed
+signal on_tracked_quests_changed()
 
 # enums
 
@@ -56,11 +58,26 @@ func add_quest(new_quest: Quest, start_quest: bool = false) -> void:
 	quest_list.append(new_quest)
 
 
-## add quest inxed from [member quest_list] with [param index]
+## add quest index from [member quest_list] with [param index]
 ## to [member tracked_quests] list
 func track_quest(index: int) -> void:
 	if quest_list.get(index):
 		tracked_quests.append(index)
+		on_tracked_quests_changed.emit()
+
+
+func track_latest_quest() -> void:
+	track_quest(quest_list.size() - 1)
+
+
+## remove quest [param index] from [member tracked_quests]
+func untrack_quest(index: int) -> void:
+	tracked_quests.erase(index)
+	on_tracked_quests_changed.emit()
+
+
+func untrack_latest_quest() -> void:
+	untrack_quest(quest_list.size() - 1)
 
 
 ## check if slain [param entity] was required by any quest
@@ -76,6 +93,21 @@ func check_slain_entity(entity: EntityProperties) -> void:
 ## get total quest amount
 func quest_amount() -> int:
 	return quest_list.size()
+
+
+# TODO: remove after testing
+func generate_quest() -> void:
+	var quest: Quest = Quest.new()
+	quest.title = "generated title"
+	quest.description = "generated desc"
+
+	var task: SlayTask = SlayTask.new()
+	task.description = "generated description"
+	task.target_entity_name = "none"
+	quest.add_task(task)
+
+	add_quest(quest, true)
+	track_latest_quest()
 
 
 # private methods
