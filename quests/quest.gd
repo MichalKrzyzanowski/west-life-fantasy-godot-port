@@ -5,7 +5,9 @@ extends Resource
 
 
 # signals
+## emitted when quest is finished
 signal on_quest_finished()
+## emitted when current task is completed and changed
 signal on_task_changed()
 
 # enums

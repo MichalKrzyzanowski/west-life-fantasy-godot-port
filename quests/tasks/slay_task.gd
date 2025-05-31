@@ -59,15 +59,17 @@ func target_slay_count_reached() -> bool:
 ## then, checks if [param target.name] matches [member target_entity_name].
 ## if the checks pass, [signal on_task_complete] is emitted
 func check_completion(target: Variant) -> void:
+	# no target name set, skipping
 	if !target_entity_name:
 		print("no target name specified, skipping task")
 		on_task_complete.emit()
 		return
 
+	# incorrect target type
 	if target is not EntityProperties:
 		return
 
-	print("slay task check")
+	# target matches target name
 	if target.name.to_lower() == target_entity_name.to_lower():
 		print("%s matches target: %s" % [target.name, target_entity_name])
 		_current_slay_count += 1
