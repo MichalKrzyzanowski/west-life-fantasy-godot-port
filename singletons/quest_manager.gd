@@ -36,23 +36,12 @@ var quest_list: Array[Quest] = []
 # 	pass
 
 
-# func _ready() -> void:
-# 	pass
+## add to persist group for save/load
+func _ready() -> void:
+	add_to_group("persist")
 
 
 # remaining builtins e.g. _process, _input
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey && event.pressed:
-		match event.keycode:
-			KEY_Q:
-				for i in quest_list:
-					print(i)
-			KEY_EQUAL:
-				print("generating...")
-				generate_quest()
-			KEY_MINUS:
-				print("removing...")
-				untrack_latest_quest()
 
 
 # public methods
@@ -126,19 +115,29 @@ func quest_amount() -> int:
 	return quest_list.size()
 
 
-# TODO: remove after testing
-func generate_quest() -> void:
-	var quest: Quest = Quest.new()
-	quest.title = "generated title"
-	quest.description = "generated desc"
+## saves data as dictionary for JSON format
+func save() -> Dictionary:
+	var quest_data_list: Array[Dictionary]
 
-	var task: SlayTask = SlayTask.new()
-	task.description = "generated description"
-	task.target_entity_name = "none"
-	quest.add_task(task)
+	for quest: Quest in quest_list:
+		quest_data_list.append(quest.save())
 
-	add_quest(quest, true)
-	track_latest_quest()
+	return {
+		"name": name,
+		"parent": get_parent().get_path(),
+		"tracked_quests": tracked_quests,
+		"quest_list": quest_data_list,
+		}
+
+
+## load data from JSON savefile
+func load(data: Dictionary) -> void:
+	tracked_quests.assign(data["tracked_quests"])
+
+	for quest_data: Dictionary in data["quest_list"]:
+		var quest: Quest = Quest.new()
+		quest.load(quest_data)
+		quest_list.append(quest)
 
 
 # private methods

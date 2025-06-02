@@ -78,6 +78,24 @@ func check_completion(target: Variant) -> void:
 			on_task_complete.emit()
 
 
+## saves data as dictionary for JSON format
+func save() -> Dictionary:
+	var dict: Dictionary = super()
+	dict["target_name"] = target_entity_name
+	dict["target_slay_count"] = target_slay_count
+	dict["current_slay_count"] = _current_slay_count
+
+	return dict
+
+
+## load data from JSON savefile
+func load(data: Dictionary) -> void:
+	super(data)
+	target_entity_name = data["target_name"]
+	target_slay_count = data["target_slay_count"]
+	_current_slay_count = data["current_slay_count"]
+
+
 # private methods
 ## slay task string representation
 func _to_string() -> String:
@@ -85,4 +103,3 @@ func _to_string() -> String:
 
 
 # subclasses
-

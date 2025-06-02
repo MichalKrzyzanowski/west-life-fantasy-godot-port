@@ -133,6 +133,41 @@ func _on_current_task_completed() -> void:
 	on_task_changed.emit()
 
 
+## saves data as dictionary for JSON format
+func save() -> Dictionary:
+	var task_data_list: Array[Dictionary]
+	for task: Task in task_list:
+		task_data_list.append(task.save())
+
+	return {
+		"title": title,
+		"description": description,
+		"task_list": task_data_list,
+		"current_task_index": _current_task_index,
+		"quest_state": _quest_state,
+	}
+
+
+## load data from JSON savefile
+func load(data: Dictionary) -> void:
+	title = data["title"]
+	description = data["description"]
+	_current_task_index = data["current_task_index"]
+	_quest_state = data["quest_state"]
+
+	for task_data: Dictionary in data["task_list"]:
+		var task: Task
+
+		if task_data.has("target_name"):
+			task = SlayTask.new()
+			task.load(task_data)
+		else:
+			task = Task.new()
+			task.load(data)
+
+		task_list.append(task)
+
+
 ## quest string representation
 func _to_string() -> String:
 	var str_rep: String = "%s\n%s\n%s\n" % [title, description, is_finished()]
@@ -145,4 +180,3 @@ func _to_string() -> String:
 
 
 # subclasses
-

@@ -51,6 +51,18 @@ func check_completion(_target: Variant) -> void:
 	pass
 
 
+## saves data as dictionary for JSON format
+func save() -> Dictionary:
+	return {
+		"description": description,
+	}
+
+
+## load data from JSON savefile
+func load(data: Dictionary) -> void:
+	description = data["description"]
+
+
 # private methods
 ## task string representation
 func _to_string() -> String:
