@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://biepho24s8vwe"]
+
+[ext_resource type="Script" uid="uid://cv8k82gket1f7" path="res://entities/bosses/boss_encounter/boss_encounter.gd" id="1_cy3ws"]
+
+[node name="BossEncounter" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_cy3ws")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

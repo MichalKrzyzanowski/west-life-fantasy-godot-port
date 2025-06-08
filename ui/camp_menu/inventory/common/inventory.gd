@@ -50,9 +50,6 @@ var _item_type_callbacks: Dictionary = {
 
 
 # remaining builtins e.g. _process, _input
-## returns string representation of the inventory
-func _to_string() -> String:
-	return str(inventory)
 
 
 # public methods
@@ -165,6 +162,11 @@ func upgrade_item(item_id: int) -> void:
 			return
 
 
+## Dictionary clear() wrapper
+func clear() -> void:
+	inventory.clear()
+
+
 ## Dictionary size() wrapper
 func size() -> int:
 	return inventory.size()
@@ -216,6 +218,9 @@ func load(data: Dictionary) -> void:
 
 
 # private methods
+## returns string representation of the inventory
+func _to_string() -> String:
+	return str(inventory)
 
 
 # subclasses

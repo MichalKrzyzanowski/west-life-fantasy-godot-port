@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://ckqmboktfdvg2"]
+[gd_scene load_steps=37 format=4 uid="uid://ckqmboktfdvg2"]
 
 [ext_resource type="Script" uid="uid://cte7526luc2h6" path="res://scenes/desert/desert_map.gd" id="1_vowdh"]
 [ext_resource type="TileSet" uid="uid://b0q4gowtnjlif" path="res://scenes/common/river_tileset.tres" id="2_25t3h"]
@@ -15,11 +15,16 @@
 [ext_resource type="Resource" uid="uid://bhugyhiqyrca3" path="res://entities/enemies/bandit/bandit.tres" id="13_045pm"]
 [ext_resource type="Resource" uid="uid://cm5l8es7a6hsk" path="res://entities/enemies/dark_ninja/dark_ninja.tres" id="14_u8kt6"]
 [ext_resource type="Resource" uid="uid://bpsxlfo8fw8e7" path="res://entities/enemies/cactus/cactus.tres" id="15_g7u6l"]
+[ext_resource type="Resource" uid="uid://cj65jy2wqmbcv" path="res://entities/bosses/cactus_boss/cactus_boss.tres" id="15_xique"]
 [ext_resource type="Resource" uid="uid://bdw0t65416n83" path="res://entities/enemies/desert_ninja/desert_ninja.tres" id="16_pw241"]
 [ext_resource type="PackedScene" uid="uid://csx3cuf43jnq8" path="res://entities/overworld-enemy/overworld_enemy.tscn" id="17_sqsuv"]
 [ext_resource type="PackedScene" uid="uid://dujvgle5ockxo" path="res://scenes/common/transition_area/transition_area.tscn" id="18_we0hj"]
 [ext_resource type="Texture2D" uid="uid://ds1neb28g8cpd" path="res://door.png" id="19_w4n4h"]
 [ext_resource type="Script" uid="uid://bbmrk0wf4vywj" path="res://scenes/common/locale_data/locale_data.gd" id="20_3tgwn"]
+[ext_resource type="PackedScene" uid="uid://biepho24s8vwe" path="res://entities/bosses/boss_encounter/boss_encounter.tscn" id="21_xique"]
+[ext_resource type="Resource" uid="uid://c610dul6cyfd4" path="res://quests/quest_cactus_culling.tres" id="23_nevvm"]
+[ext_resource type="Texture2D" uid="uid://cginfw6h6hs30" path="res://entities/enemies/cactus/cactus-revenge.png" id="24_cgdgh"]
+[ext_resource type="Resource" uid="uid://c0s3au467bdwq" path="res://quests/quest_royal_audience.tres" id="25_30wtr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1cvgx"]
 size = Vector2(32, 32)
@@ -59,6 +64,12 @@ scene_file = "res://scenes/desert/desert_map.tscn"
 script = ExtResource("20_3tgwn")
 entrance_position = Vector2(8, 136)
 scene_file = "res://scenes/town/town_map.tscn"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xique"]
+size = Vector2(22.453, 31.744)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chbna"]
+size = Vector2(27.204, 31.881)
 
 [node name="DesertMap" type="Node2D" groups=["persist"]]
 script = ExtResource("1_vowdh")
@@ -107,7 +118,7 @@ position = Vector2(-156, -234)
 scale = Vector2(0.67, 0.67)
 
 [node name="CombatManager" parent="." instance=ExtResource("11_t00au")]
-enemy_spawn_table = Array[ExtResource("11_dcgj7")]([ExtResource("12_fjvd6"), ExtResource("13_045pm"), ExtResource("14_u8kt6"), ExtResource("15_g7u6l"), ExtResource("16_pw241")])
+enemy_spawn_table = Array[ExtResource("11_dcgj7")]([ExtResource("12_fjvd6"), ExtResource("13_045pm"), ExtResource("14_u8kt6"), ExtResource("15_xique"), ExtResource("16_pw241")])
 
 [node name="OverworldEnemy" parent="." instance=ExtResource("17_sqsuv")]
 position = Vector2(-21, -251)
@@ -137,5 +148,31 @@ map_ref = NodePath("..")
 
 [node name="PlayerPosition" type="Marker2D" parent="."]
 position = Vector2(-75, -250)
+
+[node name="Bosses" type="Node" parent="."]
+
+[node name="CactusEncounter" parent="Bosses" instance=ExtResource("21_xique")]
+position = Vector2(-72, -183)
+shape = SubResource("RectangleShape2D_xique")
+entities = Array[ExtResource("11_dcgj7")]([ExtResource("15_g7u6l")])
+track_quest = true
+enable_invisible_wall = true
+quest = ExtResource("23_nevvm")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bosses/CactusEncounter"]
+position = Vector2(-2, 0)
+texture = ExtResource("24_cgdgh")
+
+[node name="LordEncounter" parent="Bosses" instance=ExtResource("21_xique")]
+position = Vector2(120, -245)
+shape = SubResource("RectangleShape2D_chbna")
+entities = Array[ExtResource("11_dcgj7")]([null, ExtResource("15_xique")])
+track_quest = true
+enable_invisible_wall = true
+quest = ExtResource("25_30wtr")
+prerequisite_quest = ExtResource("23_nevvm")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bosses/LordEncounter"]
+texture = ExtResource("19_w4n4h")
 
 [connection signal="on_transition_start" from="TestDoor" to="." method="_on_transition_area_on_transition_start"]

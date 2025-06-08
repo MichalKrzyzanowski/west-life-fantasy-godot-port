@@ -52,6 +52,11 @@ func _input(event: InputEvent) -> void:
 
 
 # public methods
+## de initializes party manager
+func deinit() -> void:
+	party.clear()
+
+
 ## add member_data to party array
 func add_member(entity_data: EntityProperties) -> void:
 	entity_data.set_party_index(party.size())

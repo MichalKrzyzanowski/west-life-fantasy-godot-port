@@ -36,7 +36,6 @@ func _ready() -> void:
 	consumables_gui.enable_item_use_action = false
 	consumables_gui.set_inventory(InventoryManager.consumables_inventory, PartyManager.party)
 	consumables_gui.on_item_gui_clicked.connect(_on_item_used)
-	_update_party_hp()
 
 
 # remaining builtins e.g. _process, _input

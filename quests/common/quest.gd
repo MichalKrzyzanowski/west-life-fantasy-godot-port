@@ -27,11 +27,11 @@ enum QuestState {
 @export var title: String
 ## quest description
 @export var description: String
-
-# public vars
 ## array of tasks required to be completed in
 ## order to finish the quest
-var task_list: Array[Task] = []
+@export var task_list: Array[Task] = []
+
+# public vars
 
 # private vars
 ## index of current task

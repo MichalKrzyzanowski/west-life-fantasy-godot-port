@@ -73,6 +73,14 @@
 	- camp menu is broken when entering a town
 		- game is not paused when entering town (can still shoot when camp menu is open)
 		- caused by clinic's wacky exit functionality..
+	- xp is not loaded correctly, always defaults to 0
+	- overworld player does not get removed when a battle is lost
+		- need death screen and save prevention after failed battle
+	- quiting the game right after finishing a battle causes the game to load into the previous battle scene
+	- if first party member is dead, the player still has to select action for that player before cursor moves to the alive party member
+	- healing items no longer heal
+		- item has 0 hp by default meaning has_hp_depleted is set true by default
+		- caused by duplicate method when adding items to inventory
 - enhancements
 	- move project to godot 4.3
 		- convert tilemaps to tilemaplayers
@@ -105,16 +113,19 @@
 	- add ability to buy/sell items
 	- add weapon/armour shops
 	- add healer shop
+- quests
+	- quest dialog box in the top right corner of the screen
 
 +-------------+
 | IN PROGRESS |
 +-------------+
 - enhancements
+- boss encounter
+	- add boss encounters to overworld map
+- camp menu orbs
+	- orbs in camp menu that regain color after beating corresponding boss 
 - buglist
 	- fleeing from combat follows a pattern, is not random (needs more investigation)
-	- healing items no longer heal
-		- item has 0 hp by default meaning has_hp_depleted is set true by default
-		- caused by duplicate method when adding items to inventory
 
 +------+
 | TODO |
@@ -137,8 +148,6 @@
 	- simple path finding when player in range
 	- wander ai
 	- only update when in range, performance
-- boss encounter
-	- add boss encounters to overworld map
 - audio
 	- add overworld and combat music
 	- add combat sounds
@@ -148,9 +157,6 @@
 	- simple credit scene
 - minimap
 	- add minimap in the bottom right corner in the overworld
-- quests and orbs
-	- quest dialog box in the top right corner of the screen
-	- orbs in camp menu that regain color after beating corresponding boss 
 
 
 +-------------+

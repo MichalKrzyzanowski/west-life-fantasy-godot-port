@@ -2,6 +2,15 @@
 	- move decimal right 2 times i.e. x100. e.g. 0.75 = 75.0
 	- reverse negative number on y axis e.g. 1.25 = -1.25
 
+- boss encounters implementation notes:
+	- quest export
+		- should allow boss encounters to hold optional quests that revolve slaying the boss itself
+	- quest prerequisite:
+		- quest that must be finished in order to gain access to boss encounter
+	- quests should be saved in files like the enemies/party_members for ease of use (most games save quests in files e.g. monster hunter frontier)
+	- boss rewards
+		- armour & weapons
+
 - inventory system implementation ideas:
 	- implementation #1:
 		- item resource:

@@ -45,14 +45,46 @@ func _ready() -> void:
 
 
 # public methods
+## de initializes quest manager
+func deinit() -> void:
+	quest_list.clear()
+	tracked_quests.clear()
+
+
 ## add [param new_quest] to [member quest_list].
 ## automatically starts [param new_quest] if [param start_quest]
 ## is true
 func add_quest(new_quest: Quest, start_quest: bool = true) -> void:
+	if has_quest(new_quest):
+		printerr("quest already exists!")
+		return
+
 	if start_quest:
 		new_quest.start()
 
 	quest_list.append(new_quest)
+
+
+## check if [param quest] is in [member quest_list]
+func has_quest(quest: Quest) -> bool:
+	var found: int = quest_list.find_custom(_quest_match_title.bind(quest.title))
+
+	return found != -1
+
+## returns [param quest] if it is in [member quest_list],
+## null otherwise
+func get_quest(quest: Quest) -> Quest:
+	var found: int = quest_list.find_custom(_quest_match_title.bind(quest.title))
+
+	if found != -1:
+		return quest_list[found]
+
+	return null
+
+
+## returns index of [param index] if it is in [member quest_list]
+func get_quest_index(quest: Quest) -> int:
+	return quest_list.find_custom(_quest_match_title.bind(quest.title))
 
 
 ## add quest index from [member quest_list] with [param index]
@@ -61,6 +93,10 @@ func track_quest(index: int) -> void:
 	# skip tracking if tracked quest limit reached
 	if tracked_quests.size() == tracked_quest_limit:
 		print("tracked quest limit reached!")
+		return
+
+	if index in tracked_quests:
+		print("quest already tracked!")
 		return
 
 	# track quest if the quest exists
@@ -86,6 +122,7 @@ func untrack_latest_quest() -> void:
 	on_tracked_quests_changed.emit()
 
 
+## returns tracked quest index at [param index]
 func get_tracked_quest_index(index: int) -> int:
 	if index >= tracked_quests.size():
 		return -1
@@ -141,6 +178,8 @@ func load(data: Dictionary) -> void:
 
 
 # private methods
+func _quest_match_title(quest: Quest, target_title: String) -> bool:
+	return quest.title == target_title
 
 
 # subclasses

@@ -15,8 +15,6 @@ signal on_hp_depleted()
 const PARAMETERS_LOAD_ORDER: Dictionary = {
 		"level": "level",
 		"max_level": "max_level",
-		"required_xp": "required_xp",
-		"xp": "xp",
 		"attack": "attack",
 		"scaler_attack": "scaler_attack",
 		"defence": "defence",
@@ -25,6 +23,8 @@ const PARAMETERS_LOAD_ORDER: Dictionary = {
 		"restore_hp": "config_restore_hp",
 		"max_hp": "max_hp",
 		"hp": "hp",
+		"required_xp": "required_xp",
+		"xp": "xp",
 		"scaler_hp": "scaler_hp",
 		"gil_level_cost": "gil_level_cost",
 		"gil_value": "gil_value",
@@ -118,6 +118,7 @@ func set_xp(new_xp: int) -> void:
 	if has_reached_max_level():
 		return
 
+	print("old xp: %d" % xp)
 	xp = max(0, new_xp)
 	on_xp_changed.emit()
 	print("new xp: %d" % xp)

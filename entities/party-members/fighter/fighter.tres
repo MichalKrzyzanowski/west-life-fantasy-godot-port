@@ -18,8 +18,10 @@ config_restore_hp = true
 extra_level_up_gains = {}
 level = 0
 max_level = 9999
+hp = null
 xp_drop = 0
 gil_drop = 0
+gil_value = 0
 gil_level_cost = 25
 
 [resource]

@@ -42,6 +42,12 @@ func _ready() -> void:
 
 
 # public methods
+## de initializes inventory manager
+func deinit() -> void:
+	consumables_inventory.clear()
+	_party_inventories.clear()
+
+
 ## creates empty party inventory
 func create_party_inventory() -> void:
 	add_party_inventory(Inventory.new())

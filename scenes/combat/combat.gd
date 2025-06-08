@@ -28,6 +28,12 @@ signal on_combat_end()
 @export var turn_wait_time: float = 1.5
 ## max enemies that can spawn
 @export var max_enemy_count: int = 9
+# TODO: rename to cleaner name
+## governs entity spawning logic. if enabled, entities
+## are spawned in order of [member enemy_data].
+## null entities are used to dictate empty slots in enemy
+## positioning
+@export var enable_static_entity_spawn: bool = false
 
 # public vars
 # combat status trackers
@@ -93,7 +99,11 @@ func _ready() -> void:
 	_init_party(party_data)
 
 	# spawn enemies and add them to the grid
-	_spawn_enemies()
+	if enable_static_entity_spawn:
+		pass
+		_spawn_enemies()
+	else:
+		_spawn_randow_enemies()
 
 	# generate awards
 	_init_rewards()
@@ -102,7 +112,12 @@ func _ready() -> void:
 	_setup_battle_order()
 
 	# initialise current party member and move into ready position
-	current_member = _party[_current_party_index]
+	for index: int in _party.size():
+		if _party[index].is_alive:
+			_current_party_index = index
+			current_member = _party[index]
+			break
+
 	_move_entity_ready_position()
 
 
@@ -140,9 +155,31 @@ func _init_party(data: Array[EntityProperties]) -> void:
 	interface.init_party_stat_boxes(_party)
 
 
+## generates enemies in order from [member enemy_data].
+## null enemies are treated as empty nodes in the grid
+func _spawn_enemies() -> void:
+	for data: EntityProperties in enemy_data:
+		if !data:
+			print("null enemy")
+			var enemy: Area2D = GenericEntity.instantiate()
+			enemy.entity_properties = EntityProperties.new()
+			enemy.entity_properties.stats = CombatStats.new()
+			enemy_grid.add_child(enemy)
+			continue
+
+		var enemy: Area2D = GenericEntity.instantiate()
+		enemy.entity_properties = data.duplicate(true)
+		enemy.on_entity_clicked.connect(_on_enemy_selected)
+		enemy.face_party()
+		enemy_grid.add_child(enemy)
+
+	enemy_grid.update_grid()
+	_enemies = enemy_grid.get_children()
+
+
 ## generate randomly selected enemies from enemy_data.
 ## each enemy is an instance of generic_entity
-func _spawn_enemies() -> void:
+func _spawn_randow_enemies() -> void:
 	var enemy_count: int = randi_range(1, max_enemy_count)
 
 	if !enemy_data.is_empty():
@@ -204,8 +241,6 @@ func _end_combat() -> void:
 		# add xp to party
 		for member in _party:
 			member.entity_properties.stats.xp += _xp_reward
-			# save game
-			SaveManager.save_game(SaveManager.SAVE_FILE)
 			# remove shot overworld enemy if not null
 			if overworld_enemy:
 				overworld_enemy.queue_free()
@@ -217,7 +252,7 @@ func _end_combat() -> void:
 		# update combat info box
 		interface.update_combat_info("you lost the battle...")
 		# remove overworld player if not null
-		if overworld_enemy:
+		if overworld_player:
 			overworld_player.queue_free()
 
 	# turn on input processing
