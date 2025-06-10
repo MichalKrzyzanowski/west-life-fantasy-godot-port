@@ -9,6 +9,12 @@ extends Control
 # enums
 
 # constants
+const ORB_COLORS: Array[Color] = [
+	Color.BLUE,
+	Color.RED,
+	Color(1.0, 0.5, 0.0),
+	Color.BLACK,
+]
 
 # @export vars
 
@@ -22,6 +28,7 @@ extends Control
 @onready var items_menu := $ConsumablesMenu as Control
 @onready var armour_menu := $ArmourMenu as Control
 @onready var weapon_menu := $WeaponMenu as Control
+@onready var orb_container: GridContainer = $Orbs/OrbContainer
 
 func _init() -> void:
 	pass
@@ -33,7 +40,9 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	update_gil()
+	update_orbs()
 	PartyManager.on_gil_changed.connect(update_gil)
+	PartyManager.on_orbs_updated.connect(update_orbs)
 
 
 # remaining builtins e.g. _process, _input
@@ -52,6 +61,12 @@ func _input(event: InputEvent) -> void:
 # public methods
 func update_gil() -> void:
 	gil_label.text = "%d G" % PartyManager.gil
+
+
+func update_orbs() -> void:
+	for i: int in PartyManager.orbs.size():
+		if PartyManager.orbs[i]:
+			orb_container.get_child(i).modulate = ORB_COLORS[i]
 
 
 # private methods

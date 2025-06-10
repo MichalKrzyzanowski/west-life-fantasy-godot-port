@@ -76,7 +76,7 @@ patch_margin_right = 4
 patch_margin_bottom = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="GridContainer" type="GridContainer" parent="Orbs"]
+[node name="OrbContainer" type="GridContainer" parent="Orbs"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -91,25 +91,25 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 2
 
-[node name="TextureRect" type="TextureRect" parent="Orbs/GridContainer"]
+[node name="BlueOrb" type="TextureRect" parent="Orbs/OrbContainer"]
 modulate = Color(0.270833, 0.270833, 0.270833, 1)
 layout_mode = 2
 texture = ExtResource("3_ix0wu")
 stretch_mode = 4
 
-[node name="TextureRect2" type="TextureRect" parent="Orbs/GridContainer"]
+[node name="RedOrb" type="TextureRect" parent="Orbs/OrbContainer"]
 modulate = Color(0.270833, 0.270833, 0.270833, 1)
 layout_mode = 2
 texture = ExtResource("3_ix0wu")
 stretch_mode = 4
 
-[node name="TextureRect3" type="TextureRect" parent="Orbs/GridContainer"]
+[node name="OrangeOrb" type="TextureRect" parent="Orbs/OrbContainer"]
 modulate = Color(0.270833, 0.270833, 0.270833, 1)
 layout_mode = 2
 texture = ExtResource("3_ix0wu")
 stretch_mode = 4
 
-[node name="TextureRect4" type="TextureRect" parent="Orbs/GridContainer"]
+[node name="BlackOrb" type="TextureRect" parent="Orbs/OrbContainer"]
 modulate = Color(0.270833, 0.270833, 0.270833, 1)
 layout_mode = 2
 texture = ExtResource("3_ix0wu")

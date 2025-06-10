@@ -4,6 +4,7 @@ extends Node
 
 # signals
 signal on_gil_changed()
+signal on_orbs_updated()
 
 # enums
 
@@ -17,6 +18,8 @@ var gil: int = 500:
 		gil = new_gil
 		on_gil_changed.emit()
 var party: Array[EntityProperties]
+## list of bools denoting if any of the four orbs are obtained
+var orbs: Array[bool] = [false, false, false, false]
 
 # private vars
 var _debug_xp_gain: int = 1_000_000_000_000_000_000
@@ -82,11 +85,19 @@ func spend_gil(gil_cost: int) -> void:
 	gil -= gil_cost
 
 
+## sets [param value] to orb state at [param index].
+## emits [signal on_orbs_updated]
+func update_orb(index: int, value: bool) -> void:
+	orbs.set(index, value)
+	on_orbs_updated.emit()
+
+
 func save() -> Dictionary:
 	return {
 		"name": name,
 		"parent": get_parent().get_path(),
 		"party_data": party.map(func(a): return a.save()),
+		"orbs": orbs,
 		"gil": gil,
 	}
 
@@ -97,6 +108,7 @@ func load(data: Dictionary) -> void:
 		entity_props.stats = CombatStats.new()
 		entity_props.load(item)
 		add_member(entity_props)
+	orbs.assign(data["orbs"])
 	gil = data["gil"]
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://ckqmboktfdvg2"]
+[gd_scene load_steps=40 format=4 uid="uid://ckqmboktfdvg2"]
 
 [ext_resource type="Script" uid="uid://cte7526luc2h6" path="res://scenes/desert/desert_map.gd" id="1_vowdh"]
 [ext_resource type="TileSet" uid="uid://b0q4gowtnjlif" path="res://scenes/common/river_tileset.tres" id="2_25t3h"]
@@ -25,6 +25,8 @@
 [ext_resource type="Resource" uid="uid://c610dul6cyfd4" path="res://quests/quest_cactus_culling.tres" id="23_nevvm"]
 [ext_resource type="Texture2D" uid="uid://cginfw6h6hs30" path="res://entities/enemies/cactus/cactus-revenge.png" id="24_cgdgh"]
 [ext_resource type="Resource" uid="uid://c0s3au467bdwq" path="res://quests/quest_royal_audience.tres" id="25_30wtr"]
+[ext_resource type="Resource" uid="uid://bdw8r1jv111e" path="res://quests/quest_bandit_culling.tres" id="26_u8qri"]
+[ext_resource type="Texture2D" uid="uid://bms47f3c7kofx" path="res://entities/enemies/bandit/bandit.png" id="27_katdt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1cvgx"]
 size = Vector2(32, 32)
@@ -70,6 +72,9 @@ size = Vector2(22.453, 31.744)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_chbna"]
 size = Vector2(27.204, 31.881)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h7ael"]
+size = Vector2(37.368, 32.292)
 
 [node name="DesertMap" type="Node2D" groups=["persist"]]
 script = ExtResource("1_vowdh")
@@ -156,7 +161,6 @@ position = Vector2(-72, -183)
 shape = SubResource("RectangleShape2D_xique")
 entities = Array[ExtResource("11_dcgj7")]([ExtResource("15_g7u6l")])
 track_quest = true
-enable_invisible_wall = true
 quest = ExtResource("23_nevvm")
 
 [node name="Sprite2D" type="Sprite2D" parent="Bosses/CactusEncounter"]
@@ -168,11 +172,27 @@ position = Vector2(120, -245)
 shape = SubResource("RectangleShape2D_chbna")
 entities = Array[ExtResource("11_dcgj7")]([null, ExtResource("15_xique")])
 track_quest = true
-enable_invisible_wall = true
+enable_invisible_wall = false
 quest = ExtResource("25_30wtr")
 prerequisite_quest = ExtResource("23_nevvm")
 
 [node name="Sprite2D" type="Sprite2D" parent="Bosses/LordEncounter"]
 texture = ExtResource("19_w4n4h")
+
+[node name="BanditEncounter" parent="Bosses" instance=ExtResource("21_xique")]
+position = Vector2(-279, 31)
+shape = SubResource("RectangleShape2D_h7ael")
+entities = Array[ExtResource("11_dcgj7")]([ExtResource("13_045pm"), null, null, null, null, ExtResource("13_045pm")])
+track_quest = true
+quest = ExtResource("26_u8qri")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bosses/BanditEncounter"]
+position = Vector2(9, 0)
+texture = ExtResource("27_katdt")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Bosses/BanditEncounter"]
+position = Vector2(-8, 1)
+texture = ExtResource("27_katdt")
+flip_h = true
 
 [connection signal="on_transition_start" from="TestDoor" to="." method="_on_transition_area_on_transition_start"]
