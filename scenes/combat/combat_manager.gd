@@ -65,7 +65,8 @@ func _process(_delta: float) -> void:
 func trigger_combat(player_advantage: bool = true,
 		overworld_enemy: Node2D = null,
 		enemies: Array[EntityProperties] = [],
-		enable_static_entities: bool = false) -> void:
+		enable_static_entities: bool = false,
+		display_gear_text: bool = false) -> void:
 	get_tree().paused = true
 	var combat_scene := CombatScene.instantiate()
 	overworld_player.camera.enabled = false
@@ -77,13 +78,15 @@ func trigger_combat(player_advantage: bool = true,
 	else:
 		combat_scene.enemy_data = enemy_spawn_table
 
+	# combat scene config
 	combat_scene.is_party_advantage = player_advantage
 	combat_scene.enable_static_entity_spawn = enable_static_entities
+	combat_scene.display_gear_reward_text = display_gear_text
+	combat_scene.party_data = PartyManager.party
+
+	# set overworld player & enemy references
 	combat_scene.overworld_player = overworld_player
 	combat_scene.overworld_enemy = overworld_enemy
-
-	combat_scene.party_data = PartyManager.party
-	# combat_scene.max_enemy_count = 1
 
 	combat_scene.on_combat_end.connect(_on_combat_end)
 	add_child(combat_scene)

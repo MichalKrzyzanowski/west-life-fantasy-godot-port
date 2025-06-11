@@ -156,9 +156,10 @@ position = Vector2(-75, -250)
 
 [node name="Bosses" type="Node" parent="."]
 
-[node name="CactusEncounter" parent="Bosses" instance=ExtResource("21_xique")]
+[node name="CactusEncounter" parent="Bosses" node_paths=PackedStringArray("combat_manager") instance=ExtResource("21_xique")]
 position = Vector2(-72, -183)
 shape = SubResource("RectangleShape2D_xique")
+combat_manager = NodePath("../../CombatManager")
 entities = Array[ExtResource("11_dcgj7")]([ExtResource("15_g7u6l")])
 track_quest = true
 quest = ExtResource("23_nevvm")
@@ -167,9 +168,10 @@ quest = ExtResource("23_nevvm")
 position = Vector2(-2, 0)
 texture = ExtResource("24_cgdgh")
 
-[node name="LordEncounter" parent="Bosses" instance=ExtResource("21_xique")]
+[node name="LordEncounter" parent="Bosses" node_paths=PackedStringArray("combat_manager") instance=ExtResource("21_xique")]
 position = Vector2(120, -245)
 shape = SubResource("RectangleShape2D_chbna")
+combat_manager = NodePath("../../CombatManager")
 entities = Array[ExtResource("11_dcgj7")]([null, ExtResource("15_xique")])
 track_quest = true
 enable_invisible_wall = false
@@ -179,9 +181,10 @@ prerequisite_quest = ExtResource("23_nevvm")
 [node name="Sprite2D" type="Sprite2D" parent="Bosses/LordEncounter"]
 texture = ExtResource("19_w4n4h")
 
-[node name="BanditEncounter" parent="Bosses" instance=ExtResource("21_xique")]
+[node name="BanditEncounter" parent="Bosses" node_paths=PackedStringArray("combat_manager") instance=ExtResource("21_xique")]
 position = Vector2(-279, 31)
 shape = SubResource("RectangleShape2D_h7ael")
+combat_manager = NodePath("../../CombatManager")
 entities = Array[ExtResource("11_dcgj7")]([ExtResource("13_045pm"), null, null, null, null, ExtResource("13_045pm")])
 track_quest = true
 quest = ExtResource("26_u8qri")

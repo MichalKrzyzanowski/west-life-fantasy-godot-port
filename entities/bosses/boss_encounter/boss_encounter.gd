@@ -17,7 +17,8 @@ extends Area2D
 		shape = new_shape
 		if collision_shape:
 			collision_shape.shape = shape
-
+## CombatManager ref
+@export var combat_manager: Node
 ## list of entities and order of spawn in combat
 @export var entities: Array[EntityProperties]
 ## enables/disables combat start on entering the triggerzone
@@ -33,10 +34,10 @@ extends Area2D
 @export var prerequisite_quest: Quest
 
 # public vars
-## CombatManager ref
-var combat_manager: Node = null
 
 # private vars
+## toggles "GOT NEW GEAR" text in combat screen
+var _display_reward_text: bool = false
 
 # @onready vars
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
@@ -57,8 +58,6 @@ func _ready() -> void:
 	collision_shape.shape = shape
 
 	if !Engine.is_editor_hint():
-		# TODO: very sloppy, rework before final merge (maybe make CombatManager a singleton? or a unique node?)
-		combat_manager = get_node("../../CombatManager")
 		if enable_invisible_wall:
 			# update shape of static collider
 			static_collider.shape = shape.duplicate()
@@ -101,8 +100,12 @@ func _initialize_quest() -> void:
 	# to QuestManager quest_list otherwise
 	if temp_quest:
 		quest = temp_quest
+		quest.connect_on_task_complete_signal()
 	else:
 		QuestManager.add_quest(quest, true)
+
+	if !quest.items.is_empty():
+		_display_reward_text = true
 
 	# hide encounter if current quest is already completed
 	if quest.is_finished():
@@ -145,7 +148,7 @@ func _on_body_entered(_body: Node2D) -> void:
 
 	if combat_manager:
 		await get_tree().process_frame
-		combat_manager.trigger_combat(true, null, entities, true)
+		combat_manager.trigger_combat(true, null, entities, true, _display_reward_text)
 		return
 
 	printerr("combat manager missing, cannot begin boss battle")

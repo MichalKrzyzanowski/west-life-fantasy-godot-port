@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Quest" load_steps=5 format=3 uid="uid://c610dul6cyfd4"]
+[gd_resource type="Resource" script_class="Quest" load_steps=6 format=3 uid="uid://c610dul6cyfd4"]
 
 [ext_resource type="Script" uid="uid://d4n13cm6qw3fb" path="res://quests/common/quest.gd" id="1_mv85a"]
+[ext_resource type="Script" uid="uid://bneabgec74ja7" path="res://quests/common/reward.gd" id="1_pdlpn"]
 [ext_resource type="Script" uid="uid://pq3mtg61oigf" path="res://quests/tasks/task.gd" id="2_pdlpn"]
 [ext_resource type="Script" uid="uid://c0tx8hipl24e0" path="res://quests/tasks/slay_task.gd" id="3_srxo5"]
 
@@ -17,4 +18,5 @@ id = -1
 title = "Cactus Culling"
 description = "Time to slay Cactus"
 task_list = Array[ExtResource("2_pdlpn")]([SubResource("Resource_fh6qp")])
+items = Array[ExtResource("1_pdlpn")]([])
 metadata/_custom_type_script = "uid://d4n13cm6qw3fb"

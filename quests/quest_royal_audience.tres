@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Quest" load_steps=5 format=3 uid="uid://c0s3au467bdwq"]
+[gd_resource type="Resource" script_class="Quest" load_steps=6 format=3 uid="uid://c0s3au467bdwq"]
 
+[ext_resource type="Script" uid="uid://bneabgec74ja7" path="res://quests/common/reward.gd" id="1_pxq44"]
 [ext_resource type="Script" uid="uid://d4n13cm6qw3fb" path="res://quests/common/quest.gd" id="1_x4y6n"]
 [ext_resource type="Script" uid="uid://pq3mtg61oigf" path="res://quests/tasks/task.gd" id="2_pxq44"]
 [ext_resource type="Script" uid="uid://c0tx8hipl24e0" path="res://quests/tasks/slay_task.gd" id="3_r4xai"]
@@ -17,4 +18,5 @@ id = -1
 title = "Royal Audience"
 description = "Slay the Cactus Lord"
 task_list = Array[ExtResource("2_pxq44")]([SubResource("Resource_dwpmi")])
+items = Array[ExtResource("1_pxq44")]([])
 metadata/_custom_type_script = "uid://d4n13cm6qw3fb"

@@ -31,6 +31,9 @@ enum QuestState {
 ## order to finish the quest
 @export var task_list: Array[Task] = []
 
+@export_group("rewards")
+@export var items: Array[Reward]
+
 # public vars
 
 # private vars
@@ -77,7 +80,7 @@ func start() -> bool:
 
 	# set in progress state and connect on_task_complete Task signal
 	_quest_state = QuestState.IN_PROGRESS
-	task_list[_current_task_index].on_task_complete.connect(_on_current_task_completed)
+	connect_on_task_complete_signal()
 
 	return true
 
@@ -97,13 +100,18 @@ func add_task(task: Task) -> void:
 	task_list.append(task)
 
 
+## connects [signal Task.on_task_complete] signal
+func connect_on_task_complete_signal() -> void:
+	if !task_list[_current_task_index].on_task_complete.is_connected(_on_current_task_completed):
+		task_list[_current_task_index].on_task_complete.connect(_on_current_task_completed)
+
+
 ## check if quest has no more tasks left
 ## to do. quest is marked as [enum QuestState.FINISHED] if
 ## no more tasks available
 func check_completion_status() -> void:
 	if _current_task_index == task_list.size():
-		_quest_state = QuestState.FINISHED
-		on_quest_finished.emit()
+		_update_quest_status()
 
 
 ## checks if quest is [enum QuestState.IN_PROGRESS]
@@ -117,6 +125,20 @@ func is_finished() -> bool:
 
 
 # private methods
+## updates quest status such as state, adding rewards, etc.
+## called when all tasks are completed
+func _update_quest_status() -> void:
+	_quest_state = QuestState.FINISHED
+	# add reward items to party inventory
+	for reward: Reward in items:
+		if !reward:
+			continue
+
+		reward.earn()
+
+	on_quest_finished.emit()
+
+
 ## switches to the next task if available
 ## the quest is marked [enum QuestState.FINISHED] if no more tasks are
 ## available

@@ -126,6 +126,9 @@
 	- orbs in camp menu that regain color after beating corresponding boss 
 - buglist
 	- fleeing from combat follows a pattern, is not random (needs more investigation)
+	- loading the game breaks quest task completion
+		- creating a new save and instantly reloading causes boss encounters to break quest
+		- if quest is already saved in QuestManager, start() method is never called thus important signals are not connected
 
 +------+
 | TODO |

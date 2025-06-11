@@ -10,6 +10,10 @@
 	- quests should be saved in files like the enemies/party_members for ease of use (most games save quests in files e.g. monster hunter frontier)
 	- boss rewards
 		- armour & weapons
+	- how original game handles quest rewards:
+		- no gold or xp is given upon completing any of the quests
+		- 1 weapon & 1 armour per party member is given to the party upon entering the boss battle
+			- realistically, quest gear should be given when said quest is marked as finished
 
 - inventory system implementation ideas:
 	- implementation #1:

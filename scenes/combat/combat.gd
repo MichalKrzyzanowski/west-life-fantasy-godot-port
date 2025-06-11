@@ -34,6 +34,9 @@ signal on_combat_end()
 ## null entities are used to dictate empty slots in enemy
 ## positioning
 @export var enable_static_entity_spawn: bool = false
+## governs if the text "GOT NEW GEAR" should be displayed
+## if the battle is won
+@export var display_gear_reward_text: bool = false
 
 # public vars
 # combat status trackers
@@ -235,7 +238,7 @@ func _end_combat() -> void:
 	if has_party_won && !has_party_fled:
 		# update combat info box and rewards box
 		interface.update_combat_info("you won the battle!")
-		interface.update_rewards_info(_xp_reward, _gil_reward)
+		interface.update_rewards_info(_xp_reward, _gil_reward, display_gear_reward_text)
 		# add gil reward
 		PartyManager.gil += _gil_reward
 		# add xp to party
