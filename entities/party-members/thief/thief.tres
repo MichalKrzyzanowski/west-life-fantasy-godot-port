@@ -16,11 +16,13 @@ scaler_required_xp = 120
 config_allow_hp_overlimit = false
 config_restore_hp = true
 extra_level_up_gains = {}
-level = 0
+level = 1
 max_level = 9999
+hp = null
 xp_drop = 0
-gil_drop = 0
-gil_level_cost = 25
+gold_drop = 0
+gold_value = 0
+gold_level_cost = 25
 
 [resource]
 script = ExtResource("1_mgklo")

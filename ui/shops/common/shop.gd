@@ -54,7 +54,7 @@ var _selected_shop_item: Item
 @onready var shop_inventory_gui: HFlowContainer = $InventoryPanel/InventoryGui
 @onready var options_panel: NinePatchRect = $OptionsPanel
 # labels
-@onready var gil_label: Label = $GilLabel/Label
+@onready var gold_label: Label = $GoldLabel/Label
 @onready var title_label: Label = $TitlePanel/Label
 @onready var info_label: Label = $InfoPanel/Label
 # buttons
@@ -87,11 +87,11 @@ func _ready() -> void:
 	# set default inventory_gui options
 	shop_inventory_gui.set_inventory(shop_inventory, PartyManager.party)
 
-	# connect relevant gil & item signals
-	PartyManager.on_gil_changed.connect(_update_gil_text)
+	# connect relevant gold & item signals
+	PartyManager.on_gold_changed.connect(_update_gold_text)
 	shop_inventory_gui.on_item_gui_clicked.connect(_on_item_clicked)
 
-	_update_gil_text()
+	_update_gold_text()
 
 
 # remaining builtins e.g. _process, _input
@@ -121,28 +121,28 @@ func _buy_item(inventory: Inventory, item_id: int) -> void:
 
 	# player cannot afford the item, show a different message.
 	# shop state should not change
-	if PartyManager.gil < _selected_shop_item.stats.gil_value:
+	if PartyManager.gold < _selected_shop_item.stats.gold_value:
 		info_label.text = "You can't\nafford that."
 		return
 
-	info_label.text = "%d\nGold\nOK?" % _selected_shop_item.stats.gil_value
+	info_label.text = "%d\nGold\nOK?" % _selected_shop_item.stats.gold_value
 	shop_state = ShopState.BUY
 
 
-## handles sell item logic, gil gained is half of item's original value
-## i.e. gil += item_value / 2
+## handles sell item logic, gold gained is half of item's original value
+## i.e. gold += item_value / 2
 func _sell_item(inventory: Inventory, item_id: int) -> void:
 	_selected_shop_item = inventory.get_item(item_id)
 	print("selling %s" % _selected_shop_item.name)
 
-	if _selected_shop_item.stats.gil_value > 0:
-		PartyManager.gil += _selected_shop_item.stats.gil_value / 2.0
+	if _selected_shop_item.stats.gold_value > 0:
+		PartyManager.gold += _selected_shop_item.stats.gold_value / 2.0
 	inventory.remove_item(item_id)
 
 
-## update gil label text with current party gil
-func _update_gil_text() -> void:
-	gil_label.text = "%d G" % PartyManager.gil
+## update gold label text with current party gold
+func _update_gold_text() -> void:
+	gold_label.text = "%d G" % PartyManager.gold
 
 
 ## initial state, shows buy & exit buttons.
@@ -178,8 +178,8 @@ func _on_buy_button_pressed() -> void:
 			options_panel.hide()
 			info_label.text = "What do you need"
 		ShopState.BUY:
-			# spend gil and add item to target inventory e.g. party consumables inventory
-			PartyManager.spend_gil(_selected_shop_item.stats.gil_value)
+			# spend gold and add item to target inventory e.g. party consumables inventory
+			PartyManager.spend_gold(_selected_shop_item.stats.gold_value)
 			target_inventory.add_item(_selected_shop_item.id)
 
 			shop_state = ShopState.STANDBY

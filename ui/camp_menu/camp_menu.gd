@@ -23,7 +23,7 @@ const ORB_COLORS: Array[Color] = [
 # private vars
 
 # @onready vars
-@onready var gil_label := $Gil/Label as Label
+@onready var gold_label := $Gold/Label as Label
 @onready var options_menu := $OptionsMenu as Control
 @onready var items_menu := $ConsumablesMenu as Control
 @onready var armour_menu := $ArmourMenu as Control
@@ -39,9 +39,9 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-	update_gil()
+	update_gold()
 	update_orbs()
-	PartyManager.on_gil_changed.connect(update_gil)
+	PartyManager.on_gold_changed.connect(update_gold)
 	PartyManager.on_orbs_updated.connect(update_orbs)
 
 
@@ -59,8 +59,8 @@ func _input(event: InputEvent) -> void:
 
 
 # public methods
-func update_gil() -> void:
-	gil_label.text = "%d G" % PartyManager.gil
+func update_gold() -> void:
+	gold_label.text = "%d G" % PartyManager.gold
 
 
 func update_orbs() -> void:

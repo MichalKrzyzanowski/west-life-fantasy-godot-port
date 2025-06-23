@@ -21,7 +21,6 @@ extends Quest
 
 
 # func _init() -> void:
-# 	pass
 
 
 # func _enter_tree() -> void:
@@ -36,6 +35,19 @@ extends Quest
 
 
 # public methods
+## saves data as dictionary for JSON format
+func save() -> Dictionary:
+	var dict: Dictionary = super()
+	dict["orb"] = orb
+	dict["type"] = "main"
+
+	return dict
+
+
+## load data from JSON savefile
+func load(data: Dictionary) -> void:
+	super(data)
+	orb = data["orb"]
 
 
 # private methods
@@ -48,4 +60,3 @@ func _update_quest_status() -> void:
 
 
 # subclasses
-

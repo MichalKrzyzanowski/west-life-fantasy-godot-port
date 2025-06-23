@@ -10,7 +10,7 @@ script = ExtResource("2_6s5lc")
 [node name="Button" parent="." index="0"]
 theme_override_fonts/font = ExtResource("3_y3wtf")
 
-[node name="GilValueLabel" type="Label" parent="." index="1"]
+[node name="GoldValueLabel" type="Label" parent="." index="1"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0

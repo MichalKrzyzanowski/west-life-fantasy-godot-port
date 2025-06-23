@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="MainQuest" load_steps=14 format=3 uid="uid://voafxtkmegrq"]
+
+[ext_resource type="Script" uid="uid://bneabgec74ja7" path="res://quests/common/reward.gd" id="1_3fbot"]
+[ext_resource type="Script" uid="uid://bv4b7qq7cjeun" path="res://quests/common/main_quest.gd" id="2_56nj5"]
+[ext_resource type="Script" uid="uid://pq3mtg61oigf" path="res://quests/tasks/task.gd" id="3_24xhf"]
+[ext_resource type="Script" uid="uid://c0tx8hipl24e0" path="res://quests/tasks/slay_task.gd" id="4_56nj5"]
+
+[sub_resource type="Resource" id="Resource_56nj5"]
+script = ExtResource("1_3fbot")
+item_id = 105
+party_member_index = 0
+metadata/_custom_type_script = "uid://bneabgec74ja7"
+
+[sub_resource type="Resource" id="Resource_k0fan"]
+script = ExtResource("1_3fbot")
+item_id = 106
+party_member_index = 1
+metadata/_custom_type_script = "uid://bneabgec74ja7"
+
+[sub_resource type="Resource" id="Resource_oqe0m"]
+script = ExtResource("1_3fbot")
+item_id = 107
+party_member_index = 2
+metadata/_custom_type_script = "uid://bneabgec74ja7"
+
+[sub_resource type="Resource" id="Resource_hvpeo"]
+script = ExtResource("1_3fbot")
+item_id = 108
+party_member_index = 3
+metadata/_custom_type_script = "uid://bneabgec74ja7"
+
+[sub_resource type="Resource" id="Resource_xp8qo"]
+script = ExtResource("1_3fbot")
+item_id = 205
+party_member_index = 0
+metadata/_custom_type_script = "uid://bneabgec74ja7"
+
+[sub_resource type="Resource" id="Resource_4y5dy"]
+script = ExtResource("1_3fbot")
+item_id = 206
+party_member_index = 1
+metadata/_custom_type_script = "uid://bneabgec74ja7"
+
+[sub_resource type="Resource" id="Resource_0g37g"]
+script = ExtResource("1_3fbot")
+item_id = 207
+party_member_index = 2
+metadata/_custom_type_script = "uid://bneabgec74ja7"
+
+[sub_resource type="Resource" id="Resource_mf26n"]
+script = ExtResource("1_3fbot")
+item_id = 208
+party_member_index = 3
+metadata/_custom_type_script = "uid://bneabgec74ja7"
+
+[sub_resource type="Resource" id="Resource_24xhf"]
+script = ExtResource("4_56nj5")
+target_entity_name = "stoic mass"
+target_slay_count = 1
+description = "Slay the Stoic Mass"
+metadata/_custom_type_script = "uid://c0tx8hipl24e0"
+
+[resource]
+script = ExtResource("2_56nj5")
+orb = 1
+id = -1
+title = "Battle in The Desert"
+description = "2: Head to the lake and beat the dessert warriors"
+task_list = Array[ExtResource("3_24xhf")]([SubResource("Resource_24xhf")])
+type = "standard"
+items = Array[ExtResource("1_3fbot")]([SubResource("Resource_56nj5"), SubResource("Resource_k0fan"), SubResource("Resource_oqe0m"), SubResource("Resource_hvpeo"), SubResource("Resource_xp8qo"), SubResource("Resource_4y5dy"), SubResource("Resource_0g37g"), SubResource("Resource_mf26n")])
+metadata/_custom_type_script = "uid://bv4b7qq7cjeun"

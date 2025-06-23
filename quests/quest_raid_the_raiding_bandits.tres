@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="MainQuest" load_steps=14 format=3 uid="uid://btht8cbct2rgq"]
+
+[ext_resource type="Script" uid="uid://bneabgec74ja7" path="res://quests/common/reward.gd" id="1_1vac7"]
+[ext_resource type="Script" uid="uid://bv4b7qq7cjeun" path="res://quests/common/main_quest.gd" id="2_e60g7"]
+[ext_resource type="Script" uid="uid://pq3mtg61oigf" path="res://quests/tasks/task.gd" id="3_u5onq"]
+[ext_resource type="Script" uid="uid://c0tx8hipl24e0" path="res://quests/tasks/slay_task.gd" id="4_e60g7"]
+
+[sub_resource type="Resource" id="Resource_e60g7"]
+script = ExtResource("1_1vac7")
+item_id = 101
+party_member_index = 0
+metadata/_custom_type_script = "uid://bneabgec74ja7"
+
+[sub_resource type="Resource" id="Resource_6iq8h"]
+script = ExtResource("1_1vac7")
+item_id = 102
+party_member_index = 1
+metadata/_custom_type_script = "uid://bneabgec74ja7"
+
+[sub_resource type="Resource" id="Resource_t4ciw"]
+script = ExtResource("1_1vac7")
+item_id = 103
+party_member_index = 2
+metadata/_custom_type_script = "uid://bneabgec74ja7"
+
+[sub_resource type="Resource" id="Resource_cyuu5"]
+script = ExtResource("1_1vac7")
+item_id = 104
+party_member_index = 3
+metadata/_custom_type_script = "uid://bneabgec74ja7"
+
+[sub_resource type="Resource" id="Resource_7foma"]
+script = ExtResource("1_1vac7")
+item_id = 201
+party_member_index = 0
+metadata/_custom_type_script = "uid://bneabgec74ja7"
+
+[sub_resource type="Resource" id="Resource_yivls"]
+script = ExtResource("1_1vac7")
+item_id = 202
+party_member_index = 1
+metadata/_custom_type_script = "uid://bneabgec74ja7"
+
+[sub_resource type="Resource" id="Resource_t7gh8"]
+script = ExtResource("1_1vac7")
+item_id = 203
+party_member_index = 2
+metadata/_custom_type_script = "uid://bneabgec74ja7"
+
+[sub_resource type="Resource" id="Resource_wls5d"]
+script = ExtResource("1_1vac7")
+item_id = 204
+party_member_index = 3
+metadata/_custom_type_script = "uid://bneabgec74ja7"
+
+[sub_resource type="Resource" id="Resource_u5onq"]
+script = ExtResource("4_e60g7")
+target_entity_name = "the skinhead"
+target_slay_count = 1
+description = "Slay the Skinhead"
+metadata/_custom_type_script = "uid://c0tx8hipl24e0"
+
+[resource]
+script = ExtResource("2_e60g7")
+orb = 0
+id = -1
+title = "Raid the Raiding Bandits"
+description = "1: Head to the nearest town and beat the raiding bandits"
+task_list = Array[ExtResource("3_u5onq")]([SubResource("Resource_u5onq")])
+type = "main"
+items = Array[ExtResource("1_1vac7")]([SubResource("Resource_e60g7"), SubResource("Resource_6iq8h"), SubResource("Resource_t4ciw"), SubResource("Resource_cyuu5"), SubResource("Resource_7foma"), SubResource("Resource_yivls"), SubResource("Resource_t7gh8"), SubResource("Resource_wls5d")])
+metadata/_custom_type_script = "uid://bv4b7qq7cjeun"

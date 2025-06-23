@@ -43,12 +43,12 @@ func _ready() -> void:
 		printerr("no quest to track!")
 		return
 
-	# set default quest description display
-	if !use_verbose_description:
+	# set verbose quest description display
+	if use_verbose_description:
+		update_description_verbose()
+		quest.on_task_changed.connect(update_description_verbose)
+	else:
 		text = quest.description
-		return
-
-	update_description_verbose()
 
 	# check if quest is already finished
 	if quest.is_finished():
@@ -57,7 +57,6 @@ func _ready() -> void:
 
 	# connect relevant quest signals
 	quest.on_quest_finished.connect(set_complete_color)
-	quest.on_task_changed.connect(update_description_verbose)
 
 
 # remaining builtins e.g. _process, _input

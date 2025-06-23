@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bisihv52a2ynm"
-path="res://.godot/imported/desert-shinobi.png-016caa6abacc9427fb736d7b34476dad.ctex"
+uid="uid://c6dn11c567imk"
+path="res://.godot/imported/player-ninja.png-b04cac8bb3a798a853da24481498f870.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/enemies/desert_ninja/desert-shinobi.png"
-dest_files=["res://.godot/imported/desert-shinobi.png-016caa6abacc9427fb736d7b34476dad.ctex"]
+source_file="res://entities/party-members/black_mage/player-ninja.png"
+dest_files=["res://.godot/imported/player-ninja.png-b04cac8bb3a798a853da24481498f870.ctex"]
 
 [params]
 

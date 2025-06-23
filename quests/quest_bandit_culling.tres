@@ -25,5 +25,6 @@ id = -1
 title = "Bandit Culling"
 description = "Slay all of the bandits"
 task_list = Array[ExtResource("2_t2j82")]([SubResource("Resource_xn6rh")])
+type = "standard"
 items = Array[ExtResource("1_t2j82")]([SubResource("Resource_t2j82")])
 metadata/_custom_type_script = "uid://bv4b7qq7cjeun"

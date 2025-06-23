@@ -63,14 +63,14 @@ func upgrade() -> void:
 	if stats.has_reached_max_level():
 		print("%s is max level" % name)
 		return
-	elif !PartyManager.can_afford(stats.gil_level_cost):
-		print("cannot afford %s upgrade. cost: %d, gil: %d" % [
-				name, stats.gil_level_cost, PartyManager.gil
+	elif !PartyManager.can_afford(stats.gold_level_cost):
+		print("cannot afford %s upgrade. cost: %d, gold: %d" % [
+				name, stats.gold_level_cost, PartyManager.gold
 		])
 		return
 
-	# spend party gil and upgrade
-	PartyManager.spend_gil(stats.gil_level_cost)
+	# spend party gold and upgrade
+	PartyManager.spend_gold(stats.gold_level_cost)
 	stats.level_up()
 
 

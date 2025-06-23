@@ -24,6 +24,9 @@ var tracked_quest_limit: int = 5
 var quest_list: Array[Quest] = []
 
 # private vars
+var _quest_type_callbacks: Dictionary = {
+	"main": func() -> MainQuest: return MainQuest.new(),
+}
 
 # @onready vars
 
@@ -172,7 +175,15 @@ func load(data: Dictionary) -> void:
 	tracked_quests.assign(data["tracked_quests"])
 
 	for quest_data: Dictionary in data["quest_list"]:
-		var quest: Quest = Quest.new()
+		var quest: Quest
+		if !quest_data.has("type") || !_quest_type_callbacks.has(quest_data["type"]):
+			print("loading normal quest")
+			quest = Quest.new()
+			quest.load(quest_data)
+			quest_list.append(quest)
+			continue
+		print("loading main quest")
+		quest = _quest_type_callbacks[quest_data["type"]].call()
 		quest.load(quest_data)
 		quest_list.append(quest)
 

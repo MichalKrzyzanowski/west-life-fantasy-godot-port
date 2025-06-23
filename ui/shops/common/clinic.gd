@@ -53,7 +53,7 @@ var _selected_dead_member_button: Button
 @onready var dead_party_list: VBoxContainer = $OptionsPanel/DeadPartyList
 @onready var confirm_selection_list: VBoxContainer = $OptionsPanel/ConfirmSelectionList
 # labels
-@onready var gil_label: Label = $GilLabel/Label
+@onready var gold_label: Label = $GoldLabel/Label
 @onready var title_label: Label = $TitlePanel/Label
 @onready var info_label: Label = $InfoPanel/Label
 
@@ -78,9 +78,9 @@ func _ready() -> void:
 		exit_button.hide()
 
 	title_label.text = clinic_name
-	PartyManager.on_gil_changed.connect(_update_gil_text)
+	PartyManager.on_gold_changed.connect(_update_gold_text)
 
-	_update_gil_text()
+	_update_gold_text()
 	_enter_standby_state()
 	_update_dead_party_members()
 
@@ -140,9 +140,9 @@ func _on_dead_member_button_pressed(button_ref: Button) -> void:
 	_clinic_state = ClinicState.REVIVE
 
 
-## updates gil text label with current party gil
-func _update_gil_text() -> void:
-	gil_label.text = "%d G" % PartyManager.gil
+## updates gold text label with current party gold
+func _update_gold_text() -> void:
+	gold_label.text = "%d G" % PartyManager.gold
 
 
 ## enter initial state.
@@ -190,7 +190,7 @@ func _on_confirm_button_pressed() -> void:
 
 	# revive dead member
 	if PartyManager.can_afford(revive_cost):
-		PartyManager.spend_gil(revive_cost)
+		PartyManager.spend_gold(revive_cost)
 		PartyManager.party[member_id].revive()
 
 	# remove dead member button

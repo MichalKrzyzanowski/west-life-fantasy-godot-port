@@ -63,7 +63,7 @@ text = "Item"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="GilLabel" type="NinePatchRect" parent="."]
+[node name="GoldLabel" type="NinePatchRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.488281
@@ -81,7 +81,7 @@ patch_margin_right = 4
 patch_margin_bottom = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="GilLabel"]
+[node name="Label" type="Label" parent="GoldLabel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.370192

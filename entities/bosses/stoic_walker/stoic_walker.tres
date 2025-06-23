@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="EntityProperties" load_steps=5 format=3 uid="uid://ceycn0oxawtia"]
+
+[ext_resource type="Script" uid="uid://c58mgmklnekfj" path="res://entities/common/entity/entity_properties.gd" id="1_66ll5"]
+[ext_resource type="Script" uid="uid://d2dfuqtwgbcq" path="res://entities/common/stats/combat_stats.gd" id="2_wc2tu"]
+[ext_resource type="Texture2D" uid="uid://b2ss2uqxlxu6g" path="res://entities/bosses/stoic_walker/boss-walk.png" id="3_ifh6s"]
+
+[sub_resource type="Resource" id="Resource_ifh6s"]
+script = ExtResource("2_wc2tu")
+max_hp = 75
+attack = 25
+defence = 20
+scaler_hp = 0
+scaler_attack = 0
+scaler_defence = 0
+scaler_required_xp = 0
+config_allow_hp_overlimit = false
+config_restore_hp = true
+extra_level_up_gains = {}
+level = 1
+max_level = 9999
+hp = null
+xp_drop = 96
+gold_drop = 124
+gold_value = 0
+gold_level_cost = 25
+metadata/_custom_type_script = "uid://d2dfuqtwgbcq"
+
+[resource]
+script = ExtResource("1_66ll5")
+stats = SubResource("Resource_ifh6s")
+name = "stoic walker"
+texture = ExtResource("3_ifh6s")
+metadata/_custom_type_script = "uid://c58mgmklnekfj"

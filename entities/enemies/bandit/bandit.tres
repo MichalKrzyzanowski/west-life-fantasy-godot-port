@@ -20,9 +20,9 @@ level = 1
 max_level = 9999
 hp = null
 xp_drop = 8
-gil_drop = 6
-gil_value = 0
-gil_level_cost = 25
+gold_drop = 6
+gold_value = 0
+gold_level_cost = 25
 
 [resource]
 script = ExtResource("1_4bmpm")

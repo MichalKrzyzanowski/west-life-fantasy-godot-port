@@ -30,6 +30,8 @@ enum QuestState {
 ## array of tasks required to be completed in
 ## order to finish the quest
 @export var task_list: Array[Task] = []
+## type of quest
+@export_storage var type: String = "standard"
 
 @export_group("rewards")
 @export var items: Array[Reward]
@@ -102,6 +104,9 @@ func add_task(task: Task) -> void:
 
 ## connects [signal Task.on_task_complete] signal
 func connect_on_task_complete_signal() -> void:
+	if !current_task():
+		return
+
 	if !task_list[_current_task_index].on_task_complete.is_connected(_on_current_task_completed):
 		task_list[_current_task_index].on_task_complete.connect(_on_current_task_completed)
 
@@ -161,12 +166,18 @@ func save() -> Dictionary:
 	for task: Task in task_list:
 		task_data_list.append(task.save())
 
+	var rewards_list: Array[Dictionary]
+	for reward: Reward in items:
+		rewards_list.append(reward.save())
+
 	return {
 		"title": title,
 		"description": description,
+		"type": type,
 		"task_list": task_data_list,
 		"current_task_index": _current_task_index,
 		"quest_state": _quest_state,
+		"rewards_list": rewards_list,
 	}
 
 
@@ -174,6 +185,7 @@ func save() -> Dictionary:
 func load(data: Dictionary) -> void:
 	title = data["title"]
 	description = data["description"]
+	type = data["type"]
 	_current_task_index = data["current_task_index"]
 	_quest_state = data["quest_state"]
 
@@ -188,6 +200,11 @@ func load(data: Dictionary) -> void:
 			task.load(data)
 
 		task_list.append(task)
+
+	for reward_data: Dictionary in data["rewards_list"]:
+		var reward: Reward = Reward.new()
+		reward.load(reward_data)
+		items.append(reward)
 
 
 ## quest string representation

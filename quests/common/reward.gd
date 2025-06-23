@@ -48,6 +48,20 @@ func earn() -> void:
 	InventoryManager.get_party_inventory(party_member_index).add_item(item_id)
 
 
+## saves data as dictionary for JSON format
+func save() -> Dictionary:
+	return {
+		"item_id": item_id,
+		"party_member_index": party_member_index,
+	}
+
+
+## load data from JSON savefile
+func load(data: Dictionary) -> void:
+	item_id = data["item_id"]
+	party_member_index = data["party_member_index"]
+
+
 # private methods
 
 

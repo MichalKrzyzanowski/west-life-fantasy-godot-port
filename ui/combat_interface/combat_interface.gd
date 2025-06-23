@@ -24,7 +24,7 @@ var block_action_select: bool = false
 # combat info labels
 @onready var info_label := $CombatInfoPanel/BattleInfoLabel as Label
 @onready var rewards_label := $CombatInfoPanel/RewardsLabel as Label
-@onready var gil_xp_label := $CombatInfoPanel/GilXpValueLabel as Label
+@onready var gold_xp_label := $CombatInfoPanel/GoldXpValueLabel as Label
 @onready var gear_label := $CombatInfoPanel/GearLabel as Label
 
 @onready var attack_button := $ActionsPanel/AttackButton as Button
@@ -79,10 +79,10 @@ func update_combat_info(info: String = "") -> void:
 
 
 ## updates rewards info part of the combat info box
-func update_rewards_info(xp: int, gil: int, got_new_gear: bool = false) -> void:
+func update_rewards_info(xp: int, gold: int, got_new_gear: bool = false) -> void:
 	rewards_label.show()
-	gil_xp_label.text = "%dg\n%dxp" % [gil, xp]
-	gil_xp_label.show()
+	gold_xp_label.text = "%dg\n%dxp" % [gold, xp]
+	gold_xp_label.show()
 
 	gear_label.visible = got_new_gear
 

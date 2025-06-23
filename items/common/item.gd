@@ -17,7 +17,7 @@ class_name Item extends Resource
 ## item type, used for inventory item filtering
 @export var type: String = ""
 ## count of items in the stack
-@export var amount: int= 0
+@export var amount: int = 0
 ## max amount of an item an inventory can hold
 @export var stack_size: int = 64
 ## item description, mainly used for consumables

@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="EntityProperties" load_steps=5 format=3 uid="uid://c42upufqkles4"]
+
+[ext_resource type="Script" uid="uid://c58mgmklnekfj" path="res://entities/common/entity/entity_properties.gd" id="1_o2dnd"]
+[ext_resource type="Script" uid="uid://d2dfuqtwgbcq" path="res://entities/common/stats/combat_stats.gd" id="2_0lfuu"]
+[ext_resource type="Texture2D" uid="uid://cm7etfulmq4nd" path="res://entities/bosses/gatekeeper/boss-wife.png" id="3_jq4jh"]
+
+[sub_resource type="Resource" id="Resource_jl2hg"]
+script = ExtResource("2_0lfuu")
+max_hp = 100
+attack = 5
+defence = 20
+scaler_hp = 0
+scaler_attack = 0
+scaler_defence = 0
+scaler_required_xp = 0
+config_allow_hp_overlimit = false
+config_restore_hp = true
+extra_level_up_gains = {}
+level = 1
+max_level = 9999
+hp = null
+xp_drop = 102
+gold_drop = 104
+gold_value = 0
+gold_level_cost = 25
+metadata/_custom_type_script = "uid://d2dfuqtwgbcq"
+
+[resource]
+script = ExtResource("1_o2dnd")
+stats = SubResource("Resource_jl2hg")
+name = "the gatekeeper"
+texture = ExtResource("3_jq4jh")
+metadata/_custom_type_script = "uid://c58mgmklnekfj"

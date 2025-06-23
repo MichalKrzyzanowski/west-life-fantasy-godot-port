@@ -26,8 +26,8 @@ const PARAMETERS_LOAD_ORDER: Dictionary = {
 		"required_xp": "required_xp",
 		"xp": "xp",
 		"scaler_hp": "scaler_hp",
-		"gil_level_cost": "gil_level_cost",
-		"gil_value": "gil_value",
+		"gold_level_cost": "gold_level_cost",
+		"gold_value": "gold_value",
 	}
 
 # export vars
@@ -63,7 +63,7 @@ const PARAMETERS_LOAD_ORDER: Dictionary = {
 @export var extra_level_up_gains: Dictionary
 
 ## level
-@export var level: int = 1
+@export_storage var level: int = 1
 ## max level
 @export var max_level: int = 9999
 # current hp, character dies if hp reaches 0
@@ -72,11 +72,11 @@ const PARAMETERS_LOAD_ORDER: Dictionary = {
 ## xp the character drops upon death, mainly used for enemy entities
 @export var xp_drop: int
 ## gold the character drops upon death, mainly used for enemy entities
-@export var gil_drop: int
-## gil value of the entity/item, mainly used for selling/buying items
-@export var gil_value: int
+@export var gold_drop: int
+## gold value of the entity/item, mainly used for selling/buying items
+@export var gold_value: int
 ## cost to level up, optional. mainly used for gear upgrading
-@export var gil_level_cost: int = 25
+@export var gold_level_cost: int = 25
 
 # current xp, used for leveling character up
 var xp: int:
@@ -178,7 +178,7 @@ func add(stats: CombatStats) -> void:
 	defence += stats.defence
 	scaler_defence += stats.scaler_defence
 	xp += stats.xp
-	gil_level_cost += stats.gil_level_cost
+	gold_level_cost += stats.gold_level_cost
 	max_level += stats.max_level
 
 
@@ -203,8 +203,8 @@ func save() -> Dictionary:
 		"scaler_defence": scaler_defence,
 		"allow_hp_overlimit": config_allow_hp_overlimit,
 		"restore_hp": config_restore_hp,
-		"gil_level_cost": gil_level_cost,
-		"gil_value": gil_value,
+		"gold_level_cost": gold_level_cost,
+		"gold_value": gold_value,
 	}
 
 	# convert value of extra_level_up_gains dict to dict format
@@ -232,6 +232,6 @@ func load_extra_level_up_gains(data: Dictionary) -> void:
 	for key: String in data.keys():
 		var stats: CombatStats = CombatStats.new()
 		stats.init(true)
-		stats.gil_level_cost = 0
+		stats.gold_level_cost = 0
 		stats.load(data[key])
 		extra_level_up_gains[key.to_int()] = stats

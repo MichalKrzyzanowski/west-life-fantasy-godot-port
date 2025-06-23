@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c58mgmklnekfj" path="res://entities/common/entity/entity_properties.gd" id="1_xyb2c"]
 [ext_resource type="Script" uid="uid://d2dfuqtwgbcq" path="res://entities/common/stats/combat_stats.gd" id="2_k2vay"]
-[ext_resource type="Texture2D" uid="uid://bisihv52a2ynm" path="res://entities/enemies/desert_ninja/desert-shinobi.png" id="3_5r41m"]
+[ext_resource type="Texture2D" uid="uid://bisihv52a2ynm" path="res://entities/enemies/desert_ninja/desert-ninja.png" id="3_7mrjp"]
 
 [sub_resource type="Resource" id="Resource_fqms0"]
 script = ExtResource("2_k2vay")
@@ -20,12 +20,12 @@ level = 1
 max_level = 9999
 hp = null
 xp_drop = 35
-gil_drop = 15
-gil_value = 0
-gil_level_cost = 25
+gold_drop = 15
+gold_value = 0
+gold_level_cost = 25
 
 [resource]
 script = ExtResource("1_xyb2c")
 stats = SubResource("Resource_fqms0")
 name = "desert ninja"
-texture = ExtResource("3_5r41m")
+texture = ExtResource("3_7mrjp")

@@ -18,10 +18,11 @@ config_restore_hp = true
 extra_level_up_gains = {}
 level = 1
 max_level = 9999
+hp = null
 xp_drop = 312
-gil_drop = 142
-gil_value = 0
-gil_level_cost = 25
+gold_drop = 142
+gold_value = 0
+gold_level_cost = 25
 
 [resource]
 script = ExtResource("1_k775v")

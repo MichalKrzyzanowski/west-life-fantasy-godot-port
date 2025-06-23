@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="EntityProperties" load_steps=5 format=3 uid="uid://bao66o8vmxoo1"]
+
+[ext_resource type="Script" uid="uid://c58mgmklnekfj" path="res://entities/common/entity/entity_properties.gd" id="1_55s34"]
+[ext_resource type="Script" uid="uid://d2dfuqtwgbcq" path="res://entities/common/stats/combat_stats.gd" id="2_2x5ae"]
+[ext_resource type="Texture2D" uid="uid://cin8mubo07rvk" path="res://entities/bosses/awoken_thug/boss-boss-boss.png" id="3_dfi37"]
+
+[sub_resource type="Resource" id="Resource_j4mpo"]
+script = ExtResource("2_2x5ae")
+max_hp = 250
+attack = 10
+defence = 50
+scaler_hp = 0
+scaler_attack = 0
+scaler_defence = 0
+scaler_required_xp = 0
+config_allow_hp_overlimit = false
+config_restore_hp = true
+extra_level_up_gains = {}
+level = 1
+max_level = 9999
+hp = null
+xp_drop = 520
+gold_drop = 1300
+gold_value = 0
+gold_level_cost = 25
+metadata/_custom_type_script = "uid://d2dfuqtwgbcq"
+
+[resource]
+script = ExtResource("1_55s34")
+stats = SubResource("Resource_j4mpo")
+name = "awoken thug"
+texture = ExtResource("3_dfi37")
+metadata/_custom_type_script = "uid://c58mgmklnekfj"

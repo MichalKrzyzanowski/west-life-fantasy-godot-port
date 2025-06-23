@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://ckqmboktfdvg2"]
+[gd_scene load_steps=54 format=4 uid="uid://ckqmboktfdvg2"]
 
 [ext_resource type="Script" uid="uid://cte7526luc2h6" path="res://scenes/desert/desert_map.gd" id="1_vowdh"]
 [ext_resource type="TileSet" uid="uid://b0q4gowtnjlif" path="res://scenes/common/river_tileset.tres" id="2_25t3h"]
@@ -14,19 +14,32 @@
 [ext_resource type="Resource" uid="uid://t4krtc6a7vbh" path="res://entities/enemies/snail/snail.tres" id="12_fjvd6"]
 [ext_resource type="Resource" uid="uid://bhugyhiqyrca3" path="res://entities/enemies/bandit/bandit.tres" id="13_045pm"]
 [ext_resource type="Resource" uid="uid://cm5l8es7a6hsk" path="res://entities/enemies/dark_ninja/dark_ninja.tres" id="14_u8kt6"]
-[ext_resource type="Resource" uid="uid://bpsxlfo8fw8e7" path="res://entities/enemies/cactus/cactus.tres" id="15_g7u6l"]
 [ext_resource type="Resource" uid="uid://cj65jy2wqmbcv" path="res://entities/bosses/cactus_boss/cactus_boss.tres" id="15_xique"]
 [ext_resource type="Resource" uid="uid://bdw0t65416n83" path="res://entities/enemies/desert_ninja/desert_ninja.tres" id="16_pw241"]
 [ext_resource type="PackedScene" uid="uid://csx3cuf43jnq8" path="res://entities/overworld-enemy/overworld_enemy.tscn" id="17_sqsuv"]
 [ext_resource type="PackedScene" uid="uid://dujvgle5ockxo" path="res://scenes/common/transition_area/transition_area.tscn" id="18_we0hj"]
 [ext_resource type="Texture2D" uid="uid://ds1neb28g8cpd" path="res://door.png" id="19_w4n4h"]
 [ext_resource type="Script" uid="uid://bbmrk0wf4vywj" path="res://scenes/common/locale_data/locale_data.gd" id="20_3tgwn"]
-[ext_resource type="PackedScene" uid="uid://biepho24s8vwe" path="res://entities/bosses/boss_encounter/boss_encounter.tscn" id="21_xique"]
-[ext_resource type="Resource" uid="uid://c610dul6cyfd4" path="res://quests/quest_cactus_culling.tres" id="23_nevvm"]
-[ext_resource type="Texture2D" uid="uid://cginfw6h6hs30" path="res://entities/enemies/cactus/cactus-revenge.png" id="24_cgdgh"]
-[ext_resource type="Resource" uid="uid://c0s3au467bdwq" path="res://quests/quest_royal_audience.tres" id="25_30wtr"]
-[ext_resource type="Resource" uid="uid://bdw8r1jv111e" path="res://quests/quest_bandit_culling.tres" id="26_u8qri"]
+[ext_resource type="PackedScene" uid="uid://biepho24s8vwe" path="res://entities/common/boss_encounter/boss_encounter.tscn" id="21_1dtuw"]
+[ext_resource type="Resource" uid="uid://108cj5tv5mq8" path="res://entities/bosses/the_skinhead/the_skinhead.tres" id="22_3amxs"]
+[ext_resource type="Texture2D" uid="uid://mugh4xrmv832" path="res://entities/bosses/the_skinhead/boss-man.png" id="23_nevvm"]
+[ext_resource type="Resource" uid="uid://btht8cbct2rgq" path="res://quests/quest_raid_the_raiding_bandits.tres" id="23_q2is2"]
+[ext_resource type="Texture2D" uid="uid://bd66bt1gm0jax" path="res://entities/enemies/desert_warrior/desert-warrior.png" id="24_30wtr"]
+[ext_resource type="Texture2D" uid="uid://p0pprlmyybkh" path="res://entities/bosses/stoic_mass/boss-boss.png" id="25_chbna"]
+[ext_resource type="Resource" uid="uid://voafxtkmegrq" path="res://quests/quest_battle_in_the_desert.tres" id="26_oj1fk"]
+[ext_resource type="Resource" uid="uid://ddeaf1mo6218r" path="res://entities/enemies/desert_warrior/desert_warrior.tres" id="26_tru8k"]
+[ext_resource type="Texture2D" uid="uid://tqp8f8oj04hj" path="res://entities/enemies/dark_ninja/dark-ninja.png" id="26_u8qri"]
+[ext_resource type="Resource" uid="uid://dja1sqakx5jcy" path="res://entities/bosses/stoic_mass/stoic_mass.tres" id="27_dfefo"]
+[ext_resource type="Texture2D" uid="uid://b2ss2uqxlxu6g" path="res://entities/bosses/stoic_walker/boss-walk.png" id="27_h7ael"]
 [ext_resource type="Texture2D" uid="uid://bms47f3c7kofx" path="res://entities/enemies/bandit/bandit.png" id="27_katdt"]
+[ext_resource type="Texture2D" uid="uid://bmda33h7ecpov" path="res://entities/bosses/bodyguard/bodyguard.png" id="28_katdt"]
+[ext_resource type="Texture2D" uid="uid://drklhynoynv02" path="res://scenes/common/fence-tileset.png" id="29_h7ael"]
+[ext_resource type="Resource" uid="uid://js7ng1vyklcy" path="res://entities/bosses/sleeping_thug/sleeping_thug.tres" id="31_8uswe"]
+[ext_resource type="Resource" uid="uid://jmajheihqpb1" path="res://quests/quest_ninja_ambush.tres" id="31_dfefo"]
+[ext_resource type="Resource" uid="uid://ceycn0oxawtia" path="res://entities/bosses/stoic_walker/stoic_walker.tres" id="32_gqovc"]
+[ext_resource type="Resource" uid="uid://cp8h2jqynfdvy" path="res://quests/quest_battle_at_the_bridge.tres" id="36_gqovc"]
+[ext_resource type="Resource" uid="uid://c42upufqkles4" path="res://entities/bosses/gatekeeper/gatekeeper.tres" id="36_xe07q"]
+[ext_resource type="Resource" uid="uid://bao66o8vmxoo1" path="res://entities/bosses/awoken_thug/awoken_thug.tres" id="37_dgpv0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1cvgx"]
 size = Vector2(32, 32)
@@ -67,14 +80,17 @@ script = ExtResource("20_3tgwn")
 entrance_position = Vector2(8, 136)
 scene_file = "res://scenes/town/town_map.tscn"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xique"]
-size = Vector2(22.453, 31.744)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgdgh"]
+size = Vector2(64, 31)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_chbna"]
-size = Vector2(27.204, 31.881)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8qri"]
+size = Vector2(58.558, 30.083)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3amxs"]
+size = Vector2(60, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h7ael"]
-size = Vector2(37.368, 32.292)
+size = Vector2(51.974, 62.436)
 
 [node name="DesertMap" type="Node2D" groups=["persist"]]
 script = ExtResource("1_vowdh")
@@ -156,46 +172,157 @@ position = Vector2(-75, -250)
 
 [node name="Bosses" type="Node" parent="."]
 
-[node name="CactusEncounter" parent="Bosses" node_paths=PackedStringArray("combat_manager") instance=ExtResource("21_xique")]
-position = Vector2(-72, -183)
-shape = SubResource("RectangleShape2D_xique")
+[node name="NorthTownBoss" parent="Bosses" node_paths=PackedStringArray("combat_manager") instance=ExtResource("21_1dtuw")]
+position = Vector2(-197, 63)
+shape = SubResource("RectangleShape2D_cgdgh")
 combat_manager = NodePath("../../CombatManager")
-entities = Array[ExtResource("11_dcgj7")]([ExtResource("15_g7u6l")])
+entities = Array[ExtResource("11_dcgj7")]([ExtResource("13_045pm"), ExtResource("13_045pm"), ExtResource("13_045pm"), null, ExtResource("22_3amxs")])
 track_quest = true
-quest = ExtResource("23_nevvm")
+quest = ExtResource("23_q2is2")
 
-[node name="Sprite2D" type="Sprite2D" parent="Bosses/CactusEncounter"]
-position = Vector2(-2, 0)
-texture = ExtResource("24_cgdgh")
+[node name="BanditLeft" type="Sprite2D" parent="Bosses/NorthTownBoss"]
+position = Vector2(-23, -2)
+texture = ExtResource("27_katdt")
 
-[node name="LordEncounter" parent="Bosses" node_paths=PackedStringArray("combat_manager") instance=ExtResource("21_xique")]
-position = Vector2(120, -245)
-shape = SubResource("RectangleShape2D_chbna")
+[node name="SkinheadBoss" type="Sprite2D" parent="Bosses/NorthTownBoss"]
+position = Vector2(-1, 0)
+texture = ExtResource("23_nevvm")
+flip_h = true
+
+[node name="BanditRight" type="Sprite2D" parent="Bosses/NorthTownBoss"]
+position = Vector2(24, 1)
+texture = ExtResource("27_katdt")
+flip_h = true
+
+[node name="DesertLake" parent="Bosses" node_paths=PackedStringArray("combat_manager") instance=ExtResource("21_1dtuw")]
+position = Vector2(-312, 382)
+shape = SubResource("RectangleShape2D_u8qri")
 combat_manager = NodePath("../../CombatManager")
-entities = Array[ExtResource("11_dcgj7")]([null, ExtResource("15_xique")])
+entities = Array[ExtResource("11_dcgj7")]([ExtResource("26_tru8k"), ExtResource("26_tru8k"), ExtResource("26_tru8k"), null, ExtResource("27_dfefo")])
 track_quest = true
-enable_invisible_wall = false
-quest = ExtResource("25_30wtr")
-prerequisite_quest = ExtResource("23_nevvm")
+quest = ExtResource("26_oj1fk")
+prerequisite_quest = ExtResource("23_q2is2")
 
-[node name="Sprite2D" type="Sprite2D" parent="Bosses/LordEncounter"]
-texture = ExtResource("19_w4n4h")
+[node name="WarriorLeft" type="Sprite2D" parent="Bosses/DesertLake"]
+position = Vector2(-21, -3)
+texture = ExtResource("24_30wtr")
 
-[node name="BanditEncounter" parent="Bosses" node_paths=PackedStringArray("combat_manager") instance=ExtResource("21_xique")]
-position = Vector2(-279, 31)
+[node name="StoicMassBoss" type="Sprite2D" parent="Bosses/DesertLake"]
+texture = ExtResource("25_chbna")
+flip_h = true
+
+[node name="WarriorRight" type="Sprite2D" parent="Bosses/DesertLake"]
+position = Vector2(21, -1)
+texture = ExtResource("24_30wtr")
+flip_h = true
+
+[node name="SouthTown" parent="Bosses" node_paths=PackedStringArray("combat_manager") instance=ExtResource("21_1dtuw")]
+position = Vector2(-500, 733)
+shape = SubResource("RectangleShape2D_3amxs")
+combat_manager = NodePath("../../CombatManager")
+entities = Array[ExtResource("11_dcgj7")]([ExtResource("16_pw241"), ExtResource("16_pw241"), ExtResource("16_pw241"), ExtResource("31_8uswe"), ExtResource("32_gqovc")])
+track_quest = true
+quest = ExtResource("31_dfefo")
+prerequisite_quest = ExtResource("26_oj1fk")
+
+[node name="NinjaRight" type="Sprite2D" parent="Bosses/SouthTown"]
+position = Vector2(17, -3)
+texture = ExtResource("26_u8qri")
+flip_h = true
+
+[node name="StoicWalkerBoss" type="Sprite2D" parent="Bosses/SouthTown"]
+position = Vector2(-1, -2)
+texture = ExtResource("27_h7ael")
+flip_h = true
+
+[node name="NinjaLeft" type="Sprite2D" parent="Bosses/SouthTown"]
+position = Vector2(-16, -3)
+texture = ExtResource("26_u8qri")
+
+[node name="Bridge" parent="Bosses" node_paths=PackedStringArray("combat_manager") instance=ExtResource("21_1dtuw")]
+position = Vector2(-1218, 532)
 shape = SubResource("RectangleShape2D_h7ael")
 combat_manager = NodePath("../../CombatManager")
-entities = Array[ExtResource("11_dcgj7")]([ExtResource("13_045pm"), null, null, null, null, ExtResource("13_045pm")])
+entities = Array[ExtResource("11_dcgj7")]([ExtResource("36_xe07q"), ExtResource("27_dfefo"), ExtResource("32_gqovc"), null, ExtResource("37_dgpv0")])
 track_quest = true
-quest = ExtResource("26_u8qri")
+quest = ExtResource("36_gqovc")
+prerequisite_quest = ExtResource("31_dfefo")
 
-[node name="Sprite2D" type="Sprite2D" parent="Bosses/BanditEncounter"]
-position = Vector2(9, 0)
-texture = ExtResource("27_katdt")
+[node name="GuardTop" type="Sprite2D" parent="Bosses/Bridge"]
+position = Vector2(-15, -13)
+texture = ExtResource("28_katdt")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Bosses/BanditEncounter"]
-position = Vector2(-8, 1)
-texture = ExtResource("27_katdt")
+[node name="FenceTop" type="Node2D" parent="Bosses/Bridge"]
+modulate = Color(0.623529, 0.439216, 0.286275, 1)
+position = Vector2(1, 9)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bosses/Bridge/FenceTop"]
+position = Vector2(10, -19)
+texture = ExtResource("29_h7ael")
+region_enabled = true
+region_rect = Rect2(48, 0, 16, 16)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Bosses/Bridge/FenceTop"]
+position = Vector2(3, -12)
+texture = ExtResource("29_h7ael")
+region_enabled = true
+region_rect = Rect2(48, 0, 16, 16)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Bosses/Bridge/FenceTop"]
+position = Vector2(-4, -3)
+texture = ExtResource("29_h7ael")
+region_enabled = true
+region_rect = Rect2(48, 0, 16, 16)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Bosses/Bridge/FenceTop"]
+position = Vector2(-11, 4)
+texture = ExtResource("29_h7ael")
+region_enabled = true
+region_rect = Rect2(48, 0, 16, 16)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Bosses/Bridge/FenceTop"]
+position = Vector2(-18, 11)
+texture = ExtResource("29_h7ael")
+region_enabled = true
+region_rect = Rect2(48, 0, 16, 16)
+
+[node name="FenceBottom" type="Node2D" parent="Bosses/Bridge"]
+modulate = Color(0.623529, 0.439216, 0.286275, 1)
+position = Vector2(8, 11)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bosses/Bridge/FenceBottom"]
+position = Vector2(10, -20)
+texture = ExtResource("29_h7ael")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Bosses/Bridge/FenceBottom"]
+position = Vector2(3, -13)
+texture = ExtResource("29_h7ael")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Bosses/Bridge/FenceBottom"]
+position = Vector2(-4, -4)
+texture = ExtResource("29_h7ael")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Bosses/Bridge/FenceBottom"]
+position = Vector2(-11, 3)
+texture = ExtResource("29_h7ael")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Bosses/Bridge/FenceBottom"]
+position = Vector2(-18, 10)
+texture = ExtResource("29_h7ael")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="GuardBottom" type="Sprite2D" parent="Bosses/Bridge"]
+position = Vector2(14, 15)
+texture = ExtResource("28_katdt")
 flip_h = true
 
 [connection signal="on_transition_start" from="TestDoor" to="." method="_on_transition_area_on_transition_start"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://biepho24s8vwe"]
 
-[ext_resource type="Script" uid="uid://cv8k82gket1f7" path="res://entities/bosses/boss_encounter/boss_encounter.gd" id="1_cy3ws"]
+[ext_resource type="Script" uid="uid://cv8k82gket1f7" path="res://entities/common/boss_encounter/boss_encounter.gd" id="1_cy3ws"]
 
 [node name="BossEncounter" type="Area2D"]
 collision_mask = 2

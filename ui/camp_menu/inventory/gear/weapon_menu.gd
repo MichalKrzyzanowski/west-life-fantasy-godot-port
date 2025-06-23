@@ -17,7 +17,7 @@ extends "res://ui/camp_menu/inventory/gear/gear_menu.gd"
 # private vars
 
 # @onready vars
-@onready var gil_label := $UpgradeInfoPanel/GilLabel as Label
+@onready var gold_label := $UpgradeInfoPanel/GoldLabel as Label
 @onready var upgrade_button: Button = $ActionsPanel/UpgradeButton
 
 
@@ -29,22 +29,23 @@ func _enter_tree() -> void:
 	pass
 
 
-## connects [signal PartyManager.on_gil_changed] signal
+## connects [signal PartyManager.on_gold_changed] signal
 ## and sets item_filter to "weapon"
 func _ready() -> void:
 	item_filter = "weapon"
 	super()
-	update_gil()
-	PartyManager.on_gil_changed.connect(update_gil)
+	update_gold()
+	PartyManager.on_gold_changed.connect(update_gold)
 
 
 # remaining builtins e.g. _process, _input
 
 
 # public methods
-## updates gil label with current party gil
-func update_gil() -> void:
-	gil_label.text = "Gil: %d" % PartyManager.gil
+## updates gold label with current party gold
+func update_gold() -> void:
+	# TODO: change to gold in final release, gil is kept to stay in line with original
+	gold_label.text = "Gil: %d" % PartyManager.gold
 
 
 # private methods

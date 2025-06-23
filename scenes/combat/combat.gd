@@ -65,7 +65,7 @@ var _current_party_index: int = 0
 var _is_combat_over_early: bool = false
 # awards
 var _xp_reward: int = 0
-var _gil_reward: int = 0
+var _gold_reward: int = 0
 
 # @onready vars
 @onready var GenericEntity := preload(
@@ -212,11 +212,11 @@ func _setup_battle_order() -> void:
 		_battle_order = _enemies + _party
 
 
-## calculate total gil and xp to be rewarded from
+## calculate total gold and xp to be rewarded from
 ## the spawned enemies
 func _init_rewards() -> void:
 	for enemy in _enemies:
-		_gil_reward += enemy.entity_properties.stats.gil_drop
+		_gold_reward += enemy.entity_properties.stats.gold_drop
 		_xp_reward += enemy.entity_properties.stats.xp_drop
 
 
@@ -238,9 +238,9 @@ func _end_combat() -> void:
 	if has_party_won && !has_party_fled:
 		# update combat info box and rewards box
 		interface.update_combat_info("you won the battle!")
-		interface.update_rewards_info(_xp_reward, _gil_reward, display_gear_reward_text)
-		# add gil reward
-		PartyManager.gil += _gil_reward
+		interface.update_rewards_info(_xp_reward, _gold_reward, display_gear_reward_text)
+		# add gold reward
+		PartyManager.gold += _gold_reward
 		# add xp to party
 		for member in _party:
 			member.entity_properties.stats.xp += _xp_reward
@@ -321,7 +321,7 @@ func _on_entity_flee(entity: Node2D) -> void:
 	elif entity in _enemies:
 		entity.entity_properties.stats.hp = 0
 		_xp_reward = min(0, _xp_reward - entity.entity_properties.stats.xp_drop)
-		_gil_reward = min(0, _gil_reward - entity.entity_properties.stats.gil_drop)
+		_gold_reward = min(0, _gold_reward - entity.entity_properties.stats.gold_drop)
 
 
 ## signal callback triggered when an [param entity] is selected as a target for

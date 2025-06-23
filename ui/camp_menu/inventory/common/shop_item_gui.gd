@@ -17,7 +17,7 @@ extends "item_gui.gd"
 # private vars
 
 # @onready vars
-@onready var gil_value_label: Label = $GilValueLabel
+@onready var gold_value_label: Label = $GoldValueLabel
 
 
 func _init() -> void:
@@ -39,17 +39,17 @@ func _ready() -> void:
 
 
 # private methods
-## updates gil value label with default
+## updates gold value label with default
 func _set_defaults() -> void:
 	super()
-	gil_value_label.text = ""
+	gold_value_label.text = ""
 
 
-## sets item's gil value to gil value label if gil value > 0
+## sets item's gold value to gold value label if gold value > 0
 func _update_item_display() -> void:
 	super()
-	if item.stats.gil_value > 0:
-		gil_value_label.text = str(item.stats.gil_value)
+	if item.stats.gold_value > 0:
+		gold_value_label.text = str(item.stats.gold_value)
 
 
 # subclasses

@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bgb17tt6k5vc2" path="res://scenes/test/testing_scene.gd" id="1_xw6dw"]
 [ext_resource type="Texture2D" uid="uid://cginfw6h6hs30" path="res://entities/enemies/cactus/cactus-revenge.png" id="2_8w5m8"]
 [ext_resource type="PackedScene" uid="uid://dujvgle5ockxo" path="res://scenes/common/transition_area/transition_area.tscn" id="5_4ghxh"]
-[ext_resource type="Texture2D" uid="uid://bisihv52a2ynm" path="res://entities/enemies/desert_ninja/desert-shinobi.png" id="6_ylo6u"]
+[ext_resource type="Texture2D" uid="uid://bisihv52a2ynm" path="res://entities/enemies/desert_ninja/desert-ninja.png" id="6_ylo6u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61xmw"]
 size = Vector2(32, 32)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6dn11c567imk"
-path="res://.godot/imported/player-shinobi.png-364d0209112eef012c570b092811b808.ctex"
+uid="uid://bmda33h7ecpov"
+path="res://.godot/imported/bodyguard.png-7475ff374b60ed0e5b4ae23fec179991.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/party-members/black_mage/player-shinobi.png"
-dest_files=["res://.godot/imported/player-shinobi.png-364d0209112eef012c570b092811b808.ctex"]
+source_file="res://entities/bosses/bodyguard/bodyguard.png"
+dest_files=["res://.godot/imported/bodyguard.png-7475ff374b60ed0e5b4ae23fec179991.ctex"]
 
 [params]
 

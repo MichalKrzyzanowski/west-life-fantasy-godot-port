@@ -81,6 +81,9 @@
 	- healing items no longer heal
 		- item has 0 hp by default meaning has_hp_depleted is set true by default
 		- caused by duplicate method when adding items to inventory
+	- loading the game breaks quest task completion
+		- creating a new save and instantly reloading causes boss encounters to break quest
+		- if quest is already saved in QuestManager, start() method is never called thus important signals are not connected
 - enhancements
 	- move project to godot 4.3
 		- convert tilemaps to tilemaplayers
@@ -115,20 +118,23 @@
 	- add healer shop
 - quests
 	- quest dialog box in the top right corner of the screen
-
-+-------------+
-| IN PROGRESS |
-+-------------+
-- enhancements
 - boss encounter
 	- add boss encounters to overworld map
 - camp menu orbs
 	- orbs in camp menu that regain color after beating corresponding boss 
+
++-------------+
+| IN PROGRESS |
++-------------+
+- enemies
+	- add static positions
+	- implement collision detection with player, environment and bullets
+	- simple path finding when player in range
+	- wander ai
+	- only update when in range, performance
+- enhancements
 - buglist
 	- fleeing from combat follows a pattern, is not random (needs more investigation)
-	- loading the game breaks quest task completion
-		- creating a new save and instantly reloading causes boss encounters to break quest
-		- if quest is already saved in QuestManager, start() method is never called thus important signals are not connected
 
 +------+
 | TODO |
@@ -145,12 +151,6 @@
 	- combat stat scaling has been reset for each party member
 - refactor
 	- clean up project i.e. better structure, more folders
-- enemies
-	- add static positions
-	- implement collision detection with player, environment and bullets
-	- simple path finding when player in range
-	- wander ai
-	- only update when in range, performance
 - audio
 	- add overworld and combat music
 	- add combat sounds
