@@ -57,7 +57,7 @@ func _on_body_entered(body: Node2D) -> void:
 		player = bullet_owner
 		# set the other node as a theoretical enemy
 		enemy = body
-	else:
+	elif "enemy" in bullet_owner.name.to_lower():
 		# player has been shot
 		player = body
 		# set the other node as a theoretical enemy

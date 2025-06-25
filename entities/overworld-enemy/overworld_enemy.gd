@@ -32,6 +32,7 @@ var ai_state: AIState = AIState.WANDER
 # @onready vars
 @onready var bullet_delay_timer: Timer = $BulletDelayTimer
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var bullet_emitter: Node2D = $BulletEmitter
 
 
 # func _init() -> void:
@@ -48,6 +49,7 @@ func _ready() -> void:
 
 
 # remaining builtins e.g. _process, _input
+## handles ai movement logic
 func _physics_process(_delta: float) -> void:
 	match(ai_state):
 		AIState.WANDER:
@@ -75,22 +77,34 @@ func _chase_target() -> void:
 	_flip_sprite(dir_to_target)
 
 	# move enemy towards target
-	var velocity: Vector2 = dir_to_target * speed
-	_move(velocity)
+	var vel: Vector2 = dir_to_target * speed
+	_move(vel)
 
 
 ## if target i.e. the player has been detected,
 ## enemy begins to chase the target
 func _on_target_detection_area_body_entered(body: Node2D) -> void:
 	target = body
+	bullet_delay_timer.start()
 	ai_state = AIState.CHASE
 
 
 ## if target i.e. the player left the detection zone,
 ## enemy returns to wander state
-func _on_target_detection_area_body_exited(body: Node2D) -> void:
+func _on_target_detection_area_body_exited(_body: Node2D) -> void:
 	target = null
+	bullet_delay_timer.stop()
 	ai_state = AIState.WANDER
+
+
+## emit bullet towards target if target is available &
+## enemy is in chase mode
+func _on_bullet_delay_timer_timeout() -> void:
+	if ai_state != AIState.CHASE || !target:
+		return
+
+	bullet_emitter.emit_bullet(target)
+	bullet_delay_timer.start()
 
 
 ## moves the enemy using param [param vel]
