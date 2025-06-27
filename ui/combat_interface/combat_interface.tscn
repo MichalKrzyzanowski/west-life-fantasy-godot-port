@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://ce03pc67436wa"]
+[gd_scene load_steps=18 format=3 uid="uid://ce03pc67436wa"]
 
 [ext_resource type="Texture2D" uid="uid://dlhk1jakpfhv3" path="res://ui/combat_interface/CombatTextBox.png" id="1_80ql1"]
 [ext_resource type="FontFile" uid="uid://duujn5vjqjbyi" path="res://ui/common/font/arialbd.ttf" id="1_xnt83"]
 [ext_resource type="Script" uid="uid://bnbftfqt0h85l" path="res://ui/combat_interface/combat_interface.gd" id="2_0wg40"]
 [ext_resource type="PackedScene" uid="uid://biwssbow6r5by" path="res://ui/combat_interface/party_stats_combat_box.tscn" id="2_3bv6p"]
+[ext_resource type="Texture2D" uid="uid://11o3v4otyrry" path="res://ui/combat_interface/CombatTextBoxTransparent.png" id="4_3t7sh"]
 
 [sub_resource type="Theme" id="Theme_uysed"]
 Button/font_sizes/font_size = 27
@@ -63,6 +64,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 840.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -115,7 +117,7 @@ anchor_right = 0.625
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_80ql1")
+texture = ExtResource("4_3t7sh")
 patch_margin_left = 16
 patch_margin_top = 16
 patch_margin_right = 16
@@ -131,7 +133,7 @@ anchor_right = 0.828125
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_80ql1")
+texture = ExtResource("4_3t7sh")
 patch_margin_left = 16
 patch_margin_top = 16
 patch_margin_right = 16

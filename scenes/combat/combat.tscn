@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b607al0ll6nfe"]
+[gd_scene load_steps=23 format=3 uid="uid://b607al0ll6nfe"]
 
 [ext_resource type="Script" uid="uid://bmcq7x3hecmkb" path="res://addons/grid_2d/grid_2d.gd" id="1_7uh1k"]
 [ext_resource type="Script" uid="uid://cx8126dcyq26t" path="res://scenes/combat/combat.gd" id="1_pefpc"]
@@ -166,12 +166,21 @@ stats = SubResource("Resource_0185v")
 name = "temp"
 texture = ExtResource("7_yn2oq")
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_8cw2p"]
+
 [node name="Combat" type="Node2D"]
 process_mode = 2
+z_index = 1
 script = ExtResource("1_pefpc")
 party_data = Array[ExtResource("2_xw0ea")]([SubResource("Resource_br1iv"), SubResource("Resource_seu7c"), SubResource("Resource_qvxlj"), SubResource("Resource_6n1l0")])
 enemy_data = Array[ExtResource("2_xw0ea")]([SubResource("Resource_dj72a"), SubResource("Resource_7u6n1")])
 is_party_advantage = true
+
+[node name="Background" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(511.75, 383.75)
+scale = Vector2(1024.5, 768.5)
+texture = SubResource("CanvasTexture_8cw2p")
 
 [node name="EnemyGrid" type="Node2D" parent="."]
 position = Vector2(192, 208)
@@ -190,6 +199,5 @@ v_seperation = 112
 do_not_update = true
 
 [node name="UI" type="CanvasLayer" parent="."]
-layer = -1
 
 [node name="CombatInterface" parent="UI" instance=ExtResource("9_jx1kh")]

@@ -53,7 +53,7 @@ func _on_body_entered(body: Node2D) -> void:
 	var player_advantage: bool = true
 
 	# player bullet shot enemy
-	if "player" in bullet_owner.name.to_lower():
+	if "overworldplayer" in bullet_owner.name.to_lower():
 		player = bullet_owner
 		# set the other node as a theoretical enemy
 		enemy = body
@@ -64,10 +64,11 @@ func _on_body_entered(body: Node2D) -> void:
 		enemy = bullet_owner
 		player_advantage = false
 
+
 	# if enemy or player is not present, return
 	if (
 			!"enemy" in enemy.name.to_lower()
-			|| !"player" in player.name.to_lower()
+			|| !"overworldplayer" in player.name.to_lower()
 	):
 		print("enemy or player not present")
 		queue_free()

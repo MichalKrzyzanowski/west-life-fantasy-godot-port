@@ -141,9 +141,6 @@ scale = Vector2(0.67, 0.67)
 [node name="CombatManager" parent="." instance=ExtResource("11_t00au")]
 enemy_spawn_table = Array[ExtResource("11_dcgj7")]([ExtResource("12_fjvd6"), ExtResource("13_045pm"), ExtResource("14_u8kt6"), ExtResource("15_xique"), ExtResource("16_pw241")])
 
-[node name="OverworldEnemy" parent="." instance=ExtResource("17_sqsuv")]
-position = Vector2(-21, -251)
-
 [node name="TestDoor" parent="." node_paths=PackedStringArray("map_ref") instance=ExtResource("18_we0hj")]
 position = Vector2(-10, -313)
 shape = SubResource("RectangleShape2D_1cvgx")
@@ -323,5 +320,61 @@ region_rect = Rect2(64, 0, 16, 16)
 position = Vector2(14, 15)
 texture = ExtResource("28_katdt")
 flip_h = true
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("17_sqsuv")]
+position = Vector2(-71, -18)
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("17_sqsuv")]
+position = Vector2(91, -441)
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("17_sqsuv")]
+position = Vector2(-1500, 169)
+
+[node name="Enemy4" parent="Enemies" instance=ExtResource("17_sqsuv")]
+position = Vector2(-1271, 417)
+
+[node name="Enemy5" parent="Enemies" instance=ExtResource("17_sqsuv")]
+position = Vector2(-130, 355)
+
+[node name="Enemy6" parent="Enemies" instance=ExtResource("17_sqsuv")]
+position = Vector2(-668, -240)
+
+[node name="Enemy7" parent="Enemies" instance=ExtResource("17_sqsuv")]
+position = Vector2(-1049, 154)
+
+[node name="Enemy8" parent="Enemies" instance=ExtResource("17_sqsuv")]
+position = Vector2(-837, 528)
+
+[node name="Enemy9" parent="Enemies" instance=ExtResource("17_sqsuv")]
+position = Vector2(-100, 700)
+
+[node name="Enemy10" parent="Enemies" instance=ExtResource("17_sqsuv")]
+position = Vector2(-237, 533)
+
+[node name="Enemy11" parent="Enemies" instance=ExtResource("17_sqsuv")]
+position = Vector2(314, 116)
+
+[node name="Enemy12" parent="Enemies" instance=ExtResource("17_sqsuv")]
+position = Vector2(-418, 318)
+
+[node name="Enemy13" parent="Enemies" instance=ExtResource("17_sqsuv")]
+position = Vector2(-968, -189)
+
+[node name="Enemy14" parent="Enemies" instance=ExtResource("17_sqsuv")]
+position = Vector2(240, -146)
+
+[node name="Enemy15" parent="Enemies" instance=ExtResource("17_sqsuv")]
+position = Vector2(-1480, 646)
+
+[node name="Enemy16" parent="Enemies" instance=ExtResource("17_sqsuv")]
+position = Vector2(-746, 162)
+
+[node name="Enemy17" parent="Enemies" instance=ExtResource("17_sqsuv")]
+position = Vector2(-418, -96)
+
+[node name="Enemy18" parent="Enemies" instance=ExtResource("17_sqsuv")]
+position = Vector2(-981, 780)
 
 [connection signal="on_transition_start" from="TestDoor" to="." method="_on_transition_area_on_transition_start"]

@@ -28,9 +28,17 @@ var target: Node2D = null
 var ai_state: AIState = AIState.WANDER
 
 # private vars
+## direction the enemy wanders in
+var _wander_dir: Vector2 = Vector2()
+## how long the enemy will wander for
+## in a particular direction
+var _wander_time: float = 10.0
 
 # @onready vars
+# timers
 @onready var bullet_delay_timer: Timer = $BulletDelayTimer
+@onready var wander_timer: Timer = $WanderTimer
+
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var bullet_emitter: Node2D = $BulletEmitter
 
@@ -47,13 +55,17 @@ var ai_state: AIState = AIState.WANDER
 func _ready() -> void:
 	bullet_delay_timer.wait_time = shot_delay
 
+	# initialize enemy wander mode
+	if ai_state == AIState.WANDER:
+		_on_wander_timer_timeout()
+
 
 # remaining builtins e.g. _process, _input
 ## handles ai movement logic
 func _physics_process(_delta: float) -> void:
 	match(ai_state):
 		AIState.WANDER:
-			_wander()
+			_wander_legacy()
 		AIState.CHASE:
 			_chase_target()
 
@@ -62,8 +74,18 @@ func _physics_process(_delta: float) -> void:
 
 
 # private methods
-func _wander() -> void:
+## orignal game's super advance wander functionality
+func _wander_legacy() -> void:
 	pass
+
+
+## moves enemy in wander direction at half
+## the normal speed
+func _wander() -> void:
+	_flip_sprite(_wander_dir)
+
+	var vel: Vector2 = _wander_dir * (speed / 2.0)
+	_move(vel)
 
 
 ## calculates target directions & moves towards the target
@@ -97,6 +119,14 @@ func _on_target_detection_area_body_exited(_body: Node2D) -> void:
 	ai_state = AIState.WANDER
 
 
+## recalculates wander direction & time when
+## [signal wander_timer.timeout] is emitted
+func _on_wander_timer_timeout() -> void:
+	_wander_dir = _get_new_wander_direction()
+	_wander_time = randf_range(_wander_time - 5.0, _wander_time + 5.0)
+	wander_timer.start(_wander_time)
+
+
 ## emit bullet towards target if target is available &
 ## enemy is in chase mode
 func _on_bullet_delay_timer_timeout() -> void:
@@ -105,6 +135,11 @@ func _on_bullet_delay_timer_timeout() -> void:
 
 	bullet_emitter.emit_bullet(target)
 	bullet_delay_timer.start()
+
+
+## gets random direction
+func _get_new_wander_direction() -> Vector2:
+	return Vector2(randf_range(-1.0, 2.0), randf_range(-1.0, 2.0)).normalized()
 
 
 ## moves the enemy using param [param vel]

@@ -122,16 +122,17 @@
 	- add boss encounters to overworld map
 - camp menu orbs
 	- orbs in camp menu that regain color after beating corresponding boss 
+- enemies
+	- add static positions
+	- implement collision detection with player, environment and bullets
+	- wander ai
 
 +-------------+
 | IN PROGRESS |
 +-------------+
-- enemies
-	- add static positions
-	- implement collision detection with player, environment and bullets
-	- simple path finding when player in range
-	- wander ai
-	- only update when in range, performance
+- audio
+	- add overworld and combat music
+	- add combat sounds
 - enhancements
 - buglist
 	- fleeing from combat follows a pattern, is not random (needs more investigation)
@@ -151,9 +152,6 @@
 	- combat stat scaling has been reset for each party member
 - refactor
 	- clean up project i.e. better structure, more folders
-- audio
-	- add overworld and combat music
-	- add combat sounds
 - tavern
 	- tavern minigame
 - credits

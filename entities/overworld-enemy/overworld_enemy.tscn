@@ -41,5 +41,6 @@ scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_pp667")
 
 [connection signal="timeout" from="BulletDelayTimer" to="." method="_on_bullet_delay_timer_timeout"]
+[connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]
 [connection signal="body_entered" from="TargetDetectionArea" to="." method="_on_target_detection_area_body_entered"]
 [connection signal="body_exited" from="TargetDetectionArea" to="." method="_on_target_detection_area_body_exited"]
