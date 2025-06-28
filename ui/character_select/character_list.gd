@@ -22,6 +22,7 @@ var _character_list: Array
 # @onready var fallback_entity = preload("res://entities/party-members/fallback/fallback.tscn")
 @onready var title = $Title as Label
 @onready var image = $Image/TextureRect as TextureRect
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 func _init() -> void:
@@ -67,10 +68,12 @@ func add_current_to_party():
 
 # private methods
 func _on_previous_char_button_pressed() -> void:
+	audio_player.play()
 	move_character_index(-1)
 
 
 func _on_next_char_button_pressed() -> void:
+	audio_player.play()
 	move_character_index(1)
 
 

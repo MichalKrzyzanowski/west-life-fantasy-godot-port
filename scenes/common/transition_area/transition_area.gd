@@ -76,7 +76,6 @@ func _on_body_entered(_body: Node2D) -> void:
 		return
 
 	fader.keep_paused = true
-	fader.prevent_pause = false
 	await _await_fader()
 
 	var locale: LocaleData

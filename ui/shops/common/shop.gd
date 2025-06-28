@@ -62,6 +62,8 @@ var _selected_shop_item: Item
 @onready var sell_button: Button = $OptionsPanel/OptionsList/SellButton
 @onready var exit_button: Button = $OptionsPanel/OptionsList/ExitButton
 
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
+
 
 # func _init() -> void:
 # 	pass
@@ -107,6 +109,7 @@ func set_target_inventory(inventory: Inventory) -> void:
 ## buy item with [param item_id] in [constant ShopState.STANDBY]
 ## and sell said item in [constant ShopState.SELL]
 func _on_item_clicked(inventory: Inventory, item_id: int) -> void:
+	audio_player.play()
 	match shop_state:
 		ShopState.STANDBY:
 			_buy_item(inventory, item_id)
@@ -173,6 +176,7 @@ func _enter_sell_state() -> void:
 
 ## handles legacy buy button logic and purchase confirmation
 func _on_buy_button_pressed() -> void:
+	audio_player.play()
 	match shop_state:
 		ShopState.STANDBY:
 			options_panel.hide()
@@ -188,6 +192,7 @@ func _on_buy_button_pressed() -> void:
 
 ## show player inventory and switch to sell state
 func _on_sell_button_pressed() -> void:
+	audio_player.play()
 	print("sell button pressed")
 	title_label.text = "Inventory"
 	shop_inventory_gui.set_inventory(target_inventory, PartyManager.party)
@@ -197,6 +202,8 @@ func _on_sell_button_pressed() -> void:
 
 ## handles exiting shop, declining purchase, and exiting sell state
 func _on_exit_button_pressed() -> void:
+	audio_player.play()
+	await audio_player.finished
 	match shop_state:
 		ShopState.STANDBY:
 			print("exit button pressed")

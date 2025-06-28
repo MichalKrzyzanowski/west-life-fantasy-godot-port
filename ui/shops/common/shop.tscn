@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://da3fnqeol8pr3"]
+[gd_scene load_steps=12 format=3 uid="uid://da3fnqeol8pr3"]
 
 [ext_resource type="Script" uid="uid://cv4xgky5sgdrf" path="res://ui/shops/common/shop.gd" id="1_eb1bs"]
 [ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/sprite/text_box.png" id="1_haqqc"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bgb0k3xdll7wc" path="res://ui/camp_menu/inventory/common/inventory.gd" id="3_x620k"]
 [ext_resource type="Theme" uid="uid://pqyn725r5mhs" path="res://ui/common/theme/empty_button.tres" id="6_q6641"]
 [ext_resource type="PackedScene" uid="uid://cj65loh8on112" path="res://ui/camp_menu/inventory/common/shop_item_gui.tscn" id="7_i4tin"]
+[ext_resource type="AudioStream" uid="uid://botykerynf8mp" path="res://audio/soundfx/Click.wav" id="10_wxpsf"]
 
 [sub_resource type="Resource" id="Resource_i4tin"]
 script = ExtResource("3_x620k")
@@ -226,6 +227,9 @@ theme = ExtResource("6_q6641")
 theme_override_fonts/font = ExtResource("2_1swlb")
 theme_override_font_sizes/font_size = 30
 text = "Exit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_wxpsf")
 
 [connection signal="pressed" from="OptionsPanel/OptionsList/BuyButton" to="." method="_on_buy_button_pressed"]
 [connection signal="pressed" from="OptionsPanel/OptionsList/SellButton" to="." method="_on_sell_button_pressed"]

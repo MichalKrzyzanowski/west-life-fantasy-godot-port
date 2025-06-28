@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7ijfs16qlhfq"]
+[gd_scene load_steps=8 format=3 uid="uid://b7ijfs16qlhfq"]
 
 [ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/sprite/text_box.png" id="1_s3tg8"]
 [ext_resource type="Script" uid="uid://7vs8rya5jv" path="res://ui/camp_menu/inventory/consumables_menu.gd" id="1_wol85"]
 [ext_resource type="FontFile" uid="uid://duujn5vjqjbyi" path="res://ui/common/font/arialbd.ttf" id="2_sc00e"]
 [ext_resource type="PackedScene" uid="uid://d2bhbuwxh85sr" path="res://ui/camp_menu/inventory/common/inventory_gui.tscn" id="4_7fg46"]
 [ext_resource type="PackedScene" uid="uid://bj18dtq305e74" path="res://ui/camp_menu/inventory/common/item_gui.tscn" id="5_6deds"]
+[ext_resource type="AudioStream" uid="uid://botykerynf8mp" path="res://audio/soundfx/Click.wav" id="6_jbirj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2b1d"]
 bg_color = Color(0, 0, 0, 1)
@@ -240,6 +241,9 @@ theme_type_variation = &"CharacterSelectButton"
 theme_override_font_sizes/font_size = 28
 text = "Back"
 metadata/_edit_use_anchors_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_jbirj")
 
 [connection signal="gui_input" from="PartyInfoPanel" to="." method="_on_party_info_panel_gui_input"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

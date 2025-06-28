@@ -201,7 +201,7 @@
 			"max_level": 11,
 			"attack": 1,
 			"scaler_attack": 1,
-			"gil_value": 5
+			"gold_value": 5
 		}
 	},
 	"small": {
@@ -214,7 +214,7 @@
 			"max_level": 11,
 			"attack": 1,
 			"scaler_attack": 1,
-			"gil_value": 5
+			"gold_value": 5
 		}
 	},
 	"wooden2": {
@@ -227,7 +227,7 @@
 			"max_level": 11,
 			"attack": 5,
 			"scaler_attack": 1,
-			"gil_value": 10
+			"gold_value": 10
 		}
 	},
 	"rapier": {
@@ -240,7 +240,7 @@
 			"max_level": 11,
 			"attack": 7,
 			"scaler_attack": 1,
-			"gil_value": 10
+			"gold_value": 10
 		}
 	},
 	"iron": {
@@ -253,7 +253,7 @@
 			"max_level": 11,
 			"attack": 8,
 			"scaler_attack": 1,
-			"gil_value": 10
+			"gold_value": 10
 		}
 	}
 }

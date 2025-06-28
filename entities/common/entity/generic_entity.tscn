@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://gv5upsmsx7sg"]
+[gd_scene load_steps=10 format=3 uid="uid://gv5upsmsx7sg"]
 
 [ext_resource type="Script" uid="uid://dmna5dwuqapsv" path="res://entities/common/entity/generic_entity.gd" id="1_8ype6"]
 [ext_resource type="Texture2D" uid="uid://c6dn11c567imk" path="res://entities/party-members/black_mage/player-ninja.png" id="2_73vdd"]
 [ext_resource type="Texture2D" uid="uid://cf6utmcx48kwr" path="res://ui/combat_interface/small-hpbar.png" id="2_nplbt"]
 [ext_resource type="Texture2D" uid="uid://mfryetcjrhcp" path="res://ui/combat_interface/hp.png" id="3_a7bu0"]
 [ext_resource type="Texture2D" uid="uid://cuin0n0ygy3kq" path="res://entities/common/entity/level-up.png" id="4_xft4o"]
+[ext_resource type="AudioStream" uid="uid://b03ahnr2kwg3f" path="res://audio/soundfx/Hit_Hurt.wav" id="6_lfnjf"]
+[ext_resource type="AudioStream" uid="uid://dx0qd8t8jrbvs" path="res://audio/soundfx/Flee.wav" id="7_chuyt"]
+[ext_resource type="AudioStream" uid="uid://digk6ixnytca7" path="res://audio/soundfx/Death.wav" id="8_opuh4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57jfu"]
 size = Vector2(128, 128)
@@ -56,5 +59,14 @@ visible = false
 position = Vector2(0, -32)
 scale = Vector2(2, 2)
 texture = ExtResource("4_xft4o")
+
+[node name="HitSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_lfnjf")
+
+[node name="EscapeSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_chuyt")
+
+[node name="DeathSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_opuh4")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

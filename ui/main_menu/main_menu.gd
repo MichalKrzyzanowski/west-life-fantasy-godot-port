@@ -20,6 +20,7 @@ extends Control
 @onready var options_panel = get_node("OptionsMenu")
 @onready var party_select_screen = preload("res://ui/character_select/party_select.tscn")
 @onready var continue_button: Button = get_node("MenuButtons/ContinueButton")
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 func _init() -> void:
@@ -45,6 +46,7 @@ func _ready() -> void:
 # private methods
 ## load the game
 func _on_continue_button_pressed() -> void:
+	audio_player.play()
 	if SaveManager.load_game(SaveManager.SAVE_FILE):
 		var fader: AnimationPlayer = get_node(MainUtils.FADER_PATH)
 		# TODO: prevent player from moving when loading
@@ -54,16 +56,21 @@ func _on_continue_button_pressed() -> void:
 
 ## go to party select screen
 func _on_new_game_button_pressed() -> void:
+	audio_player.play()
+	await audio_player.finished
 	get_tree().change_scene_to_packed(party_select_screen)
 
 
 ## open options panel
 func _on_options_button_pressed() -> void:
+	audio_player.play()
 	options_panel.show()
 
 
 ## quit the game
 func _on_exit_button_pressed() -> void:
+	audio_player.play()
+	await audio_player.finished
 	get_tree().quit()
 
 

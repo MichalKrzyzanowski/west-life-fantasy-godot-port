@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgy8ovf5qfuu8"]
+[gd_scene load_steps=5 format=3 uid="uid://dgy8ovf5qfuu8"]
 
 [ext_resource type="Script" uid="uid://dpguaq6m41ti" path="res://ui/main_menu/main_menu.gd" id="1_3tlhq"]
 [ext_resource type="PackedScene" uid="uid://dq5bvoaxuu83w" path="res://ui/main_menu/options/options_menu.tscn" id="1_a0f17"]
+[ext_resource type="AudioStream" uid="uid://botykerynf8mp" path="res://audio/soundfx/Click.wav" id="3_omy8q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_esli7"]
 bg_color = Color(0, 0, 0, 1)
@@ -60,6 +61,9 @@ text = "Exit"
 [node name="OptionsMenu" parent="." instance=ExtResource("1_a0f17")]
 visible = false
 layout_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_omy8q")
 
 [connection signal="pressed" from="MenuButtons/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="MenuButtons/NewGameButton" to="." method="_on_new_game_button_pressed"]

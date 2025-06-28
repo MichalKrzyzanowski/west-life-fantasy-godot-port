@@ -62,7 +62,6 @@ func save() -> Dictionary:
 
 ## load data from JSON savefile
 func load(_data: Dictionary) -> void:
-	fader.prevent_pause = true
 	world.clear()
 
 

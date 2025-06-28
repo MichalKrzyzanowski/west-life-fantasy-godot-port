@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dq5bvoaxuu83w"]
+[gd_scene load_steps=5 format=3 uid="uid://dq5bvoaxuu83w"]
 
 [ext_resource type="Script" uid="uid://rv5cngplln5" path="res://ui/main_menu/options/options_menu.gd" id="1_2jfff"]
 [ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/sprite/text_box.png" id="1_5ims4"]
 [ext_resource type="FontFile" uid="uid://duujn5vjqjbyi" path="res://ui/common/font/arialbd.ttf" id="2_sfi3x"]
+[ext_resource type="AudioStream" uid="uid://botykerynf8mp" path="res://audio/soundfx/Click.wav" id="4_hd7dl"]
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -151,5 +152,8 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_type_variation = &"BackButton"
 text = "Back"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_hd7dl")
 
 [connection signal="pressed" from="BackgroundPanel/BackButton" to="." method="_on_back_button_pressed"]

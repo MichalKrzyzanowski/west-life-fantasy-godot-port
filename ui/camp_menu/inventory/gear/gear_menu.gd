@@ -34,6 +34,7 @@ var _gear_action_state: GearActionState = GearActionState.NONE
 @onready var action_buttons: NinePatchRect = $ActionsPanel
 @onready var equip_button: Button = $ActionsPanel/EquipButton
 @onready var drop_button: Button = $ActionsPanel/DropButton
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 func _init() -> void:
@@ -78,12 +79,15 @@ func _unpress_action_buttons() -> void:
 func _on_item_clicked(inventory: Inventory, item_id: int) -> void:
 	match (_gear_action_state):
 		GearActionState.EQUIP:
+			audio_player.play()
 			print("equip gear action")
 			inventory.use_item(item_id)
 		GearActionState.DROP:
+			audio_player.play()
 			print("drop gear action")
 			inventory.remove_item(item_id)
 		GearActionState.UPGRADE:
+			audio_player.play()
 			print("upgrade gear action")
 			inventory.upgrade_item(item_id)
 		_:
@@ -92,6 +96,7 @@ func _on_item_clicked(inventory: Inventory, item_id: int) -> void:
 
 ## sets gear action to equip when equip button is toggled on
 func _on_equip_button_toggled(toggled_on: bool) -> void:
+	audio_player.play()
 	_unpress_action_buttons()
 	_gear_action_state = GearActionState.NONE
 	equip_button.set_pressed_no_signal(toggled_on)
@@ -101,6 +106,7 @@ func _on_equip_button_toggled(toggled_on: bool) -> void:
 
 ## sets gear action to equip when drop button is toggled on
 func _on_drop_button_toggled(toggled_on: bool) -> void:
+	audio_player.play()
 	_unpress_action_buttons()
 	_gear_action_state = GearActionState.NONE
 	drop_button.set_pressed_no_signal(toggled_on)
@@ -110,6 +116,7 @@ func _on_drop_button_toggled(toggled_on: bool) -> void:
 
 ## hides current scene i.e. return to previous menu
 func _on_back_button_pressed() -> void:
+	audio_player.play()
 	_unpress_action_buttons()
 	hide()
 

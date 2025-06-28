@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://xi1op1ppabul"]
+[gd_scene load_steps=11 format=3 uid="uid://xi1op1ppabul"]
 
 [ext_resource type="Script" uid="uid://b5rtmwjt4jf5x" path="res://ui/camp_menu/camp_menu.gd" id="1_dwtyw"]
 [ext_resource type="PackedScene" uid="uid://c6kk3x7wdbl0u" path="res://ui/camp_menu/camp_character_status_box.tscn" id="1_nr3ij"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b7ijfs16qlhfq" path="res://ui/camp_menu/inventory/consumables_menu.tscn" id="6_mk1em"]
 [ext_resource type="PackedScene" uid="uid://t8a24hya7sa5" path="res://ui/camp_menu/inventory/gear/armour_menu.tscn" id="7_d1inv"]
 [ext_resource type="PackedScene" uid="uid://dby5xfsflbd4p" path="res://ui/camp_menu/inventory/gear/weapon_menu.tscn" id="8_lsime"]
+[ext_resource type="AudioStream" uid="uid://botykerynf8mp" path="res://audio/soundfx/Click.wav" id="9_xhmo1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hpliy"]
 bg_color = Color(0, 0, 0, 1)
@@ -217,6 +218,9 @@ layout_mode = 1
 [node name="WeaponMenu" parent="." instance=ExtResource("8_lsime")]
 visible = false
 layout_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_xhmo1")
 
 [connection signal="pressed" from="Buttons/VBoxContainer/Items" to="." method="_on_items_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer/Weapons" to="." method="_on_weapons_pressed"]

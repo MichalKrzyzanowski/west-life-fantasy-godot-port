@@ -183,7 +183,7 @@
 		"stack_size": 1,
 		"stats": {
 			"defence": 2,
-			"gil_value": 10
+			"gold_value": 10
 		}
 	},
 	"wooden": {
@@ -194,7 +194,7 @@
 		"stack_size": 1,
 		"stats": {
 			"defence": 12,
-			"gil_value": 50
+			"gold_value": 50
 		}
 	},
 	"chain": {
@@ -206,7 +206,7 @@
 		"stats": {
 			"max_level": 11,
 			"defence": 45,
-			"gil_value": 80
+			"gold_value": 80
 		}
 	}
 }

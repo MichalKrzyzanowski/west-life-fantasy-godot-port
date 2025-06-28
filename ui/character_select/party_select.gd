@@ -19,6 +19,7 @@ extends Control
 # @onready vars
 @onready var character_grid = $CharacterGrid as GridContainer
 @onready var main_scene = preload("res://scenes/main/main.tscn")
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 func _init() -> void:
@@ -48,6 +49,7 @@ func _ready() -> void:
 ## add all currently selected characters to the party
 ## move to desert map scene
 func _on_continue_button_pressed() -> void:
+	audio_player.play()
 	for item in character_grid.get_children():
 		# if item select from character_grid is valid,
 		# add selected chatacter to party and create new inventory

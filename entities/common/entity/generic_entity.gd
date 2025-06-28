@@ -37,6 +37,11 @@ var decay: float = 0.8
 @onready var hp_bar: TextureProgressBar = $UI/Control/HPBar
 @onready var level_up_sprite: Sprite2D = $LevelUpSprite
 
+# audio players
+@onready var hit_sound_player: AudioStreamPlayer = $HitSoundPlayer
+@onready var death_sound_player: AudioStreamPlayer = $DeathSoundPlayer
+@onready var flee_sound_player: AudioStreamPlayer = $EscapeSoundPlayer
+
 
 func _init() -> void:
 	pass
@@ -177,11 +182,16 @@ func action_attack(target: Node2D) -> int:
 	)
 
 	target.entity_properties.stats.hp -= attack_formula
+	# play hit sound
+	hit_sound_player.play()
 	# shake target entity
 	target.add_trauma(1.0)
 	# update message, this will be displayed in the combat info box
 	action_msg = "%s deals\n%d dmg\nto %s" % \
 			[entity_properties.name, attack_formula, target.entity_properties.name]
+	# play death sound if target was defeated
+	if target.entity_properties.stats.hp <= 0.0:
+		death_sound_player.play()
 	return 0
 
 
@@ -197,6 +207,7 @@ func action_flee(_target: Node2D) -> int:
 	var success: int = randi_range(1, 100)
 	if success > 50:
 		action_msg = "%s escape\nattempt successfull" % entity_properties.name
+		flee_sound_player.play()
 		on_flee_successfull.emit(self)
 	else:
 		action_msg = "%s escape\nattempt failed" % entity_properties.name

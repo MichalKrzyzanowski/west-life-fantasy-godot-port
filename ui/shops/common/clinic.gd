@@ -58,6 +58,7 @@ var _selected_dead_member_button: Button
 @onready var info_label: Label = $InfoPanel/Label
 
 @onready var exit_button: Button = $ExitButton
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 # theme assets that are applied to newly created dead party member button
 @onready var empty_button_theme: Theme = preload("res://ui/common/theme/empty_button.tres")
@@ -136,6 +137,7 @@ func _add_dead_member_button(member_id: int, member_name: String) -> void:
 ## stores [param button_ref] into private variable and
 ## switches state to [constant ClinicState.REVIVE]
 func _on_dead_member_button_pressed(button_ref: Button) -> void:
+	audio_player.play()
 	_selected_dead_member_button = button_ref
 	_clinic_state = ClinicState.REVIVE
 
@@ -178,6 +180,7 @@ func _exit_clinic() -> void:
 
 ## revives dead party member, if player can afford it
 func _on_confirm_button_pressed() -> void:
+	audio_player.play()
 	if !_selected_dead_member_button:
 		printerr("dead member button is not selected")
 		return
@@ -205,6 +208,7 @@ func _on_confirm_button_pressed() -> void:
 
 ## called when player declines party member revival i.e. selects no
 func _on_decline_button_pressed() -> void:
+	audio_player.play()
 	_clinic_state = ClinicState.REVIVE_AVAILABLE
 
 

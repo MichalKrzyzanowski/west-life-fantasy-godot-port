@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://yuw0j5pyam6n"]
+[gd_scene load_steps=6 format=3 uid="uid://yuw0j5pyam6n"]
 
 [ext_resource type="Script" uid="uid://dkstvbvxuxccq" path="res://ui/shops/common/clinic.gd" id="1_oeijp"]
 [ext_resource type="Texture2D" uid="uid://4tgxvu4fo1h1" path="res://ui/common/sprite/text_box.png" id="2_8igq0"]
 [ext_resource type="FontFile" uid="uid://duujn5vjqjbyi" path="res://ui/common/font/arialbd.ttf" id="3_nb6t0"]
 [ext_resource type="Theme" uid="uid://pqyn725r5mhs" path="res://ui/common/theme/empty_button.tres" id="4_8igq0"]
+[ext_resource type="AudioStream" uid="uid://botykerynf8mp" path="res://audio/soundfx/Click.wav" id="5_nb6t0"]
 
 [node name="Clinic" type="Control"]
 process_mode = 2
@@ -204,6 +205,9 @@ theme_type_variation = &"CharacterSelectButton"
 theme_override_font_sizes/font_size = 28
 text = "Exit"
 metadata/_edit_use_anchors_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_nb6t0")
 
 [connection signal="pressed" from="OptionsPanel/ConfirmSelectionList/ConfirmButton" to="." method="_on_confirm_button_pressed"]
 [connection signal="pressed" from="OptionsPanel/ConfirmSelectionList/DeclineButton" to="." method="_on_decline_button_pressed"]

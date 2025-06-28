@@ -74,12 +74,15 @@ func _enter_sell_state() -> void:
 
 ## enters legacy sell state
 func _on_sell_button_pressed() -> void:
+	audio_player.play()
 	shop_state = ShopState.SELL
 	info_label.text = "Whose item do want to sell?"
 
 
 ## exit legacy shop
 func _on_exit_button_pressed() -> void:
+	audio_player.play()
+	await audio_player.finished
 	match shop_state:
 		ShopState.STANDBY:
 			on_exit.emit()
@@ -96,6 +99,7 @@ func _toggle_legacy_inventory(is_shown: bool) -> void:
 
 ## called when exiting legacy sell state
 func _on_back_button_pressed() -> void:
+	audio_player.play()
 	info_label.text = "Too bad\n...\nSomething else?"
 	shop_state = ShopState.STANDBY
 

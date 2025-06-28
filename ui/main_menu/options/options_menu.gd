@@ -17,6 +17,7 @@ extends Control
 # private vars
 
 # @onready vars
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 func _init() -> void:
@@ -39,6 +40,7 @@ func _ready() -> void:
 
 # private methods
 func _on_back_button_pressed() -> void:
+	audio_player.play()
 	hide()
 
 

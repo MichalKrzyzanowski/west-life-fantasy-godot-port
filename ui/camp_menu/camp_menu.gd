@@ -29,6 +29,7 @@ const ORB_COLORS: Array[Color] = [
 @onready var armour_menu := $ArmourMenu as Control
 @onready var weapon_menu := $WeaponMenu as Control
 @onready var orb_container: GridContainer = $Orbs/OrbContainer
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 func _init() -> void:
 	pass
@@ -71,6 +72,7 @@ func update_orbs() -> void:
 
 # private methods
 func _on_items_pressed() -> void:
+	audio_player.play()
 	items_menu.show()
 
 
@@ -78,12 +80,15 @@ func _on_items_pressed() -> void:
 
 
 func _on_weapons_pressed() -> void:
+	audio_player.play()
 	weapon_menu.show()
 
 
 func _on_armour_pressed() -> void:
+	audio_player.play()
 	armour_menu.show()
 
 
 func _on_options_pressed() -> void:
+	audio_player.play()
 	options_menu.show()

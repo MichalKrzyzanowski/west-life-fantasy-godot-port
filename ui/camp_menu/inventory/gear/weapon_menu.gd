@@ -51,6 +51,7 @@ func update_gold() -> void:
 # private methods
 ## sets gear action to upgrade when drop button is toggled on
 func _on_upgrade_button_toggled(toggled_on: bool) -> void:
+	audio_player.play()
 	_unpress_action_buttons()
 	_gear_action_state = GearActionState.NONE
 	upgrade_button.set_pressed_no_signal(toggled_on)
