@@ -64,6 +64,7 @@ layout_mode = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_omy8q")
+bus = &"SoundFX"
 
 [connection signal="pressed" from="MenuButtons/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="MenuButtons/NewGameButton" to="." method="_on_new_game_button_pressed"]

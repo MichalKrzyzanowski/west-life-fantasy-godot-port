@@ -51,6 +51,7 @@ func _input(event: InputEvent) -> void:
 	if visible && event.is_action_pressed("exit_menu"):
 		print("exit menu")
 		SaveManager.save_game(SaveManager.SAVE_FILE)
+		GlobalSettings.save_ini()
 		hide()
 		options_menu.hide()
 		items_menu.hide()

@@ -19,10 +19,12 @@ config/icon="res://icon.svg"
 [autoload]
 
 SaveManager="*res://singletons/save_manager.gd"
+GlobalSettings="*res://singletons/global_settings.gd"
 ItemDatabase="*res://singletons/item_database.gd"
 InventoryManager="*res://singletons/inventory_manager.gd"
 PartyManager="*res://singletons/party_manager.gd"
 QuestManager="*res://singletons/quest_manager.gd"
+MusicPlayer="*res://singletons/music_player.gd"
 
 [debug]
 

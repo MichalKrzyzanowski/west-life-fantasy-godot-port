@@ -83,6 +83,7 @@ text = ">"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_6qaty")
+bus = &"SoundFX"
 
 [connection signal="pressed" from="SelectButtons/PreviousCharButton" to="." method="_on_previous_char_button_pressed"]
 [connection signal="pressed" from="SelectButtons/NextCharButton" to="." method="_on_next_char_button_pressed"]

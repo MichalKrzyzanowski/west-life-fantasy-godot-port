@@ -62,11 +62,14 @@ texture = ExtResource("4_xft4o")
 
 [node name="HitSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_lfnjf")
+bus = &"SoundFX"
 
 [node name="EscapeSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_chuyt")
+bus = &"SoundFX"
 
 [node name="DeathSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_opuh4")
+bus = &"SoundFX"
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

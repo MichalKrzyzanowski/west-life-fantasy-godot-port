@@ -244,6 +244,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_jbirj")
+bus = &"SoundFX"
 
 [connection signal="gui_input" from="PartyInfoPanel" to="." method="_on_party_info_panel_gui_input"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

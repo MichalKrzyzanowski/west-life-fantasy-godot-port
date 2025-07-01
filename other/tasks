@@ -85,6 +85,10 @@
 		- creating a new save and instantly reloading causes boss encounters to break quest
 		- if quest is already saved in QuestManager, start() method is never called thus important signals are not connected
 	- combat stat scaling has been reset for each party member
+	- all item costs have been reset in the shop
+		- due to gil -> gold var rename
+	- shops do not work properly when loading into the town scene
+		- game seems like it is not paused
 - enhancements
 	- move project to godot 4.3
 		- convert tilemaps to tilemaplayers
@@ -127,20 +131,18 @@
 	- add static positions
 	- implement collision detection with player, environment and bullets
 	- wander ai
+- audio
+	- add overworld and combat music
+	- add combat sounds
 
 +-------------+
 | IN PROGRESS |
 +-------------+
-- audio
-	- add overworld and combat music
-	- add combat sounds
+- minimap
+	- add minimap in the bottom right corner in the overworld
 - enhancements
 - buglist
 	- fleeing from combat follows a pattern, is not random (needs more investigation)
-	- all item costs have been reset in the shop
-		- due to gil -> gold var rename
-	- shops do not work properly when loading into the town scene
-		- game seems like it is not paused
 
 +------+
 | TODO |
@@ -160,8 +162,6 @@
 	- tavern minigame
 - credits
 	- simple credit scene
-- minimap
-	- add minimap in the bottom right corner in the overworld
 
 
 +-------------+

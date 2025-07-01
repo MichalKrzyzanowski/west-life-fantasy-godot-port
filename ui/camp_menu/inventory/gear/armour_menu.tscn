@@ -152,6 +152,7 @@ size_flags_vertical = 3
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_42in1")
+bus = &"SoundFX"
 
 [connection signal="toggled" from="ActionsPanel/EquipButton" to="." method="_on_equip_button_toggled"]
 [connection signal="toggled" from="ActionsPanel/DropButton" to="." method="_on_drop_button_toggled"]

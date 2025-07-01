@@ -94,6 +94,9 @@ func trigger_combat(player_advantage: bool = true,
 	toggle_hud()
 	get_parent().hide()
 
+	# change music to battle theme
+	MusicPlayer.play_battle_theme()
+
 
 # TODO: ideally should be part of MainUtils class or Main scene
 func toggle_hud() -> void:
@@ -134,6 +137,9 @@ func _on_combat_end() -> void:
 
 	toggle_hud()
 	get_parent().show()
+
+	# change music to overworld theme
+	MusicPlayer.play_overworld_theme()
 
 
 ## signal callback when an entity is shot. triggers combat with

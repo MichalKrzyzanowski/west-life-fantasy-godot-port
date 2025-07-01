@@ -230,6 +230,7 @@ text = "Exit"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_wxpsf")
+bus = &"SoundFX"
 
 [connection signal="pressed" from="OptionsPanel/OptionsList/BuyButton" to="." method="_on_buy_button_pressed"]
 [connection signal="pressed" from="OptionsPanel/OptionsList/SellButton" to="." method="_on_sell_button_pressed"]

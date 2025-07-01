@@ -34,7 +34,7 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	# disable button if save file not present
 	continue_button.disabled = !SaveManager.is_save_present()
-	# continue_button.disabled = true
+	MusicPlayer.play_overworld_theme()
 
 
 # remaining builtins e.g. _process, _input

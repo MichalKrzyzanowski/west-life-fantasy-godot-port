@@ -2,6 +2,12 @@
 	- move decimal right 2 times i.e. x100. e.g. 0.75 = 75.0
 	- reverse negative number on y axis e.g. 1.25 = -1.25
 
+- minimap unity values:
+	- minimap camera:
+		- follows player
+		- zoomed out more than standard player camera by 1.5x
+		- minimap viewport size: 270x270px
+	- circular mask used for viewport to make it circular
 - boss encounters implementation notes:
 	- quest export
 		- should allow boss encounters to hold optional quests that revolve slaying the boss itself

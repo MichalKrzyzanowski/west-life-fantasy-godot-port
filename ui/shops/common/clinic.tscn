@@ -208,6 +208,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_nb6t0")
+bus = &"SoundFX"
 
 [connection signal="pressed" from="OptionsPanel/ConfirmSelectionList/ConfirmButton" to="." method="_on_confirm_button_pressed"]
 [connection signal="pressed" from="OptionsPanel/ConfirmSelectionList/DeclineButton" to="." method="_on_decline_button_pressed"]
