@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://wi37yb2p8jg4"]
+[gd_scene load_steps=10 format=3 uid="uid://wi37yb2p8jg4"]
 
 [ext_resource type="Script" uid="uid://2msr6u03b1m8" path="res://scenes/main/main.gd" id="1_fidbw"]
 [ext_resource type="PackedScene" uid="uid://d02rs8t4d5gwn" path="res://entities/overworld-player/overworld_player.tscn" id="1_p8x4f"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b4hhb0gjpr7ab" path="res://common/fader.tscn" id="5_lrnne"]
 [ext_resource type="Script" uid="uid://bxkg8q8b8hb5u" path="res://common/fader.gd" id="6_w70om"]
 [ext_resource type="PackedScene" uid="uid://xi1op1ppabul" path="res://ui/camp_menu/camp_menu.tscn" id="7_phpdi"]
+[ext_resource type="PackedScene" uid="uid://b68ygekrcmflt" path="res://ui/minimap/minimap.tscn" id="8_b1x3f"]
 [ext_resource type="PackedScene" uid="uid://bolfqja0sch8o" path="res://ui/quest_tracker/quest_tracker.tscn" id="8_yyfjg"]
 
 [node name="Main" type="Node2D" groups=["persist"]]
@@ -30,6 +31,21 @@ offset_left = 3.0
 offset_top = 3.0
 use_verbose_description = true
 complete_color = Color(0, 1, 0, 1)
+
+[node name="Minimap" parent="HUD" node_paths=PackedStringArray("player_ref") instance=ExtResource("8_b1x3f")]
+process_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -352.0
+offset_top = -328.0
+offset_right = -62.0
+offset_bottom = -38.0
+grow_horizontal = 0
+grow_vertical = 0
+player_ref = NodePath("../../OverworldPlayer")
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 0

@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://b68ygekrcmflt"]
+
+[ext_resource type="Script" uid="uid://bt7hhkeeqtrin" path="res://ui/minimap/minimap.gd" id="1_m6qbg"]
+[ext_resource type="Texture2D" uid="uid://dueukeadgnopi" path="res://ui/minimap/minimap_background.png" id="1_nfbjl"]
+[ext_resource type="Texture2D" uid="uid://b0gdjjnjvi1c4" path="res://ui/minimap/minimap_border.png" id="3_buwfp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nfbjl"]
+texture = ExtResource("1_nfbjl")
+
+[node name="Minimap" type="PanelContainer"]
+clip_children = 1
+offset_right = 290.0
+offset_bottom = 290.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_nfbjl")
+script = ExtResource("1_m6qbg")
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+disable_3d = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(270, 270)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport"]
+zoom = Vector2(0.575, 0.575)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("3_buwfp")
