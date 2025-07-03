@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dujvgle5ockxo"]
+[gd_scene load_steps=3 format=3 uid="uid://dujvgle5ockxo"]
 
 [ext_resource type="Script" uid="uid://b7lbtwfmuc5ni" path="res://scenes/common/transition_area/transition_area.gd" id="1_dauki"]
+[ext_resource type="Texture2D" uid="uid://dgdkiifam4f85" path="res://entities/bullet/bullet.png" id="2_s4vm3"]
 
 [node name="TransitionArea" type="Area2D"]
 position = Vector2(1, 0)
@@ -10,5 +11,11 @@ script = ExtResource("1_dauki")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="MinimapIcon" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0.454902, 1, 1)
+visibility_layer = 16
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_s4vm3")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

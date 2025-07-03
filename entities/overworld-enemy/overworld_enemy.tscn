@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://csx3cuf43jnq8"]
+[gd_scene load_steps=7 format=3 uid="uid://csx3cuf43jnq8"]
 
 [ext_resource type="Texture2D" uid="uid://bms47f3c7kofx" path="res://entities/enemies/bandit/bandit.png" id="1_f1ly6"]
 [ext_resource type="Script" uid="uid://cvlqd1fyutrp0" path="res://entities/overworld-enemy/overworld_enemy.gd" id="1_pp667"]
 [ext_resource type="Script" uid="uid://dcj8lgtjl0phx" path="res://entities/bullet/bullet_emitter.gd" id="2_dfiul"]
+[ext_resource type="Texture2D" uid="uid://dgdkiifam4f85" path="res://entities/bullet/bullet.png" id="4_mtvxh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dh2qo"]
 size = Vector2(11, 32)
@@ -11,6 +12,7 @@ size = Vector2(11, 32)
 radius = 180.0
 
 [node name="OverworldEnemy" type="CharacterBody2D"]
+visibility_layer = 4
 collision_layer = 4
 collision_mask = 27
 script = ExtResource("1_pp667")
@@ -39,6 +41,12 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TargetDetectionArea"]
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_pp667")
+
+[node name="MinimapIcon" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0.0941176, 0, 1)
+visibility_layer = 16
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_mtvxh")
 
 [connection signal="timeout" from="BulletDelayTimer" to="." method="_on_bullet_delay_timer_timeout"]
 [connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]

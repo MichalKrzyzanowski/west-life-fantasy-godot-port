@@ -31,8 +31,13 @@ func _enter_tree() -> void:
 	pass
 
 
+## configure root viewport canvas cull mask
+## to prevent minimap icons from rendering
 func _ready() -> void:
-	pass
+	var root_viewport: Viewport = get_tree().root.get_viewport()
+	# cull mask configured to render environment, player,
+	# bullets, & enemies
+	root_viewport.canvas_cull_mask = 15
 
 
 # remaining builtins e.g. _process, _input

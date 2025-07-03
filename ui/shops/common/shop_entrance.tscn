@@ -1,9 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkuaoj8xwwbnn"]
+[gd_scene load_steps=3 format=3 uid="uid://dkuaoj8xwwbnn"]
 
 [ext_resource type="Script" uid="uid://brfruixxx3ug3" path="res://ui/shops/common/shop_entrance.gd" id="1_kced2"]
+[ext_resource type="Texture2D" uid="uid://dgdkiifam4f85" path="res://entities/bullet/bullet.png" id="2_cia6w"]
 
 [node name="ShopEntrance" type="Area2D"]
 collision_mask = 2
 script = ExtResource("1_kced2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="MinimapIcon" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0.454902, 1, 1)
+visibility_layer = 16
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_cia6w")

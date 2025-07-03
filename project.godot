@@ -119,6 +119,11 @@ exit_clinic={
 
 [layer_names]
 
+2d_render/layer_1="environment"
+2d_render/layer_2="player"
+2d_render/layer_3="enemy"
+2d_render/layer_4="bullet"
+2d_render/layer_5="minimap_icon"
 2d_physics/layer_1="environment"
 2d_physics/layer_2="player"
 2d_physics/layer_3="enemy"
