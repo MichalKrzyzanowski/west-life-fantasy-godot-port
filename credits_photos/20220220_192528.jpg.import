@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bljpm4oawyd68"
-path="res://.godot/imported/cactus-boss.png-2dce92d0c5e6688c4f3fd0709b9aba37.ctex"
+uid="uid://bmifbvge0v5t3"
+path="res://.godot/imported/20220220_192528.jpg-93a76fb5ef1692a38ab64e417386a1d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/bosses/cactus_boss/cactus-boss.png"
-dest_files=["res://.godot/imported/cactus-boss.png-2dce92d0c5e6688c4f3fd0709b9aba37.ctex"]
+source_file="res://credits_photos/20220220_192528.jpg"
+dest_files=["res://.godot/imported/20220220_192528.jpg-93a76fb5ef1692a38ab64e417386a1d0.ctex"]
 
 [params]
 

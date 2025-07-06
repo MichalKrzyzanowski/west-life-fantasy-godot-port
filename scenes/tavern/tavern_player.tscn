@@ -1,0 +1,109 @@
+[gd_scene load_steps=4 format=3 uid="uid://ntg0u4nj065m"]
+
+[ext_resource type="Script" uid="uid://bwdoqbnkbfye6" path="res://scenes/tavern/tavern_minigame.gd" id="1_2wk4k"]
+[ext_resource type="Texture2D" uid="uid://xths6ehix6de" path="res://ui/common/sprite/unchecked_box.png" id="2_pvdla"]
+[ext_resource type="Theme" uid="uid://brj57gdn7aaeh" path="res://scenes/tavern/tavern_progress_bar_theme.tres" id="3_diqln"]
+
+[node name="TavernPlayer" type="Control"]
+layout_mode = 3
+anchor_right = 0.3125
+anchor_bottom = 1.0
+offset_left = 704.0
+offset_right = 704.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("1_2wk4k")
+metadata/_edit_use_anchors_ = true
+
+[node name="ProgressBoxes" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Box" type="TextureRect" parent="ProgressBoxes"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -112.0
+offset_right = -24.0
+offset_bottom = -64.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_pvdla")
+
+[node name="Box2" type="TextureRect" parent="ProgressBoxes"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -24.0
+offset_right = -24.0
+offset_bottom = 24.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_pvdla")
+
+[node name="Box3" type="TextureRect" parent="ProgressBoxes"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = 64.0
+offset_right = -24.0
+offset_bottom = 112.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_pvdla")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.40625
+anchor_top = 0.509766
+anchor_right = 0.94375
+anchor_bottom = 0.516276
+offset_left = -114.0
+offset_top = -11.5
+offset_right = -110.0
+offset_bottom = -8.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_diqln")
+show_percentage = false
+
+[node name="PlayerLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.6875
+anchor_bottom = 0.522135
+offset_left = -32.0
+offset_top = -256.0
+offset_right = 8.0
+offset_bottom = -237.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Player"
+metadata/_edit_use_anchors_ = true
+
+[node name="StunTimer" type="Timer" parent="."]
+
+[node name="CpuDecisionTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]
+[connection signal="timeout" from="CpuDecisionTimer" to="." method="_on_cpu_decision_timer_timeout"]

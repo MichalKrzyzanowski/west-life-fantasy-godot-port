@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://d2dfuqtwgbcq" path="res://entities/common/stats/combat_stats.gd" id="2_c8qyg"]
 [ext_resource type="Texture2D" uid="uid://cginfw6h6hs30" path="res://entities/enemies/cactus/cactus-revenge.png" id="3_k3cn8"]
 
-[sub_resource type="Resource" id="Resource_liabm"]
+[sub_resource type="Resource" id="Resource_iyjjl"]
 script = ExtResource("2_c8qyg")
 max_hp = 5
 attack = 3
@@ -26,6 +26,6 @@ gold_level_cost = 25
 
 [resource]
 script = ExtResource("1_ajmw2")
-stats = SubResource("Resource_liabm")
+stats = SubResource("Resource_iyjjl")
 name = "cactus"
 texture = ExtResource("3_k3cn8")

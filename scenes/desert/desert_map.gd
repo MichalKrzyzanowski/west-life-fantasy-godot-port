@@ -17,6 +17,7 @@ extends BaseMap
 # private vars
 
 # @onready vars
+@onready var tavern_scene: PackedScene = preload("res://scenes/tavern/tavern.tscn")
 
 
 func _init() -> void:
@@ -46,6 +47,15 @@ func _input(event: InputEvent) -> void:
 
 
 # private methods
+func _enter_tavern(body: Node2D) -> void:
+	get_node(MainUtils.MAIN_SCENE_PATH).queue_free()
+
+	# deinit singletons
+	InventoryManager.deinit()
+	QuestManager.deinit()
+	PartyManager.deinit()
+
+	get_tree().change_scene_to_packed(tavern_scene)
 
 
 # subclasses

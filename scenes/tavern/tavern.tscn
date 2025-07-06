@@ -1,0 +1,104 @@
+[gd_scene load_steps=5 format=3 uid="uid://hwmt31uvepxq"]
+
+[ext_resource type="Texture2D" uid="uid://b2t0s4sepgyib" path="res://scenes/tavern/cursor.png" id="1_inl0q"]
+[ext_resource type="Script" uid="uid://cgrkhxrrq0xpc" path="res://scenes/tavern/tavern.gd" id="1_nd0ff"]
+[ext_resource type="PackedScene" uid="uid://ntg0u4nj065m" path="res://scenes/tavern/tavern_player.tscn" id="4_nd0ff"]
+[ext_resource type="Texture2D" uid="uid://dk114kgetmnc4" path="res://credits_photos/IMG_20220401_083410.jpg" id="5_ta2y0"]
+
+[node name="Tavern" type="Node2D"]
+script = ExtResource("1_nd0ff")
+
+[node name="BackgroudSprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 744)
+scale = Vector2(0.78, 0.78)
+texture = ExtResource("5_ta2y0")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ObjectiveLabel" type="Label" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -184.0
+offset_top = 56.0
+offset_right = 90.0
+offset_bottom = 98.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 37
+text = "Press the Button"
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -192.0
+offset_right = -8.0
+offset_bottom = -152.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.81616
+scale = Vector2(3.5, 3.5)
+pivot_offset = Vector2(18, 16)
+texture = ExtResource("1_inl0q")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonLabel" type="Label" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -40.0
+offset_right = -24.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 72
+text = "A"
+metadata/_edit_use_anchors_ = true
+
+[node name="TavernCpu" parent="UI" node_paths=PackedStringArray("button_label") instance=ExtResource("4_nd0ff")]
+offset_left = 0.0
+offset_right = 0.0
+grow_horizontal = 1
+button_label = NodePath("../ButtonLabel")
+credits_scene_path = NodePath("res://ui/main_menu/main_menu.tscn")
+player_name = "Enemy"
+is_cpu = true
+
+[node name="Box" parent="UI/TavernCpu/ProgressBoxes" index="0"]
+offset_left = -296.0
+offset_right = -248.0
+
+[node name="Box2" parent="UI/TavernCpu/ProgressBoxes" index="1"]
+offset_left = -296.0
+offset_right = -248.0
+
+[node name="Box3" parent="UI/TavernCpu/ProgressBoxes" index="2"]
+offset_left = -296.0
+offset_right = -248.0
+
+[node name="ProgressBar" parent="UI/TavernCpu" index="1"]
+offset_left = -2.0
+offset_top = -11.5003
+offset_right = 2.0
+offset_bottom = -8.50027
+
+[node name="TavernPlayer" parent="UI" node_paths=PackedStringArray("button_label") instance=ExtResource("4_nd0ff")]
+button_label = NodePath("../ButtonLabel")
+credits_scene_path = NodePath("res://ui/main_menu/main_menu.tscn")
+player_name = "Player"
+cpu_progress_step = 50.0
+
+[node name="KeySwitchTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="KeySwitchTimer" to="." method="_on_key_switch_timer_timeout"]
+
+[editable path="UI/TavernCpu"]

@@ -1,0 +1,88 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnjacfcgpte6"]
+
+[ext_resource type="Texture2D" uid="uid://xths6ehix6de" path="res://ui/common/sprite/unchecked_box.png" id="1_r1vso"]
+[ext_resource type="Theme" uid="uid://brj57gdn7aaeh" path="res://scenes/tavern/tavern_progress_bar_theme.tres" id="2_na7dn"]
+
+[node name="EnemyProgress" type="Control"]
+layout_mode = 3
+anchor_right = 0.3125
+anchor_bottom = 1.0
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ProgressBoxes" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Box" type="TextureRect" parent="ProgressBoxes"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_top = -112.0
+offset_right = 72.0
+offset_bottom = -64.0
+grow_vertical = 2
+texture = ExtResource("1_r1vso")
+
+[node name="Box2" type="TextureRect" parent="ProgressBoxes"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_top = -24.0
+offset_right = 72.0
+offset_bottom = 24.0
+grow_vertical = 2
+texture = ExtResource("1_r1vso")
+
+[node name="Box3" type="TextureRect" parent="ProgressBoxes"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_top = 64.0
+offset_right = 72.0
+offset_bottom = 112.0
+grow_vertical = 2
+texture = ExtResource("1_r1vso")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.40625
+anchor_top = 0.509766
+anchor_right = 0.94375
+anchor_bottom = 0.516276
+offset_left = -2.0
+offset_top = -11.5
+offset_right = 2.0
+offset_bottom = -8.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_na7dn")
+show_percentage = false
+
+[node name="EnemyLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.6875
+anchor_bottom = 0.522135
+offset_left = -32.0
+offset_top = -256.0
+offset_right = 8.0
+offset_bottom = -237.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Enemy"
+metadata/_edit_use_anchors_ = true

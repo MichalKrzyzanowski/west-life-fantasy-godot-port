@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=4 uid="uid://ckqmboktfdvg2"]
+[gd_scene load_steps=53 format=4 uid="uid://ckqmboktfdvg2"]
 
 [ext_resource type="Script" uid="uid://cte7526luc2h6" path="res://scenes/desert/desert_map.gd" id="1_vowdh"]
 [ext_resource type="TileSet" uid="uid://b0q4gowtnjlif" path="res://scenes/common/river_tileset.tres" id="2_25t3h"]
@@ -14,11 +14,10 @@
 [ext_resource type="Resource" uid="uid://t4krtc6a7vbh" path="res://entities/enemies/snail/snail.tres" id="12_fjvd6"]
 [ext_resource type="Resource" uid="uid://bhugyhiqyrca3" path="res://entities/enemies/bandit/bandit.tres" id="13_045pm"]
 [ext_resource type="Resource" uid="uid://cm5l8es7a6hsk" path="res://entities/enemies/dark_ninja/dark_ninja.tres" id="14_u8kt6"]
-[ext_resource type="Resource" uid="uid://cj65jy2wqmbcv" path="res://entities/bosses/cactus_boss/cactus_boss.tres" id="15_xique"]
+[ext_resource type="Resource" uid="uid://bpsxlfo8fw8e7" path="res://entities/enemies/cactus/cactus.tres" id="15_xe07q"]
 [ext_resource type="Resource" uid="uid://bdw0t65416n83" path="res://entities/enemies/desert_ninja/desert_ninja.tres" id="16_pw241"]
 [ext_resource type="PackedScene" uid="uid://csx3cuf43jnq8" path="res://entities/overworld-enemy/overworld_enemy.tscn" id="17_sqsuv"]
 [ext_resource type="PackedScene" uid="uid://dujvgle5ockxo" path="res://scenes/common/transition_area/transition_area.tscn" id="18_we0hj"]
-[ext_resource type="Texture2D" uid="uid://ds1neb28g8cpd" path="res://door.png" id="19_w4n4h"]
 [ext_resource type="Script" uid="uid://bbmrk0wf4vywj" path="res://scenes/common/locale_data/locale_data.gd" id="20_3tgwn"]
 [ext_resource type="PackedScene" uid="uid://biepho24s8vwe" path="res://entities/common/boss_encounter/boss_encounter.tscn" id="21_1dtuw"]
 [ext_resource type="Resource" uid="uid://108cj5tv5mq8" path="res://entities/bosses/the_skinhead/the_skinhead.tres" id="22_3amxs"]
@@ -40,19 +39,7 @@
 [ext_resource type="Resource" uid="uid://cp8h2jqynfdvy" path="res://quests/quest_battle_at_the_bridge.tres" id="36_gqovc"]
 [ext_resource type="Resource" uid="uid://c42upufqkles4" path="res://entities/bosses/gatekeeper/gatekeeper.tres" id="36_xe07q"]
 [ext_resource type="Resource" uid="uid://bao66o8vmxoo1" path="res://entities/bosses/awoken_thug/awoken_thug.tres" id="37_dgpv0"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1cvgx"]
-size = Vector2(32, 32)
-
-[sub_resource type="Resource" id="Resource_48ea0"]
-script = ExtResource("20_3tgwn")
-entrance_position = Vector2(-9, -282)
-scene_file = "res://scenes/desert/desert_map.tscn"
-
-[sub_resource type="Resource" id="Resource_te775"]
-script = ExtResource("20_3tgwn")
-entrance_position = Vector2(200, 264)
-scene_file = "res://scenes/test/testing_map.tscn"
+[ext_resource type="Texture2D" uid="uid://dgdkiifam4f85" path="res://entities/bullet/bullet.png" id="41_dgpv0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_evvoh"]
 size = Vector2(48, 16)
@@ -91,6 +78,12 @@ size = Vector2(60, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h7ael"]
 size = Vector2(51.974, 62.436)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xe07q"]
+size = Vector2(16, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dgpv0"]
+size = Vector2(16, 1)
 
 [node name="DesertMap" type="Node2D" groups=["persist"]]
 script = ExtResource("1_vowdh")
@@ -139,15 +132,7 @@ position = Vector2(-156, -234)
 scale = Vector2(0.67, 0.67)
 
 [node name="CombatManager" parent="." instance=ExtResource("11_t00au")]
-enemy_spawn_table = Array[ExtResource("11_dcgj7")]([ExtResource("12_fjvd6"), ExtResource("13_045pm"), ExtResource("14_u8kt6"), ExtResource("15_xique"), ExtResource("16_pw241")])
-
-[node name="TestDoor" parent="." node_paths=PackedStringArray("map_ref") instance=ExtResource("18_we0hj")]
-position = Vector2(-10, -313)
-shape = SubResource("RectangleShape2D_1cvgx")
-texture = ExtResource("19_w4n4h")
-origin_locale = SubResource("Resource_48ea0")
-target_locale = SubResource("Resource_te775")
-map_ref = NodePath("..")
+enemy_spawn_table = Array[ExtResource("11_dcgj7")]([ExtResource("12_fjvd6"), ExtResource("13_045pm"), ExtResource("14_u8kt6"), ExtResource("15_xe07q"), ExtResource("16_pw241")])
 
 [node name="TownNorthDoor" parent="." node_paths=PackedStringArray("map_ref") instance=ExtResource("18_we0hj")]
 position = Vector2(-200, 40)
@@ -377,4 +362,22 @@ position = Vector2(-418, -96)
 [node name="Enemy18" parent="Enemies" instance=ExtResource("17_sqsuv")]
 position = Vector2(-981, 780)
 
-[connection signal="on_transition_start" from="TestDoor" to="." method="_on_transition_area_on_transition_start"]
+[node name="TavernEntrance" type="Area2D" parent="."]
+position = Vector2(-1248, 112)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TavernEntrance"]
+position = Vector2(-24, 0.5)
+shape = SubResource("RectangleShape2D_xe07q")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TavernEntrance"]
+position = Vector2(24, 0.5)
+shape = SubResource("RectangleShape2D_dgpv0")
+
+[node name="Sprite2D" type="Sprite2D" parent="TavernEntrance"]
+self_modulate = Color(1, 0, 0.6, 1)
+visibility_layer = 16
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("41_dgpv0")
+
+[connection signal="body_entered" from="TavernEntrance" to="." method="_enter_tavern"]
