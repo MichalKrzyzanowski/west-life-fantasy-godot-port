@@ -34,6 +34,9 @@ func _ready() -> void:
 
 
 # remaining builtins e.g. _process, _input
+func _input(event: InputEvent) -> void:
+	if event.is_action_released("open_menu"):
+		get_tree().quit()
 
 
 # public methods
