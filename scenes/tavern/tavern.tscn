@@ -68,7 +68,7 @@ offset_left = 0.0
 offset_right = 0.0
 grow_horizontal = 1
 button_label = NodePath("../ButtonLabel")
-credits_scene_path = NodePath("res://ui/main_menu/main_menu.tscn")
+credits_scene_path = NodePath("res://ui/credits/credits.tscn")
 player_name = "Enemy"
 is_cpu = true
 
@@ -92,7 +92,7 @@ offset_bottom = -8.50027
 
 [node name="TavernPlayer" parent="UI" node_paths=PackedStringArray("button_label") instance=ExtResource("4_nd0ff")]
 button_label = NodePath("../ButtonLabel")
-credits_scene_path = NodePath("res://ui/main_menu/main_menu.tscn")
+credits_scene_path = NodePath("res://ui/credits/credits.tscn")
 player_name = "Player"
 cpu_progress_step = 50.0
 

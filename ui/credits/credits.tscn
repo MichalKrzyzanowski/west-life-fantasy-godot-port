@@ -1,0 +1,477 @@
+[gd_scene load_steps=30 format=3 uid="uid://bc8q73kchjp1x"]
+
+[ext_resource type="Script" uid="uid://do18c6y024sec" path="res://ui/credits/credits.gd" id="1_ydyd3"]
+[ext_resource type="Texture2D" uid="uid://bmifbvge0v5t3" path="res://credits_photos/20220220_192528.jpg" id="2_2n5wy"]
+[ext_resource type="Texture2D" uid="uid://xvt82ue4u4tn" path="res://credits_photos/DSC_5483.JPG" id="3_nnsry"]
+[ext_resource type="Texture2D" uid="uid://bhm7l12xvv70y" path="res://credits_photos/IMG_20220218_175458.jpg" id="4_rqgi2"]
+[ext_resource type="Texture2D" uid="uid://f3vqbx5qbr56" path="res://credits_photos/IMG_20220218_202803.jpg" id="5_sunqn"]
+[ext_resource type="Texture2D" uid="uid://nl4usxge1agv" path="res://credits_photos/Snapchat-572522876.jpg" id="6_xwmn8"]
+[ext_resource type="Texture2D" uid="uid://dyitdmb2p12pt" path="res://credits_photos/Snapchat-20566353.jpg" id="7_cva3t"]
+[ext_resource type="Texture2D" uid="uid://cs7vw2b0co1be" path="res://credits_photos/IMG_20210922_132133.jpg" id="8_2d0lf"]
+[ext_resource type="Texture2D" uid="uid://pq0bp2ro6dng" path="res://credits_photos/Snapchat-1889783542.jpg" id="9_hfqo3"]
+[ext_resource type="Texture2D" uid="uid://0txbtj6nyppq" path="res://credits_photos/20210913_192510.jpg" id="9_q8t8k"]
+[ext_resource type="Texture2D" uid="uid://dsri634rxdyt5" path="res://credits_photos/IMG_20220218_175540.jpg" id="10_pdd3v"]
+[ext_resource type="Texture2D" uid="uid://dt6xi3msv581y" path="res://credits_photos/DSC04473.JPG" id="11_pdd3v"]
+[ext_resource type="Texture2D" uid="uid://6qmrx4ltywgp" path="res://credits_photos/DSC05689.JPG" id="13_b6jqh"]
+[ext_resource type="Texture2D" uid="uid://dk114kgetmnc4" path="res://credits_photos/IMG_20220401_083410.jpg" id="13_d7n5t"]
+[ext_resource type="Texture2D" uid="uid://cup3wiaicn82u" path="res://credits_photos/Snapchat-315381992.jpg" id="14_borvj"]
+[ext_resource type="Texture2D" uid="uid://c6np33i7qde62" path="res://credits_photos/20211015_140241.jpg" id="15_llslm"]
+[ext_resource type="Texture2D" uid="uid://dv2r7rf6yami6" path="res://credits_photos/Snapchat-898758718.jpg" id="17_1vb2a"]
+[ext_resource type="Texture2D" uid="uid://7j2xxw2ru0es" path="res://credits_photos/Snapchat-1543022684.jpg" id="18_u7gnn"]
+[ext_resource type="Texture2D" uid="uid://pbm1ikwqdd5r" path="res://credits_photos/Snapchat-1193519296.jpg" id="19_joryq"]
+[ext_resource type="Texture2D" uid="uid://c55dxg4a2rqgu" path="res://credits_photos/Snapchat-649631329.jpg" id="20_joryq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ydyd3"]
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_2n5wy"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_nnsry"]
+line_spacing = 1.0
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_rqgi2"]
+line_spacing = 1.0
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_1vb2a"]
+line_spacing = 1.0
+font_size = 45
+
+[sub_resource type="LabelSettings" id="LabelSettings_joryq"]
+line_spacing = 1.0
+font_size = 28
+
+[sub_resource type="Animation" id="Animation_nnsry"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Reel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 856)]
+}
+
+[sub_resource type="Animation" id="Animation_2n5wy"]
+resource_name = "credits_scroll"
+length = 60.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Reel:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 60),
+"transitions": PackedFloat32Array(1.50048, 1.5),
+"update": 0,
+"values": [Vector2(0, 864), Vector2(0, -2160)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nnsry"]
+_data = {
+&"RESET": SubResource("Animation_nnsry"),
+&"credits_scroll": SubResource("Animation_2n5wy")
+}
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ydyd3")
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Reel" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 856.0
+offset_bottom = 856.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameTitleLabel" type="Label" parent="Reel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -293.0
+offset_right = 293.0
+offset_bottom = 85.0
+grow_horizontal = 2
+text = "West Life Fantasy: A Westen Reborn"
+label_settings = SubResource("LabelSettings_ydyd3")
+horizontal_alignment = 1
+
+[node name="CreditsLabel" type="Label" parent="Reel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_top = 80.0
+offset_right = 37.0
+offset_bottom = 116.0
+grow_horizontal = 2
+text = "Credits"
+label_settings = SubResource("LabelSettings_2n5wy")
+
+[node name="TitlesLabel" type="Label" parent="Reel"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 160.0
+offset_right = 482.0
+offset_bottom = 1697.0
+text = "Project Leads
+
+
+
+Animators
+
+Pixel Artist
+
+Programmers
+
+
+
+
+Original Planner
+
+
+Sponsor
+
+
+
+Special Thanks
+
+
+
+
+
+
+Resident Alcoholics
+
+
+
+
+
+Recovering Alcoholics"
+label_settings = SubResource("LabelSettings_nnsry")
+horizontal_alignment = 2
+
+[node name="MembersLabel" type="Label" parent="Reel"]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 160.0
+offset_right = 865.0
+offset_bottom = 2362.0
+text = "Michal Krzyanowski (P2)
+Ben Stynes (P3)
+
+
+Where?!?!
+
+Michal Krzyanwski
+
+Michal Krzyanwski
+Ben Stynes
+Szymon Piskorz
+Allexis Alvarico
+
+Our Single Brain Cell
+
+
+Creek Food and Restaurant
+Weatherspoons
+Tullys
+
+Long Island Iced Tea
+Alcohol
+Linux
+Body pillow
+The artists that was assigned to
+us
+
+Michal Kzyzjsfhyoiu
+Allexwah Alrea
+Benny Hill
+Baba Jahger
+Game Devs Class of 2022
+
+Michal Krzyanwski (Medical)
+Allexis Alvarico (Broke AF)"
+label_settings = SubResource("LabelSettings_rqgi2")
+
+[node name="GratitudeLabel" type="Label" parent="Reel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -280.0
+offset_top = 1416.0
+offset_right = 277.0
+offset_bottom = 1519.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "thank you!
+for playing our game"
+label_settings = SubResource("LabelSettings_1vb2a")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="CopyrightLabel" type="Label" parent="Reel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -141.0
+offset_top = 1920.0
+offset_right = 141.0
+offset_bottom = 2018.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Copyright © 2022
+Alcoholics Game Devs
+All Rights Reserved"
+label_settings = SubResource("LabelSettings_joryq")
+horizontal_alignment = 1
+
+[node name="Images" type="Control" parent="Reel"]
+texture_filter = 4
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StoicSmile" type="TextureRect" parent="Reel/Images"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 191.0
+offset_right = 282.0
+offset_bottom = 361.0
+rotation = -0.366519
+pivot_offset = Vector2(85, 85.0001)
+texture = ExtResource("2_2n5wy")
+expand_mode = 1
+
+[node name="MadLadParty" type="TextureRect" parent="Reel/Images"]
+layout_mode = 0
+offset_left = 840.0
+offset_top = 236.0
+offset_right = 984.0
+offset_bottom = 433.0
+rotation = 0.366519
+texture = ExtResource("3_nnsry")
+expand_mode = 1
+
+[node name="CreekGang" type="TextureRect" parent="Reel/Images"]
+layout_mode = 0
+offset_left = 143.0
+offset_top = 482.0
+offset_right = 299.0
+offset_bottom = 638.0
+rotation = 0.376991
+texture = ExtResource("4_rqgi2")
+expand_mode = 1
+
+[node name="StoicStance" type="TextureRect" parent="Reel/Images"]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 724.0
+offset_right = 286.0
+offset_bottom = 884.0
+rotation = 0.680678
+texture = ExtResource("5_sunqn")
+expand_mode = 1
+
+[node name="SmartAllexwah" type="TextureRect" parent="Reel/Images"]
+layout_mode = 0
+offset_left = 844.0
+offset_top = 744.0
+offset_right = 949.0
+offset_bottom = 913.0
+rotation = 0.0925025
+texture = ExtResource("6_xwmn8")
+expand_mode = 1
+
+[node name="SlavBen" type="TextureRect" parent="Reel/Images"]
+layout_mode = 0
+offset_left = 856.0
+offset_top = 985.0
+offset_right = 964.0
+offset_bottom = 1172.0
+rotation = 0.401426
+texture = ExtResource("7_cva3t")
+expand_mode = 1
+
+[node name="ZooBois" type="TextureRect" parent="Reel/Images"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 1030.0
+offset_right = 203.0
+offset_bottom = 1223.0
+texture = ExtResource("8_2d0lf")
+expand_mode = 1
+
+[node name="GrandCollage" type="Control" parent="Reel/Images"]
+anchors_preset = 0
+offset_left = 12.0
+offset_top = -189.0
+offset_right = 52.0
+offset_bottom = -149.0
+
+[node name="NicoBelicCosplay" type="TextureRect" parent="Reel/Images/GrandCollage"]
+layout_mode = 0
+offset_left = 592.0
+offset_top = 1610.0
+offset_right = 846.0
+offset_bottom = 1935.0
+rotation = 0.148353
+texture = ExtResource("9_q8t8k")
+expand_mode = 1
+
+[node name="PillowGang" type="TextureRect" parent="Reel/Images/GrandCollage"]
+layout_mode = 0
+offset_left = 211.0
+offset_top = 1902.0
+offset_right = 481.0
+offset_bottom = 2104.0
+texture = ExtResource("13_d7n5t")
+expand_mode = 1
+
+[node name="SpoonsDate" type="TextureRect" parent="Reel/Images/GrandCollage"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 1684.0
+offset_right = 242.0
+offset_bottom = 1994.0
+texture = ExtResource("17_1vb2a")
+expand_mode = 1
+
+[node name="BaldAllexwah" type="TextureRect" parent="Reel/Images/GrandCollage"]
+layout_mode = 0
+offset_left = 474.0
+offset_top = 1844.0
+offset_right = 627.0
+offset_bottom = 2105.0
+texture = ExtResource("9_hfqo3")
+expand_mode = 1
+
+[node name="WetHairMike" type="TextureRect" parent="Reel/Images/GrandCollage"]
+layout_mode = 0
+offset_left = 147.0
+offset_top = 1560.0
+offset_right = 441.0
+offset_bottom = 1700.0
+rotation = 0.223402
+texture = ExtResource("13_b6jqh")
+expand_mode = 1
+
+[node name="StoicStare" type="TextureRect" parent="Reel/Images/GrandCollage"]
+layout_mode = 0
+offset_left = 415.0
+offset_top = 1623.0
+offset_right = 640.3
+offset_bottom = 1903.0
+texture = ExtResource("10_pdd3v")
+expand_mode = 1
+
+[node name="Alcoholic" type="TextureRect" parent="Reel/Images/GrandCollage"]
+layout_mode = 0
+offset_left = 630.0
+offset_top = 1942.0
+offset_right = 903.0
+offset_bottom = 2122.0
+rotation = -0.226893
+texture = ExtResource("11_pdd3v")
+expand_mode = 1
+flip_h = true
+
+[node name="PoleEgg" type="TextureRect" parent="Reel/Images/GrandCollage"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 1987.0
+offset_right = 246.0
+offset_bottom = 2172.0
+rotation = -0.436332
+texture = ExtResource("15_llslm")
+expand_mode = 1
+
+[node name="StoicSpoonsEgg" type="TextureRect" parent="Reel/Images/GrandCollage"]
+layout_mode = 0
+offset_left = 276.0
+offset_top = 1702.0
+offset_right = 437.0
+offset_bottom = 1964.0
+rotation = 0.191986
+texture = ExtResource("14_borvj")
+expand_mode = 1
+
+[node name="FinalCollage" type="Control" parent="Reel/Images"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -94.0
+offset_top = -286.0
+offset_right = -54.0
+offset_bottom = -246.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="OldBenDrink" type="TextureRect" parent="Reel/Images/FinalCollage"]
+layout_mode = 0
+offset_left = 357.0
+offset_top = 2566.0
+offset_right = 520.0
+offset_bottom = 2846.0
+rotation = 0.198968
+texture = ExtResource("19_joryq")
+expand_mode = 1
+
+[node name="AllexwahFace" type="TextureRect" parent="Reel/Images/FinalCollage"]
+layout_mode = 0
+offset_left = 615.0
+offset_top = 2565.0
+offset_right = 776.0
+offset_bottom = 2870.3
+texture = ExtResource("20_joryq")
+expand_mode = 1
+
+[node name="StoicDrink" type="TextureRect" parent="Reel/Images/FinalCollage"]
+layout_mode = 0
+offset_left = 435.0
+offset_top = 2582.0
+offset_right = 635.0
+offset_bottom = 2893.0
+rotation = -0.122173
+texture = ExtResource("18_u7gnn")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_nnsry")
+}

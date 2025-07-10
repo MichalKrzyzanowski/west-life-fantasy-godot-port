@@ -68,21 +68,20 @@ var _xp_reward: int = 0
 var _gold_reward: int = 0
 
 # @onready vars
-@onready var GenericEntity := preload(
+@onready var GenericEntity: PackedScene = preload(
 		"res://entities/common/entity/generic_entity.tscn")
-#@onready var ShadeNinja := preload("res://entities/common/generic_entity.tscn") as Area2D
 # TODO: figure out how to implement static typing for Grid2D plugin type
 @onready var party_grid = $PartyGrid
 @onready var enemy_grid = $EnemyGrid
-@onready var interface := $UI/CombatInterface as Control
+@onready var interface: Control = $UI/CombatInterface
 
 
-func _init() -> void:
-	pass
+# func _init() -> void:
+# 	pass
 
 
-func _enter_tree() -> void:
-	pass
+# func _enter_tree() -> void:
+# 	pass
 
 
 func _ready() -> void:
@@ -141,7 +140,7 @@ func _input(event: InputEvent) -> void:
 ## [param data] properties and attach them to designated Grid2D
 func _init_party(data: Array[EntityProperties]) -> void:
 	if !data.is_empty():
-		for member_data in data:
+		for member_data: EntityProperties in data:
 			var party_member = GenericEntity.instantiate()
 			# TODO: look into _get_property_list for EntityProperties resource
 			# to prevent full deep duplication

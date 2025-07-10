@@ -22,6 +22,9 @@ extends Control
 @onready var continue_button: Button = get_node("MenuButtons/ContinueButton")
 @onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
+# cache the credits scene on first launch of the game since it has a lot of large images
+@onready var credits_scene: PackedScene = preload("res://ui/credits/credits.tscn")
+
 
 func _init() -> void:
 	pass

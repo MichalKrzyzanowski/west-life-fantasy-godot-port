@@ -20,21 +20,19 @@ extends BaseMap
 @onready var tavern_scene: PackedScene = preload("res://scenes/tavern/tavern.tscn")
 
 
-func _init() -> void:
-	pass
+# func _init() -> void:
+# 	pass
 
 
-func _enter_tree() -> void:
-	pass
+# func _enter_tree() -> void:
+# 	pass
 
 
-func _ready() -> void:
-	pass
+# func _ready() -> void:
+# 	pass
 
 
 # remaining builtins e.g. _process, _input
-func _input(event: InputEvent) -> void:
-	pass
 
 
 # public methods
@@ -47,7 +45,7 @@ func _input(event: InputEvent) -> void:
 
 
 # private methods
-func _enter_tavern(body: Node2D) -> void:
+func _enter_tavern(_body: Node2D) -> void:
 	get_node(MainUtils.MAIN_SCENE_PATH).queue_free()
 
 	# deinit singletons

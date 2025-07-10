@@ -23,12 +23,12 @@ extends Node2D
 @onready var world: Node = $World
 
 
-func _init() -> void:
-	pass
+# func _init() -> void:
+# 	pass
 
 
-func _enter_tree() -> void:
-	pass
+# func _enter_tree() -> void:
+# 	pass
 
 
 ## configure root viewport canvas cull mask

@@ -22,7 +22,6 @@ var party: Array[EntityProperties]
 var orbs: Array[bool] = [false, false, false, false]
 
 # private vars
-var _debug_xp_gain: int = 1_000_000_000_000_000_000
 
 # @onready vars
 
@@ -40,18 +39,6 @@ func _ready() -> void:
 
 
 # remaining builtins e.g. _process, _input
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey && event.pressed:
-		match event.keycode:
-			KEY_1:
-				party.map(func (item): item.stats.xp += _debug_xp_gain)
-				gold += 1000
-			KEY_0:
-				# party.all(func (item): print(item.stats))
-				for member in party:
-					print(member.name)
-					print(member.stats)
-					print("")
 
 
 # public methods
@@ -104,7 +91,7 @@ func save() -> Dictionary:
 
 func load(data: Dictionary) -> void:
 	for item in data["party_data"]:
-		var entity_props := EntityProperties.new()
+		var entity_props: EntityProperties = EntityProperties.new()
 		entity_props.stats = CombatStats.new()
 		entity_props.load(item)
 		add_member(entity_props)

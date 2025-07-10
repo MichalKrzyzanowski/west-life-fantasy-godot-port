@@ -8,7 +8,12 @@
 		"stats": {
 			"max_level": 11,
 			"attack": 3,
-			"scaler_attack": 1
+			"scaler_attack": 1,
+			"extra_level_up_gains": {
+				"6": {
+					"gold_level_cost": 25
+				}
+			}
 		}
 	},
 	"sour": {
@@ -20,7 +25,12 @@
 		"stats": {
 			"max_level": 11,
 			"attack": 3,
-			"scaler_attack": 1
+			"scaler_attack": 1,
+			"extra_level_up_gains": {
+				"6": {
+					"gold_level_cost": 25
+				}
+			}
 		}
 	},
 	"windows": {
@@ -32,7 +42,12 @@
 		"stats": {
 			"max_level": 11,
 			"attack": 3,
-			"scaler_attack": 1
+			"scaler_attack": 1,
+			"extra_level_up_gains": {
+				"6": {
+					"gold_level_cost": 25
+				}
+			}
 		}
 	},
 	"plush": {
@@ -44,7 +59,12 @@
 		"stats": {
 			"max_level": 11,
 			"attack": 3,
-			"scaler_attack": 1
+			"scaler_attack": 1,
+			"extra_level_up_gains": {
+				"6": {
+					"gold_level_cost": 25
+				}
+			}
 		}
 	},
 	"shame_walk": {
@@ -56,7 +76,12 @@
 		"stats": {
 			"max_level": 11,
 			"attack": 12,
-			"scaler_attack": 1
+			"scaler_attack": 1,
+			"extra_level_up_gains": {
+				"6": {
+					"gold_level_cost": 25
+				}
+			}
 		}
 	},
 	"jaeger_bomb": {
@@ -68,7 +93,12 @@
 		"stats": {
 			"max_level": 11,
 			"attack": 15,
-			"scaler_attack": 1
+			"scaler_attack": 1,
+			"extra_level_up_gains": {
+				"6": {
+					"gold_level_cost": 25
+				}
+			}
 		}
 	},
 	"ubuntu": {
@@ -80,7 +110,12 @@
 		"stats": {
 			"max_level": 11,
 			"attack": 16,
-			"scaler_attack": 1
+			"scaler_attack": 1,
+			"extra_level_up_gains": {
+				"6": {
+					"gold_level_cost": 25
+				}
+			}
 		}
 	},
 	"gura_plush": {
@@ -92,7 +127,12 @@
 		"stats": {
 			"max_level": 11,
 			"attack": 11,
-			"scaler_attack": 1
+			"scaler_attack": 1,
+			"extra_level_up_gains": {
+				"6": {
+					"gold_level_cost": 25
+				}
+			}
 		}
 	},
 	"penguin": {
@@ -104,7 +144,12 @@
 		"stats": {
 			"max_level": 11,
 			"attack": 23,
-			"scaler_attack": 1
+			"scaler_attack": 1,
+			"extra_level_up_gains": {
+				"6": {
+					"gold_level_cost": 25
+				}
+			}
 		}
 	},
 	"tequila": {
@@ -116,7 +161,12 @@
 		"stats": {
 			"max_level": 11,
 			"attack": 29,
-			"scaler_attack": 1
+			"scaler_attack": 1,
+			"extra_level_up_gains": {
+				"6": {
+					"gold_level_cost": 25
+				}
+			}
 		}
 	},
 	"linux": {
@@ -128,7 +178,12 @@
 		"stats": {
 			"max_level": 11,
 			"attack": 28,
-			"scaler_attack": 1
+			"scaler_attack": 1,
+			"extra_level_up_gains": {
+				"6": {
+					"gold_level_cost": 25
+				}
+			}
 		}
 	},
 	"body_pillow": {
@@ -140,7 +195,12 @@
 		"stats": {
 			"max_level": 11,
 			"attack": 26,
-			"scaler_attack": 1
+			"scaler_attack": 1,
+			"extra_level_up_gains": {
+				"6": {
+					"gold_level_cost": 25
+				}
+			}
 		}
 	},
 	"war_penguin": {
@@ -152,7 +212,12 @@
 		"stats": {
 			"max_level": 11,
 			"attack": 100,
-			"scaler_attack": 1
+			"scaler_attack": 1,
+			"extra_level_up_gains": {
+				"6": {
+					"gold_level_cost": 25
+				}
+			}
 		}
 	},
 	"chateruse": {
@@ -164,7 +229,12 @@
 		"stats": {
 			"max_level": 11,
 			"attack": 100,
-			"scaler_attack": 1
+			"scaler_attack": 1,
+			"extra_level_up_gains": {
+				"6": {
+					"gold_level_cost": 25
+				}
+			}
 		}
 	},
 	"arch_linux": {
@@ -176,7 +246,12 @@
 		"stats": {
 			"max_level": 11,
 			"attack": 100,
-			"scaler_attack": 1
+			"scaler_attack": 1,
+			"extra_level_up_gains": {
+				"6": {
+					"gold_level_cost": 25
+				}
+			}
 		}
 	},
 	"gura_pillow": {
@@ -188,7 +263,12 @@
 		"stats": {
 			"max_level": 11,
 			"attack": 100,
-			"scaler_attack": 1
+			"scaler_attack": 1,
+			"extra_level_up_gains": {
+				"6": {
+					"gold_level_cost": 25
+				}
+			}
 		}
 	},
 	"wooden": {
@@ -201,7 +281,12 @@
 			"max_level": 11,
 			"attack": 1,
 			"scaler_attack": 1,
-			"gold_value": 5
+			"gold_level_cost": 5,
+			"extra_level_up_gains": {
+				"6": {
+					"gold_level_cost": 25
+				}
+			}
 		}
 	},
 	"small": {
@@ -214,7 +299,12 @@
 			"max_level": 11,
 			"attack": 1,
 			"scaler_attack": 1,
-			"gold_value": 5
+			"gold_level_cost": 5,
+			"extra_level_up_gains": {
+				"6": {
+					"gold_level_cost": 25
+				}
+			}
 		}
 	},
 	"wooden2": {
@@ -227,7 +317,12 @@
 			"max_level": 11,
 			"attack": 5,
 			"scaler_attack": 1,
-			"gold_value": 10
+			"gold_level_cost": 10,
+			"extra_level_up_gains": {
+				"6": {
+					"gold_level_cost": 25
+				}
+			}
 		}
 	},
 	"rapier": {
@@ -240,7 +335,12 @@
 			"max_level": 11,
 			"attack": 7,
 			"scaler_attack": 1,
-			"gold_value": 10
+			"gold_level_cost": 10,
+			"extra_level_up_gains": {
+				"6": {
+					"gold_level_cost": 25
+				}
+			}
 		}
 	},
 	"iron": {
@@ -253,7 +353,12 @@
 			"max_level": 11,
 			"attack": 8,
 			"scaler_attack": 1,
-			"gold_value": 10
+			"gold_level_cost": 10,
+			"extra_level_up_gains": {
+				"6": {
+					"gold_level_cost": 25
+				}
+			}
 		}
 	}
 }

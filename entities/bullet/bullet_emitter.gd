@@ -3,7 +3,7 @@ extends Node2D
 @export var allow_input: bool = true
 @export_flags_2d_physics var bullet_collision_mask: int
 
-@onready var Bullet = preload("res://entities/bullet/bullet.tscn")
+@onready var Bullet: PackedScene = preload("res://entities/bullet/bullet.tscn")
 
 
 ## bullet is spawned and initialized when shoot action
@@ -15,7 +15,7 @@ func _input(event: InputEvent) -> void:
 
 ## create instance of bullet, called when player/enemy shoots
 func emit_bullet(target: Node2D = null) -> void:
-	var target_position
+	var target_position: Vector2
 	# set target position to target's global_position if
 	# it is not null
 	if target:
@@ -25,8 +25,8 @@ func emit_bullet(target: Node2D = null) -> void:
 		target_position = get_global_mouse_position()
 
 	# find the direction between the parent entity and target position
-	var bullet_dir = (target_position - global_position).normalized()
-	var bullet = Bullet.instantiate()
+	var bullet_dir: Vector2 = (target_position - global_position).normalized()
+	var bullet: Area2D = Bullet.instantiate()
 	# initialize the bullet
 	bullet.init(global_position, bullet_dir, get_parent())
 	bullet.collision_mask = bullet_collision_mask

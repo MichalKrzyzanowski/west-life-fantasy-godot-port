@@ -23,20 +23,20 @@ const ORB_COLORS: Array[Color] = [
 # private vars
 
 # @onready vars
-@onready var gold_label := $Gold/Label as Label
-@onready var options_menu := $OptionsMenu as Control
-@onready var items_menu := $ConsumablesMenu as Control
-@onready var armour_menu := $ArmourMenu as Control
-@onready var weapon_menu := $WeaponMenu as Control
+@onready var gold_label: Label = $Gold/Label
+@onready var options_menu: Control = $OptionsMenu
+@onready var items_menu: Control = $ConsumablesMenu
+@onready var armour_menu: Control = $ArmourMenu
+@onready var weapon_menu: Control = $WeaponMenu
 @onready var orb_container: GridContainer = $Orbs/OrbContainer
 @onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
-func _init() -> void:
-	pass
+# func _init() -> void:
+# 	pass
 
 
-func _enter_tree() -> void:
-	pass
+# func _enter_tree() -> void:
+# 	pass
 
 
 func _ready() -> void:
@@ -77,9 +77,6 @@ func _on_items_pressed() -> void:
 	items_menu.show()
 
 
-# subclasses
-
-
 func _on_weapons_pressed() -> void:
 	audio_player.play()
 	weapon_menu.show()
@@ -93,3 +90,6 @@ func _on_armour_pressed() -> void:
 func _on_options_pressed() -> void:
 	audio_player.play()
 	options_menu.show()
+
+
+# subclasses

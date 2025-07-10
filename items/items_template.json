@@ -15,7 +15,13 @@
 		"stats": { // weapon stats, can omit any of the following to use default values.
 			"attack": 0, // damage that will combined with entities base attack. mainly used on weapons
 			"defence": 0, // defence that will combined with entities base defence. mainly used on armours
-			"level": 1 // weapon level. used for upgrading
+			"level": 1, // weapon level. used for upgrading
+			"extra_level_up_gains": { // list of bonuses gained when certain levels are reached i.e. increase attack scaling
+				"1": {
+					"max_level": 12
+				}
+
+			}
 		}
 	}
 }

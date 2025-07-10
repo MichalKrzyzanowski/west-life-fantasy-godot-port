@@ -23,21 +23,19 @@ var _previous_locale: LocaleData
 @onready var default_position: Marker2D = get_node("PlayerPosition")
 
 
-func _init() -> void:
-	pass
+# func _init() -> void:
+# 	pass
 
 
-func _enter_tree() -> void:
-	pass
+# func _enter_tree() -> void:
+# 	pass
 
 
-func _ready() -> void:
-	pass
+# func _ready() -> void:
+# 	pass
 
 
 # remaining builtins e.g. _process, _input
-func _input(event: InputEvent) -> void:
-	pass
 
 
 # public methods
@@ -74,10 +72,6 @@ func load(data: Dictionary) -> void:
 
 
 # private methods
-func _on_transition_area_on_transition_start() -> void:
-	pass
-	# fader.play_backwards("fade")
-	# await fader.animation_finished
 
 
 # subclasses

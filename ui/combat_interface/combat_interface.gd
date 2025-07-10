@@ -19,17 +19,17 @@ var block_action_select: bool = false
 # private vars
 
 # @onready vars
-@onready var party := $Party as Control
+@onready var party: Control = $Party
 
 # combat info labels
-@onready var info_label := $CombatInfoPanel/BattleInfoLabel as Label
-@onready var rewards_label := $CombatInfoPanel/RewardsLabel as Label
-@onready var gold_xp_label := $CombatInfoPanel/GoldXpValueLabel as Label
-@onready var gear_label := $CombatInfoPanel/GearLabel as Label
+@onready var info_label: Label = $CombatInfoPanel/BattleInfoLabel
+@onready var rewards_label: Label = $CombatInfoPanel/RewardsLabel
+@onready var gold_xp_label: Label = $CombatInfoPanel/GoldXpValueLabel
+@onready var gear_label: Label = $CombatInfoPanel/GearLabel
 
-@onready var attack_button := $ActionsPanel/AttackButton as Button
-@onready var block_button := $ActionsPanel/BlockButton as Button
-@onready var flee_button := $ActionsPanel/FleeButton as Button
+@onready var attack_button: Button = $ActionsPanel/AttackButton
+@onready var block_button: Button = $ActionsPanel/BlockButton
+@onready var flee_button: Button = $ActionsPanel/FleeButton
 
 
 func _init() -> void:
