@@ -19,6 +19,9 @@ extends Control
 # @onready vars
 @onready var character_grid = $CharacterGrid as GridContainer
 @onready var main_scene = preload("res://scenes/main/main.tscn")
+
+@onready var secret_quest: Quest = preload("res://quests/quest_cactus_culling.tres")
+
 @onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
@@ -58,6 +61,7 @@ func _on_continue_button_pressed() -> void:
 			InventoryManager.create_party_inventory()
 
 	InventoryManager.consumables_inventory = Inventory.new()
+	QuestManager.add_quest(secret_quest)
 
 	var main_instance = main_scene.instantiate()
 	get_tree().root.add_child(main_instance)

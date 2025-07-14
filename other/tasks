@@ -11,6 +11,9 @@
 		- gear can have levels and could potentially level up just like a character would
 			- e.g. ratchet & clank style
 			- level could track current weapon upgrade
+- buglist
+	- fleeing from combat follows a pattern, is not random (needs more investigation)
+		- false alarm, fleeing works as intended
 
 +------+
 | DONE |
@@ -134,15 +137,18 @@
 - audio
 	- add overworld and combat music
 	- add combat sounds
+- tavern
+	- tavern minigame
+- minimap
+	- add minimap in the bottom right corner in the overworld
+- credits
+	- simple credit scene
 
 +-------------+
 | IN PROGRESS |
 +-------------+
-- minimap
-	- add minimap in the bottom right corner in the overworld
 - enhancements
 - buglist
-	- fleeing from combat follows a pattern, is not random (needs more investigation)
 
 +------+
 | TODO |
@@ -158,10 +164,6 @@
 - buglist
 - refactor
 	- clean up project i.e. better structure, more folders
-- tavern
-	- tavern minigame
-- credits
-	- simple credit scene
 
 
 +-------------+

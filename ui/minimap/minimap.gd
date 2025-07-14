@@ -45,7 +45,8 @@ func _ready() -> void:
 
 ## minimap camera tracks global position of player
 func _process(_delta: float) -> void:
-	camera.global_position = player_ref.global_position
+	if player_ref:
+		camera.global_position = player_ref.global_position
 
 
 # public methods

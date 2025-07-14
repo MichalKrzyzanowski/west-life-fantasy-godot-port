@@ -6,7 +6,7 @@
 
 [sub_resource type="Resource" id="Resource_f6xwi"]
 script = ExtResource("2_jt06c")
-max_hp = 500
+max_hp = 800
 attack = 25
 defence = 20
 scaler_hp = 0
@@ -19,7 +19,7 @@ extra_level_up_gains = {}
 level = 1
 max_level = 9999
 hp = null
-xp_drop = 700
+xp_drop = 7250
 gold_drop = 850
 gold_value = 0
 gold_level_cost = 25

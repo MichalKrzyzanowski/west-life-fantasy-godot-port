@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://ckqmboktfdvg2"]
+[gd_scene load_steps=58 format=4 uid="uid://ckqmboktfdvg2"]
 
 [ext_resource type="Script" uid="uid://cte7526luc2h6" path="res://scenes/desert/desert_map.gd" id="1_vowdh"]
 [ext_resource type="TileSet" uid="uid://b0q4gowtnjlif" path="res://scenes/common/river_tileset.tres" id="2_25t3h"]
@@ -39,6 +39,10 @@
 [ext_resource type="Resource" uid="uid://cp8h2jqynfdvy" path="res://quests/quest_battle_at_the_bridge.tres" id="36_gqovc"]
 [ext_resource type="Resource" uid="uid://c42upufqkles4" path="res://entities/bosses/gatekeeper/gatekeeper.tres" id="36_xe07q"]
 [ext_resource type="Resource" uid="uid://bao66o8vmxoo1" path="res://entities/bosses/awoken_thug/awoken_thug.tres" id="37_dgpv0"]
+[ext_resource type="Resource" uid="uid://cj65jy2wqmbcv" path="res://entities/bosses/cactus_lord/cactus_boss.tres" id="39_etubx"]
+[ext_resource type="Resource" uid="uid://c0s3au467bdwq" path="res://quests/quest_royal_audience.tres" id="39_wp8hs"]
+[ext_resource type="Resource" uid="uid://c610dul6cyfd4" path="res://quests/quest_cactus_culling.tres" id="40_4bein"]
+[ext_resource type="Resource" uid="uid://2nrekwx6mntd" path="res://entities/bosses/bodyguard/bodyguard.tres" id="40_b87oh"]
 [ext_resource type="Texture2D" uid="uid://dgdkiifam4f85" path="res://entities/bullet/bullet.png" id="41_dgpv0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_evvoh"]
@@ -78,6 +82,9 @@ size = Vector2(60, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h7ael"]
 size = Vector2(51.974, 62.436)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wp8hs"]
+size = Vector2(31, 133)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xe07q"]
 size = Vector2(16, 1)
@@ -305,6 +312,15 @@ region_rect = Rect2(64, 0, 16, 16)
 position = Vector2(14, 15)
 texture = ExtResource("28_katdt")
 flip_h = true
+
+[node name="Secret" parent="Bosses" node_paths=PackedStringArray("combat_manager") instance=ExtResource("21_1dtuw")]
+position = Vector2(-24, 528)
+shape = SubResource("RectangleShape2D_wp8hs")
+combat_manager = NodePath("../../CombatManager")
+entities = Array[ExtResource("11_dcgj7")]([null, ExtResource("39_etubx"), null, ExtResource("40_b87oh"), null, ExtResource("40_b87oh"), ExtResource("15_xe07q"), ExtResource("15_xe07q"), ExtResource("15_xe07q")])
+enable_invisible_wall = false
+quest = ExtResource("39_wp8hs")
+prerequisite_quest = ExtResource("40_4bein")
 
 [node name="Enemies" type="Node" parent="."]
 

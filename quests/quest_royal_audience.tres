@@ -18,5 +18,6 @@ id = -1
 title = "Royal Audience"
 description = "Slay the Cactus Lord"
 task_list = Array[ExtResource("2_pxq44")]([SubResource("Resource_dwpmi")])
+type = "standard"
 items = Array[ExtResource("1_pxq44")]([])
 metadata/_custom_type_script = "uid://d4n13cm6qw3fb"

@@ -8,7 +8,7 @@
 [sub_resource type="Resource" id="Resource_fh6qp"]
 script = ExtResource("3_srxo5")
 target_entity_name = "Cactus"
-target_slay_count = 1
+target_slay_count = 10
 description = "Slay 1 Cactus"
 metadata/_custom_type_script = "uid://c0tx8hipl24e0"
 
@@ -18,5 +18,6 @@ id = -1
 title = "Cactus Culling"
 description = "Time to slay Cactus"
 task_list = Array[ExtResource("2_pdlpn")]([SubResource("Resource_fh6qp")])
+type = "standard"
 items = Array[ExtResource("1_pdlpn")]([])
 metadata/_custom_type_script = "uid://d4n13cm6qw3fb"
