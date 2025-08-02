@@ -19,6 +19,7 @@ const ORB_COLORS: Array[Color] = [
 # @export vars
 
 # public vars
+var main_menu_scene_path: String = "res://ui/main_menu/main_menu.tscn"
 
 # private vars
 
@@ -90,6 +91,21 @@ func _on_armour_pressed() -> void:
 func _on_options_pressed() -> void:
 	audio_player.play()
 	options_menu.show()
+
+
+func _on_exit_pressed() -> void:
+	audio_player.play()
+	await audio_player.finished
+
+	get_node(MainUtils.MAIN_SCENE_PATH).queue_free()
+
+	# deinit singletons
+	InventoryManager.deinit()
+	QuestManager.deinit()
+	PartyManager.deinit()
+
+	get_tree().change_scene_to_file(main_menu_scene_path)
+	get_tree().paused = false
 
 
 # subclasses
